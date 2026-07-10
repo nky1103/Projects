@@ -36,22 +36,15 @@
   }
 
   /* ---------- header ---------- */
-  .eyebrow {
-    font-size: 17px; font-weight: 700; letter-spacing: 0.22em;
-    color: var(--accent); text-transform: uppercase;
-    display: flex; align-items: center; gap: 16px;
-  }
-  .eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--line); }
-
   h1 {
     font-family: 'Source Serif 4', serif; font-weight: 600;
-    font-size: 51px; line-height: 1.16; letter-spacing: -0.01em;
-    margin-top: 22px; max-width: 980px;
+    font-size: 53px; line-height: 1.2; letter-spacing: -0.01em;
+    margin-top: 8px; max-width: 1000px;
   }
   h1 .accent { color: var(--accent); font-weight: 700; }
 
   /* ---------- section scaffolding ---------- */
-  .section { margin-top: 36px; }
+  .section { margin-top: 42px; }
   .section-label {
     display: flex; align-items: center; gap: 14px;
     font-size: 16px; font-weight: 700; letter-spacing: 0.18em;
@@ -86,7 +79,7 @@
   /* ---------- 2: meeting ladder ---------- */
   .ladder { display: flex; flex-direction: column; gap: 14px; }
   .rung {
-    display: grid; grid-template-columns: 430px 150px 1fr;
+    display: grid; grid-template-columns: 1fr 170px 310px;
     align-items: center;
     background: var(--card); border: 1px solid var(--line);
     border-radius: 16px; padding: 22px 30px;
@@ -141,7 +134,7 @@
   .closer {
     margin: 38px -72px 0;
     background: var(--navy); color: #F2EDE3;
-    padding: 38px 72px 36px;
+    padding: 36px 72px 34px;
     flex: 1;
   }
   .closer-line {
@@ -150,7 +143,7 @@
   }
   .closer-line .keep { color: #E8935A; font-weight: 700; }
   .closer-q {
-    margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(242,237,227,.25);
+    margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(242,237,227,.25);
     font-size: 21px; color: rgba(242,237,227,.85);
     display: flex; align-items: baseline; gap: 12px;
   }
@@ -162,9 +155,8 @@
 </head>
 <body>
 
-  <div class="eyebrow">Selling in the age of AI</div>
   <h1>The best sales conversations rarely start with a product.<br>
-      <span class="accent">They start with curiosity.</span></h1>
+      <span class="accent">They start with understanding.</span></h1>
 
   <div class="section">
     <div class="section-label"><span class="num">1</span> Shift the focus</div>
@@ -192,7 +184,7 @@
         <div class="rung-result">the first meeting</div>
       </div>
       <div class="rung win">
-        <div class="rung-what">Understanding their business</div>
+        <div class="rung-what">Understanding the business behind the requirement</div>
         <div class="rung-verb"><span>earns you</span></div>
         <div class="rung-result">every meeting after</div>
       </div>
@@ -207,7 +199,7 @@
         <ul>
           <li>Research faster</li>
           <li>Prepare better</li>
-          <li>Reach out at scale</li>
+          <li>Personalize outreach at scale</li>
         </ul>
       </div>
       <div class="col human">
@@ -223,8 +215,8 @@
   </div>
 
   <div class="closer">
-    <div class="closer-line">Technology will keep evolving.<br>
-      <span class="keep">The fundamentals of building relationships won't.</span></div>
+    <div class="closer-line">Technology evolves.<br>
+      <span class="keep">Trust remains the competitive advantage.</span></div>
     <div class="closer-q"><span class="qmark">?</span> What's one question you always ask before recommending a solution?</div>
   </div>
 
