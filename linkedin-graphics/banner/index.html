@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>LinkedIn banner</title>
+<style>
+  @font-face { font-family: 'Inter'; font-weight: 600; src: url('../sales-curiosity/fonts/Inter-600.ttf') format('truetype'); }
+  @font-face { font-family: 'Source Serif 4'; font-weight: 600; src: url('../sales-curiosity/fonts/SourceSerif4-600.ttf') format('truetype'); }
+  @font-face { font-family: 'Source Serif 4'; font-weight: 700; src: url('../sales-curiosity/fonts/SourceSerif4-700.ttf') format('truetype'); }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body { width: 1584px; height: 396px; overflow: hidden; }
+  body {
+    position: relative;
+    background: linear-gradient(112deg, #0F172A 0%, #16223A 48%, #2B3A55 100%);
+    font-family: 'Inter', sans-serif;
+  }
+
+  .net { position: absolute; inset: 0; }
+
+  .copy {
+    position: absolute;
+    right: 96px; top: 50%;
+    transform: translateY(-50%);
+    text-align: right;
+  }
+  h1 {
+    font-family: 'Source Serif 4', serif; font-weight: 600;
+    font-size: 58px; line-height: 1.22; letter-spacing: 0.002em;
+    color: #F2EDE3;
+  }
+  h1 .accent { color: #E8935A; }
+  .tags {
+    margin-top: 26px;
+    font-size: 20px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: #8FA0B8;
+  }
+  .tags .dot { color: #E8935A; padding: 0 10px; }
+</style>
+</head>
+<body>
+
+  <svg class="net" width="1584" height="396" viewBox="0 0 1584 396" fill="none">
+    <!-- subtle flowing connection arcs, weighted to the left half -->
+    <g stroke="#7C93B8" stroke-width="1">
+      <path d="M -40 330 C 220 300, 380 180, 620 210 S 980 300, 1240 240" opacity="0.10"/>
+      <path d="M -40 120 C 180 160, 360 60, 560 110 S 860 210, 1120 150" opacity="0.08"/>
+      <path d="M -40 230 C 260 210, 420 320, 700 280" opacity="0.07"/>
+      <path d="M 60 -20 C 160 120, 300 200, 470 240" opacity="0.06"/>
+    </g>
+    <g stroke="#7C93B8" stroke-width="0.8" opacity="0.5">
+      <line x1="140" y1="86" x2="316" y2="152" opacity="0.14"/>
+      <line x1="316" y1="152" x2="238" y2="286" opacity="0.14"/>
+      <line x1="316" y1="152" x2="520" y2="122" opacity="0.12"/>
+      <line x1="238" y1="286" x2="454" y2="322" opacity="0.12"/>
+      <line x1="520" y1="122" x2="640" y2="238" opacity="0.10"/>
+      <line x1="454" y1="322" x2="640" y2="238" opacity="0.10"/>
+      <line x1="140" y1="86" x2="60" y2="220" opacity="0.12"/>
+      <line x1="60" y1="220" x2="238" y2="286" opacity="0.12"/>
+      <line x1="640" y1="238" x2="800" y2="180" opacity="0.07"/>
+    </g>
+    <g fill="#93A9C9">
+      <circle cx="140" cy="86" r="3" opacity="0.20"/>
+      <circle cx="316" cy="152" r="4" opacity="0.22"/>
+      <circle cx="238" cy="286" r="3" opacity="0.18"/>
+      <circle cx="520" cy="122" r="3" opacity="0.16"/>
+      <circle cx="454" cy="322" r="3" opacity="0.14"/>
+      <circle cx="60"  cy="220" r="2.5" opacity="0.16"/>
+      <circle cx="640" cy="238" r="3" opacity="0.12"/>
+      <circle cx="800" cy="180" r="2" opacity="0.10"/>
+    </g>
+  </svg>
+
+  <div class="copy">
+    <h1>Business growth starts<br>with <span class="accent">understanding.</span></h1>
+    <div class="tags">Enterprise Growth<span class="dot">&#8226;</span>GTM Strategy<span class="dot">&#8226;</span>Strategic Partnerships</div>
+  </div>
+
+</body>
+</html>
