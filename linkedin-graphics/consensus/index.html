@@ -42,6 +42,14 @@
   }
   h1 .accent { color: var(--accent); font-weight: 700; }
 
+  .story {
+    margin-top: 16px;
+    font-family: 'Source Serif 4', serif; font-style: italic;
+    font-size: 21px; color: var(--ink-soft);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .story::before { content: ""; width: 34px; height: 2px; background: var(--accent); }
+
   .section { margin-top: 36px; }
   .section-label {
     display: flex; align-items: center; gap: 14px;
@@ -109,7 +117,15 @@
   .card.to .card-kicker { color: var(--accent); }
   .card-q { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 24px; margin-top: 10px; line-height: 1.35; }
   .card.from .card-q { color: var(--ink-soft); }
-  .shift-arrow { align-self: center; padding: 0 16px; font-size: 36px; color: var(--accent); }
+  .shift-arrow {
+    align-self: center; padding: 0 18px;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+  }
+  .shift-arrow .word {
+    font-size: 15px; font-weight: 800; letter-spacing: 0.16em; color: var(--muted);
+  }
+  .shift-arrow .word.to { color: var(--accent); }
+  .shift-arrow .glyph { font-size: 34px; color: var(--accent); line-height: 1; }
 
   /* ---------- 3: what your champion needs ---------- */
   .needs { display: flex; gap: 16px; }
@@ -145,27 +161,39 @@
     font-family: 'Source Serif 4', serif; font-weight: 700;
     color: #E8935A; font-size: 26px;
   }
+  .byline {
+    margin-top: 20px;
+    display: flex; align-items: baseline; justify-content: space-between;
+  }
+  .byline .name {
+    font-family: 'Source Serif 4', serif; font-weight: 700;
+    font-size: 21px; color: #F2EDE3;
+  }
+  .byline .tag {
+    font-size: 15px; font-weight: 600; letter-spacing: 0.06em;
+    color: rgba(242,237,227,.55);
+  }
 </style>
 </head>
 <body>
 
   <h1>Great meetings don't close<br>enterprise deals.<br>
       <span class="accent">Aligned organisations do.</span></h1>
+  <div class="story">A lesson from a real infrastructure opportunity.</div>
 
   <div class="section">
     <div class="section-label"><span class="num">1</span> The room you're not in</div>
     <div class="align">
       <div class="champion">
-        <div class="kicker">Your champion</div>
-        <div class="who">One advocate</div>
-        <div class="role">answers questions you'll never hear</div>
+        <div class="who">Your Internal Champion</div>
+        <div class="role">Carries your case into meetings you'll never attend.</div>
       </div>
       <div class="align-verb"><span>must<br>align</span></div>
       <div class="stakeholders">
         <div class="stakeholder">Finance</div>
         <div class="stakeholder">Procurement</div>
         <div class="stakeholder">Operations</div>
-        <div class="stakeholder">Leadership</div>
+        <div class="stakeholder">Executive Sponsor</div>
       </div>
     </div>
     <div class="align-caption">In complex B2B sales, the real challenge begins after you leave the meeting room.</div>
@@ -173,7 +201,7 @@
 
   <div class="stat">
     <div class="big">74%</div>
-    <div class="text">of B2B buying groups experience unhealthy conflict during the buying process.
+    <div class="text">of B2B buying teams experience unhealthy conflict during the buying decision process.
       <span class="src">&mdash; Gartner</span></div>
   </div>
 
@@ -182,12 +210,16 @@
     <div class="shift">
       <div class="card from">
         <div class="card-kicker">Stop asking</div>
-        <div class="card-q">"How do I make a better presentation?"</div>
+        <div class="card-q">How do I make a better presentation?</div>
       </div>
-      <div class="shift-arrow">&#8594;</div>
+      <div class="shift-arrow">
+        <span class="word">FROM</span>
+        <span class="glyph">&#8594;</span>
+        <span class="word to">TO</span>
+      </div>
       <div class="card to">
         <div class="card-kicker">Start asking</div>
-        <div class="card-q">"What does my customer need to build internal alignment when I'm not in the room?"</div>
+        <div class="card-q">What does my customer need to build internal alignment when I'm not in the room?</div>
       </div>
     </div>
   </div>
@@ -203,8 +235,12 @@
 
   <div class="closer">
     <div class="closer-line">Our job isn't simply to sell a solution.<br>
-      <span class="keep">It's to help our customers build consensus.</span></div>
+      <span class="keep">It's to help customers make confident decisions together.</span></div>
     <div class="closer-q"><span class="qmark">?</span> What's one reason you've seen a promising opportunity stall after a great first meeting?</div>
+    <div class="byline">
+      <span class="name">Ankit Arora</span>
+      <span class="tag">Enterprise Business Development&ensp;|&ensp;GTM Strategy&ensp;|&ensp;Strategic Partnerships</span>
+    </div>
   </div>
 
 </body>
