@@ -1,6 +1,6 @@
 # Reel #001 — Instagram / Burbn (companion to Case Study #001)
 
-**File:** `reel-001-instagram.mp4` — 1080×1920 (9:16), 36s, 30fps, H.264 + AAC voiceover
+**File:** `reel-001-instagram.mp4` — 1080×1920 (9:16), 38.5s, 30fps, H.264 + AAC voiceover
 
 ## What's in it
 Kinetic-typography reel in the locked StartupSutra brand language (same fonts,
@@ -9,7 +9,7 @@ stock footage or AI imagery). AI voiceover (George — warm storyteller) is
 burned in, scene-synced to the narration via silence detection.
 
 Beat sheet:
-- 0–5s   Hook: "Imagine deleting 80% of your startup…"
+- 0–5s   Cold-open hook (branding fades in at ~3s)
 - 5–13s  Story: Burbn and its four features
 - 13–23s Problem → photo sharing explodes → they delete everything
 - 23–27s Climax: 1,000,000 counter rolls up
