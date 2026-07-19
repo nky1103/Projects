@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Great meetings don't close enterprise deals</title>
+<style>
+  @font-face { font-family: 'Inter'; font-weight: 400; src: url('../sales-curiosity/fonts/Inter-400.ttf') format('truetype'); }
+  @font-face { font-family: 'Inter'; font-weight: 600; src: url('../sales-curiosity/fonts/Inter-600.ttf') format('truetype'); }
+  @font-face { font-family: 'Inter'; font-weight: 700; src: url('../sales-curiosity/fonts/Inter-700.ttf') format('truetype'); }
+  @font-face { font-family: 'Inter'; font-weight: 800; src: url('../sales-curiosity/fonts/Inter-800.ttf') format('truetype'); }
+  @font-face { font-family: 'Source Serif 4'; font-weight: 600; src: url('../sales-curiosity/fonts/SourceSerif4-600.ttf') format('truetype'); }
+  @font-face { font-family: 'Source Serif 4'; font-weight: 700; src: url('../sales-curiosity/fonts/SourceSerif4-700.ttf') format('truetype'); }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --paper: #F7F3EC;
+    --ink: #16283F;
+    --ink-soft: #4C5B70;
+    --muted: #8A94A3;
+    --accent: #C4581C;
+    --accent-soft: #FBEFE4;
+    --line: #E3DCCE;
+    --card: #FFFFFF;
+    --navy: #16283F;
+  }
+
+  html, body { width: 1200px; height: 1500px; overflow: hidden; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    padding: 64px 72px 0;
+  }
+
+  h1 {
+    font-family: 'Source Serif 4', serif; font-weight: 600;
+    font-size: 50px; line-height: 1.2; letter-spacing: -0.01em;
+    margin-top: 8px; max-width: 1000px;
+  }
+  h1 .accent { color: var(--accent); font-weight: 700; }
+
+  .section { margin-top: 36px; }
+  .section-label {
+    display: flex; align-items: center; gap: 14px;
+    font-size: 16px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .num {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: var(--ink); color: var(--paper);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 800; letter-spacing: 0;
+  }
+
+  /* ---------- 1: the room you're not in ---------- */
+  .align { display: grid; grid-template-columns: 340px 120px 1fr; align-items: center; }
+  .champion {
+    background: var(--card); border: 2px solid var(--accent); border-radius: 16px;
+    padding: 24px 28px;
+  }
+  .champion .kicker { font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+  .champion .who { font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 30px; margin-top: 8px; }
+  .champion .role { font-size: 16.5px; color: var(--ink-soft); margin-top: 6px; line-height: 1.45; }
+  .align-verb {
+    text-align: center; font-size: 14px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+    position: relative; line-height: 1.5;
+  }
+  .align-verb::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 50%;
+    border-top: 1px dashed var(--muted); opacity: .5;
+  }
+  .align-verb span { position: relative; background: var(--paper); padding: 4px 6px; display: inline-block; }
+  .stakeholders { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stakeholder {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 16px 20px; font-size: 20px; font-weight: 700; text-align: center;
+  }
+  .align-caption {
+    margin-top: 16px; font-size: 18.5px; color: var(--ink-soft); font-style: italic;
+    text-align: center;
+  }
+
+  /* ---------- stat band ---------- */
+  .stat {
+    margin-top: 32px;
+    background: var(--accent-soft); border: 1px solid #EFD9C3; border-radius: 16px;
+    display: flex; align-items: center; gap: 28px; padding: 20px 32px;
+  }
+  .stat .big {
+    font-family: 'Source Serif 4', serif; font-weight: 700;
+    font-size: 66px; color: var(--accent); line-height: 1;
+  }
+  .stat .text { font-size: 19.5px; line-height: 1.45; color: var(--ink); max-width: 840px; }
+  .stat .src { color: var(--muted); font-size: 16.5px; }
+
+  /* ---------- 2: shift the question ---------- */
+  .shift { display: flex; align-items: stretch; }
+  .shift .card {
+    flex: 1; border-radius: 16px; padding: 22px 26px;
+  }
+  .shift .card.from { border: 1px dashed var(--line); background: transparent; }
+  .shift .card.to { border: 2px solid var(--accent); background: var(--card); flex: 1.35; }
+  .card-kicker { font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .card.to .card-kicker { color: var(--accent); }
+  .card-q { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 24px; margin-top: 10px; line-height: 1.35; }
+  .card.from .card-q { color: var(--ink-soft); }
+  .shift-arrow { align-self: center; padding: 0 16px; font-size: 36px; color: var(--accent); }
+
+  /* ---------- 3: what your champion needs ---------- */
+  .needs { display: flex; gap: 16px; }
+  .need {
+    flex: 1; background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 20px 24px; font-size: 20px; font-weight: 600; line-height: 1.4;
+    position: relative; padding-left: 46px;
+  }
+  .need::before {
+    content: ""; position: absolute; left: 22px; top: 30px;
+    width: 12px; height: 12px; border-radius: 3px;
+    transform: rotate(45deg); background: var(--accent);
+  }
+
+  /* ---------- closer ---------- */
+  .closer {
+    margin: 36px -72px 0;
+    background: var(--navy); color: #F2EDE3;
+    padding: 36px 72px 34px;
+    flex: 1;
+  }
+  .closer-line {
+    font-family: 'Source Serif 4', serif; font-weight: 600;
+    font-size: 35px; line-height: 1.35;
+  }
+  .closer-line .keep { color: #E8935A; font-weight: 700; }
+  .closer-q {
+    margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(242,237,227,.25);
+    font-size: 20.5px; color: rgba(242,237,227,.85);
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  .closer-q .qmark {
+    font-family: 'Source Serif 4', serif; font-weight: 700;
+    color: #E8935A; font-size: 26px;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Great meetings don't close<br>enterprise deals.<br>
+      <span class="accent">Aligned organisations do.</span></h1>
+
+  <div class="section">
+    <div class="section-label"><span class="num">1</span> The room you're not in</div>
+    <div class="align">
+      <div class="champion">
+        <div class="kicker">Your champion</div>
+        <div class="who">One advocate</div>
+        <div class="role">answers questions you'll never hear</div>
+      </div>
+      <div class="align-verb"><span>must<br>align</span></div>
+      <div class="stakeholders">
+        <div class="stakeholder">Finance</div>
+        <div class="stakeholder">Procurement</div>
+        <div class="stakeholder">Operations</div>
+        <div class="stakeholder">Leadership</div>
+      </div>
+    </div>
+    <div class="align-caption">In complex B2B sales, the real challenge begins after you leave the meeting room.</div>
+  </div>
+
+  <div class="stat">
+    <div class="big">74%</div>
+    <div class="text">of B2B buying groups experience unhealthy conflict during the buying process.
+      <span class="src">&mdash; Gartner</span></div>
+  </div>
+
+  <div class="section">
+    <div class="section-label"><span class="num">2</span> Shift the question</div>
+    <div class="shift">
+      <div class="card from">
+        <div class="card-kicker">Stop asking</div>
+        <div class="card-q">"How do I make a better presentation?"</div>
+      </div>
+      <div class="shift-arrow">&#8594;</div>
+      <div class="card to">
+        <div class="card-kicker">Start asking</div>
+        <div class="card-q">"What does my customer need to build internal alignment when I'm not in the room?"</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label"><span class="num">3</span> What your champion needs</div>
+    <div class="needs">
+      <div class="need">A stronger business case</div>
+      <div class="need">Procurement concerns answered early</div>
+      <div class="need">Confidence and clarity to advocate internally</div>
+    </div>
+  </div>
+
+  <div class="closer">
+    <div class="closer-line">The job isn't to sell a solution.<br>
+      <span class="keep">It's to help your customer build consensus.</span></div>
+    <div class="closer-q"><span class="qmark">?</span> What's one reason you've seen a promising opportunity stall after a great first meeting?</div>
+  </div>
+
+</body>
+</html>
