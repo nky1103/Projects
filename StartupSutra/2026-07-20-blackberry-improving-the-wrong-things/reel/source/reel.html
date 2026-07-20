@@ -73,7 +73,7 @@
 
   <!-- S1: everyone says (0–2.2) -->
   <div class="scene" id="s1">
-    <h1 class="el" id="s1a" style="font-size:100px;">Everyone says <span class="accent">Apple killed BlackBerry.</span></h1>
+    <h1 class="el" id="s1a" style="font-size:100px;">Everyone thinks <span class="accent">Apple killed BlackBerry.</span></h1>
   </div>
 
   <!-- S2: not what happened (3–6) -->
@@ -95,7 +95,8 @@
   <!-- S6: end card (22.4–25, hold) -->
   <div class="scene" id="s6">
     <div class="kicker el" id="s6k"><span class="sq"></span>Startup Failure #001</div>
-    <h1 class="el" id="s6a" style="font-size:88px;">See why →<br><span class="accent">today's carousel.</span></h1>
+    <h1 class="el" id="s6a" style="font-size:84px;">The mistake changed <span class="accent">business forever.</span></h1>
+    <div class="el" id="s6c" style="font-weight:800; font-size:54px; color:#aab2c0; margin-top:44px;">See the full breakdown <span class="accent">→</span> today's carousel</div>
     <div class="followcard el" id="s6b">
       <div class="mark" style="width:80px;height:80px;border-radius:22px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:42px;color:#0b0e14;flex-shrink:0;">S</div>
       <div style="font-weight:800; font-size:48px;">Follow <span class="accent">@StartupSutra</span><br><span style="font-weight:600;font-size:33px;color:#aab2c0;">daily startup case studies</span></div>
@@ -154,7 +155,8 @@ window.seek = function(t) {
   if (scene('s6', t, 19.0, 25.0, 1.0, 1.03, true)) {
     el('s6k', t, 19.15, 99);
     el('s6a', t, 19.4, 99, {pop:true});
-    el('s6b', t, 20.1, 99);
+    el('s6c', t, 20.0, 99);
+    el('s6b', t, 20.7, 99);
   }
 };
 seek(0);

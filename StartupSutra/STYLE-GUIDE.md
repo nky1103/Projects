@@ -186,11 +186,16 @@ Someone who has been in business, made mistakes, watched companies rise and
 fall, and is sharing what they learned. Calm. Confident. Curious. No hype —
 an insider observation, not a presentation.
 
-Structure:
-- **0–3s** Cold open: the hook line only, no branding. Logo fades in ~3s.
-- **3–25s** One idea, revealed beat by beat, one line per scene, synced to VO.
-- **Final 4–5s** End card: series pill + "The full story is in today's
-  carousel" + follow. Curiosity, not conclusion.
+**The signature edit — every reel, the same four beats** (this repetition IS
+the identity; media brands are built by making every video unmistakably theirs,
+not by making every video different):
+- **0–3s** Challenge a widely held belief. Cold open, no branding; logo ~3.5s.
+  ("Everyone thinks Apple killed BlackBerry.")
+- **3–15s** Build tension without revealing the answer.
+- **15–22s** One emotional line. ("It became one of the biggest mistakes in
+  startup history.")
+- **22–25s** Invite viewers to the carousel. The CTA promises value, never just
+  points: "The mistake changed business forever. See the full breakdown →"
 - Voiceover at natural pace — the pauses ARE the delivery. Scene cuts on
   breath boundaries via silence detection.
 - Music added in-app: minimal cinematic, low piano, soft pulses, slow build —
