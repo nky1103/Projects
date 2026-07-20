@@ -1,8 +1,10 @@
 # StartupSutra — Editorial Style Guide
 
-**Version 1.1** — adds the Human Voice Framework, Narration Rules, the Editorial
-Review Scorecard, the Conversation Test, and the Screenshot Quote Test.
-🔴 Startup Failure #001 (BlackBerry) is the first episode produced under v1.1.
+**Version 1.1 (frozen)** — adds the Human Voice Framework, Narration Rules, the
+Editorial Review Scorecard, the Conversation Test, the Screenshot Quote Test,
+the five-phase production process, and the Editorial Philosophy.
+🔴 Startup Failure #001 (BlackBerry) is the first episode produced under this
+system — **it is the benchmark every future episode is compared against.**
 
 **This is the canonical reference. Every post is built against it.**
 The design language and this guide do not change for at least the first 30 episodes.
@@ -223,17 +225,49 @@ is how it reads in the feed. Record the scores in the episode README.
 
 ---
 
-## 12. Production workflow
+## 12. The five-phase production process
 
-1. Draft copy → run the **Substitution Test** → cut anything that fails.
-2. Run the **Conversation Test** line by line; hunt AI-tells (§4A).
-3. Confirm the **Screenshot Quote** exists. No quote → not finished.
-4. Copy the latest episode's `source/`, swap text + series color tokens.
-5. Render via Playwright (`render.js` / `reel_render.js`), review every slide.
-6. Reel: script per **Narration Rules** (§6A) → generate VO (vidIQ) →
-   silence-detect → sync scene timings → render → mux with ffmpeg (H.264 + AAC).
-7. Run the **Editorial Review scorecard** on the finished slides; below target →
-   rewrite and re-render.
-8. Folder per episode: `slides/`, `source/`, `caption.txt`, `README.md`
-   (+ `reel/` when applicable). Commit and push same day.
-9. Post at 8 PM. Slides 1–7 in order, caption, alt text, cover frame at the hook.
+We are not making Instagram posts. We are **producing editorial episodes.**
+Every episode moves through five phases, in order:
+
+### Phase 1 — Research
+Facts, timeline, sources, competing viewpoints. If credible accounts disagree,
+know both sides before choosing the angle.
+
+### Phase 2 — Editorial
+Three questions, answered in writing before any design work:
+**What's the decision? What's the lesson? What's the screenshot quote?**
+Run the **Substitution Test** here. No answers → no episode.
+
+### Phase 3 — Writing
+Carousel copy, caption, alt text, story assets. Run the **Conversation Test**
+line by line; hunt AI-tells (§4A). Then render: copy the latest episode's
+`source/`, swap text + series color tokens, review every slide at full size.
+
+### Phase 4 — Performance
+Reel script per **Narration Rules** (§6A) — one line per breath, pauses marked.
+Generate VO (vidIQ) → silence-detect → sync scene cuts to breath boundaries →
+render → mux (H.264 + AAC). Plan music (added in-app, 15–20% under VO).
+
+### Phase 5 — Review
+**Conversation Test** on the finished slides → **Editorial Review scorecard**
+(§11) → final approval. Below target on any metric → back to Phase 3.
+Record scores in the episode README, commit, push, post at 8 PM.
+
+---
+
+## 13. Editorial Philosophy — the DNA
+
+Three non-negotiable principles:
+
+### 1. Teach principles, not history.
+We don't publish because BlackBerry failed. We publish because founders can
+avoid making the same decision.
+
+### 2. Leave one question unanswered.
+If every question is answered inside the carousel, there's no discussion and
+no reason to comment. The Founder Question is real, not rhetorical.
+
+### 3. Respect the reader.
+Never over-dramatize. Never exaggerate. Never use clickbait the content can't
+justify. **Curiosity is earned, not manufactured.**
