@@ -129,10 +129,16 @@ BlackBerry wasn't losing phones.
 It was losing relevance."*
 
 **The Screenshot Quote Test (hard rule)** — every episode must contain one
-sentence people want to save. For BlackBerry: *"Companies rarely fail because
+sentence people want to save. For BlackBerry: *"Companies don't fail because
 they stop improving. They fail because they improve what customers no longer
 value."* **If we don't have that sentence, the episode isn't finished.** It gets
 the most minimal slide of the set (slide 6) and a line of its own in the caption.
+
+**The Unforgettable Line** — one step beyond save-worthy: every episode carries
+one line people repeat months later. Not a good sentence — a **repeatable** one.
+For BlackBerry: *"Apple changed the question. BlackBerry kept answering the old
+one."* Draft three candidates in Phase 2; the best earns a slide punchline and a
+standalone couplet in the caption. Explaining informs; revealing gets quoted.
 
 ---
 

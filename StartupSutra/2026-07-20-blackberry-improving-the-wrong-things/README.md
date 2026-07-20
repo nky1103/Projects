@@ -30,6 +30,14 @@ First episode produced under Style Guide v1.1. Scored on the finished slides:
 Gates: Substitution Test ✅ (works for Nokia/Kodak) · Screenshot Quote ✅ (slide 6)
 · Conversation Test ✅
 
+**Editor pass v2 (pre-publish):** cover holds back the reveal ("The mistake
+wasn't obvious. Until it was."), slide 2 leads with the obsession, slide 3
+rewritten to reveal ("People wanted computers in their pockets."), slide 4 uses
+verb contrast instead of feature lists, slide 6 tightened to "don't fail",
+slide 7 asks the introspection question. Unforgettable line: **"Apple changed
+the question. BlackBerry kept answering the old one."** (slide 4 punchline +
+caption couplet).
+
 ## Posting checklist
 1. Upload slides 1–7 as a carousel at 8 PM
 2. Paste `caption.txt`; add alt text per slide (see style guide §8)

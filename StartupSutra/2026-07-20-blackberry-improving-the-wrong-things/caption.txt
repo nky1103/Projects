@@ -4,17 +4,18 @@ Right up to the end, its keyboards got better, its email got faster, its securit
 
 It still lost.
 
-Because customers had stopped caring about keyboards, email speed, and enterprise security. They wanted touch, apps, and simplicity.
+BlackBerry thought people wanted better phones.
+People wanted computers in their pockets.
 
-BlackBerry listened to its current customers.
-Apple imagined its future customers.
+Apple changed the question.
+BlackBerry kept answering the old one.
 
 The lesson isn't really about phones:
 
-Companies rarely fail because they stop improving.
+Companies don't fail because they stop improving.
 They fail because they improve what customers no longer value.
 
-💬 What feature are you investing in today that your customers may stop caring about tomorrow?
+💬 If your biggest customer disappeared tomorrow, which feature would you stop building?
 
 ❤️ Save this for your next roadmap discussion.
 
