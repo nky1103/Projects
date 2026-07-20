@@ -15,6 +15,21 @@ category.
 - `caption.txt` — caption + sources
 - `source/` — HTML design + render script
 
+## Editorial Review (guide v1.1)
+
+First episode produced under Style Guide v1.1. Scored on the finished slides:
+
+| Metric | Score | Target | Notes |
+|---|---|---|---|
+| Scroll Stop | 9/10 | 9 | Reversal hook: "didn't lose to Apple / lost to the future" |
+| Curiosity | 9/10 | 9 | Each slide opens a gap the next one closes |
+| Save Worthy | 9/10 | 9 | Slide 6: "improve what customers no longer value" |
+| Share Worthy | 8/10 | 8 | Founder Question turns it on the reader's product |
+| Human Voice | 10/10 | 10 | Passes the Conversation Test line by line |
+
+Gates: Substitution Test ✅ (works for Nokia/Kodak) · Screenshot Quote ✅ (slide 6)
+· Conversation Test ✅
+
 ## Posting checklist
 1. Upload slides 1–7 as a carousel at 8 PM
 2. Paste `caption.txt`; add alt text per slide (see style guide §8)

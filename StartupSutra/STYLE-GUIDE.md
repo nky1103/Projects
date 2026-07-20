@@ -1,9 +1,16 @@
 # StartupSutra — Editorial Style Guide
 
+**Version 1.1** — adds the Human Voice Framework, Narration Rules, the Editorial
+Review Scorecard, the Conversation Test, and the Screenshot Quote Test.
+🔴 Startup Failure #001 (BlackBerry) is the first episode produced under v1.1.
+
 **This is the canonical reference. Every post is built against it.**
 The design language and this guide do not change for at least the first 30 episodes.
 People follow consistency, not creativity: anyone seeing a single slide — even a
 cropped screenshot six months from now — should instantly think *"That's Startup Sutra."*
+
+> **The mantra:** *The company featured is always the evidence; the subject is
+> the decision.* We're not documenting history. We're extracting decisions.
 
 ---
 
@@ -99,6 +106,32 @@ and the follow-card S mark — on every series.
 
 A hook is never a summary. It creates a gap the carousel closes.
 
+### 4A. Human Voice Framework
+
+**The Conversation Test** — before publishing, ask:
+
+> **Would I actually say this in a conversation with a founder?**
+
+If the answer is no, rewrite it. This single rule removes 90% of AI-sounding copy.
+
+AI-tells to hunt down and delete:
+- Stacked abstractions ("underestimated the app ecosystem", "failed to innovate")
+- Symmetrical sentence pairs that sound written, not spoken
+- Adjectives doing the work numbers should do
+- Explaining when you could be revealing
+
+❌ *"BlackBerry failed because it underestimated the app ecosystem."*
+
+✅ *"Here's the part most people miss.
+BlackBerry wasn't losing phones.
+It was losing relevance."*
+
+**The Screenshot Quote Test (hard rule)** — every episode must contain one
+sentence people want to save. For BlackBerry: *"Companies rarely fail because
+they stop improving. They fail because they improve what customers no longer
+value."* **If we don't have that sentence, the episode isn't finished.** It gets
+the most minimal slide of the set (slide 6) and a line of its own in the caption.
+
 ---
 
 ## 5. Carousel structure (7 slides)
@@ -123,6 +156,21 @@ A hook is never a summary. It creates a gap the carousel closes.
   sentence boundaries. Music added in-app at 15–20% under the VO.
 - Motion: settle-in text (slight overshoot), scene crossfades, slow push-ins.
   Documentary, never flashy.
+
+### 6A. Narration Rules (voice performance)
+
+The guide defines writing; this defines **delivery**. They are different.
+
+- Write for speech, not reading.
+- Maximum 8–10 words per sentence.
+- Pause after every important line.
+- One idea = one breath.
+- Start with intrigue, not explanation.
+- Never sound like you're presenting. Sound like you're **revealing** something.
+
+Script formatting: one line per breath, ellipses mark pauses the voice must take,
+and every scene cut in the reel lands on a breath boundary (this is why we
+silence-detect the VO before timing the animation).
 
 ## 7. Caption style
 
@@ -157,13 +205,35 @@ Stories reuse post assets only — never new designs.
 
 ---
 
-## 11. Production workflow
+## 11. Editorial Review (pre-publish gate)
 
-1. Draft copy → run the Substitution Test → cut anything that fails.
-2. Copy the latest episode's `source/`, swap text + series color tokens.
-3. Render via Playwright (`render.js` / `reel_render.js`), review every slide.
-4. Reel: generate VO (vidIQ) → silence-detect → sync scene timings → render →
-   mux with ffmpeg (H.264 + AAC).
-5. Folder per episode: `slides/`, `source/`, `caption.txt`, `README.md`
+Every episode gets scored before publishing. Below target on any metric → rewrite.
+Not because it's "bad" — because StartupSutra doesn't publish average episodes.
+
+| Metric | Question it answers | Target |
+|---|---|---|
+| **Scroll Stop** | Does slide 1 interrupt a thumb mid-scroll? | 9/10 |
+| **Curiosity** | Does every slide make you need the next one? | 9/10 |
+| **Save Worthy** | Is there a sentence people will screenshot? | 9/10 |
+| **Share Worthy** | Would a founder send this to a co-founder? | 8/10 |
+| **Human Voice** | Does it pass the Conversation Test? | 10/10 |
+
+The review runs against the finished slides, not the draft copy — what matters
+is how it reads in the feed. Record the scores in the episode README.
+
+---
+
+## 12. Production workflow
+
+1. Draft copy → run the **Substitution Test** → cut anything that fails.
+2. Run the **Conversation Test** line by line; hunt AI-tells (§4A).
+3. Confirm the **Screenshot Quote** exists. No quote → not finished.
+4. Copy the latest episode's `source/`, swap text + series color tokens.
+5. Render via Playwright (`render.js` / `reel_render.js`), review every slide.
+6. Reel: script per **Narration Rules** (§6A) → generate VO (vidIQ) →
+   silence-detect → sync scene timings → render → mux with ffmpeg (H.264 + AAC).
+7. Run the **Editorial Review scorecard** on the finished slides; below target →
+   rewrite and re-render.
+8. Folder per episode: `slides/`, `source/`, `caption.txt`, `README.md`
    (+ `reel/` when applicable). Commit and push same day.
-6. Post at 8 PM. Slides 1–7 in order, caption, alt text, cover frame at the hook.
+9. Post at 8 PM. Slides 1–7 in order, caption, alt text, cover frame at the hook.
