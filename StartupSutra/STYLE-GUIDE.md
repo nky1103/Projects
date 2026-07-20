@@ -153,17 +153,40 @@ standalone couplet in the caption. Explaining informs; revealing gets quoted.
 7. **CTA** — a question about the *reader's* product + Tell us below / Save /
    Share rows + follow card + continuity tease
 
-## 6. Reel structure (30–40s)
+## 6. Reel Philosophy (locked)
 
-- **0–3s** Cold open: hook text only, no branding. Logo fades in ~3s.
-- **3–22s** Story beats, one line per scene, synced to voiceover
-- **22–28s** Climax: the number, staged in two beats (reveal… pause… kicker)
-- **28–33s** Lesson (the same line as slide 6)
-- **33–38s** End card: NEXT + series + "Tomorrow · 8 PM" + follow
-- Voiceover: warm documentary voice (George), ~1.1× tempo, scene cuts on
-  sentence boundaries. Music added in-app at 15–20% under the VO.
-- Motion: settle-in text (slight overshoot), scene crossfades, slow push-ins.
-  Documentary, never flashy.
+**The reel is NOT the carousel.** Its job is to make someone think *"I need to
+see the post"* — never *"I already know the story."* Analytics drive the rules:
+average watch time is ~5 seconds, so the first 3 seconds earn everything else.
+
+1. **25–30 seconds maximum.** A tighter script forces every line to carry weight.
+2. **One idea only.** The reel creates curiosity; the carousel delivers the answer.
+3. **No duplication.** If the reel explains the lesson, we've given away the
+   reason to swipe. The carousel's evidence (features, comparisons, numbers)
+   stays out of the reel.
+4. **Human, not AI.** Write like a founder sharing an observation over coffee,
+   not a narrator reading a script.
+5. **Conversational pauses.** Short sentences. Natural rhythm. No corporate language.
+6. **Emotion over information.** People remember how a story made them feel
+   before they remember the facts.
+7. **End with curiosity, not a conclusion.** The final line sends viewers to
+   the carousel.
+
+**The StartupSutra voice:** not motivational influencer, not business guru.
+Someone who has been in business, made mistakes, watched companies rise and
+fall, and is sharing what they learned. Calm. Confident. Curious. No hype —
+an insider observation, not a presentation.
+
+Structure:
+- **0–3s** Cold open: the hook line only, no branding. Logo fades in ~3s.
+- **3–25s** One idea, revealed beat by beat, one line per scene, synced to VO.
+- **Final 4–5s** End card: series pill + "The full story is in today's
+  carousel" + follow. Curiosity, not conclusion.
+- Voiceover at natural pace — the pauses ARE the delivery. Scene cuts on
+  breath boundaries via silence detection.
+- Music added in-app: minimal cinematic, low piano, soft pulses, slow build —
+  investigative, not emotional or motivational. 15–20% under the VO.
+- Motion: settle-in text, scene crossfades, slow push-ins. Never flashy.
 
 ### 6A. Narration Rules (voice performance)
 
