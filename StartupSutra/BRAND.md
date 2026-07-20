@@ -29,6 +29,21 @@ number ("CASE STUDY #002 SOON").
 - **Components:** kicker pill, list items (with win/dead states for contrast slides),
   orange-left-border quote card, giant gradient stat numbers
 
+## The Substitution Test (editorial signature)
+
+Every carousel must pass this test before it ships:
+
+> **If I replace the company's name with another company, does the lesson still hold?**
+
+- **Yes** → evergreen content. The company is the *evidence*; the subject is
+  business decision-making. This is what founders remember and share.
+- **No** → it's a history lesson. Rework it until the lesson stands on its own.
+
+Practical consequence: prefer argument-driven structure over chronological
+storytelling. Open with the claim ("BlackBerry didn't fail because Apple made a
+better phone"), use the company to prove it, and end with a question the reader
+must answer about their own product. First applied: Case Study #002.
+
 ## Hard rules
 
 - ❌ No gradients beyond the accent, no illustrations, no stock photos, no AI images
