@@ -76,33 +76,26 @@
     <h1 class="el" id="s1a" style="font-size:100px;">Everyone says <span class="accent">Apple killed BlackBerry.</span></h1>
   </div>
 
-  <!-- S2: don't think (2.2–4.2) -->
+  <!-- S2: not what happened (3–6) -->
   <div class="scene" id="s2">
-    <h1 class="el" id="s2a" style="font-size:96px;">I don't think <span class="accent">that's true.</span></h1>
+    <h1 class="el" id="s2a" style="font-size:96px;">That's <span class="accent">not</span> what happened.</h1>
   </div>
 
-  <!-- S3: kept building / keyboard (4.2–9.8) -->
+  <!-- S3: one decision / looked right (6–14) -->
   <div class="scene" id="s3">
-    <h1 class="el" id="s3a" style="font-size:96px;">BlackBerry kept building…</h1>
-    <h1 class="el" id="s3b" style="font-size:104px; margin-top:70px;">…a <span class="dim">better keyboard.</span></h1>
+    <h1 class="el" id="s3a" style="font-size:96px;">BlackBerry made <span class="accent">one decision…</span></h1>
+    <h1 class="el" id="s3b" style="font-size:84px; margin-top:70px; color:#aab2c0; font-weight:800;">…that looked <span style="color:#f4f1ea;">completely right</span> at the time.</h1>
   </div>
 
-  <!-- S4: apple changed / expectations (9.8–15.8) -->
+  <!-- S4: biggest mistake (14–19) -->
   <div class="scene" id="s4">
-    <h1 class="el" id="s4a" style="font-size:92px;">Apple changed something <span class="accent">bigger.</span></h1>
-    <h1 class="el" id="s4b" style="font-size:82px; margin-top:70px; color:#aab2c0; font-weight:800;">What people <span style="color:#f4f1ea;">expected</span> from a phone.</h1>
-  </div>
-
-  <!-- S5: improved / future (15.8–22.4) -->
-  <div class="scene" id="s5">
-    <h1 class="el dim" id="s5a" style="font-size:84px; font-weight:800;">One company improved the product.</h1>
-    <h1 class="el" id="s5b" style="font-size:96px; margin-top:70px;">The other changed <span class="accent">the future.</span></h1>
+    <h1 class="el" id="s4a" style="font-size:92px;">It became one of the <span class="accent">biggest mistakes</span> in startup history.</h1>
   </div>
 
   <!-- S6: end card (22.4–25, hold) -->
   <div class="scene" id="s6">
     <div class="kicker el" id="s6k"><span class="sq"></span>Startup Failure #001</div>
-    <h1 class="el" id="s6a" style="font-size:88px;">Full story →<br><span class="accent">today's carousel.</span></h1>
+    <h1 class="el" id="s6a" style="font-size:88px;">See why →<br><span class="accent">today's carousel.</span></h1>
     <div class="followcard el" id="s6b">
       <div class="mark" style="width:80px;height:80px;border-radius:22px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:42px;color:#0b0e14;flex-shrink:0;">S</div>
       <div style="font-weight:800; font-size:48px;">Follow <span class="accent">@StartupSutra</span><br><span style="font-weight:600;font-size:33px;color:#aab2c0;">daily startup case studies</span></div>
@@ -148,24 +141,20 @@ window.seek = function(t) {
   $('hdr').style.opacity = ch;
   $('ftr').style.opacity = ch;
 
-  // S1 0–2.2 "Everyone says Apple killed BlackBerry." — near-instant for scroll-stop
-  if (scene('s1', t, 0, 2.2, 1.0, 1.05)) el('s1a', t, 0.0, 1.95, {dIn:0.3, y:40});
-  // S2 2.2–4.2 "I don't think that's true."
-  if (scene('s2', t, 2.2, 4.2))          el('s2a', t, 2.3, 3.95, {dIn:0.4});
-  // S3 4.2–9.8 "BlackBerry kept building…" / "…a better keyboard."
-  if (scene('s3', t, 4.2, 9.8))        { el('s3a', t, 4.35, 9.55);
-                                         el('s3b', t, 7.0, 9.55, {pop:true}); }
-  // S4 9.8–15.8 "Apple changed something bigger." / "What people expected from a phone."
-  if (scene('s4', t, 9.8, 15.8))       { el('s4a', t, 9.95, 15.55);
-                                         el('s4b', t, 12.9, 15.55); }
-  // S5 15.8–22.4 "One company improved the product." / "The other changed the future."
-  if (scene('s5', t, 15.8, 22.4))      { el('s5a', t, 15.95, 22.15);
-                                         el('s5b', t, 19.4, 22.15, {pop:true}); }
-  // S6 22.4–25.0 end card (hold)
-  if (scene('s6', t, 22.4, 25.0, 1.0, 1.03, true)) {
-    el('s6k', t, 22.5, 99);
-    el('s6a', t, 22.75, 99, {pop:true});
-    el('s6b', t, 23.4, 99);
+  // S1 0–3 "Everyone says Apple killed BlackBerry." — instant
+  if (scene('s1', t, 0, 3.0, 1.0, 1.05)) el('s1a', t, 0.0, 2.75, {dIn:0.3, y:40});
+  // S2 3–6 "That's not what happened."
+  if (scene('s2', t, 3.0, 6.0))          el('s2a', t, 3.15, 5.75, {dIn:0.4});
+  // S3 6–14 "BlackBerry made one decision…" / "…that looked completely right at the time."
+  if (scene('s3', t, 6.0, 14.0))       { el('s3a', t, 6.15, 13.75);
+                                         el('s3b', t, 10.0, 13.75, {pop:true}); }
+  // S4 14–19 "It became one of the biggest mistakes in startup history."
+  if (scene('s4', t, 14.0, 19.0))        el('s4a', t, 14.15, 18.75, {pop:true});
+  // S6 19–25 end card (hold)
+  if (scene('s6', t, 19.0, 25.0, 1.0, 1.03, true)) {
+    el('s6k', t, 19.15, 99);
+    el('s6a', t, 19.4, 99, {pop:true});
+    el('s6b', t, 20.1, 99);
   }
 };
 seek(0);

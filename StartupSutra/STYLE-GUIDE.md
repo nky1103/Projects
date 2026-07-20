@@ -172,6 +172,15 @@ average watch time is ~5 seconds, so the first 3 seconds earn everything else.
 7. **End with curiosity, not a conclusion.** The final line sends viewers to
    the carousel.
 
+**The Trailer Test (hard gate)** — before a reel ships, ask:
+
+> **Can someone explain the carousel after watching this?**
+
+If yes, the reel gave away too much — cut it earlier. If no, it did its job.
+StartupSutra reels are Netflix episode trailers, not summaries: they open a
+knowledge gap ("What was the decision?") that only the carousel closes. This
+applies to the reel caption too — it teases, never reveals.
+
 **The StartupSutra voice:** not motivational influencer, not business guru.
 Someone who has been in business, made mistakes, watched companies rise and
 fall, and is sharing what they learned. Calm. Confident. Curious. No hype —
