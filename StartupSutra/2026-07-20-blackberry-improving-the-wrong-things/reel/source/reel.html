@@ -57,11 +57,10 @@
     background:rgba(239,68,68,.08);
   }
   .kicker .sq { width:20px; height:20px; border-radius:5px; background:linear-gradient(135deg,#ef4444,#b91c1c); }
-
   .followcard {
-    margin-top:70px; display:flex; align-items:center; gap:30px;
+    margin-top:64px; display:flex; align-items:center; gap:30px;
     border-left:9px solid #ef4444; border-radius:8px 30px 30px 8px;
-    background:rgba(239,68,68,.09); padding:40px 48px;
+    background:rgba(239,68,68,.09); padding:38px 46px;
   }
 </style>
 
@@ -72,45 +71,41 @@
   </div>
   <div class="chrome" id="ftr">@StartupSutra</div>
 
-  <!-- S1: fascinates -->
+  <!-- S1: everyone says (0–2.2) -->
   <div class="scene" id="s1">
-    <h1 class="el" id="s1a" style="font-size:100px;">You know what fascinates me about <span class="accent">BlackBerry?</span></h1>
+    <h1 class="el" id="s1a" style="font-size:100px;">Everyone says <span class="accent">Apple killed BlackBerry.</span></h1>
   </div>
 
-  <!-- S2: better phone -->
+  <!-- S2: don't think (2.2–4.2) -->
   <div class="scene" id="s2">
-    <h1 class="el" id="s2a" style="font-size:88px;">It didn't disappear because Apple made a <span class="dim">better phone.</span></h1>
+    <h1 class="el" id="s2a" style="font-size:96px;">I don't think <span class="accent">that's true.</span></h1>
   </div>
 
-  <!-- S3: wrong game -->
+  <!-- S3: kept building / keyboard (4.2–9.8) -->
   <div class="scene" id="s3">
-    <h1 class="el" id="s3a" style="font-size:92px;">It disappeared because it kept <span style="color:#f4f1ea;">winning…</span></h1>
-    <h1 class="el" id="s3b" style="font-size:104px; margin-top:70px;">at the <span class="accent">wrong game.</span></h1>
+    <h1 class="el" id="s3a" style="font-size:96px;">BlackBerry kept building…</h1>
+    <h1 class="el" id="s3b" style="font-size:104px; margin-top:70px;">…a <span class="dim">better keyboard.</span></h1>
   </div>
 
-  <!-- S4: scary part (whisper) -->
-  <div class="scene" id="s4" style="align-items:center; text-align:center;">
-    <h1 class="el" id="s4a" style="font-size:76px; font-weight:800; color:#aab2c0;">That's the scary part.</h1>
+  <!-- S4: apple changed / expectations (9.8–15.8) -->
+  <div class="scene" id="s4">
+    <h1 class="el" id="s4a" style="font-size:92px;">Apple changed something <span class="accent">bigger.</span></h1>
+    <h1 class="el" id="s4b" style="font-size:82px; margin-top:70px; color:#aab2c0; font-weight:800;">What people <span style="color:#f4f1ea;">expected</span> from a phone.</h1>
   </div>
 
-  <!-- S5: best at -->
+  <!-- S5: improved / future (15.8–22.4) -->
   <div class="scene" id="s5">
-    <h1 class="el" id="s5a" style="font-size:88px;">Sometimes the thing you're <span class="accent">best at…</span></h1>
-    <h1 class="el dim" id="s5b" style="font-size:76px; margin-top:70px; font-weight:800;">is the very thing that keeps you from seeing <span style="color:#f4f1ea;">what's coming next.</span></h1>
+    <h1 class="el dim" id="s5a" style="font-size:84px; font-weight:800;">One company improved the product.</h1>
+    <h1 class="el" id="s5b" style="font-size:96px; margin-top:70px;">The other changed <span class="accent">the future.</span></h1>
   </div>
 
-  <!-- S6: hard way -->
+  <!-- S6: end card (22.4–25, hold) -->
   <div class="scene" id="s6">
-    <h1 class="el" id="s6a" style="font-size:96px;">BlackBerry learned that <span class="accent">the hard way.</span></h1>
-  </div>
-
-  <!-- S7: end card -->
-  <div class="scene" id="s7">
-    <div class="kicker el" id="s7k"><span class="sq"></span>Startup Failure #001</div>
-    <h1 class="el" id="s7a" style="font-size:84px;">The full story is in <span class="accent">today's carousel.</span></h1>
-    <div class="followcard el" id="s7b">
-      <div class="mark" style="width:84px;height:84px;border-radius:24px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:44px;color:#0b0e14;flex-shrink:0;">S</div>
-      <div style="font-weight:800; font-size:50px;">Follow <span class="accent">@StartupSutra</span><br><span style="font-weight:600;font-size:34px;color:#aab2c0;">daily startup case studies</span></div>
+    <div class="kicker el" id="s6k"><span class="sq"></span>Startup Failure #001</div>
+    <h1 class="el" id="s6a" style="font-size:88px;">Full story →<br><span class="accent">today's carousel.</span></h1>
+    <div class="followcard el" id="s6b">
+      <div class="mark" style="width:80px;height:80px;border-radius:22px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:42px;color:#0b0e14;flex-shrink:0;">S</div>
+      <div style="font-weight:800; font-size:48px;">Follow <span class="accent">@StartupSutra</span><br><span style="font-weight:600;font-size:33px;color:#aab2c0;">daily startup case studies</span></div>
     </div>
   </div>
 </div>
@@ -123,7 +118,7 @@ const easeOut = x => 1 - Math.pow(1-x, 3);
 const easeOutBack = x => { const c = 1.35; return 1 + (c+1)*Math.pow(x-1,3) + c*Math.pow(x-1,2); };
 
 function el(id, t, tIn, tOut, opts={}) {
-  const {y=70, dIn=0.6, dOut=0.45, pop=false} = opts;
+  const {y=70, dIn=0.5, dOut=0.4, pop=false} = opts;
   const ip = p(t, tIn, dIn);
   const i = easeOutBack(ip);
   const o = 1 - p(t, tOut, dOut);
@@ -138,8 +133,8 @@ function scene(id, t, t0, t1, zoomFrom=1.0, zoomTo=1.06, hold=false) {
   const e = $(id);
   const vis = (t >= t0 - 0.1 && t <= t1 + 0.6);
   if (!vis) { e.style.opacity = 0; return false; }
-  const fadeIn = p(t, t0, 0.3);
-  const fadeOut = hold ? 1 : 1 - p(t, t1 - 0.3, 0.35);
+  const fadeIn = p(t, t0, 0.25);
+  const fadeOut = hold ? 1 : 1 - p(t, t1 - 0.25, 0.3);
   e.style.opacity = (fadeIn * fadeOut).toFixed(3);
   const life = p(t, t0, t1 - t0);
   const z = zoomFrom + (zoomTo - zoomFrom) * life;
@@ -147,36 +142,30 @@ function scene(id, t, t0, t1, zoomFrom=1.0, zoomTo=1.06, hold=false) {
   return true;
 }
 
-// TIMINGS array: [scene t0, t1] + element beats — replaced after VO silence detection
-let T = {
-  s1: [0.0, 3.6],   s1a: 0.05,
-  s2: [3.6, 8.2],   s2a: 3.75,
-  s3: [8.2, 13.6],  s3a: 8.35, s3b: 11.0,
-  s4: [13.6, 16.4], s4a: 13.75,
-  s5: [16.4, 23.2], s5a: 16.55, s5b: 19.4,
-  s6: [23.2, 26.2], s6a: 23.35,
-  s7: [26.2, 30.0], s7k: 26.35, s7a: 26.6, s7b: 27.4,
-};
-window.setTimings = obj => { T = obj; };
-
 window.seek = function(t) {
-  // cold open: branding fades in after the hook lands
-  const ch = easeOut(p(t, 3.0, 0.6));
+  // silent reel: hook is instant (frame 1), branding fades in at ~3.5s
+  const ch = easeOut(p(t, 3.5, 0.6));
   $('hdr').style.opacity = ch;
   $('ftr').style.opacity = ch;
 
-  if (scene('s1', t, T.s1[0], T.s1[1], 1.0, 1.08)) el('s1a', t, T.s1a, T.s1[1] - 0.25, {dIn:0.5});
-  if (scene('s2', t, T.s2[0], T.s2[1]))            el('s2a', t, T.s2a, T.s2[1] - 0.25);
-  if (scene('s3', t, T.s3[0], T.s3[1]))          { el('s3a', t, T.s3a, T.s3[1] - 0.25);
-                                                   el('s3b', t, T.s3b, T.s3[1] - 0.25, {pop:true}); }
-  if (scene('s4', t, T.s4[0], T.s4[1], 1.0, 1.04)) el('s4a', t, T.s4a, T.s4[1] - 0.25);
-  if (scene('s5', t, T.s5[0], T.s5[1]))          { el('s5a', t, T.s5a, T.s5[1] - 0.25);
-                                                   el('s5b', t, T.s5b, T.s5[1] - 0.25); }
-  if (scene('s6', t, T.s6[0], T.s6[1]))            el('s6a', t, T.s6a, T.s6[1] - 0.25);
-  if (scene('s7', t, T.s7[0], T.s7[1], 1.0, 1.03, true)) {
-    el('s7k', t, T.s7k, 99);
-    el('s7a', t, T.s7a, 99, {pop:true});
-    el('s7b', t, T.s7b, 99);
+  // S1 0–2.2 "Everyone says Apple killed BlackBerry." — near-instant for scroll-stop
+  if (scene('s1', t, 0, 2.2, 1.0, 1.05)) el('s1a', t, 0.0, 1.95, {dIn:0.3, y:40});
+  // S2 2.2–4.2 "I don't think that's true."
+  if (scene('s2', t, 2.2, 4.2))          el('s2a', t, 2.3, 3.95, {dIn:0.4});
+  // S3 4.2–9.8 "BlackBerry kept building…" / "…a better keyboard."
+  if (scene('s3', t, 4.2, 9.8))        { el('s3a', t, 4.35, 9.55);
+                                         el('s3b', t, 7.0, 9.55, {pop:true}); }
+  // S4 9.8–15.8 "Apple changed something bigger." / "What people expected from a phone."
+  if (scene('s4', t, 9.8, 15.8))       { el('s4a', t, 9.95, 15.55);
+                                         el('s4b', t, 12.9, 15.55); }
+  // S5 15.8–22.4 "One company improved the product." / "The other changed the future."
+  if (scene('s5', t, 15.8, 22.4))      { el('s5a', t, 15.95, 22.15);
+                                         el('s5b', t, 19.4, 22.15, {pop:true}); }
+  // S6 22.4–25.0 end card (hold)
+  if (scene('s6', t, 22.4, 25.0, 1.0, 1.03, true)) {
+    el('s6k', t, 22.5, 99);
+    el('s6a', t, 22.75, 99, {pop:true});
+    el('s6b', t, 23.4, 99);
   }
 };
 seek(0);

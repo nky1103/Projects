@@ -1,6 +1,6 @@
 # Reel — 🔴 Startup Failure #001 (BlackBerry)
 
-**Target:** 1080×1920 (9:16), 25–30s, 30fps — first reel produced under the
+**File:** `reel-sf001-blackberry.mp4` — 1080×1920 (9:16), 25s, 30fps, SILENT (music added in-app) — first reel under the
 locked Reel Philosophy (style guide §6).
 
 ## Concept
@@ -27,6 +27,6 @@ delivery. Scene cuts land on breath boundaries via silence detection.
 Minimal cinematic · low piano · soft pulses · slow build. Investigative, not
 emotional or motivational. 15–20% under the VO.
 
-## Status
+## Version note
 Animation stage + timings ready (`source/reel.html`). Waiting on vidIQ
 voiceover approval to generate audio, silence-detect, sync, render, and mux.
