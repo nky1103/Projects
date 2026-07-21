@@ -1,0 +1,66 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#000; font-family:'Inter',sans-serif; }
+
+  .owltile {
+    background:linear-gradient(135deg,#fbbf24 0%,#f59e0b 46%,#ea580c 100%);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 24px 70px rgba(245,158,11,.4), inset 0 -8px 24px rgba(0,0,0,.14);
+  }
+  svg .tuftL,svg .tuftR { fill:#0b0e14; }
+
+  /* HORIZONTAL — website header / press */
+  .horiz { width:1600px; height:500px; position:relative; overflow:hidden; background:#0b0e14; display:flex; align-items:center; justify-content:center; gap:56px; }
+  .horiz::before { content:''; position:absolute; inset:0;
+    background:radial-gradient(700px 500px at 70% 6%, rgba(245,158,11,.14), transparent 62%); }
+  .horiz .owltile { width:300px; height:300px; border-radius:88px; position:relative; z-index:2; }
+  .horiz .wm { position:relative; z-index:2; }
+  .horiz .name { font-weight:900; font-size:150px; letter-spacing:-6px; color:#f4f1ea; line-height:.9; }
+  .horiz .name span { color:#f59e0b; }
+  .horiz .sub { margin-top:20px; font-weight:800; font-size:38px; letter-spacing:13px; color:#8b93a3; text-transform:uppercase; }
+
+  /* STACKED — story-highlight cover / general logo */
+  .stack { width:1080px; height:1080px; position:relative; overflow:hidden; background:#0b0e14; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .stack::before { content:''; position:absolute; inset:0;
+    background:radial-gradient(700px 560px at 74% 8%, rgba(245,158,11,.18), transparent 64%),radial-gradient(760px 620px at 10% 100%, rgba(245,158,11,.10), transparent 60%); }
+  .stack::after { content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size:86px 86px; mask-image:radial-gradient(720px 720px at 50% 45%, #000 30%, transparent 100%); -webkit-mask-image:radial-gradient(720px 720px at 50% 45%, #000 30%, transparent 100%); }
+  .stack .owltile { width:380px; height:380px; border-radius:112px; position:relative; z-index:2; }
+  .stack .name { position:relative; z-index:2; margin-top:64px; font-weight:900; font-size:116px; letter-spacing:-4px; color:#f4f1ea; }
+  .stack .name span { color:#f59e0b; }
+  .stack .sub { position:relative; z-index:2; margin-top:26px; font-weight:800; font-size:36px; letter-spacing:14px; color:#8b93a3; text-transform:uppercase; }
+</style>
+
+<!-- owl SVG reused; defined once via <symbol> -->
+<svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
+  <path class="tuftL" d="M60 60 L74 32 L88 58 Z"/>
+  <path class="tuftR" d="M140 60 L126 32 L112 58 Z"/>
+  <path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/>
+  <circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="7.5"/>
+  <circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="7.5"/>
+  <rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/>
+  <circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/>
+  <circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/>
+  <path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/>
+  <path d="M87 141 L100 151 L113 141" stroke="#f59e0b" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.55"/>
+  <path d="M89 158 L100 166 L111 158" stroke="#f59e0b" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.55"/>
+</symbol></svg>
+
+<div class="horiz" id="horiz">
+  <div class="owltile"><svg width="220" height="220"><use href="#owl"/></svg></div>
+  <div class="wm">
+    <div class="name">Startup<span>Sutra</span></div>
+    <div class="sub">Daily Startup Case Studies</div>
+  </div>
+</div>
+
+<div class="stack" id="stack">
+  <div class="owltile"><svg width="280" height="280"><use href="#owl"/></svg></div>
+  <div class="name">Startup<span>Sutra</span></div>
+  <div class="sub">Startup Case Studies</div>
+</div>
