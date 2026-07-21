@@ -150,16 +150,41 @@ standalone couplet in the caption. Explaining informs; revealing gets quoted.
 
 ---
 
+## 4B. Format independence (core doctrine)
+
+**Each format must stand on its own. Neither depends on the other to succeed —
+together they build a stronger brand.** If the reel reaches 100,000 people and
+the carousel reaches 10,000, both still have full value alone. The reel does
+not exist to sell the carousel, and the carousel does not assume you saw the
+reel.
+
+**A reel must deliver:**
+- 20–30 seconds.
+- One actionable insight.
+- A memorable closing line.
+- A reason to follow.
+- Self-contained enough to earn a **save**.
+
+**A carousel must deliver:**
+- The complete story.
+- Evidence and context.
+- Frameworks founders can apply.
+- A discussion-worthy question at the end.
+
+Pointing from one to the other is a *bonus path*, never the payoff.
+
 ## 5. Carousel structure (7 slides)
+
+Delivers the complete story (per §4B) — no reel required to understand it.
 
 1. **Hook** — series pill + subject pill, claim in big type, one-line tension
 2. **Setup** — the world before; what the company bet on
 3. **Shift** — what changed (market, user, technology)
-4. **Evidence** — the visual argument (comparison, list, stat)
-5. **Mistake / Insight** — the decision, named plainly
+4. **Evidence** — the visual argument (comparison, list, stat) + context
+5. **Mistake / Insight** — the decision, named plainly; the framework to apply
 6. **Lesson** — the screenshot slide; substitution-test-proof, minimal
-7. **CTA** — a question about the *reader's* product + Tell us below / Save /
-   Share rows + follow card + continuity tease
+7. **CTA** — a discussion-worthy question about the *reader's* product +
+   Tell us below / Save / Share rows + follow card + continuity tease
 
 ## 6. Reel Philosophy (v1.2 — updated by real metrics)
 
