@@ -1,10 +1,12 @@
 # StartupSutra — Editorial Style Guide
 
-**Version 1.1 (frozen)** — adds the Human Voice Framework, Narration Rules, the
-Editorial Review Scorecard, the Conversation Test, the Screenshot Quote Test,
-the five-phase production process, and the Editorial Philosophy.
-🔴 Startup Failure #001 (BlackBerry) is the first episode produced under this
-system — **it is the benchmark every future episode is compared against.**
+**Version 1.2** — Reel Philosophy revised by the first real metrics (§6): reels
+are the growth engine, and reels must be **self-contained** (deliver the lesson,
+earn the follow) rather than pure teasers. v1.1 added the Human Voice Framework,
+Narration Rules, the Editorial Review Scorecard, the Conversation/Screenshot
+Quote tests, the five-phase process, and the Editorial Philosophy.
+🔴 Startup Failure #001 (BlackBerry) remains the creative benchmark; 🔵 Marketing
+Breakdown #001 (Duolingo) is the first episode built under v1.2.
 
 **This is the canonical reference. Every post is built against it.**
 The design language and this guide do not change for at least the first 30 episodes.
@@ -159,33 +161,46 @@ standalone couplet in the caption. Explaining informs; revealing gets quoted.
 7. **CTA** — a question about the *reader's* product + Tell us below / Save /
    Share rows + follow card + continuity tease
 
-## 6. Reel Philosophy (locked)
+## 6. Reel Philosophy (v1.2 — updated by real metrics)
 
-**The reel is NOT the carousel.** Its job is to make someone think *"I need to
-see the post"* — never *"I already know the story."* Analytics drive the rules:
-average watch time is ~5 seconds, so the first 3 seconds earn everything else.
+**Distribution reality (why reels lead):** on a young account, carousels only
+reach existing followers via Feed — Startup Failure #001's carousel got **2
+views**. The same episode's **reel got 151 views / 128 non-followers** via the
+Reels tab + Explore. **Reels are the entire growth engine; carousels are depth
+for people who already follow.** So we lead with reels and judge them on
+follows + saves, not just watch time.
+
+**What the metrics changed:** the pure-teaser reel (withhold everything, point
+to the carousel) reached 128 strangers and converted **0 follows, 0 saves, 0
+carousel clicks.** Cold viewers don't leave the Reels tab to hunt for your post.
+So the reel must **stand on its own** — deliver a complete insight that earns the
+follow, and engineer the save + comment *inside* the reel.
 
 1. **25–30 seconds maximum.** A tighter script forces every line to carry weight.
-2. **One idea only.** The reel creates curiosity; the carousel delivers the answer.
-3. **No duplication.** If the reel explains the lesson, we've given away the
-   reason to swipe. The carousel's evidence (features, comparisons, numbers)
-   stays out of the reel.
-4. **Human, not AI.** Write like a founder sharing an observation over coffee,
-   not a narrator reading a script.
-5. **Conversational pauses.** Short sentences. Natural rhythm. No corporate language.
-6. **Emotion over information.** People remember how a story made them feel
-   before they remember the facts.
-7. **End with curiosity, not a conclusion.** The final line sends viewers to
-   the carousel.
+2. **One idea, delivered — not withheld.** The reel lands the actual lesson so a
+   stranger leaves with value (and a reason to follow). The carousel goes
+   *deeper* (evidence, comparisons, the founder application) — it does not
+   simply repeat. Don't duplicate; deepen.
+3. **Engineer the save + the comment, in the reel.** End on a quotable save-line
+   *and* a direct comment-bait question. Saves/shares/comments are what the
+   algorithm amplifies — a watch alone goes nowhere.
+4. **Give an explicit reason to follow.** "One marketing breakdown. Every day."
+   Reach doesn't convert to audience on its own.
+5. **Kill the 2-second cliff.** Retention drops ~100%→55% in the first 2s. Frame
+   one shows the provocation instantly with motion — never a slow fade-in.
+6. **Human, not AI.** A founder's observation over coffee. Short sentences,
+   natural rhythm, no corporate language.
+7. **Point to the carousel for depth, not for the answer.** "Full breakdown in
+   today's carousel" is a bonus path, never the only payoff.
 
-**The Trailer Test (hard gate)** — before a reel ships, ask:
+**The Insight Test (replaces the Trailer Test)** — before a reel ships, ask:
 
-> **Can someone explain the carousel after watching this?**
+> **Would a stranger follow after watching this — with nothing else?**
 
-If yes, the reel gave away too much — cut it earlier. If no, it did its job.
-StartupSutra reels are Netflix episode trailers, not summaries: they open a
-knowledge gap ("What was the decision?") that only the carousel closes. This
-applies to the reel caption too — it teases, never reveals.
+If they'd leave with a complete thought worth keeping, it's done. If they'd
+leave with only a cliffhanger and no reason to follow, it gave too *little*.
+(This reverses the old Trailer Test, which the metrics disproved for a cold
+audience: withholding the lesson converted nobody.)
 
 **The StartupSutra voice:** not motivational influencer, not business guru.
 Someone who has been in business, made mistakes, watched companies rise and
@@ -193,19 +208,20 @@ fall, and is sharing what they learned. Calm. Confident. Curious. No hype —
 an insider observation, not a presentation.
 
 **The signature edit — every reel, the same four beats** (this repetition IS
-the identity; media brands are built by making every video unmistakably theirs,
-not by making every video different):
+the identity; media brands are built by making every video unmistakably theirs):
 - **0–3s** Challenge a widely held belief. Cold open, no branding; logo ~3.5s.
-  ("Everyone thinks Apple killed BlackBerry.")
-- **3–15s** Build tension without revealing the answer.
-- **15–22s** One emotional line. ("It became one of the biggest mistakes in
-  startup history.")
-- **22–25s** Invite viewers to the carousel. The CTA promises value, never just
-  points: "The mistake changed business forever. See the full breakdown →"
-- Voiceover at natural pace — the pauses ARE the delivery. Scene cuts on
-  breath boundaries via silence detection.
-- Music added in-app: minimal cinematic, low piano, soft pulses, slow build —
-  investigative, not emotional or motivational. 15–20% under the VO.
+  Motion at frame one — kill the 2s cliff. ("Every brand is fighting for
+  attention.")
+- **3–12s** Build, then **land the lesson** — deliver the actual insight.
+  ("It stopped making ads and made its mascot the show. The best marketing
+  doesn't interrupt your feed — it becomes part of it.")
+- **12–20s** The comment-bait question — turned on the viewer's own work.
+  ("Would people miss your content if you stopped posting?")
+- **20–25s** Explicit follow reason + bonus carousel pointer. ("One marketing
+  breakdown. Every day. Full breakdown in today's carousel.")
+- Silent kinetic text is the proven default (text-led reels perform sound-off;
+  151 views validated it). Add music in-app: minimal cinematic, under the text.
+  If using VO later, natural pace — the pauses are the delivery.
 - Motion: settle-in text, scene crossfades, slow push-ins. Never flashy.
 
 ### 6A. Narration Rules (voice performance)

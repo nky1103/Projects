@@ -1,0 +1,114 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-400.ttf'); font-weight:400; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-600.ttf'); font-weight:600; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#000; overflow:hidden; }
+  #stage { width:1080px; height:1920px; position:relative; overflow:hidden; background:#0b0e14; font-family:'Inter','Noto Color Emoji',sans-serif; color:#f4f1ea; }
+  #stage::before { content:''; position:absolute; inset:0; z-index:0;
+    background:radial-gradient(760px 600px at 88% -4%, rgba(59,130,246,.17), transparent 65%),radial-gradient(900px 700px at -12% 106%, rgba(59,130,246,.10), transparent 60%); }
+  #stage::after { content:''; position:absolute; inset:0; z-index:0;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+    background-size:90px 90px; mask-image:radial-gradient(1000px 1300px at 50% 45%, #000 30%, transparent 100%); -webkit-mask-image:radial-gradient(1000px 1300px at 50% 45%, #000 30%, transparent 100%); }
+  .chrome { position:absolute; left:0; right:0; z-index:5; display:flex; align-items:center; padding:0 84px; }
+  #hdr { top:84px; justify-content:space-between; }
+  .brand { display:flex; align-items:center; gap:18px; }
+  .brand .mark { width:60px; height:60px; border-radius:17px; background:linear-gradient(135deg,#f59e0b,#ea580c);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 8px 28px rgba(245,158,11,.35); }
+  .brand .name { font-weight:700; font-size:32px; color:#e8e4da; }
+  .brand .name span { color:#f59e0b; }
+  .tag { font-weight:700; font-size:24px; letter-spacing:3px; color:#6b7280; text-transform:uppercase; }
+  #ftr { bottom:84px; justify-content:center; font-weight:700; font-size:26px; color:#525a68; letter-spacing:1px; }
+  .scene { position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; justify-content:center; padding:0 96px; opacity:0; }
+  .el { opacity:0; will-change:transform,opacity; }
+  h1 { font-weight:900; letter-spacing:-2px; line-height:1.18; font-size:96px; }
+  .accent { color:#3b82f6; }
+  .dim { color:#8b93a3; }
+  .kicker { display:inline-flex; align-self:flex-start; align-items:center; gap:16px; font-weight:700; font-size:28px; letter-spacing:4px;
+    text-transform:uppercase; color:#3b82f6; margin-bottom:48px; padding:16px 30px; border:1.5px solid rgba(59,130,246,.45); border-radius:999px; background:rgba(59,130,246,.08); }
+  .kicker .sq { width:20px; height:20px; border-radius:5px; background:linear-gradient(135deg,#3b82f6,#1d4ed8); }
+  .followcard { margin-top:56px; display:flex; align-items:center; gap:30px; border-left:9px solid #3b82f6; border-radius:8px 30px 30px 8px; background:rgba(59,130,246,.10); padding:40px 48px; }
+</style>
+
+<svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
+  <path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/>
+  <path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/>
+  <circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/>
+  <rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/>
+  <circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/>
+  <circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/>
+  <path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></symbol></svg>
+
+<div id="stage">
+  <div class="chrome" id="hdr"><div class="brand"><div class="mark"><svg width="46" height="46"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="tag">Marketing Breakdown #001</div></div>
+  <div class="chrome" id="ftr">@statupsutra</div>
+
+  <!-- S1 hook -->
+  <div class="scene" id="s1"><h1 class="el" id="s1a" style="font-size:104px;">Every brand is fighting for <span class="accent">attention.</span></h1></div>
+  <!-- S2 -->
+  <div class="scene" id="s2"><h1 class="el" id="s2a" style="font-size:100px;">Duolingo did the <span class="accent">opposite.</span></h1></div>
+  <!-- S3 -->
+  <div class="scene" id="s3">
+    <h1 class="el" id="s3a" style="font-size:88px;">It stopped making ads…</h1>
+    <h1 class="el" id="s3b" style="font-size:96px; margin-top:64px;">…and made its mascot <span class="accent">the show.</span></h1>
+  </div>
+  <!-- S4 the lesson (self-contained payoff) -->
+  <div class="scene" id="s4">
+    <h1 class="el" id="s4a" style="font-size:90px;">The best marketing doesn't <span class="dim">interrupt</span> your feed.</h1>
+    <h1 class="el" id="s4b" style="font-size:100px; margin-top:60px;">It becomes <span class="accent">part of it.</span></h1>
+  </div>
+  <!-- S5 comment-bait -->
+  <div class="scene" id="s5" style="text-align:left;">
+    <div class="kicker el" id="s5k"><span class="sq"></span>Your turn</div>
+    <h1 class="el" id="s5a" style="font-size:86px;">Would people <span class="accent">miss</span> your content if you stopped posting?</h1>
+  </div>
+  <!-- S6 end card -->
+  <div class="scene" id="s6">
+    <h1 class="el" id="s6a" style="font-size:78px;">One marketing breakdown. <span class="accent">Every day.</span></h1>
+    <div class="followcard el" id="s6b">
+      <div class="mark" style="width:84px;height:84px;border-radius:24px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="62" height="62"><use href="#owl"/></svg></div>
+      <div style="font-weight:800; font-size:50px;">Follow <span class="accent">@statupsutra</span><br><span style="font-weight:600;font-size:34px;color:#aab2c0;">full breakdown in today's carousel</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const clamp = (v,a,b) => Math.min(b, Math.max(a,v));
+const p = (t,t0,d) => clamp((t-t0)/d, 0, 1);
+const easeOut = x => 1 - Math.pow(1-x, 3);
+const easeOutBack = x => { const c = 1.35; return 1 + (c+1)*Math.pow(x-1,3) + c*Math.pow(x-1,2); };
+function el(id, t, tIn, tOut, opts={}) {
+  const {y=70, dIn=0.5, dOut=0.4, pop=false} = opts;
+  const ip = p(t, tIn, dIn); const i = easeOutBack(ip); const o = 1 - p(t, tOut, dOut);
+  const e = $(id); e.style.opacity = (easeOut(ip) * o).toFixed(3);
+  e.style.transform = `translateY(${((1-i)*y).toFixed(1)}px) scale(${(pop?(0.84+0.16*i):1).toFixed(3)})`;
+}
+function scene(id, t, t0, t1, zF=1.0, zT=1.06, hold=false) {
+  const e = $(id); const vis = (t >= t0-0.1 && t <= t1+0.6);
+  if (!vis) { e.style.opacity = 0; return false; }
+  const fi = p(t, t0, 0.25); const fo = hold ? 1 : 1 - p(t, t1-0.25, 0.3);
+  e.style.opacity = (fi*fo).toFixed(3);
+  const z = zF + (zT-zF) * p(t, t0, t1-t0); e.style.transform = `scale(${z.toFixed(4)})`;
+  return true;
+}
+window.seek = function(t) {
+  const ch = easeOut(p(t, 3.5, 0.6)); $('hdr').style.opacity = ch; $('ftr').style.opacity = ch;
+  // S1 0–3 hook (instant, kill the cliff — text up at frame 1 with slow push)
+  if (scene('s1', t, 0, 3.0, 1.0, 1.06)) el('s1a', t, 0.0, 2.75, {dIn:0.3, y:40});
+  // S2 3–6
+  if (scene('s2', t, 3.0, 6.0))          el('s2a', t, 3.15, 5.75, {dIn:0.4});
+  // S3 6–11.5
+  if (scene('s3', t, 6.0, 11.5))       { el('s3a', t, 6.15, 11.25); el('s3b', t, 8.4, 11.25, {pop:true}); }
+  // S4 11.5–17.5 LESSON payoff
+  if (scene('s4', t, 11.5, 17.5))      { el('s4a', t, 11.65, 17.25); el('s4b', t, 14.2, 17.25, {pop:true}); }
+  // S5 17.5–21.5 comment-bait
+  if (scene('s5', t, 17.5, 21.5))      { el('s5k', t, 17.65, 21.25); el('s5a', t, 17.9, 21.25); }
+  // S6 21.5–25 end card (hold)
+  if (scene('s6', t, 21.5, 25.0, 1.0, 1.03, true)) { el('s6a', t, 21.65, 99, {pop:true}); el('s6b', t, 22.4, 99); }
+};
+seek(0);
+</script>

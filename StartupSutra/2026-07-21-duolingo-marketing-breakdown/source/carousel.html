@@ -1,0 +1,177 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-400.ttf'); font-weight:400; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-600.ttf'); font-weight:600; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#000; }
+
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; background:#0b0e14;
+    font-family:'Inter','Noto Color Emoji',sans-serif; color:#f4f1ea; display:flex; flex-direction:column; }
+  .slide::before { content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(720px 560px at 88% -6%, rgba(59,130,246,.18), transparent 65%),
+      radial-gradient(820px 640px at -12% 108%, rgba(59,130,246,.11), transparent 60%),
+      radial-gradient(500px 400px at 50% 55%, rgba(255,255,255,.025), transparent 70%); }
+  .slide::after { content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+    background-size:90px 90px; mask-image:radial-gradient(900px 900px at 50% 40%, #000 30%, transparent 100%);
+    -webkit-mask-image:radial-gradient(900px 900px at 50% 40%, #000 30%, transparent 100%); }
+  .inner { position:relative; z-index:2; display:flex; flex-direction:column; height:100%; padding:72px 84px 64px; }
+
+  .topbar { display:flex; justify-content:space-between; align-items:center; }
+  .brand { display:flex; align-items:center; gap:18px; }
+  .brand .mark { width:56px; height:56px; border-radius:16px; background:linear-gradient(135deg,#f59e0b,#ea580c);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 8px 28px rgba(245,158,11,.35); }
+  .brand .name { font-weight:700; font-size:30px; letter-spacing:.5px; color:#e8e4da; }
+  .brand .name span { color:#f59e0b; }
+  .counter { font-weight:600; font-size:26px; color:#6b7280; letter-spacing:2px; }
+
+  .body { flex:1; display:flex; flex-direction:column; justify-content:center; }
+
+  /* NEW series-identity band (large) */
+  .seriesband { display:flex; align-items:center; gap:20px; margin-bottom:38px; }
+  .seriesband .sq { width:30px; height:30px; border-radius:8px; background:linear-gradient(135deg,#3b82f6,#1d4ed8); flex-shrink:0; }
+  .seriesband .txt { font-weight:900; font-size:48px; letter-spacing:6px; color:#3b82f6; text-transform:uppercase; line-height:1; }
+  .subjectline { font-weight:700; font-size:28px; letter-spacing:4px; color:#8b93a3; text-transform:uppercase; margin-bottom:44px; }
+
+  .kicker { display:inline-flex; align-self:flex-start; align-items:center; gap:16px; font-weight:700; font-size:26px;
+    letter-spacing:4px; text-transform:uppercase; color:#3b82f6; margin-bottom:44px; padding:14px 28px;
+    border:1.5px solid rgba(59,130,246,.45); border-radius:999px; background:rgba(59,130,246,.08); }
+  .kicker .sq { width:20px; height:20px; border-radius:5px; background:linear-gradient(135deg,#3b82f6,#1d4ed8); flex-shrink:0; }
+
+  h1 { font-weight:900; font-size:96px; line-height:1.12; letter-spacing:-1.5px; }
+  h1 .accent { color:#3b82f6; }
+  h1 .dim { color:#8b93a3; }
+  .sub { margin-top:44px; font-weight:600; font-size:42px; line-height:1.4; color:#aab2c0; }
+  .sub strong { color:#f4f1ea; }
+
+  .list { margin-top:48px; display:flex; flex-direction:column; gap:24px; }
+  .item { display:flex; align-items:center; gap:26px; background:rgba(255,255,255,.04); border:1.5px solid rgba(255,255,255,.09);
+    border-radius:24px; padding:28px 36px; font-weight:700; font-size:44px; }
+  .item .ico { font-size:46px; }
+  .item.win { background:rgba(59,130,246,.13); border-color:rgba(59,130,246,.55); }
+  .item.win .txt { color:#3b82f6; }
+
+  .quotecard { margin-top:52px; border-left:8px solid #3b82f6; border-radius:8px 28px 28px 8px;
+    background:rgba(59,130,246,.10); padding:44px 48px; font-weight:800; font-size:56px; line-height:1.3; }
+  .quotecard .accent { color:#3b82f6; }
+
+  .cols { margin-top:56px; display:flex; gap:28px; }
+  .col { flex:1; display:flex; flex-direction:column; gap:16px; }
+  .colhead { font-weight:800; font-size:32px; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+  .colbody { font-weight:800; font-size:46px; line-height:1.5; }
+
+  .bottombar { display:flex; justify-content:space-between; align-items:center; color:#6b7280; font-weight:600; font-size:27px; }
+  .foot { font-weight:700; font-size:26px; color:#525a68; letter-spacing:1px; }
+  .foot b { color:#8b93a3; }
+  .swipe { display:flex; align-items:center; gap:16px; color:#3b82f6; letter-spacing:2px; text-transform:uppercase; font-weight:700; }
+  .swipe .arr { font-size:30px; }
+  .dots { display:flex; gap:12px; }
+  .dots i { width:14px; height:14px; border-radius:50%; background:rgba(255,255,255,.16); }
+  .dots i.on { background:#3b82f6; width:40px; border-radius:999px; }
+</style>
+
+<!-- OWL symbol -->
+<svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
+  <path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/>
+  <path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/>
+  <circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/>
+  <rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/>
+  <circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/>
+  <circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/>
+  <path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></symbol></svg>
+
+<!-- S1 COVER -->
+<div class="slide" id="s1"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#001 · 01/07</div></div>
+  <div class="body">
+    <div class="seriesband"><span class="sq"></span><span class="txt">Marketing<br>Breakdown</span></div>
+    <div class="subjectline">Duolingo</div>
+    <h1>Duolingo isn't teaching <span class="dim">languages.</span></h1>
+    <h1 style="margin-top:34px;">It's teaching <span class="accent">marketing.</span></h1>
+  </div>
+  <div class="bottombar"><div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S2 -->
+<div class="slide" id="s2"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#001 · 02/07</div></div>
+  <div class="body">
+    <h1 style="font-size:104px;">Most brands <span class="dim">ask</span> for attention.</h1>
+    <h1 style="font-size:104px; margin-top:64px;">Duolingo <span class="accent">earns</span> it.</h1>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S3 -->
+<div class="slide" id="s3"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#001 · 03/07</div></div>
+  <div class="body">
+    <h1 style="font-size:80px;">Instead of polished ads…</h1>
+    <div class="cols">
+      <div class="col"><div class="colhead" style="color:#8b93a3;">Every other brand</div><div class="colbody" style="color:#8b93a3;">Made ads.</div></div>
+      <div class="col"><div class="colhead" style="color:#3b82f6;">Duolingo</div><div class="colbody" style="color:#3b82f6;">Made the mascot<br>the content.</div></div>
+    </div>
+    <div class="sub">The owl became the campaign.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S4 -->
+<div class="slide" id="s4"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#001 · 04/07</div></div>
+  <div class="body">
+    <h1 style="font-size:78px;">People didn't just <span class="dim">watch.</span></h1>
+    <div class="list">
+      <div class="item"><span class="ico">💬</span><span class="txt">They commented.</span></div>
+      <div class="item"><span class="ico">🔁</span><span class="txt">They shared.</span></div>
+      <div class="item"><span class="ico">😂</span><span class="txt">They memed.</span></div>
+      <div class="item win"><span class="ico">👀</span><span class="txt">They waited for the next post.</span></div>
+    </div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S5 -->
+<div class="slide" id="s5"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#001 · 05/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Lesson</div>
+    <h1 style="font-size:84px;">Marketing stopped <span class="dim">feeling like marketing.</span></h1>
+    <h1 style="font-size:96px; margin-top:56px;">It became <span class="accent">entertainment.</span></h1>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S6 SCREENSHOT SLIDE -->
+<div class="slide" id="s6"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#001 · 06/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>Marketing Lesson</div>
+    <h1 style="font-size:92px;">The best brands don't <span class="dim">interrupt</span> your feed.</h1>
+    <h1 style="font-size:92px; margin-top:56px;">They <span class="accent">become part of it.</span></h1>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S7 CTA -->
+<div class="slide" id="s7"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#001 · 07/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>Founder Question</div>
+    <h1 style="font-size:80px;">Is your content <span class="dim">asking</span> for attention…<br><span class="accent">or earning it?</span></h1>
+    <div class="list" style="margin-top:48px; gap:22px;">
+      <div class="item" style="font-size:38px; padding:24px 34px;"><span class="ico">👇</span><span class="txt">Tell us below</span></div>
+      <div class="item" style="font-size:38px; padding:24px 34px;"><span class="ico">❤️</span><span class="txt">Save this post</span></div>
+      <div class="item" style="font-size:38px; padding:24px 34px;"><span class="ico">🔁</span><span class="txt">Share it with a marketer</span></div>
+    </div>
+    <div class="quotecard" style="margin-top:46px; display:flex; align-items:center; gap:28px; font-size:44px; padding:30px 44px; font-weight:800;">
+      <div class="mark" style="width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="54" height="54"><use href="#owl"/></svg></div>
+      <div>Follow <span style="color:#3b82f6;">@statupsutra</span><br><span style="font-weight:600;font-size:32px;color:#aab2c0;">for daily marketing breakdowns</span></div>
+    </div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">New episode tomorrow</div></div>
+</div></div>
