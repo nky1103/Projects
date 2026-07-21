@@ -36,6 +36,20 @@ Practical consequence: argument-driven structure over chronology. Open with the
 claim, prove it with the company, end with a question the reader must answer
 about their own product.
 
+### The editorial formula
+
+**Company → Principle → Framework.** Never Company → Story. Every episode ends
+on the *hidden principle* — the transferable framework — not the surface
+observation. People don't save company history; they save frameworks they can
+apply beyond the company.
+
+- *Observation:* "Duolingo became entertaining." ❌ (true, but disposable)
+- *Framework:* "Duolingo turned its brand into a creator." ✅ (transferable, saved)
+
+Runway (Marketing Breakdown): Duolingo → character marketing · Figma →
+collaboration as positioning · Notion → identity marketing · Airbnb → trust
+before transactions · Patagonia → values as marketing.
+
 ---
 
 ## 2. Content pillars — the four series
