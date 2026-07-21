@@ -52,7 +52,7 @@ before transactions · Patagonia → values as marketing.
 
 ---
 
-## 2. Content pillars — the four series
+## 2. Content pillars — the five series
 
 Each pillar is a branded, color-coded, independently numbered series.
 
@@ -62,6 +62,11 @@ Each pillar is a branded, color-coded, independently numbered series.
 | 🔴 **STARTUP FAILURE** | Red | `#ef4444` / `#b91c1c` | How a decision destroyed value | BlackBerry, Kodak, Nokia, WeWork |
 | 🔵 **MARKETING BREAKDOWN** | Blue | `#3b82f6` / `#1d4ed8` | Why a marketing move worked | Apple, Nike, Duolingo, Red Bull |
 | 🟢 **FOUNDER FRAMEWORK** | Green | `#22c55e` / `#15803d` | A mental model founders can apply | First Principles, Flywheel, JTBD, Pareto |
+| 🟣 **SEED SIGNAL** | Violet | `#8b5cf6` / `#6d28d9` | What signal made investors believe (Weds) | BZERO, and each week's notable raise |
+
+**Seed Signal** is investor psychology, not funding news — the timeless question
+*"what signal made investors believe?"* It teaches pattern recognition, so it fits
+the Company → Principle → Framework formula. Weekly, Wednesdays.
 
 **Series color drives:** kicker pill, headline accent words, quote-card border/tint,
 active progress dot, swipe cue, ambient glow, highlight cards.
@@ -79,6 +84,8 @@ touches the owl.
 ### Published register
 - 🟧 CASE STUDY #001 — Instagram (2026-07-19)
 - 🔴 STARTUP FAILURE #001 — BlackBerry (2026-07-20)
+- 🔵 MARKETING BREAKDOWN #001 — Duolingo (2026-07-21)
+- 🟣 SEED SIGNAL #001 — BZERO (2026-07-22)
 
 ---
 
