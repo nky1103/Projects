@@ -89,6 +89,11 @@ and the follow-card S mark — on every series.
 4. Never: stock photos, illustrations, AI imagery, gradients beyond the accent.
    Emojis only as functional icons.
 
+**Toolchain (locked):** every visual asset — slides, reels, the owl mascot,
+logos, this guide — is hand-built in HTML/CSS/SVG and rendered via Playwright
+(+ ffmpeg for video). No AI image generation (no Higgsfield). Voiceover via
+vidIQ only. This keeps every asset editable, vector-clean, and unmistakably ours.
+
 ---
 
 ## 4. Writing voice
