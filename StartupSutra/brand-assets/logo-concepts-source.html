@@ -1,0 +1,101 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#000; font-family:'Inter',sans-serif; }
+
+  .pfp { width:1024px; height:1024px; position:relative; overflow:hidden; background:#0b0e14; }
+  .glow::before {
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(700px 560px at 74% 8%, rgba(245,158,11,.20), transparent 64%),
+      radial-gradient(760px 620px at 10% 100%, rgba(245,158,11,.12), transparent 60%);
+  }
+  .grid::after {
+    content:''; position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size:86px 86px;
+    mask-image:radial-gradient(760px 760px at 50% 50%, #000 30%, transparent 100%);
+    -webkit-mask-image:radial-gradient(760px 760px at 50% 50%, #000 30%, transparent 100%);
+  }
+  .inner { position:relative; z-index:2; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+
+  /* ---- Concept A: Rising Path (the startup journey / lesson that lifts you) ---- */
+  .tileA {
+    width:560px; height:560px; border-radius:158px;
+    background:linear-gradient(135deg,#fbbf24 0%,#f59e0b 46%,#ea580c 100%);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 60px 180px rgba(245,158,11,.42), inset 0 -14px 40px rgba(0,0,0,.16);
+  }
+
+  /* ---- Concept B: The Sutra Thread (name = thread of wisdom, one continuous line) ---- */
+
+  /* ---- Concept C: Wordmark lockup ---- */
+  .lock { text-align:center; }
+  .lock .row { display:flex; align-items:center; justify-content:center; gap:34px; }
+  .lock .tile {
+    width:150px; height:150px; border-radius:44px;
+    background:linear-gradient(135deg,#fbbf24,#f59e0b 50%,#ea580c);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:900; font-size:98px; color:#0b0e14; letter-spacing:-3px;
+    box-shadow:0 24px 70px rgba(245,158,11,.4);
+  }
+  .lock .name { font-weight:900; font-size:118px; letter-spacing:-4px; color:#f4f1ea; line-height:1; }
+  .lock .name span { color:#f59e0b; }
+  .lock .rule { width:640px; height:2px; background:rgba(255,255,255,.14); margin:56px auto 40px; }
+  .lock .sub { font-weight:800; font-size:44px; letter-spacing:14px; color:#8b93a3; text-transform:uppercase; }
+</style>
+
+<!-- ============ CONCEPT A: RISING PATH ============ -->
+<div class="pfp glow grid" id="a">
+  <div class="inner">
+    <div class="tileA">
+      <svg width="360" height="360" viewBox="0 0 100 100" fill="none">
+        <!-- non-linear rising path: dips then climbs, ending in an up-right arrow -->
+        <path d="M18 74 C 30 74, 30 56, 42 56 C 54 56, 52 34, 66 30"
+              stroke="#0b0e14" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- arrowhead -->
+        <path d="M55 27 L 69 26 L 66 40" stroke="#0b0e14" stroke-width="11"
+              stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CONCEPT B: THE SUTRA THREAD ============ -->
+<div class="pfp glow grid" id="b">
+  <div class="inner">
+    <svg width="600" height="600" viewBox="0 0 100 100" fill="none">
+      <!-- one continuous thread tracing an S, ends offset like a tied knot -->
+      <path d="M72 30 C 72 18, 50 16, 40 22 C 28 29, 30 44, 44 48
+               C 60 53, 62 68, 50 76 C 40 82, 24 80, 24 68"
+            stroke="url(#g)" stroke-width="8.5" stroke-linecap="round" fill="none"/>
+      <!-- knot bead at the thread's crossing -->
+      <circle cx="48" cy="50" r="7.5" fill="#fbbf24"/>
+      <defs>
+        <linearGradient id="g" x1="20" y1="20" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#fbbf24"/><stop offset="0.55" stop-color="#f59e0b"/><stop offset="1" stop-color="#ea580c"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <div style="position:absolute; bottom:150px; z-index:3; font-weight:800; font-size:40px; letter-spacing:12px; color:#8b93a3; text-transform:uppercase;">StartupSutra</div>
+  </div>
+</div>
+
+<!-- ============ CONCEPT C: WORDMARK LOCKUP ============ -->
+<div class="pfp glow" id="c">
+  <div class="inner">
+    <div class="lock">
+      <div class="row">
+        <div class="tile">S</div>
+        <div class="name">Startup<span>Sutra</span></div>
+      </div>
+      <div class="rule"></div>
+      <div class="sub">Startup Case Studies</div>
+    </div>
+  </div>
+</div>
