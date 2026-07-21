@@ -49,8 +49,9 @@ Each pillar is a branded, color-coded, independently numbered series.
 
 **Series color drives:** kicker pill, headline accent words, quote-card border/tint,
 active progress dot, swipe cue, ambient glow, highlight cards.
-**Master brand stays amber always:** the S logo mark, the "Sutra" in the wordmark,
-and the follow-card S mark — on every series.
+**Master brand stays amber always:** the owl mascot (amber tile), the "Sutra" in
+the wordmark, and the follow-card owl — on every series. Series color never
+touches the owl.
 
 ### Episode numbering
 - Numbered **per series** (Case Study #001 ≠ Startup Failure #001).
@@ -77,8 +78,8 @@ and the follow-card S mark — on every series.
 - **Components:** kicker pill (series color; neutral gray variant for the subject
   tag), list items (win = series-tinted, dead = dimmed/struck), left-border quote
   card, two-column comparison, giant gradient stat numbers, follow card.
-- **Header:** S mark + wordmark left; `#NNN · slide/07` right.
-- **Footer:** progress dots left; `@StartupSutra` center (→ StartupSutra.co when
+- **Header:** owl mark + wordmark left; `#NNN · slide/07` right.
+- **Footer:** progress dots left; `@statupsutra` center (→ StartupSutra.co when
   live); `SWIPE →` right (last slide: continuity tease).
 
 ### Visual hierarchy rules
@@ -250,7 +251,7 @@ Stories reuse post assets only — never new designs.
 - One question per post, always about the reader, answerable in one line.
 - Engagement rows fixed: 👇 Tell us below · ❤️ Save this post · 🔁 Share it
   with a founder.
-- Follow card: "Follow @StartupSutra — daily startup case studies."
+- Follow card: "Follow @statupsutra — daily startup case studies."
 - Continuity tease on the last slide/end card; series-agnostic wording.
 
 ---
@@ -289,8 +290,9 @@ Run the **Substitution Test** here. No answers → no episode.
 
 ### Phase 3 — Writing
 Carousel copy, caption, alt text, story assets. Run the **Conversation Test**
-line by line; hunt AI-tells (§4A). Then render: copy the latest episode's
-`source/`, swap text + series color tokens, review every slide at full size.
+line by line; hunt AI-tells (§4A). Then render: copy from `_template/`
+(owl mark + `@statupsutra` baked in), swap text + series color tokens, review
+every slide at full size.
 
 ### Phase 4 — Performance
 Reel script per **Narration Rules** (§6A) — one line per breath, pauses marked.
