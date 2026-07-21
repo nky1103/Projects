@@ -1,0 +1,98 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#000; font-family:'Inter',sans-serif; }
+
+  .pfp { width:1024px; height:1024px; position:relative; overflow:hidden; background:#0b0e14; }
+  .glow::before {
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(700px 560px at 74% 8%, rgba(245,158,11,.20), transparent 64%),
+      radial-gradient(760px 620px at 10% 100%, rgba(245,158,11,.12), transparent 60%);
+  }
+  .grid::after {
+    content:''; position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size:86px 86px;
+    mask-image:radial-gradient(760px 760px at 50% 50%, #000 30%, transparent 100%);
+    -webkit-mask-image:radial-gradient(760px 760px at 50% 50%, #000 30%, transparent 100%);
+  }
+  .inner { position:relative; z-index:2; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+
+  .tile {
+    width:560px; height:560px; border-radius:158px;
+    background:linear-gradient(135deg,#fbbf24 0%,#f59e0b 46%,#ea580c 100%);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 60px 180px rgba(245,158,11,.42), inset 0 -14px 40px rgba(0,0,0,.16);
+  }
+  .cap { position:absolute; bottom:130px; z-index:3; font-weight:800; font-size:38px; letter-spacing:11px; color:#8b93a3; text-transform:uppercase; }
+</style>
+
+<!-- ============ D1: THE DECISION (fork) ============ -->
+<div class="pfp glow grid" id="d1">
+  <div class="inner">
+    <div class="tile">
+      <svg width="330" height="330" viewBox="0 0 100 100" fill="none">
+        <!-- stem rises from the base to a decision node, then forks two ways -->
+        <path d="M50 84 L50 52" stroke="#0b0e14" stroke-width="12" stroke-linecap="round"/>
+        <path d="M50 52 L30 30" stroke="#0b0e14" stroke-width="12" stroke-linecap="round"/>
+        <path d="M50 52 L70 30" stroke="#0b0e14" stroke-width="12" stroke-linecap="round"/>
+        <!-- arrowheads -->
+        <path d="M30 44 L28 28 L44 30" stroke="#0b0e14" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M70 44 L72 28 L56 30" stroke="#0b0e14" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- decision node -->
+        <circle cx="50" cy="52" r="9" fill="#0b0e14"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ============ D2: THE QUOTABLE LINE ============ -->
+<div class="pfp glow grid" id="d2">
+  <div class="inner">
+    <svg width="600" height="600" viewBox="0 0 100 100" fill="none">
+      <!-- big editorial quote mark -->
+      <path d="M20 34 C 20 24, 28 18, 38 18 C 34 24, 33 28, 34 33
+               C 42 33, 47 39, 47 47 C 47 56, 40 62, 32 62 C 24 62, 20 55, 20 47 Z"
+            fill="url(#q)"/>
+      <path d="M54 34 C 54 24, 62 18, 72 18 C 68 24, 67 28, 68 33
+               C 76 33, 81 39, 81 47 C 81 56, 74 62, 66 62 C 58 62, 54 55, 54 47 Z"
+            fill="url(#q)"/>
+      <!-- the line it underscores -->
+      <rect x="20" y="74" width="61" height="7" rx="3.5" fill="#8b93a3"/>
+      <defs>
+        <linearGradient id="q" x1="20" y1="18" x2="81" y2="62" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#fbbf24"/><stop offset="0.55" stop-color="#f59e0b"/><stop offset="1" stop-color="#ea580c"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <div class="cap">StartupSutra</div>
+  </div>
+</div>
+
+<!-- ============ D3: THE THREAD (refined ribbon knot) ============ -->
+<div class="pfp glow grid" id="d3">
+  <div class="inner">
+    <svg width="600" height="600" viewBox="0 0 100 100" fill="none">
+      <!-- one continuous ribbon: top arc, crosses itself, bottom arc — an S that ties -->
+      <path d="M70 32 C 70 20, 52 18, 42 24 C 30 31, 34 44, 46 50"
+            stroke="url(#t)" stroke-width="9" stroke-linecap="round" fill="none"/>
+      <path d="M54 50 C 66 56, 70 69, 58 76 C 48 82, 30 80, 30 68"
+            stroke="url(#t)" stroke-width="9" stroke-linecap="round" fill="none"/>
+      <!-- the crossing knot, drawn over -->
+      <path d="M46 50 L54 50" stroke="#0b0e14" stroke-width="13" stroke-linecap="round"/>
+      <path d="M42 44 C 48 50, 52 50, 58 56" stroke="url(#t)" stroke-width="9" stroke-linecap="round" fill="none"/>
+      <defs>
+        <linearGradient id="t" x1="30" y1="18" x2="70" y2="80" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#fbbf24"/><stop offset="0.55" stop-color="#f59e0b"/><stop offset="1" stop-color="#ea580c"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <div class="cap">StartupSutra</div>
+  </div>
+</div>
