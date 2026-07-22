@@ -1,0 +1,18 @@
+# One-click deploy to Render (https://render.com).
+# In the Render dashboard: New > Blueprint > point at this repo.
+services:
+  - type: web
+    name: sustainable-seed-registry
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIR
+        value: /var/data
+    disk:
+      # Persistent volume so registered ideas survive restarts/redeploys.
+      name: registry-data
+      mountPath: /var/data
+      sizeGB: 1
