@@ -12,6 +12,12 @@ export const IdeaInput = z.object({
   sector: z.enum(SECTORS),
   description: z.string().trim().min(40).max(4000),
   impact: z.string().trim().min(20).max(2000),
+  traction: z
+    .string()
+    .trim()
+    .max(1000)
+    .optional()
+    .or(z.literal("").transform(() => undefined)),
   stage: z.enum(STAGES),
   fundingGoal: z.coerce.number().int().min(1000).max(100_000_000),
   location: z.string().trim().min(2).max(120),
@@ -35,6 +41,7 @@ export interface Idea {
   sector: string;
   description: string;
   impact: string;
+  traction: string | null;
   stage: string;
   fundingGoal: number;
   location: string;
@@ -51,6 +58,7 @@ interface IdeaRow {
   sector: string;
   description: string;
   impact: string;
+  traction: string | null;
   stage: string;
   funding_goal: number;
   location: string;
@@ -68,6 +76,7 @@ function rowToIdea(row: IdeaRow): Idea {
     sector: row.sector,
     description: row.description,
     impact: row.impact,
+    traction: row.traction,
     stage: row.stage,
     fundingGoal: row.funding_goal,
     location: row.location,
@@ -83,15 +92,16 @@ export function createIdea(input: IdeaInputType): Idea {
   const createdAt = new Date().toISOString();
   db.prepare(
     `INSERT INTO ideas (
-       id, startup_name, tagline, sector, description, impact, stage,
+       id, startup_name, tagline, sector, description, impact, traction, stage,
        funding_goal, location, website, founder_name, founder_email, created_at
      ) VALUES (
-       @id, @startupName, @tagline, @sector, @description, @impact, @stage,
+       @id, @startupName, @tagline, @sector, @description, @impact, @traction, @stage,
        @fundingGoal, @location, @website, @founderName, @founderEmail, @createdAt
      )`,
   ).run({
     id,
     ...input,
+    traction: input.traction ?? null,
     website: input.website ?? null,
     createdAt,
   });

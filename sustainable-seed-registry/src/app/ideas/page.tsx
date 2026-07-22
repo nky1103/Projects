@@ -29,10 +29,10 @@ export default async function IdeasPage({
   return (
     <div className="container-page py-12">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-brand-900">Idea registry</h1>
+        <h1 className="text-3xl font-bold text-brand-900">The network</h1>
         <p className="mt-2 text-brand-700">
-          Browse sustainable startups seeking seed funding. Filter by sector,
-          stage, or search by keyword.
+          Browse startups across the Ventroot network, seeking capital and
+          services. Filter by sector, stage, or search by keyword.
         </p>
       </div>
 

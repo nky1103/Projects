@@ -1,26 +1,51 @@
-# 🌱 SeedSprout — Sustainable Startup Registry
+# 🌳 Ventroot — Founder Launchpad & Capital Network
 
-An open registry where **early-stage startups solving climate and
-sustainability problems** register their ideas and get discovered by seed
-investors and grant programs.
+Ventroot connects **ambitious founders — across sectors** — with growth
+capital and a bench of vetted operators in finance, law, marketing and
+leadership. Sustainability & Climate is the flagship vertical Ventroot
+launched with; the network is sector-agnostic by design, anchored by an
+investor writing $10M+ growth cheques and backed by a wider partner network
+for earlier stages and other sectors.
 
-Founders publish their venture in a few minutes; investors browse and filter a
-searchable directory and reach out directly.
+Founders register free; we screen for founder quality and real traction,
+get the company raise-ready through the services bouquet, then match it to
+the right relationship in the capital network.
 
 ![Home page](docs/home.png)
 
 ## Features
 
-- **Landing page** with live registry stats (ideas registered, total funding
-  sought, sectors represented).
-- **Idea registration form** with full server-side validation (name, tagline,
-  sector, description, sustainability impact, stage, funding goal, location,
-  website, founder contact).
-- **Searchable registry** — filter ideas by sector, stage, or keyword.
-- **Idea detail pages** with the pitch, sustainability impact, funding ask, and
-  a "Contact founder" action.
+- **Landing page** with live network stats and the anchor-investor model
+  front and center.
+- **Startup registration form** with full server-side validation (name,
+  tagline, sector, description, impact & edge, optional traction, stage,
+  funding sought, location, website, founder contact).
+- **Searchable registry** — filter by sector, stage, or keyword, across all
+  sectors (hospitality excluded only on the anchor investor's track).
+- **Startup detail pages** with the pitch, impact, traction (if provided),
+  funding ask, and a "Contact founder" action.
+- **Services page** — the monthly-retainer bouquet: Finance & Compliance
+  (CA-led), Legal, Marketing & Growth, Fractional COO.
 - **JSON REST API** (`/api/ideas`) backed by SQLite.
-- Sensible **sample data** seeded automatically on first run.
+- Sensible **sample data** seeded automatically on first run, spanning
+  sustainability, fintech and healthtech to reflect the broad network.
+
+## Business model
+
+- **Registering is always free.**
+- **5% founder-paid commission** on capital successfully raised through
+  Ventroot — charged only on close. Ventroot takes no equity of its own; an
+  investor's equity stake in a company is separate from Ventroot's fee.
+- **Services** (Finance & Compliance, Legal, Marketing & Growth, Fractional
+  COO) are billed as a **monthly retainer**, independent of any raise.
+- ⚠️ **Compliance:** a founder-paid, success-contingent commission on a
+  capital raise is regulated intermediary activity in most jurisdictions
+  (e.g. SEBI merchant-banker rules in India, broker-dealer rules in the US).
+  Route the 5% fee through a licensed entity before it's charged on a real
+  deal. Services retainers carry no such constraint.
+
+See `docs/brand-guidelines.html` for the full brand and business-model
+one-pager.
 
 ## Tech stack
 
@@ -53,9 +78,9 @@ The SQLite database is created automatically under `./data/registry.db`
 
 | Method | Path              | Description                                   |
 | ------ | ----------------- | --------------------------------------------- |
-| `GET`  | `/api/ideas`      | List ideas. Query: `sector`, `stage`, `q`.    |
-| `POST` | `/api/ideas`      | Register an idea (JSON body, validated).      |
-| `GET`  | `/api/ideas/:id`  | Fetch a single idea.                          |
+| `GET`  | `/api/ideas`      | List startups. Query: `sector`, `stage`, `q`. |
+| `POST` | `/api/ideas`      | Register a startup (JSON body, validated).    |
+| `GET`  | `/api/ideas/:id`  | Fetch a single startup.                       |
 
 Example:
 
@@ -65,9 +90,10 @@ curl -X POST http://localhost:3000/api/ideas \
   -d '{
     "startupName": "WindWeave",
     "tagline": "Community-owned micro wind turbines",
-    "sector": "Renewable Energy",
+    "sector": "Sustainability & Climate",
     "description": "Small modular rooftop wind turbines that neighbourhoods co-own to generate clean local power.",
     "impact": "Each cluster offsets ~15 tonnes of CO2 a year.",
+    "traction": "3 pilot installs live, 2 LOIs with municipal housing boards.",
     "stage": "Prototype",
     "fundingGoal": 600000,
     "location": "Copenhagen, Denmark",
@@ -84,8 +110,8 @@ The app produces a **standalone** build and ships with a production
 ### Docker
 
 ```bash
-docker build -t seedsprout .
-docker run -p 3000:3000 -v seedsprout-data:/app/data seedsprout
+docker build -t ventroot .
+docker run -p 3000:3000 -v ventroot-data:/app/data ventroot
 ```
 
 The named volume keeps the SQLite database across restarts.
@@ -100,9 +126,9 @@ this repository.
 
 Any host that runs a Docker image or a Node.js standalone server works
 (Fly.io, Railway, a VPS, etc.). Point `DATA_DIR` at a persistent volume so
-registered ideas survive redeploys. For a purely serverless host (e.g. Vercel),
-swap the SQLite store in `src/lib/db.ts` for a hosted database — the data-access
-layer in `src/lib/ideas.ts` is isolated for exactly this reason.
+registered startups survive redeploys. For a purely serverless host (e.g.
+Vercel), swap the SQLite store in `src/lib/db.ts` for a hosted database — the
+data-access layer in `src/lib/ideas.ts` is isolated for exactly this reason.
 
 ## Project structure
 
@@ -112,7 +138,8 @@ src/
     page.tsx              # Landing page
     register/             # Registration form (client) + page
     ideas/                # Registry list + [id] detail page
-    api/ideas/            # REST API routes
+    services/             # Services bouquet page
+    api/ideas/             # REST API routes
   components/             # Nav, Footer, IdeaCard
   lib/
     db.ts                 # SQLite connection + schema
@@ -120,4 +147,6 @@ src/
     constants.ts          # Sectors & stages (client-safe)
     seed.ts               # Sample data
     format.ts             # Currency/date helpers
+docs/
+  brand-guidelines.html   # Brand identity + business model one-pager
 ```

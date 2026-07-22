@@ -26,6 +26,7 @@ export function RegisterForm() {
       sector: String(data.get("sector") ?? ""),
       description: String(data.get("description") ?? ""),
       impact: String(data.get("impact") ?? ""),
+      traction: String(data.get("traction") ?? ""),
       stage: String(data.get("stage") ?? ""),
       fundingGoal: String(data.get("fundingGoal") ?? ""),
       location: String(data.get("location") ?? ""),
@@ -109,16 +110,24 @@ export function RegisterForm() {
       />
 
       <TextAreaField
-        label="Sustainability impact *"
+        label="Impact & edge *"
         name="impact"
         rows={3}
-        placeholder="What measurable environmental or social impact will this have?"
+        placeholder="What measurable impact will this have — environmental, social, or market — and what makes it defensible?"
         errors={fieldErrors.impact}
+      />
+
+      <TextAreaField
+        label="Traction (optional)"
+        name="traction"
+        rows={2}
+        placeholder="Revenue, users, pilots, LOIs, growth rate — whatever shows real momentum. Strongly recommended for early-stage raises."
+        errors={fieldErrors.traction}
       />
 
       <div className="grid gap-6 sm:grid-cols-2">
         <Field
-          label="Seed funding sought (USD) *"
+          label="Funding sought (USD) *"
           name="fundingGoal"
           type="number"
           placeholder="e.g. 750000"

@@ -29,6 +29,7 @@ function createDb(): Database.Database {
       sector        TEXT NOT NULL,
       description   TEXT NOT NULL,
       impact        TEXT NOT NULL,
+      traction      TEXT,
       stage         TEXT NOT NULL,
       funding_goal  INTEGER NOT NULL,
       location      TEXT NOT NULL,

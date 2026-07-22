@@ -18,35 +18,37 @@ export default function HomePage() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-100 via-brand-50 to-brand-50" />
         <div className="container-page py-20 sm:py-28">
           <div className="mx-auto max-w-3xl text-center">
-            <span className="chip mb-5">🌍 Climate &amp; sustainability founders</span>
+            <span className="chip mb-5">🌳 Founder launchpad &amp; capital network</span>
             <h1 className="text-4xl font-extrabold tracking-tight text-brand-950 sm:text-5xl">
-              Register your sustainable startup.
+              Where founders
               <br />
-              <span className="text-brand-600">Get seen by seed investors.</span>
+              <span className="text-brand-600">put down roots.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-brand-700">
-              SeedSprout is an open registry for early-stage startups solving
-              climate and sustainability problems. Publish your idea in minutes
-              and put it in front of the people who fund the future.
+              Ventroot connects ambitious founders — across sectors — with growth
+              capital and a bench of vetted operators in finance, law, marketing
+              and leadership. Anchored by an investor writing $10M+ growth
+              cheques, backed by a wider partner network for every stage.
             </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link href="/register" className="btn-primary">
-                Register your idea →
+                Register your startup →
               </Link>
               <Link href="/ideas" className="btn-secondary">
-                Browse the registry
+                Browse the network
               </Link>
             </div>
           </div>
 
           {/* Stats */}
-          <div className="mx-auto mt-16 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
-            <Stat label="Ideas registered" value={String(stats.total)} />
+          <div className="mx-auto mt-16 grid max-w-3xl grid-cols-2 gap-4 sm:grid-cols-4">
+            <Stat label="Startups registered" value={String(stats.total)} />
             <Stat
-              label="Total funding sought"
+              label="Capital sought"
               value={formatCurrency(stats.totalFundingSought)}
             />
-            <Stat label="Sectors represented" value={String(stats.sectors)} />
+            <Stat label="Sectors on the network" value={String(stats.sectors)} />
+            <Stat label="Anchor cheque size" value="$10M+" />
           </div>
         </div>
       </section>
@@ -54,28 +56,28 @@ export default function HomePage() {
       {/* How it works */}
       <section className="container-page py-16">
         <h2 className="text-center text-2xl font-bold text-brand-900">
-          How it works
+          How the network works
         </h2>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           <Step
             n={1}
-            title="Describe your idea"
-            body="Tell us what you're building, the sustainability problem it solves, and how much seed funding you're seeking."
+            title="Register & get vetted"
+            body="Submit your venture from any sector. We screen for founder quality and real traction — not just an idea — before anything moves forward."
           />
           <Step
             n={2}
-            title="Get listed"
-            body="Your startup appears in the public registry, searchable by sector, stage and impact."
+            title="Get raise-ready"
+            body="Our services bouquet — finance, legal, marketing, a fractional COO — preps your financials, cap table and story so you can credibly absorb a large cheque."
           />
           <Step
             n={3}
-            title="Connect with funders"
-            body="Seed investors and grant programs browse the registry to discover and reach out to promising founders."
+            title="Matched to capital"
+            body="Routed to the right relationship: our anchor investor for growth-ready or traction-backed deals ≥$10M, or a partner investor for earlier stage."
           />
         </div>
       </section>
 
-      {/* Featured ideas */}
+      {/* Featured startups */}
       {featured.length > 0 && (
         <section className="container-page py-6">
           <div className="mb-8 flex items-end justify-between">
@@ -100,8 +102,13 @@ export default function HomePage() {
       {/* Sectors */}
       <section className="container-page py-16">
         <h2 className="text-center text-2xl font-bold text-brand-900">
-          Sectors we champion
+          Every sector but one
         </h2>
+        <p className="mx-auto mt-2 max-w-xl text-center text-brand-600">
+          Sustainability &amp; Climate is where Ventroot started, and remains
+          our flagship vertical. The network is open to every sector except
+          hospitality on the anchor investor's track.
+        </p>
         <div className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-3">
           {SECTORS.map((s) => (
             <span key={s} className="chip px-4 py-2 text-sm">
@@ -111,19 +118,50 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Services teaser */}
+      <section className="container-page py-6">
+        <div className="rounded-3xl border border-brand-100 bg-white p-8 sm:p-10">
+          <div className="grid gap-8 md:grid-cols-2 md:items-center">
+            <div>
+              <span className="chip mb-4">Services bouquet</span>
+              <h2 className="text-2xl font-bold text-brand-900">
+                Raise-ready, not just registered.
+              </h2>
+              <p className="mt-3 text-brand-700">
+                A monthly-retainer bench of vetted operators — CA-led finance,
+                legal, marketing, and a fractional COO — to get your startup
+                into shape for serious capital.
+              </p>
+              <Link
+                href="/services"
+                className="btn-secondary mt-6 inline-flex"
+              >
+                Explore services →
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <MiniService label="Finance & Compliance" />
+              <MiniService label="Legal" />
+              <MiniService label="Marketing & Growth" />
+              <MiniService label="Fractional COO" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="container-page pb-8">
+      <section className="container-page pb-8 pt-10">
         <div className="rounded-3xl bg-brand-800 px-8 py-14 text-center text-white">
-          <h2 className="text-3xl font-bold">Have an idea worth funding?</h2>
+          <h2 className="text-3xl font-bold">Ready to put down roots?</h2>
           <p className="mx-auto mt-3 max-w-xl text-brand-100">
-            It takes about three minutes to register. No fees, no gatekeeping —
-            just a clear shot at seed capital for your sustainability venture.
+            Registering is always free. We earn a 5% commission only when you
+            raise — no equity taken, no fees upfront.
           </p>
           <Link
             href="/register"
             className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-800 shadow-sm transition hover:bg-brand-50"
           >
-            Register your idea →
+            Register your startup →
           </Link>
         </div>
       </section>
@@ -133,9 +171,11 @@ export default function HomePage() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-brand-100 bg-white/80 p-6 text-center shadow-sm">
-      <div className="text-3xl font-extrabold text-brand-700">{value}</div>
-      <div className="mt-1 text-sm text-brand-600">{label}</div>
+    <div className="rounded-2xl border border-brand-100 bg-white/80 p-5 text-center shadow-sm">
+      <div className="text-2xl font-extrabold text-brand-700 sm:text-3xl">
+        {value}
+      </div>
+      <div className="mt-1 text-xs text-brand-600 sm:text-sm">{label}</div>
     </div>
   );
 }
@@ -148,6 +188,14 @@ function Step({ n, title, body }: { n: number; title: string; body: string }) {
       </div>
       <h3 className="mt-4 text-lg font-bold text-brand-900">{title}</h3>
       <p className="mt-2 text-sm text-brand-600">{body}</p>
+    </div>
+  );
+}
+
+function MiniService({ label }: { label: string }) {
+  return (
+    <div className="rounded-xl border border-brand-100 bg-brand-50 px-4 py-5 text-center text-sm font-semibold text-brand-800">
+      {label}
     </div>
   );
 }

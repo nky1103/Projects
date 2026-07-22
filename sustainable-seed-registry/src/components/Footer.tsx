@@ -3,11 +3,11 @@ export function Footer() {
     <footer className="mt-24 border-t border-brand-100 bg-white/60">
       <div className="container-page flex flex-col items-center justify-between gap-3 py-8 text-sm text-brand-700 sm:flex-row">
         <p className="flex items-center gap-2">
-          <span aria-hidden>🌱</span>
-          <span>SeedSprout — where sustainable ideas find their first funding.</span>
+          <span aria-hidden>🌳</span>
+          <span>Ventroot — where founders put down roots.</span>
         </p>
         <p className="text-brand-500">
-          Built for founders in the climate &amp; sustainability space.
+          A founder launchpad and capital network, anchored by growth-stage investors.
         </p>
       </div>
     </footer>

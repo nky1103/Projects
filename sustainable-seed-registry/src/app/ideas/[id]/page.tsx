@@ -46,17 +46,26 @@ export default async function IdeaDetailPage({
 
           <section className="mt-8 rounded-2xl border border-brand-100 bg-white p-6">
             <h2 className="text-sm font-bold uppercase tracking-wide text-brand-500">
-              🌱 Sustainability impact
+              Impact &amp; edge
             </h2>
             <p className="mt-3 leading-relaxed text-brand-800">{idea.impact}</p>
           </section>
+
+          {idea.traction && (
+            <section className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-6">
+              <h2 className="text-sm font-bold uppercase tracking-wide text-amber-700">
+                Traction
+              </h2>
+              <p className="mt-3 leading-relaxed text-amber-900">{idea.traction}</p>
+            </section>
+          )}
         </div>
 
         {/* Sidebar */}
         <aside className="lg:col-span-1">
           <div className="sticky top-24 space-y-6">
             <div className="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
-              <div className="text-sm text-brand-500">Seed funding sought</div>
+              <div className="text-sm text-brand-500">Funding sought</div>
               <div className="mt-1 text-3xl font-extrabold text-brand-700">
                 {formatCurrency(idea.fundingGoal)}
               </div>

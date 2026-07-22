@@ -4,9 +4,9 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "SeedSprout — Sustainable Startup Registry",
+  title: "Ventroot — Founder Launchpad & Capital Network",
   description:
-    "A registry where sustainability-focused startups register their ideas and connect with seed funding.",
+    "Ventroot connects ambitious founders across sectors with growth capital and a bench of vetted operators in finance, law, marketing and leadership.",
 };
 
 export default function RootLayout({
