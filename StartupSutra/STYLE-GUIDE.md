@@ -52,7 +52,7 @@ before transactions · Patagonia → values as marketing.
 
 ---
 
-## 2. Content pillars — the five series
+## 2. Content pillars — the seven series (one per day)
 
 Each pillar is a branded, color-coded, independently numbered series.
 
@@ -63,6 +63,8 @@ Each pillar is a branded, color-coded, independently numbered series.
 | 🔵 **MARKETING BREAKDOWN** | Blue | `#3b82f6` / `#1d4ed8` | Why a marketing move worked | Apple, Nike, Duolingo, Red Bull |
 | 🟢 **FOUNDER FRAMEWORK** | Green | `#22c55e` / `#15803d` | A mental model founders can apply | First Principles, Flywheel, JTBD, Pareto |
 | 🟣 **SEED SIGNAL** | Violet | `#8b5cf6` / `#6d28d9` | What signal made investors believe (Weds) | BZERO, and each week's notable raise |
+| 🟩 **GROWTH CAPITAL** | Teal | `#14b8a6` / `#0f766e` | Why capital moved into a round (Thurs) | BatX Energies, and the week's notable round |
+| 🌹 **EXIT STORIES** | Rose | `#f43f5e` / `#be123c` | What an exit teaches (Fri) — *reserved* | Acquisitions / IPOs |
 
 **Seed Signal** is investor psychology, not funding news — the timeless question
 *"what signal made investors believe?"* It teaches pattern recognition, so it fits
@@ -86,6 +88,7 @@ touches the owl.
 - 🔴 STARTUP FAILURE #001 — BlackBerry (2026-07-20)
 - 🔵 MARKETING BREAKDOWN #001 — Duolingo (2026-07-21)
 - 🟣 SEED SIGNAL #001 — BZERO (2026-07-22)
+- 🟩 GROWTH CAPITAL #001 — BatX Energies (2026-07-23)
 
 ---
 
