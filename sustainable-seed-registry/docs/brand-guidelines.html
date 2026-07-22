@@ -1,80 +1,61 @@
 <style>
   :root {
-    --pine: #0b3d2e;
-    --forest: #14532d;
-    --sprout: #1fae55;
-    --sprout-bright: #22c55e;
-    --lime: #a3e635;
-    --solar: #f4a621;
-    --canvas: #f5faf3;
+    --ink: #10192b;
+    --ink-soft: #1c2c46;
+    --green: #2fa36b;
+    --green-bright: #38c17e;
+    --gold: #d9a441;
+    --gold-bright: #e8b94f;
+    --umber: #8a5a34;
+    --canvas: #f7f5f1;
     --paper: #ffffff;
-    --ink: #0a1712;
-    --muted: #4b5f54;
-    --line: #d8e8dc;
-    --shadow: 0 1px 2px rgba(11, 61, 46, 0.06), 0 8px 24px rgba(11, 61, 46, 0.06);
+    --text: #10192b;
+    --muted: #5a6478;
+    --line: #e3e0d8;
+    --shadow: 0 1px 2px rgba(16, 25, 43, 0.06), 0 8px 24px rgba(16, 25, 43, 0.07);
 
     --bg: var(--canvas);
     --surface: var(--paper);
-    --text: var(--ink);
-    --text-soft: var(--muted);
     --border: var(--line);
-    --accent: var(--sprout);
+    --accent: var(--green);
     --display: "Clash Display", "Satoshi", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
     --body: "Satoshi", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #07130d;
-      --surface: #0f241b;
-      --text: #e8f3ec;
-      --text-soft: #9db7a8;
-      --border: #1d3a2c;
-      --accent: #34d27a;
-      --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.35);
+      --bg: #0a0f1c; --surface: #121b2e; --text: #eef1f8; --muted: #9aa4bd;
+      --border: #263252; --accent: #3fc487;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 10px 30px rgba(0,0,0,0.35);
     }
   }
   :root[data-theme="light"] {
-    --bg: var(--canvas); --surface: var(--paper); --text: var(--ink);
-    --text-soft: var(--muted); --border: var(--line); --accent: var(--sprout);
-    --shadow: 0 1px 2px rgba(11,61,46,0.06), 0 8px 24px rgba(11,61,46,0.06);
+    --bg: var(--canvas); --surface: var(--paper); --text: #10192b; --muted: #5a6478;
+    --border: var(--line); --accent: var(--green);
+    --shadow: 0 1px 2px rgba(16,25,43,0.06), 0 8px 24px rgba(16,25,43,0.07);
   }
   :root[data-theme="dark"] {
-    --bg: #07130d; --surface: #0f241b; --text: #e8f3ec; --text-soft: #9db7a8;
-    --border: #1d3a2c; --accent: #34d27a;
+    --bg: #0a0f1c; --surface: #121b2e; --text: #eef1f8; --muted: #9aa4bd;
+    --border: #263252; --accent: #3fc487;
     --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 10px 30px rgba(0,0,0,0.35);
   }
 
   * { box-sizing: border-box; }
 
-  .cs {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--body);
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
+  .vr {
+    background: var(--bg); color: var(--text); font-family: var(--body);
+    line-height: 1.55; -webkit-font-smoothing: antialiased;
     padding: clamp(1rem, 4vw, 3.5rem) clamp(1rem, 5vw, 4rem) 4rem;
-    max-width: 1180px;
-    margin: 0 auto;
+    max-width: 1180px; margin: 0 auto;
   }
+  .vr h1, .vr h2, .vr h3 { font-family: var(--display); font-weight: 600; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+  .vr p { margin: 0; }
 
-  .cs h1, .cs h2, .cs h3 { font-family: var(--display); font-weight: 600; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
-  .cs p { margin: 0; }
+  .eyebrow { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--accent); }
+  .label { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: var(--muted); }
 
-  .eyebrow {
-    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
-    font-weight: 600; color: var(--accent);
-  }
-  .label {
-    font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
-    font-weight: 600; color: var(--text-soft);
-  }
-
-  /* ---- Masthead ---- */
-  .masthead {
-    display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
-    gap: 1.5rem; padding-bottom: 1.75rem; border-bottom: 1.5px solid var(--border);
-  }
+  /* Masthead */
+  .masthead { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.5rem; padding-bottom: 1.75rem; border-bottom: 1.5px solid var(--border); }
   .brandmark { display: flex; align-items: center; gap: 0.85rem; }
   .brandmark svg { width: 56px; height: 56px; flex: none; }
   .wordmark { font-family: var(--display); font-weight: 600; font-size: 2rem; letter-spacing: -0.02em; line-height: 1; }
@@ -82,26 +63,22 @@
   .masthead .meta { text-align: right; display: flex; flex-direction: column; gap: 0.35rem; }
   .masthead .meta .doc { font-family: var(--display); font-weight: 600; font-size: 1.05rem; }
 
-  /* ---- Hero / thesis ---- */
-  .thesis {
-    margin: 2.5rem 0 3rem; display: grid; gap: 1.5rem;
-    grid-template-columns: 1.4fr 1fr; align-items: stretch;
-  }
-  .thesis .lead h1 { font-size: clamp(1.8rem, 4vw, 2.9rem); line-height: 1.05; }
+  /* Thesis */
+  .thesis { margin: 2.5rem 0 3rem; display: grid; gap: 1.5rem; grid-template-columns: 1.4fr 1fr; align-items: stretch; }
+  .thesis .lead h1 { font-size: clamp(1.8rem, 4vw, 2.85rem); line-height: 1.06; }
   .thesis .lead .tagline { color: var(--accent); }
-  .thesis .lead p.body { margin-top: 1.1rem; color: var(--text-soft); max-width: 46ch; font-size: 1.02rem; }
+  .thesis .lead p.body { margin-top: 1.1rem; color: var(--muted); max-width: 48ch; font-size: 1.02rem; }
   .thesis .panel {
-    background: var(--pine); color: #eafaef; border-radius: 18px; padding: 1.6rem;
+    background: var(--ink); color: #eef3fb; border-radius: 18px; padding: 1.6rem;
     display: flex; flex-direction: column; justify-content: space-between; gap: 1rem;
-    background-image: radial-gradient(120% 90% at 100% 0%, rgba(163,230,53,0.18), transparent 55%);
+    background-image: radial-gradient(120% 90% at 100% 0%, rgba(217,164,65,0.16), transparent 55%);
   }
-  .thesis .panel .label { color: #8fd7a6; }
+  .thesis .panel .label { color: #8fa3c9; }
   .thesis .panel .stat { display: flex; flex-direction: column; gap: 0.15rem; }
-  .thesis .panel .stat b { font-family: var(--display); font-size: 1.9rem; font-weight: 600; color: #fff; line-height: 1; }
-  .thesis .panel .stat span { font-size: 0.85rem; color: #b9e6c8; }
+  .thesis .panel .stat b { font-family: var(--display); font-size: 1.7rem; font-weight: 600; color: #fff; line-height: 1; }
+  .thesis .panel .stat span { font-size: 0.83rem; color: #b7c4e0; }
   .thesis .panel .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
 
-  /* ---- Section scaffolding ---- */
   .grid { display: grid; gap: 1.25rem; }
   .cols-2 { grid-template-columns: 1fr 1fr; }
   .cols-3 { grid-template-columns: repeat(3, 1fr); }
@@ -110,109 +87,129 @@
   section.block > .head h2 { font-size: 1.35rem; }
   section.block > .head .num { font-family: var(--display); color: var(--accent); font-weight: 600; font-size: 0.95rem; }
 
-  .card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
-    padding: 1.4rem; box-shadow: var(--shadow);
-  }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.4rem; box-shadow: var(--shadow); }
   .card h3 { font-size: 1.02rem; margin-bottom: 0.5rem; }
-  .card p { color: var(--text-soft); font-size: 0.94rem; }
+  .card p { color: var(--muted); font-size: 0.94rem; }
 
-  /* ---- Logo showcase ---- */
+  /* Logo */
   .logo-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .logo-tile { border: 1px solid var(--border); border-radius: 16px; padding: 1.6rem; display: flex; align-items: center; justify-content: center; min-height: 130px; gap: 0.7rem; }
-  .logo-tile.on-pine { background: var(--pine); }
+  .logo-tile.on-ink { background: var(--ink); }
   .logo-tile.on-canvas { background: var(--canvas); }
   .logo-tile.on-white { background: #fff; }
   .logo-tile .wm { font-family: var(--display); font-weight: 600; font-size: 1.4rem; letter-spacing: -0.02em; }
   .logo-tile svg { width: 40px; height: 40px; }
-  .clearspace { color: var(--text-soft); font-size: 0.9rem; }
+  .clearspace { color: var(--muted); font-size: 0.9rem; }
 
-  /* ---- Colour ---- */
+  /* Colour */
   .swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.85rem; }
   .swatch { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--surface); }
   .swatch .chip { height: 84px; }
   .swatch .info { padding: 0.6rem 0.7rem 0.75rem; display: flex; flex-direction: column; gap: 0.1rem; }
   .swatch .info b { font-size: 0.86rem; font-family: var(--display); font-weight: 600; }
-  .swatch .info code { font-size: 0.74rem; color: var(--text-soft); font-family: ui-monospace, "SF Mono", Menlo, monospace; text-transform: uppercase; }
-  .swatch .info em { font-size: 0.72rem; color: var(--text-soft); font-style: normal; }
+  .swatch .info code { font-size: 0.74rem; color: var(--muted); font-family: ui-monospace, "SF Mono", Menlo, monospace; text-transform: uppercase; }
+  .swatch .info em { font-size: 0.72rem; color: var(--muted); font-style: normal; }
 
-  /* ---- Typography ---- */
+  /* Typography */
   .type-specimen { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
   .type-specimen .scale > div { border-bottom: 1px solid var(--border); padding: 0.55rem 0; display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
   .type-specimen .scale > div:last-child { border-bottom: none; }
   .type-specimen .scale .sample { font-family: var(--display); font-weight: 600; line-height: 1; letter-spacing: -0.02em; }
-  .type-specimen .scale .tag { font-size: 0.72rem; color: var(--text-soft); font-family: ui-monospace, Menlo, monospace; white-space: nowrap; }
+  .type-specimen .scale .tag { font-size: 0.72rem; color: var(--muted); font-family: ui-monospace, Menlo, monospace; white-space: nowrap; }
   .aa { font-family: var(--display); font-weight: 600; font-size: 4.5rem; line-height: 0.9; letter-spacing: -0.02em; }
 
-  /* ---- Voice ---- */
+  /* Voice */
   .voice { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .voice .do, .voice .dont { border-radius: 14px; padding: 1.2rem; border: 1px solid var(--border); }
-  .voice .do { background: color-mix(in srgb, var(--sprout) 10%, var(--surface)); }
+  .voice .do { background: color-mix(in srgb, var(--green) 10%, var(--surface)); }
   .voice .dont { background: color-mix(in srgb, #e5484d 8%, var(--surface)); }
-  .voice ul { margin: 0.6rem 0 0; padding-left: 1.1rem; color: var(--text-soft); font-size: 0.92rem; }
+  .voice ul { margin: 0.6rem 0 0; padding-left: 1.1rem; color: var(--muted); font-size: 0.92rem; }
   .voice li { margin-bottom: 0.35rem; }
   .voice .k { font-weight: 600; }
-  .voice .do .k { color: var(--sprout); }
+  .voice .do .k { color: var(--green); }
   .voice .dont .k { color: #e5484d; }
 
-  /* ---- Business model ---- */
+  /* How it works */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .step { border: 1px solid var(--border); border-radius: 16px; padding: 1.3rem; background: var(--surface); position: relative; }
+  .step .stepnum { font-family: var(--display); font-weight: 600; font-size: 0.85rem; color: var(--gold); }
+  .step h3 { margin-top: 0.5rem; font-size: 1.02rem; }
+  .step p { margin-top: 0.4rem; font-size: 0.9rem; color: var(--muted); }
+
+  /* Business model */
   .model { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-  .fee-card { background: var(--pine); color: #eafaef; border-radius: 18px; padding: 1.6rem; }
+  .fee-card { background: var(--ink); color: #eef3fb; border-radius: 18px; padding: 1.6rem; }
   .fee-card .big { font-family: var(--display); font-weight: 600; font-size: 3.2rem; line-height: 1; color: #fff; }
-  .fee-card .big small { font-size: 1.1rem; color: var(--lime); font-weight: 600; }
-  .fee-card p { color: #bfe6cd; font-size: 0.94rem; margin-top: 0.6rem; }
-  .fee-card .pill { display: inline-block; margin-top: 1rem; font-size: 0.75rem; letter-spacing: 0.05em; background: rgba(163,230,53,0.16); color: var(--lime); padding: 0.3rem 0.7rem; border-radius: 999px; font-weight: 600; }
+  .fee-card .big small { font-size: 1.05rem; color: var(--gold-bright); font-weight: 600; }
+  .fee-card p { color: #b7c4e0; font-size: 0.94rem; margin-top: 0.6rem; }
+  .fee-card .pill { display: inline-block; margin-top: 1rem; font-size: 0.75rem; letter-spacing: 0.05em; background: rgba(217,164,65,0.16); color: var(--gold-bright); padding: 0.3rem 0.7rem; border-radius: 999px; font-weight: 600; }
 
   .services { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
   .svc { border: 1px solid var(--border); border-radius: 14px; padding: 1rem 1.05rem; background: var(--surface); }
   .svc .dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; margin-right: 0.5rem; vertical-align: middle; }
   .svc b { font-family: var(--display); font-weight: 600; font-size: 0.98rem; }
-  .svc p { font-size: 0.85rem; color: var(--text-soft); margin-top: 0.3rem; }
+  .svc p { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
   .svc .retainer { font-size: 0.78rem; color: var(--accent); font-weight: 600; margin-top: 0.5rem; letter-spacing: 0.03em; }
 
-  /* ---- Availability ---- */
+  /* Capital network table */
+  .netrow { display: grid; grid-template-columns: 1.1fr 1fr 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--surface); }
+  .netrow > div { padding: 0.9rem 1.05rem; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+  .netrow.headrow > div { background: var(--ink); color: #cfd9ef; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; border-bottom: none; }
+  .netrow:last-child > div { border-bottom: none; }
+  .netrow .tag-anchor { color: var(--gold); font-weight: 600; }
+  .netrow .tag-open { color: var(--green); font-weight: 600; }
+
+  /* Sectors */
+  .sector-chip { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 0.45rem 0.9rem; font-size: 0.85rem; }
+  .sector-chip.flag { border-color: var(--green); color: var(--green); font-weight: 600; }
+  .sector-chip.excl { border-color: #e5484d; color: #e5484d; text-decoration: line-through; opacity: 0.75; }
+
+  /* Availability */
   .avail { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; }
   .dom { border: 1px solid var(--border); border-radius: 12px; padding: 0.9rem 1rem; background: var(--surface); display: flex; align-items: center; justify-content: space-between; }
   .dom code { font-family: ui-monospace, Menlo, monospace; font-size: 0.92rem; }
-  .badge-ok { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; color: var(--sprout); background: color-mix(in srgb, var(--sprout) 14%, transparent); padding: 0.22rem 0.55rem; border-radius: 999px; }
+  .badge-ok { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; color: var(--green); background: color-mix(in srgb, var(--green) 14%, transparent); padding: 0.22rem 0.55rem; border-radius: 999px; }
 
-  .note {
-    margin-top: 1.25rem; border-left: 3px solid var(--solar); background: color-mix(in srgb, var(--solar) 8%, var(--surface));
-    padding: 0.9rem 1.1rem; border-radius: 0 12px 12px 0; font-size: 0.9rem; color: var(--text-soft);
-  }
+  .note { margin-top: 1.25rem; border-left: 3px solid var(--gold); background: color-mix(in srgb, var(--gold) 8%, var(--surface)); padding: 0.9rem 1.1rem; border-radius: 0 12px 12px 0; font-size: 0.9rem; color: var(--muted); }
   .note b { color: var(--text); }
 
-  .foot { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1.5px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; color: var(--text-soft); font-size: 0.85rem; }
+  .foot { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1.5px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; color: var(--muted); font-size: 0.85rem; }
 
   @media (max-width: 860px) {
     .thesis, .type-specimen, .voice, .model { grid-template-columns: 1fr; }
-    .cols-2, .cols-3 { grid-template-columns: 1fr; }
+    .cols-2, .cols-3, .steps { grid-template-columns: 1fr; }
     .swatches { grid-template-columns: repeat(3, 1fr); }
     .logo-row { grid-template-columns: 1fr; }
     .avail { grid-template-columns: 1fr; }
     .services { grid-template-columns: 1fr; }
+    .netrow { grid-template-columns: 1fr; }
+    .netrow > div { border-bottom: none; padding: 0.5rem 1.05rem; }
+    .netrow.headrow { display: none; }
+    .netrow:not(.headrow) { padding: 0.6rem 0; }
     .masthead .meta { text-align: left; }
   }
 </style>
 
-<div class="cs">
+<div class="vr">
   <!-- Masthead -->
   <header class="masthead">
     <div class="brandmark">
-      <svg viewBox="0 0 100 100" role="img" aria-label="ClimaSeed mark">
-        <circle cx="50" cy="50" r="46" fill="none" stroke="var(--sprout)" stroke-width="4" stroke-dasharray="4 246" stroke-dashoffset="-6"/>
-        <circle cx="50" cy="50" r="46" fill="none" stroke="var(--sprout)" stroke-width="4" stroke-linecap="round" pathLength="100" stroke-dasharray="72 100" stroke-dashoffset="18"/>
-        <circle cx="50" cy="30" r="6" fill="var(--solar)"/>
-        <path d="M50 78 V52" stroke="var(--forest)" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <path d="M50 58 C50 45 60 39 73 40 C72 53 62 60 50 58 Z" fill="var(--sprout)"/>
-        <path d="M50 64 C50 52 41 46 29 48 C31 60 40 66 50 64 Z" fill="var(--forest)"/>
+      <svg viewBox="0 0 100 100" role="img" aria-label="Ventroot mark">
+        <path d="M50 46 C42 36 44 24 50 14 C56 24 58 36 50 46 Z" fill="var(--gold)"/>
+        <circle cx="50" cy="52" r="5.5" fill="var(--ink)"/>
+        <path d="M50 56 C50 66 38 70 26 79" stroke="var(--green)" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path d="M50 56 C50 70 50 76 50 89" stroke="var(--green)" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path d="M50 56 C50 66 62 70 74 79" stroke="var(--green)" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <circle cx="26" cy="79" r="4" fill="var(--green)"/>
+        <circle cx="50" cy="89" r="4.5" fill="var(--gold)"/>
+        <circle cx="74" cy="79" r="4" fill="var(--green)"/>
       </svg>
-      <div class="wordmark">Clima<span>Seed</span></div>
+      <div class="wordmark">Vent<span>root</span></div>
     </div>
     <div class="meta">
       <span class="eyebrow">Brand Guidelines</span>
-      <span class="doc">Identity &amp; Model — v0.1</span>
-      <span class="label">Draft · Sustainability venture platform</span>
+      <span class="doc">Identity &amp; Model — v0.2</span>
+      <span class="label">Draft · Multi-sector founder &amp; capital network</span>
     </div>
   </header>
 
@@ -220,85 +217,107 @@
   <div class="thesis">
     <div class="lead">
       <span class="eyebrow">Positioning</span>
-      <h1 style="margin-top:0.6rem;">Where climate ideas <span class="tagline">take root.</span></h1>
+      <h1 style="margin-top:0.6rem;">Where founders <span class="tagline">put down roots.</span></h1>
       <p class="body">
-        ClimaSeed is the launchpad for early-stage sustainability founders. We connect
-        credible climate ideas with seed capital — and back them with a bench of vetted
-        operators in finance, law, marketing and fractional leadership — so a good idea
-        for the planet becomes a fundable, buildable company.
+        Ventroot is the launchpad and capital network for ambitious founders — across sectors.
+        We vet real traction, get companies raise-ready with a bench of operators in finance,
+        law, marketing and leadership, and route them into a growing network of investors,
+        anchored by a partner writing $10M+ growth cheques.
       </p>
     </div>
     <div class="panel">
       <span class="label">Model at a glance</span>
       <div class="stats">
-        <div class="stat"><b>5%</b><span>Success fee on funds raised</span></div>
-        <div class="stat"><b>0%</b><span>Equity taken — never dilutive</span></div>
-        <div class="stat"><b>Retainer</b><span>Monthly for expert services</span></div>
-        <div class="stat"><b>Free</b><span>To register your idea</span></div>
+        <div class="stat"><b>$10M+</b><span>Anchor investor minimum cheque</span></div>
+        <div class="stat"><b>5%</b><span>Founder-paid commission on capital raised</span></div>
+        <div class="stat"><b>0%</b><span>Equity taken by Ventroot itself</span></div>
+        <div class="stat"><b>All sectors*</b><span>*except hospitality on the anchor track</span></div>
       </div>
-      <span style="font-size:0.8rem;color:#9fd9b3;">Clean, aligned, founder-first.</span>
+      <span style="font-size:0.8rem;color:#9fb3d9;">Broad by design. Curated by diligence.</span>
     </div>
   </div>
 
+  <!-- How it works -->
+  <section class="block">
+    <div class="head"><span class="num">01</span><h2>How the network works</h2></div>
+    <div class="steps">
+      <div class="step">
+        <span class="stepnum">Step 1</span>
+        <h3>Register &amp; get vetted</h3>
+        <p>Founders submit their venture — any sector. Ventroot screens for founder quality and real traction, not just an idea, before anything moves forward.</p>
+      </div>
+      <div class="step">
+        <span class="stepnum">Step 2</span>
+        <h3>Get raise-ready</h3>
+        <p>The services bouquet — CA, legal, marketing, fractional COO — preps financials, cap table and story so the company can credibly absorb a large cheque.</p>
+      </div>
+      <div class="step">
+        <span class="stepnum">Step 3</span>
+        <h3>Matched to capital</h3>
+        <p>Routed into the right relationship: the anchor investor for growth-ready or traction-backed deals ≥$10M, or a partner investor for earlier stage and other sectors.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Logo -->
   <section class="block">
-    <div class="head"><span class="num">01</span><h2>Logo &amp; mark</h2></div>
+    <div class="head"><span class="num">02</span><h2>Logo &amp; mark</h2></div>
     <div class="grid cols-2" style="align-items:start;">
       <div>
         <div class="logo-row">
           <div class="logo-tile on-canvas">
-            <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="none" stroke="var(--sprout)" stroke-width="4" stroke-linecap="round" pathLength="100" stroke-dasharray="72 100" stroke-dashoffset="18"/><circle cx="50" cy="30" r="6" fill="var(--solar)"/><path d="M50 78 V52" stroke="var(--forest)" stroke-width="5" stroke-linecap="round"/><path d="M50 58 C50 45 60 39 73 40 C72 53 62 60 50 58 Z" fill="var(--sprout)"/><path d="M50 64 C50 52 41 46 29 48 C31 60 40 66 50 64 Z" fill="var(--forest)"/></svg>
+            <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 46 C42 36 44 24 50 14 C56 24 58 36 50 46 Z" fill="var(--gold)"/><circle cx="50" cy="52" r="5.5" fill="var(--ink)"/><path d="M50 56 C50 66 38 70 26 79" stroke="var(--green)" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M50 56 C50 70 50 76 50 89" stroke="var(--green)" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M50 56 C50 66 62 70 74 79" stroke="var(--green)" stroke-width="4" stroke-linecap="round" fill="none"/><circle cx="26" cy="79" r="4" fill="var(--green)"/><circle cx="50" cy="89" r="4.5" fill="var(--gold)"/><circle cx="74" cy="79" r="4" fill="var(--green)"/></svg>
           </div>
           <div class="logo-tile on-white">
-            <span class="wm" style="color:var(--pine)">Clima<span style="color:var(--sprout)">Seed</span></span>
+            <span class="wm" style="color:var(--ink)">Vent<span style="color:var(--green)">root</span></span>
           </div>
-          <div class="logo-tile on-pine">
-            <span class="wm" style="color:#fff">Clima<span style="color:var(--lime)">Seed</span></span>
+          <div class="logo-tile on-ink">
+            <span class="wm" style="color:#fff">Vent<span style="color:var(--gold-bright)">root</span></span>
           </div>
         </div>
         <p class="clearspace" style="margin-top:0.9rem;">
-          The mark is a <b>sprout breaking from a seed-ring</b> — the arc is the funding cycle,
-          the amber node is capital, the two leaves are growth and impact. Use the full lockup
-          where space allows; the standalone ring-sprout works as an app icon and favicon.
+          The mark encodes the name literally: a <b>flame above</b> — venture, ignition, upward
+          growth — meets a <b>root system below</b> — foundation, branching into a network. The
+          gold root-tip is the anchor deal; the green tips are the wider investor network across sectors.
         </p>
       </div>
       <div class="grid" style="gap:1rem;">
-        <div class="card"><h3>Clear space &amp; sizing</h3><p>Keep clear space equal to the height of the seed node on all sides. Minimum wordmark width 96px on screen; never render the mark below 20px.</p></div>
-        <div class="card"><h3>Don't</h3><p>Don't recolour outside the palette, stretch the mark, add drop shadows, rotate the sprout, or place the green wordmark on busy photography without a scrim.</p></div>
+        <div class="card"><h3>Clear space &amp; sizing</h3><p>Keep clear space equal to the height of the central node on all sides. Minimum wordmark width 96px on screen; never render the mark below 20px.</p></div>
+        <div class="card"><h3>Don't</h3><p>Don't recolour outside the palette, stretch the mark, add drop shadows, flip the flame/root orientation, or place the mark on busy photography without a scrim.</p></div>
       </div>
     </div>
   </section>
 
   <!-- Colour -->
   <section class="block">
-    <div class="head"><span class="num">02</span><h2>Colour</h2></div>
-    <p class="card" style="margin-bottom:1.1rem;color:var(--text-soft);">The system tells the ClimaSeed story: <b style="color:var(--text)">seed → soil → sprout → sun</b>. Pine anchors, Sprout leads, Solar signals capital and optimism. Lime is an energy highlight used sparingly; neutrals are green-biased, never a flat grey.</p>
+    <div class="head"><span class="num">03</span><h2>Colour</h2></div>
+    <p class="card" style="margin-bottom:1.1rem;color:var(--muted);">The system balances <b style="color:var(--text)">capital-markets credibility</b> with <b style="color:var(--text)">organic growth</b>. Ink anchors and signals trust; Gold marks capital and deals; Green (a deliberate nod to Ventroot's sustainability roots) marks the wider network. Neutrals are warm, not tinted to any one sector.</p>
     <div class="swatches">
-      <div class="swatch"><div class="chip" style="background:#0b3d2e"></div><div class="info"><b>Pine</b><code>#0B3D2E</code><em>Anchor / dark ground</em></div></div>
-      <div class="swatch"><div class="chip" style="background:#14532d"></div><div class="info"><b>Forest</b><code>#14532D</code><em>Depth / secondary</em></div></div>
-      <div class="swatch"><div class="chip" style="background:#22c55e"></div><div class="info"><b>Sprout</b><code>#22C55E</code><em>Primary accent</em></div></div>
-      <div class="swatch"><div class="chip" style="background:#a3e635"></div><div class="info"><b>Lime</b><code>#A3E635</code><em>Energy · sparing</em></div></div>
-      <div class="swatch"><div class="chip" style="background:#f4a621"></div><div class="info"><b>Solar</b><code>#F4A621</code><em>Capital · optimism</em></div></div>
-      <div class="swatch"><div class="chip" style="background:#f5faf3;border-bottom:1px solid var(--line)"></div><div class="info"><b>Canvas</b><code>#F5FAF3</code><em>Light ground</em></div></div>
+      <div class="swatch"><div class="chip" style="background:#10192b"></div><div class="info"><b>Ink</b><code>#10192B</code><em>Anchor / trust</em></div></div>
+      <div class="swatch"><div class="chip" style="background:#1c2c46"></div><div class="info"><b>Ink Soft</b><code>#1C2C46</code><em>Depth / secondary</em></div></div>
+      <div class="swatch"><div class="chip" style="background:#2fa36b"></div><div class="info"><b>Green</b><code>#2FA36B</code><em>Network · growth</em></div></div>
+      <div class="swatch"><div class="chip" style="background:#d9a441"></div><div class="info"><b>Gold</b><code>#D9A441</code><em>Capital · deals</em></div></div>
+      <div class="swatch"><div class="chip" style="background:#8a5a34"></div><div class="info"><b>Umber</b><code>#8A5A34</code><em>Root · grounding, sparing</em></div></div>
+      <div class="swatch"><div class="chip" style="background:#f7f5f1;border-bottom:1px solid var(--line)"></div><div class="info"><b>Canvas</b><code>#F7F5F1</code><em>Light ground</em></div></div>
     </div>
   </section>
 
   <!-- Typography -->
   <section class="block">
-    <div class="head"><span class="num">03</span><h2>Typography</h2></div>
+    <div class="head"><span class="num">04</span><h2>Typography</h2></div>
     <div class="type-specimen">
       <div class="card">
         <span class="label">Display — Clash Display</span>
         <div class="aa" style="margin:0.5rem 0 0.4rem;">Aa</div>
-        <p style="color:var(--text-soft);font-size:0.9rem;">Confident and geometric with a slight warmth. Headlines, wordmark, big numbers. Weights 500–600, tight tracking (−0.02em).</p>
+        <p style="color:var(--muted);font-size:0.9rem;">Confident and geometric with a slight warmth — reads equally well next to a term sheet or a founder story. Headlines, wordmark, big numbers. Weights 500–600, tight tracking (−0.02em).</p>
         <hr style="border:none;border-top:1px solid var(--border);margin:1rem 0;">
         <span class="label">Body — Satoshi</span>
         <p style="font-size:1.02rem;margin-top:0.5rem;">Clean modern grotesque for running text, UI and captions. Regular 400 / Medium 500. Body set near 65 characters wide for comfortable reading.</p>
       </div>
       <div class="card scale">
-        <div><span class="sample" style="font-size:2.6rem;">Take root</span><span class="tag">Display / 42</span></div>
-        <div><span class="sample" style="font-size:1.7rem;">Fund the future</span><span class="tag">H2 / 27</span></div>
-        <div><span class="sample" style="font-size:1.15rem;">Vetted operators</span><span class="tag">H3 / 18</span></div>
+        <div><span class="sample" style="font-size:2.5rem;">Put down roots</span><span class="tag">Display / 40</span></div>
+        <div><span class="sample" style="font-size:1.7rem;">Get raise-ready</span><span class="tag">H2 / 27</span></div>
+        <div><span class="sample" style="font-size:1.15rem;">Anchor &amp; partner investors</span><span class="tag">H3 / 18</span></div>
         <div><span style="font-family:var(--body);font-size:1rem;">Body copy for founders &amp; partners.</span><span class="tag">Body / 16</span></div>
         <div><span class="label">Overline label</span><span class="tag">Label / 11 · 0.16em</span></div>
       </div>
@@ -308,24 +327,24 @@
 
   <!-- Voice -->
   <section class="block">
-    <div class="head"><span class="num">04</span><h2>Voice &amp; tone</h2></div>
+    <div class="head"><span class="num">05</span><h2>Voice &amp; tone</h2></div>
     <div class="voice">
       <div class="do">
-        <span class="k">Grounded &amp; optimistic — say</span>
+        <span class="k">Grounded &amp; direct — say</span>
         <ul>
-          <li>“We earn when you raise. No equity, ever.”</li>
-          <li>“Real operators, not just introductions.”</li>
-          <li>“Register your idea in three minutes.”</li>
+          <li>“We get paid a commission when you raise. No cash upfront.”</li>
+          <li>“Real operators and real capital, not just introductions.”</li>
+          <li>“One network — every sector but hospitality on the anchor track.”</li>
           <li>Plain, specific, credible. Numbers over adjectives.</li>
         </ul>
       </div>
       <div class="dont">
         <span class="k">Avoid</span>
         <ul>
-          <li>Hype and greenwashing (“revolutionary”, “world-changing”).</li>
+          <li>Hype (“revolutionary”, “unicorn factory”).</li>
           <li>Jargon or finance-speak that excludes first-time founders.</li>
-          <li>Guarantees about funding outcomes.</li>
-          <li>Vague impact claims with no measure behind them.</li>
+          <li>Guarantees about funding outcomes or valuations.</li>
+          <li>Implying Ventroot itself is an investor — it arranges, it doesn't invest.</li>
         </ul>
       </div>
     </div>
@@ -333,40 +352,82 @@
 
   <!-- Business model -->
   <section class="block">
-    <div class="head"><span class="num">05</span><h2>Business model</h2></div>
+    <div class="head"><span class="num">06</span><h2>Business model</h2></div>
     <div class="model">
       <div class="fee-card">
-        <span class="label" style="color:#8fd7a6;">Funding facilitation</span>
-        <div class="big" style="margin-top:0.5rem;">5%<small> success fee</small></div>
-        <p>Charged only on capital successfully raised through ClimaSeed. <b style="color:#fff;">No equity taken</b> — we stay aligned with founders and keep the cap table clean.</p>
+        <span class="label" style="color:#8fa3c9;">Funding facilitation</span>
+        <div class="big" style="margin-top:0.5rem;">5%<small> founder-paid commission</small></div>
+        <p>Charged to the company on capital successfully raised through Ventroot — paid only on close. <b style="color:#fff;">Ventroot takes no equity of its own</b>; the investor's equity stake is a separate matter between them and the company.</p>
         <span class="pill">Registering an idea is always free</span>
       </div>
       <div>
         <span class="label" style="margin-bottom:0.7rem;display:block;">Services bouquet — monthly retainer</span>
         <div class="services">
-          <div class="svc"><b><span class="dot" style="background:var(--sprout)"></span>Finance &amp; Compliance</b><p>CA-led: accounting, tax, cap table, MIS, fundraise readiness.</p><div class="retainer">Monthly retainer</div></div>
-          <div class="svc"><b><span class="dot" style="background:var(--solar)"></span>Legal</b><p>Incorporation, contracts, IP, term sheets, data &amp; ESG compliance.</p><div class="retainer">Monthly retainer</div></div>
-          <div class="svc"><b><span class="dot" style="background:var(--forest)"></span>Marketing &amp; Growth</b><p>Brand, GTM, performance &amp; content from an in-house team.</p><div class="retainer">Monthly retainer</div></div>
-          <div class="svc"><b><span class="dot" style="background:var(--lime)"></span>Fractional COO</b><p>Experienced operator to run ops, hiring &amp; execution part-time.</p><div class="retainer">Monthly retainer</div></div>
+          <div class="svc"><b><span class="dot" style="background:var(--green)"></span>Finance &amp; Compliance</b><p>CA-led: accounting, tax, cap table, MIS, raise readiness.</p><div class="retainer">Monthly retainer</div></div>
+          <div class="svc"><b><span class="dot" style="background:var(--gold)"></span>Legal</b><p>Incorporation, contracts, IP, term sheets, compliance.</p><div class="retainer">Monthly retainer</div></div>
+          <div class="svc"><b><span class="dot" style="background:var(--ink-soft)"></span>Marketing &amp; Growth</b><p>Brand, GTM, performance &amp; content from an in-house team.</p><div class="retainer">Monthly retainer</div></div>
+          <div class="svc"><b><span class="dot" style="background:var(--umber)"></span>Fractional COO</b><p>Experienced operator to run ops, hiring &amp; execution part-time.</p><div class="retainer">Monthly retainer</div></div>
         </div>
       </div>
     </div>
     <div class="note">
-      <b>Compliance note:</b> success-fee facilitation of investment is a regulated activity in most
-      jurisdictions (broker/intermediary rules — e.g. SEBI in India, broker-dealer rules in the US).
-      Before charging the 5% fee, structure it through a licensed intermediary or with securities
-      counsel. Services revenue (retainers) is unaffected and can launch immediately.
+      <b>Compliance note:</b> a founder-paid, success-contingent commission on a capital raise is
+      regulated intermediary activity in most jurisdictions (in India, SEBI merchant-banker /
+      investment-adviser rules; broker-dealer rules in the US). Before charging the 5% fee on any
+      deal, route it through a licensed entity — either register directly or partner with a
+      SEBI-registered merchant banker — so the fee is enforceable and the deal is clean. Services
+      revenue (retainers) carries no such constraint and can launch immediately.
     </div>
+  </section>
+
+  <!-- Capital network -->
+  <section class="block">
+    <div class="head"><span class="num">07</span><h2>Capital network</h2></div>
+    <div class="netrow headrow">
+      <div>Relationship</div><div>Cheque size</div><div>Stage</div><div>Sector scope</div>
+    </div>
+    <div class="netrow">
+      <div><span class="tag-anchor">Anchor investor</span></div>
+      <div>$10M minimum</div>
+      <div>Growth-ready; strong-traction early bets considered</div>
+      <div>All sectors except hospitality</div>
+    </div>
+    <div class="netrow">
+      <div><span class="tag-open">Partner investors</span></div>
+      <div>Open</div>
+      <div>Earlier stage, smaller cheque</div>
+      <div>Any sector, incl. hospitality</div>
+    </div>
+    <p class="clearspace" style="margin-top:0.9rem;">Non-exclusive by design: the anchor relationship is Ventroot's foundation, not its ceiling. Every registered company is routed to whichever relationship in the network fits its stage, sector and readiness.</p>
+  </section>
+
+  <!-- Sectors -->
+  <section class="block">
+    <div class="head"><span class="num">08</span><h2>Sectors</h2></div>
+    <div class="grid" style="gap:0.6rem;">
+      <div style="display:flex;flex-wrap:wrap;gap:0.6rem;">
+        <span class="sector-chip flag">Sustainability &amp; Climate — flagship vertical</span>
+        <span class="sector-chip">Fintech</span>
+        <span class="sector-chip">Healthtech</span>
+        <span class="sector-chip">Enterprise SaaS</span>
+        <span class="sector-chip">Consumer</span>
+        <span class="sector-chip">Deep tech</span>
+        <span class="sector-chip">Agritech</span>
+        <span class="sector-chip">Mobility</span>
+        <span class="sector-chip excl">Hospitality — anchor-track exclusion</span>
+      </div>
+    </div>
+    <p class="clearspace" style="margin-top:0.9rem;">Ventroot is broad by design. Sustainability remains the founding, flagship vertical; every other sector is open on the network — hospitality is excluded only on the anchor investor's track, and can still be routed to partner investors.</p>
   </section>
 
   <!-- Name & availability -->
   <section class="block">
-    <div class="head"><span class="num">06</span><h2>Name &amp; availability</h2></div>
-    <p class="card" style="margin-bottom:1.1rem;color:var(--text-soft);"><b style="color:var(--text)">ClimaSeed</b> = <em>Clima</em> (climate) + <em>Seed</em> (seed funding &amp; growth). Short, pronounceable, on-theme, and no existing company or prominent trademark surfaced in a first-pass search.</p>
+    <div class="head"><span class="num">09</span><h2>Name &amp; availability</h2></div>
+    <p class="card" style="margin-bottom:1.1rem;color:var(--muted);"><b style="color:var(--text)">Ventroot</b> = <em>Venture</em> (sector-neutral, capital, risk) + <em>Root</em> (foundation, network, growth). Coined, ownable, and — rare for a two-syllable brandable name — the bare <code>.com</code> is free. No existing company or prominent trademark surfaced in a first-pass search.</p>
     <div class="avail">
-      <div class="dom"><code>climaseed.com</code><span class="badge-ok">AVAILABLE</span></div>
-      <div class="dom"><code>climaseed.in</code><span class="badge-ok">AVAILABLE</span></div>
-      <div class="dom"><code>climaseed.vc</code><span class="badge-ok">AVAILABLE</span></div>
+      <div class="dom"><code>ventroot.com</code><span class="badge-ok">AVAILABLE</span></div>
+      <div class="dom"><code>ventroot.co</code><span class="badge-ok">AVAILABLE</span></div>
+      <div class="dom"><code>ventroot.in</code><span class="badge-ok">AVAILABLE</span></div>
     </div>
     <div class="note">
       <b>Before you commit:</b> domain checks above are live (RDAP) and current. Formal
@@ -377,7 +438,7 @@
   </section>
 
   <footer class="foot">
-    <span>ClimaSeed — Brand Guidelines v0.1 · Draft for review</span>
-    <span>Where climate ideas take root.</span>
+    <span>Ventroot — Brand Guidelines v0.2 · Draft for review</span>
+    <span>Where founders put down roots.</span>
   </footer>
 </div>
