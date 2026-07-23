@@ -1,0 +1,9 @@
+name,sector,stage,country,last_valuation,prev_valuation,months_since_last_round,arr,arr_prev,gross_margin,net_revenue_retention,monthly_net_burn,cash_on_hand,founder_ownership_pct
+QuickCart,Quick-commerce,C,India,3000,3000,20,900,500,0.22,1.05,60,300,0.18
+LedgerCloud,B2B SaaS,B,India,2500,1500,10,350,210,0.80,1.22,8,350,0.35
+MediBridge,Healthtech,D,India,1200,5000,8,1100,950,0.30,0.98,45,200,0.10
+EduSpark,Edtech,E,India,2000,18000,26,1500,1750,0.35,0.85,90,250,0.14
+PayWave,Fintech,D,India,8000,4500,6,700,480,0.60,1.15,20,900,0.42
+AgriLink,Agritech,B,India,900,850,15,200,160,0.42,1.05,12,130,0.30
+LogiPod,Logistics SaaS,C,India,3200,2000,12,480,270,0.72,1.30,15,320,0.28
+StyleStack,D2C Fashion,C,India,700,1100,14,420,320,0.38,1.00,22,150,0.25

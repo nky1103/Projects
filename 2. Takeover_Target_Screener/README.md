@@ -96,10 +96,16 @@ The CSV header must match the `Company` field names; see
 
 | File | Purpose |
 |------|---------|
-| `takeover_screener.py` | Core algorithm (`Company`, `TakeoverScreener`, scoring) |
-| `demo.py` | Loads a CSV and prints a ranked report with factor breakdowns |
+| `takeover_screener.py` | Core algorithm for **public companies** (`Company`, `TakeoverScreener`) |
+| `demo.py` | Loads a company CSV and prints a ranked report with factor breakdowns |
 | `sample_companies.csv` | Example universe of 12 companies |
-| `test_takeover_screener.py` | Unit tests (`python -m unittest`) |
+| `real_world_india_cement.csv` | Real Indian cement peer group (featured example) |
+| `real_world_staples.csv` | Real US packaged-food peer group (secondary example) |
+| `test_takeover_screener.py` | Unit tests for the public-company model |
+| `startup_screener.py` | Separate model for **startups** (`Startup`, `StartupScreener`) |
+| `startup_demo.py` | Loads a startup CSV and prints a ranked report |
+| `sample_startups.csv` | Illustrative Indian startup cohort |
+| `test_startup_screener.py` | Unit tests for the startup model |
 
 ## Tests
 
@@ -165,6 +171,67 @@ Result:
 > real_world_staples.csv`. There the model correctly ranks trust-controlled
 > **Hershey** dead last (it blocked Mondelez's 2016 bid) and floats cheap,
 > widely-held **Conagra/Campbell's** to the top.
+
+## Startups are a different model
+
+The public-company model above **does not transfer to startups** — a private,
+venture-backed company has no share price, no P/E or EV/EBITDA, usually negative
+EBITDA, and no debt capacity to lever. So there's a separate screener,
+[`startup_screener.py`](startup_screener.py), that keeps the same
+missing-data-tolerant scoring engine but swaps in startup-appropriate factors:
+
+| Factor (weight) | Signal that a startup is a ripe target |
+|---|---|
+| **Sale pressure** (25%) | Short runway + a down/flat + a stale last round = a motivated seller |
+| **Growth** (18%) | High ARR growth = strategically attractive |
+| **Unit economics** (15%) | Gross margin, burn multiple, Rule of 40 = a clean, cheap-to-integrate asset |
+| **Valuation** (15%) | Low revenue multiple vs. cohort = affordable |
+| **Retention** (10%) | High net revenue retention = sticky |
+| **Traction** (10%) | Enough ARR to matter, not so much it's unaffordable (a sweet-spot) |
+| **Investor pressure** (7%) | Low founder ownership / VC-heavy cap table wants an exit |
+
+The blend rewards the **sweet spot** — a startup that is both a *decent asset*
+and *available*. A well-funded high-flyer scores mid (desirable but not for
+sale); a zombie scores mid (available but not worth buying).
+
+```bash
+python startup_demo.py                 # runs the illustrative cohort below
+python startup_demo.py my_cohort.csv   # your own metrics (same columns)
+```
+
+On the illustrative Indian cohort in
+[`sample_startups.csv`](sample_startups.csv):
+
+| # | Startup | Sector | Score | Real-world analogue |
+|---|---------|--------|------:|---------------------|
+| 1 | QuickCart | Quick-commerce | 62.7 | Cash-burning q-commerce with real scale → **Blinkit (bought by Zomato, 2022)** / Dunzo |
+| 2 | MediBridge | Healthtech | 56.9 | Deep down-round, cheap, diluted founders → **PharmEasy**-style |
+| 3 | EduSpark | Edtech | 56.5 | −89% down-round, declining, ~3mo runway → **Byju's**-style asset sale |
+| 4 | LogiPod | Logistics SaaS | 56.4 | Strong, efficient, mildly pressured |
+| 5 | StyleStack | D2C Fashion | 56.0 | Down-round + short runway + decent scale |
+| 6 | AgriLink | Agritech | 47.6 | Middling on every axis |
+| 7 | LedgerCloud | B2B SaaS | 47.5 | Excellent asset but well-funded — not *available* |
+| 8 | **PayWave** | Fintech | **36.1** | Well-capitalised, up-round, founder-controlled → **not for sale** |
+
+**Why this is a good check:**
+
+- **The distressed-but-real-asset names top the list** (QuickCart, MediBridge,
+  EduSpark) — exactly the profile of startups that actually get acquired or
+  acqui-hired in a downturn. The clearest confirming case is **Blinkit**: a
+  cash-strapped quick-commerce startup with genuine scale, bought by Zomato.
+- **The healthy, well-funded high-flyer (PayWave) ranks last** — a long runway,
+  an up-round and a founder-controlled cap table mean it's *desirable but not
+  available*. Correctly *not* ripe.
+- **A great asset that isn't for sale scores only mid** (LedgerCloud) — strong
+  economics and retention, but 40+ months of runway and an up-round remove the
+  motivation. Attractiveness alone isn't enough; the model demands availability.
+
+> **Data honesty:** unlike the public-company examples, this startup cohort is
+> **illustrative** — built to mirror real Indian outcomes, not scraped from
+> filings. Granular startup metrics (ARR, burn, runway, NRR, cap table) are
+> private and not reliably public, so plug in your own deal-flow / data-room
+> numbers (or a data provider's) for a real screen. The `sample_startups.csv`
+> columns show exactly what the model needs.
 
 ## Caveats
 
