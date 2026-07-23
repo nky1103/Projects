@@ -9,14 +9,17 @@ and explains *why* each company scored the way it did.
 It is pure Python (standard library only — no pandas/numpy), so it runs
 anywhere.
 
-> **This project is now a small suite of three screeners** sharing one scoring
-> engine, because "ripe for takeover" means different things for different
-> targets:
+> **This project is now a small suite of screeners** sharing one scoring engine,
+> because "ripe for takeover" — and "worth investing in" — mean different things
+> for different targets:
 > 1. **Public companies** — `takeover_screener.py` (this page's main model).
 > 2. **Startup acquisition targets** — `startup_screener.py`
 >    ([jump](#startups-are-a-different-model)).
-> 3. **Startup investment sourcing** ("who needs funding & is worth backing") —
->    `investment_screener.py` ([jump](#investing-in-startups-the-sourcing-screener)).
+> 3. **Startup investment sourcing** (growth-stage) — `investment_screener.py`
+>    ([jump](#investing-in-startups-the-sourcing-screener)).
+> 4. ⭐ **Early-growth, unlisted startups (Seed–Series B)** — `early_stage_screener.py`,
+>    the **current focus**, blending qualitative + financial + alt-data layers
+>    ([jump](#-primary-focus-early-growth-unlisted-startups-seed--series-b)).
 
 ## The idea
 
@@ -115,11 +118,15 @@ The CSV header must match the `Company` field names; see
 | `startup_demo.py` | Loads a startup CSV and prints a ranked report |
 | `sample_startups.csv` | Illustrative Indian startup cohort |
 | `test_startup_screener.py` | Unit tests for the startup acquisition model |
-| `investment_screener.py` | Model for **startup investment** sourcing (`Venture`, `InvestmentScreener`) |
+| `investment_screener.py` | Model for growth-stage **investment** sourcing (`Venture`, `InvestmentScreener`) |
 | `investment_demo.py` | Prints a sourcing list; `raising` arg filters to who needs funding |
-| `sample_ventures.csv` | Illustrative cohort with quality fields populated |
+| `sample_ventures.csv` | Illustrative growth-stage cohort with quality fields |
 | `real_world_india_startups.csv` | 8 real Indian startups, public FY25 data |
 | `test_investment_screener.py` | Unit tests for the investment model |
+| `early_stage_screener.py` | ⭐ **Primary** — Seed–Series B model (`EarlyVenture`, `EarlyStageScreener`) |
+| `early_stage_demo.py` | Prints the three-layer (Qual/Fin/Alt) ranked report |
+| `sample_early_startups.csv` | Illustrative Seed–Series B cohort (all three layers) |
+| `test_early_stage_screener.py` | Unit tests for the early-stage model |
 
 ## Tests
 
@@ -311,6 +318,65 @@ founder's deck). The illustrative `sample_ventures.csv` shows the model with
 those fields populated; feed it your real deal-flow numbers for a decision-grade
 screen. Reported figures were sourced mid-2026 from Entrackr, Inc42, Business
 Standard and Tracxn coverage of MCA filings.
+
+## ⭐ Primary focus: early-growth, unlisted startups (Seed – Series B)
+
+This is the current focus of the project. At Seed–Series B the financials are
+thin — many startups are pre-revenue or sub-scale, with no meaningful multiples
+or retention history — so a financials-only screen is nearly blind. Real
+early-stage investing bets on **team, market, product and momentum**. So
+[`early_stage_screener.py`](early_stage_screener.py) blends **three layers**,
+weighted the way seed / Series-A investors actually weight them:
+
+| Layer (~weight) | Factors | Source |
+|---|---|---|
+| **Qualitative** (~50%) | Team & founders, Market, Product & moat | analyst 1–5 scorecard |
+| **Financial** (~30%) | Traction & growth, Capital efficiency & runway, Valuation/entry | deck / data room |
+| **Alt-data** (~20%) | Hiring momentum, Digital momentum (app/web), Sentiment | public signals |
+
+Because everything is optional and the weights renormalise, a **pre-revenue**
+startup is scored on what it *does* have (team, market, hiring signal) rather
+than punished for empty financial cells — exactly how a seed deal is judged.
+
+```bash
+python early_stage_demo.py                       # illustrative Seed–Series B cohort
+python early_stage_demo.py my_cohort.csv         # your own cohort
+```
+
+On the illustrative cohort, the report shows a per-layer breakdown:
+
+| # | Startup | Stage | Qual | Fin | Alt | Overall | Verdict |
+|---|---------|-------|-----:|----:|----:|--------:|---------|
+| 1 | NeuraForge | Series A | 94 | 72 | 95 | 87.2 | High conviction |
+| 2 | **DataMint** | Pre-A | 86 | 62 | 87 | 80.0 | High conviction |
+| 3 | CargoGrid | Series B | 75 | 73 | 79 | 75.3 | High conviction |
+| … | | | | | | | |
+| 8 | QuickBite | Seed | 44 | 41 | 31 | 40.2 | Watch |
+| 9 | EdSpark | Series A | 44 | 29 | 10 | 32.4 | Pass |
+
+**Why this fits early-stage:**
+
+- **`DataMint` ranks #2 with zero revenue** — an elite team (5/5), strong moat
+  and rising hiring/web signals carry it. The valuation factor is dropped (no
+  ARR → no multiple) and the weights renormalise. That's a seed bet done right.
+- **Qualitative dominates.** Swap a founder-quality 5/5 for a 1/5 and the score
+  moves ~20 points — team is 22% of the weight, as it should be this early.
+- **`EdSpark` lands at "Pass"** — weak team/moat, declining revenue, negative
+  hiring and web signals; every layer agrees.
+- The alt-data layer adds a *momentum* read the deck can't fake: `VoltRide`'s
+  +90% hiring and +150% downloads pull it up despite thin unit economics.
+
+### The three inputs, and where they come from
+
+| Input group | Fields | You get these from |
+|---|---|---|
+| Analyst scorecard | `team_score`, `market_score`, `product_moat_score`, `traction_quality_score`, `customer_diversification_score` (1–5) | Your own diligence / IC memo |
+| Financials | `arr`, `arr_prev`, `mom_growth`, `gross_margin`, `net_revenue_retention`, `monthly_net_burn`, `cash_on_hand`, `last_valuation`, `months_since_last_round` | Founder deck / data room |
+| Alt-data | `hiring_growth`, `app_rating`, `app_downloads_growth`, `web_traffic_growth`, `news_sentiment`, `employer_rating` | LinkedIn, app stores, SimilarWeb, news, Glassdoor |
+
+The illustrative cohort in `sample_early_startups.csv` is **synthetic** (real
+seed-stage metrics are private). Feed your own scorecard + deck numbers, and the
+public alt-data can be scraped or pulled from providers.
 
 ## Caveats
 

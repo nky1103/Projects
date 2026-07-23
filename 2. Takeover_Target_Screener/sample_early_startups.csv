@@ -1,0 +1,10 @@
+name,sector,stage,country,arr,arr_prev,mom_growth,gross_margin,net_revenue_retention,monthly_net_burn,cash_on_hand,last_valuation,prev_valuation,months_since_last_round,team_score,market_score,product_moat_score,traction_quality_score,customer_diversification_score,hiring_growth,app_rating,app_downloads_growth,web_traffic_growth,news_sentiment,employer_rating
+NeuraForge,AI Dev Tools,Series A,India,18,6,0.15,0.78,1.25,1.2,30,340,120,10,5,5,4,4,4,0.8,,,1.2,0.4,4.5
+AgriSetu,Agritech,Seed,India,,,,,,0.4,8,40,,6,4,4,3,3,,0.5,,,0.6,0.2,4.0
+FinNest,Fintech,Series B,India,45,20,0.08,0.55,1.1,6,60,800,400,12,4,5,3,4,4,0.4,4.2,0.7,0.4,0.1,3.8
+HealthLoop,Healthtech,Series A,India,12,5,,0.72,1.3,1.5,12,180,,14,3,4,3,4,4,0.3,,,0.5,0.2,4.0
+QuickBite,D2C Food,Seed,India,8,4,,0.3,,2,6,60,,9,3,3,2,3,3,0.1,3.8,0.2,0.1,-0.1,3.2
+EdSpark,Edtech,Series A,India,15,16,,0.4,0.9,4,10,200,,20,3,3,2,2,3,-0.15,3.5,-0.1,-0.2,-0.3,2.8
+CargoGrid,Logistics SaaS,Series B,India,40,18,0.07,0.7,1.28,3,55,700,350,11,4,4,4,4,5,0.55,,,0.65,0.3,4.3
+VoltRide,EV Mobility,Seed,India,3,0.5,,0.2,,3,20,90,,8,4,5,3,3,3,0.9,4.0,1.5,1.0,0.5,4.1
+DataMint,Data Infra,Pre-A,India,,,,,,0.6,9,55,,5,5,4,4,3,,0.6,,,0.8,0.3,4.4
