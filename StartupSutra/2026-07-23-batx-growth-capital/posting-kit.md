@@ -52,4 +52,18 @@ EVreporter). Carousel + reels carry a "not investment advice" disclaimer per
 Editorial Bible §8 (never recommend investments) and §9 (disclaimer).
 
 ## Tagging
-Tag **@batxenergies** (verify exact handle) in the first comment / a Story.
+Verify the handle resolves to the **real** BatX profile before tagging (don't
+tag a look-alike). Then tag in both places:
+
+1. **Story mention (priority).** Use the **@mention sticker** (not typed text)
+   so it notifies them and gives them a one-tap "Add to your story" button.
+   Founders often re-share, which puts the post in front of their audience.
+   Keep the @sticker in the middle third (top/bottom get cropped on re-share),
+   and make it congratulatory so it's worth re-sharing from their side, e.g.
+   *"Big week for @batxenergies 🔋"*.
+2. **First comment.** Warm, specific, ties back to the story, e.g.
+   *"Congrats @batxenergies on the Series A. Turning dead batteries into
+   India's own critical minerals is exactly the kind of work that matters. 🔋"*
+
+Also reshare the published carousel to your Story via the paper-plane icon ->
+"Add post to your story" so the card is tappable straight to the post.

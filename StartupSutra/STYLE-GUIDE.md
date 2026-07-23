@@ -373,11 +373,19 @@ render → mux (H.264 + AAC). Plan music (added in-app, 15–20% under VO).
 Record scores in the episode README, commit, push, post at 8 PM.
 
 **Write-up deliverable (standing rule):** every episode also ships a branded
-**write-up PDF** — full carousel caption, every reel caption, all slide alt text,
-hashtag sets, and the IST posting schedule, laid out on the navy/owl template
-(series-color accent). Markdown READMEs truncate long captions on phones; the
-PDF is the copy-paste-ready reference. File it in the episode folder as
-`<Company>-<Series>-Writeup.pdf` and share the PDF, not just the markdown.
+**write-up PDF** with the full carousel caption, every reel caption, all slide
+alt text, hashtag sets, and the IST posting schedule, laid out on the navy/owl
+template (series-color accent). Markdown READMEs truncate long captions on
+phones; the PDF is the copy-paste-ready reference. File it in the episode folder
+as `<Company>-<Series>-Writeup.pdf` and share the PDF, not just the markdown.
+
+**Distribution (standing rule):** when an episode features a real company,
+verify the handle resolves to their real profile, then tag them in two places.
+Priority is a **Story @mention sticker** (notifies them, one-tap re-share, puts
+us in front of their audience). Keep it in the middle third and congratulatory
+so it's worth re-sharing. Second, a warm **first comment** that ties back to the
+story. Also reshare the carousel to the Story ("Add post to your story") so the
+card taps straight to the post.
 
 ---
 
