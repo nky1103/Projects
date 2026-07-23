@@ -1,0 +1,11 @@
+name,sector,stage,country,last_valuation,prev_valuation,months_since_last_round,arr,arr_prev,gross_margin,net_revenue_retention,customers,monthly_net_burn,cash_on_hand,tam,market_growth,founder_ownership_pct
+DataForge,AI Infra,B,India,4200,1800,11,180,60,0.65,1.40,140,18,220,60000,0.35,0.40
+NimbusHR,B2B SaaS,B,India,2500,1500,13,350,190,0.82,1.28,900,9,300,18000,0.18,0.36
+LogiFlow,Logistics SaaS,C,India,3200,2000,12,480,230,0.72,1.32,1200,16,290,22000,0.16,0.30
+RupeeFlow,Fintech Lending,C,India,5000,3200,9,620,370,0.58,1.15,45000,28,320,80000,0.22,0.34
+Zephyr,Quick-commerce,C,India,3000,2600,8,900,420,0.24,1.06,320,62,350,45000,0.28,0.20
+FarmWorks,Agritech,B,India,900,780,15,180,130,0.44,1.08,60000,12,120,15000,0.14,0.32
+StyleHaus,D2C,C,India,700,900,14,420,320,0.38,1.02,2000,20,140,26000,0.12,0.28
+CloudLedger,Fintech SaaS,C,India,3600,2400,16,300,210,0.78,1.20,8000,0,260,12000,0.15,0.33
+MediCarePlus,Healthtech,D,India,1400,4200,10,520,440,0.32,0.98,1500,38,180,30000,0.20,0.14
+EdMentor,Edtech,D,India,1600,9000,25,700,780,0.36,0.86,900,55,150,20000,0.05,0.16

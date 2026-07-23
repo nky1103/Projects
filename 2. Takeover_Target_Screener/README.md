@@ -9,6 +9,15 @@ and explains *why* each company scored the way it did.
 It is pure Python (standard library only — no pandas/numpy), so it runs
 anywhere.
 
+> **This project is now a small suite of three screeners** sharing one scoring
+> engine, because "ripe for takeover" means different things for different
+> targets:
+> 1. **Public companies** — `takeover_screener.py` (this page's main model).
+> 2. **Startup acquisition targets** — `startup_screener.py`
+>    ([jump](#startups-are-a-different-model)).
+> 3. **Startup investment sourcing** ("who needs funding & is worth backing") —
+>    `investment_screener.py` ([jump](#investing-in-startups-the-sourcing-screener)).
+
 ## The idea
 
 A company becomes an attractive takeover target when it is **cheap**, **easy to
@@ -102,10 +111,15 @@ The CSV header must match the `Company` field names; see
 | `real_world_india_cement.csv` | Real Indian cement peer group (featured example) |
 | `real_world_staples.csv` | Real US packaged-food peer group (secondary example) |
 | `test_takeover_screener.py` | Unit tests for the public-company model |
-| `startup_screener.py` | Separate model for **startups** (`Startup`, `StartupScreener`) |
+| `startup_screener.py` | Model for **startup acquisition** targets (`Startup`, `StartupScreener`) |
 | `startup_demo.py` | Loads a startup CSV and prints a ranked report |
 | `sample_startups.csv` | Illustrative Indian startup cohort |
-| `test_startup_screener.py` | Unit tests for the startup model |
+| `test_startup_screener.py` | Unit tests for the startup acquisition model |
+| `investment_screener.py` | Model for **startup investment** sourcing (`Venture`, `InvestmentScreener`) |
+| `investment_demo.py` | Prints a sourcing list; `raising` arg filters to who needs funding |
+| `sample_ventures.csv` | Illustrative cohort with quality fields populated |
+| `real_world_india_startups.csv` | 8 real Indian startups, public FY25 data |
+| `test_investment_screener.py` | Unit tests for the investment model |
 
 ## Tests
 
@@ -232,6 +246,71 @@ On the illustrative Indian cohort in
 > private and not reliably public, so plug in your own deal-flow / data-room
 > numbers (or a data provider's) for a real screen. The `sample_startups.csv`
 > columns show exactly what the model needs.
+
+## Investing in startups: the sourcing screener
+
+"Which startups need funding, how fast are they growing, and are they worth
+backing?" is a *different* question from "who's a good acquisition target" — an
+investor wants a company that needs capital to **grow**, not to **survive**. So
+[`investment_screener.py`](investment_screener.py) flips the logic: down-rounds
+and broken unit economics count **against** the score, while growth, capital
+efficiency, retention and a big market count **for** it.
+
+| Factor (weight) | Signal |
+|---|---|
+| **Growth** (22%) | ARR / revenue YoY — the primary VC signal |
+| **Capital efficiency** (18%) | Burn multiple, gross margin, Rule of 40 |
+| **Retention** (14%) | Net revenue retention |
+| **Market** (12%) | TAM size + market growth |
+| **Traction** (12%) | Proven ARR scale |
+| **Funding need & timing** (12%) | The "requires funding" signal — a 4–15mo runway + 12–30mo since the last raise = raising now |
+| **Valuation / entry** (10%) | Cheap revenue multiple vs. cohort |
+
+Every startup also gets a `needs_funding` flag and a plain-English
+`raise_signal`, so the output reads like a sourcing list. You can list *only*
+the ones that need capital:
+
+```bash
+python investment_demo.py                              # full illustrative cohort
+python investment_demo.py sample_ventures.csv raising  # only those needing funding
+python investment_demo.py real_world_india_startups.csv
+```
+
+On the illustrative cohort, the key behaviour is that **needing money ≠ being a
+good investment**: `EdMentor` (edtech, −10% growth, 3-month runway) needs
+funding the *most* but ranks **last**, while `DataForge` (AI infra, +200%
+growth, 140% NRR, huge TAM) tops the list. A profitable company (`CloudLedger`)
+is correctly flagged *"not raising."*
+
+### On real Indian startups (public data)
+
+[`real_world_india_startups.csv`](real_world_india_startups.csv) runs the screen
+on eight well-known Indian startups using **actual reported FY25 figures**
+(revenue, valuation, funding recency; net-loss-derived burn where a company is
+growing):
+
+| # | Startup | FY25 rev (₹cr) | Growth | Score | Verdict | Raise signal |
+|---|---------|---------------:|-------:|------:|---------|--------------|
+| 1 | Zepto | 11,110 | +149% | 77.1 | High conviction | Well funded (just raised $450M) |
+| 2 | OfBusiness | 19,296 | +26% | 65.8 | Consider | Likely raising soon |
+| 3 | Udaan | 4,561 | −19% | 58.2 | Consider | Likely raising soon |
+| 4 | Cars24 | 6,233 | −10% | 55.6 | Consider | Likely raising soon |
+| 5 | Rapido | 934 | +44% | 47.8 | Watch | Well funded |
+| 6 | Meesho | 9,390 | +23% | 46.2 | Watch | Well funded (IPO'd Dec 2025) |
+| 7 | ShareChat | 723 | +1% | 43.0 | Watch | Likely raising soon |
+| 8 | Cred | 2,735 | +16% | 38.7 | Pass | Likely raising soon |
+
+**The honest limitation this exposes.** Startup quality metrics — gross margin,
+net revenue retention, burn multiple, runway, TAM — are **private**. With only
+public data, the screen can rank on *growth, price and funding-timing* but is
+**blind to quality**, so cheap-but-declining incumbents (Udaan −19%, Cars24
+−10%) still drift up to "Consider" on a low revenue multiple and a stale round.
+Those are exactly the *"other important things that make an investment decision
+solid"* — and they need **primary data** (a data room, a data provider, or the
+founder's deck). The illustrative `sample_ventures.csv` shows the model with
+those fields populated; feed it your real deal-flow numbers for a decision-grade
+screen. Reported figures were sourced mid-2026 from Entrackr, Inc42, Business
+Standard and Tracxn coverage of MCA filings.
 
 ## Caveats
 
