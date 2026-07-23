@@ -1,0 +1,9 @@
+name,ticker,sector,share_price,shares_outstanding,price_52w_high,revenue,ebitda,ebit,net_income,interest_expense,free_cash_flow,total_debt,cash,shareholders_equity,insider_ownership_pct,market_cap
+UltraTech Cement,ULTRACEMCO,Cement,11937,,13110,91884,17743,12887,8539,,,23755,5120,80712,0.5933,351751
+Shree Cement,SHREECEM,Cement,26980,,32284,20943,4537,1877,1744,,,1868,8499,23314,0.6256,96408
+Ambuja Cements,AMBUJACEM,Cement,427.60,,625,40656,6374,3137,4728,,,866,909,71846,0.6733,107000
+ACC,ACC,Cement,1346.80,,1987,25762,2731,1829,2137,,,429,538,20554,0.5669,25520
+Dalmia Bharat,DALBHARAT,Cement,1872.80,,2496,14804,2972,1716,1139,,,7428,5321,18123,0.5584,34966
+JK Cement,JKCEMENT,Cement,5655,,7566,14416,2322,1680,946,,,6206,1053,7090,0.4566,44557
+Ramco Cements,RAMCOCEM,Cement,915.05,,1214,9029,1428,692,699,,,3877,188,8094,0.4255,21432
+JK Lakshmi Cement,JKLAKSHMI,Cement,581.05,,1009,6763,987,687,412,,,2586,1227,3883,0.4512,7194

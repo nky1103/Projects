@@ -107,47 +107,64 @@ The CSV header must match the `Company` field names; see
 python -m unittest -v test_takeover_screener.py
 ```
 
-## Real-world example
+## Real-world example — Indian cement
 
-To sanity-check the model, [`real_world_staples.csv`](real_world_staples.csv)
-holds **actual TTM fundamentals** (pulled mid-2026) for eight US packaged-food
-companies — a sector with genuine ongoing M&A. Run it with:
+[`real_world_india_cement.csv`](real_world_india_cement.csv) holds **actual TTM
+fundamentals** (₹ crore, pulled mid-2026 from stockanalysis.com and screener.in)
+for eight listed Indian cement companies — India's most active consolidation
+sector. Run it with:
 
 ```bash
-python demo.py real_world_staples.csv
+python demo.py real_world_india_cement.csv
 ```
 
 Result:
 
-| # | Company | Score | Verdict | Read |
-|---|---------|------:|---------|------|
-| 1 | Conagra (CAG) | 65.1 | Attractive | Cheap, 14% FCF yield, wide-open float — held back only by 4.2× leverage |
-| 2 | Campbell's (CPB) | 57.9 | Attractive | Cheap + cash-generative; perennial activist/family-split target |
-| 3 | Kraft Heinz (KHC) | 48.9 | Possible | Trades **below book** (P/B 0.7), huge FCF, but heavy debt + Berkshire's ~27% stake |
-| 4 | McCormick (MKC) | 42.6 | Possible | Quality compounder, not obviously cheap |
-| 5 | General Mills (GIS) | 42.4 | Possible | Large + levered |
-| 6 | Hormel (HRL) | 42.1 | Possible | Cheap-ish but Hormel Foundation owns ~47% |
-| 7 | J.M. Smucker (SJM) | 38.5 | Unlikely | Near 52-week high; stretched after Hostess deal |
-| 8 | **Hershey (HSY)** | **19.6** | **Unlikely** | Expensive **and** ~80% voting-controlled by the Hershey Trust |
+| # | Company | Promoter % | Score | Verdict | Read |
+|---|---------|-----------:|------:|---------|------|
+| 1 | ACC | 57% | 58.3 | Attractive | Cheapest in the group (EV/EBITDA 9, P/E 12), low-margin, near-zero debt |
+| 2 | JK Lakshmi Cement | 45% | 57.0 | Attractive | Small, cheap, 42% below its 52-week high, lightest promoter grip |
+| 3 | Ambuja Cements | 67% | 40.9 | Possible | Net cash, but pricey and tightly Adani-held |
+| 4 | Dalmia Bharat | 56% | 39.0 | Unlikely | Mid-valued, mid-leverage |
+| 5 | Ramco Cements | 43% | 33.3 | Unlikely | Lowest promoter holding, but expensive on earnings |
+| 6 | Shree Cement | 63% | 23.3 | Unlikely | Premium franchise, richly valued |
+| 7 | JK Cement | 46% | 20.2 | Unlikely | High-growth, high-multiple |
+| 8 | **UltraTech Cement** | 59% | **15.9** | **Unlikely** | The **acquirer**, not a target — most expensive, market leader |
 
 **Why this is a good check:**
 
-- **Hershey ranks dead last** — the model correctly identifies it as effectively
-  takeover-proof. In 2016 the Hershey Trust *literally blocked* a $23bn bid from
-  Mondelez. Control + rich valuation = not a target, exactly as scored.
-- **The cheap, cash-generative, widely-held names float to the top** (Conagra,
-  Campbell's) — both are long-running M&A / activist-campaign names in reality.
-- The confirming out-of-sample case is **Kellanova**, not in the trading set
-  because **Mars is acquiring it (~$36bn)**: a cheap, cash-generative, widely-held
-  snack/cereal maker — precisely the profile this model scores highly.
+- **The expensive market leaders sink to the bottom** — UltraTech (the sector's
+  *acquirer*), JK Cement and Shree Cement score lowest. Nobody takes over the
+  premium consolidator; exactly right.
+- **The cheap, lower-margin, lightly-held names rise** — ACC and JK Lakshmi. ACC
+  is the cheapest asset in the group, which is precisely why it changed hands
+  when **Adani bought Holcim's Ambuja + ACC stake in 2022**.
+- **No company scores "Prime target" (≥70), and that is the point.** Indian
+  promoters hold 43–67% here, so *hostile* takeovers are structurally
+  near-impossible. The model's ceiling mirrors reality: control changes in Indian
+  cement happen through **negotiated promoter/parent exits**, not raids — Holcim →
+  Adani (Ambuja/ACC, 2022); the N. Srinivasan family → UltraTech (India Cements,
+  2024); Kesoram (B.K. Birla group) → UltraTech (2024).
+- One to watch that the model surfaces: **Ramco Cements** carries the lowest
+  promoter holding (≈43%) and is controlled by the *same* N. Srinivasan family
+  that sold India Cements to UltraTech.
 
-**A data-quality lesson from this run.** Off-the-shelf "insider ownership %"
-feeds reported Hershey at 0.25% and Hormel at 0.53% — they **miss control blocks
-held through trusts and foundations**, the very thing that makes a takeover
-impossible. The CSV therefore uses *effective control stakes* (Hershey Trust
-~80%, Hormel Foundation ~47%, Berkshire's KHC stake ~27%). The model is only as
-good as the control data you feed the ownership factor — always sanity-check that
-field against the actual shareholder register.
+**Two honest notes on this run.**
+1. *No free-cash-flow field was available* from the quick data pull, so the
+   cash-flow factor (18%) was dropped **uniformly** and the remaining six factor
+   weights renormalised — the fair, built-in degradation behaviour.
+2. *The ownership ramp is US-calibrated* (`best=5%`, `worst=50%` insider). In
+   India a 45% promoter stake is already *low*, so most names saturate near 0 on
+   that factor. It still ranks them correctly **relative** to each other, but for
+   production use in India you'd recalibrate the ramp to the local distribution
+   (e.g. anchor `best` near SEBI's 25% open-offer trigger and `worst` near the
+   75% maximum promoter holding).
+
+> An earlier US packaged-food example is also included as
+> [`real_world_staples.csv`](real_world_staples.csv) — run `python demo.py
+> real_world_staples.csv`. There the model correctly ranks trust-controlled
+> **Hershey** dead last (it blocked Mondelez's 2016 bid) and floats cheap,
+> widely-held **Conagra/Campbell's** to the top.
 
 ## Caveats
 
