@@ -149,6 +149,9 @@ A hook is never a summary. It creates a gap the carousel closes.
 If the answer is no, rewrite it. This single rule removes 90% of AI-sounding copy.
 
 AI-tells to hunt down and delete:
+- **The long dash.** No em-dashes (—) or en-dashes (–) in published copy or
+  write-ups. They read as machine-written. Break the thought into two spoken
+  sentences with a full stop, or use a colon. This is a hard rule.
 - Stacked abstractions ("underestimated the app ecosystem", "failed to innovate")
 - Symmetrical sentence pairs that sound written, not spoken
 - Adjectives doing the work numbers should do
