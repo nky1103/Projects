@@ -107,6 +107,48 @@ The CSV header must match the `Company` field names; see
 python -m unittest -v test_takeover_screener.py
 ```
 
+## Real-world example
+
+To sanity-check the model, [`real_world_staples.csv`](real_world_staples.csv)
+holds **actual TTM fundamentals** (pulled mid-2026) for eight US packaged-food
+companies — a sector with genuine ongoing M&A. Run it with:
+
+```bash
+python demo.py real_world_staples.csv
+```
+
+Result:
+
+| # | Company | Score | Verdict | Read |
+|---|---------|------:|---------|------|
+| 1 | Conagra (CAG) | 65.1 | Attractive | Cheap, 14% FCF yield, wide-open float — held back only by 4.2× leverage |
+| 2 | Campbell's (CPB) | 57.9 | Attractive | Cheap + cash-generative; perennial activist/family-split target |
+| 3 | Kraft Heinz (KHC) | 48.9 | Possible | Trades **below book** (P/B 0.7), huge FCF, but heavy debt + Berkshire's ~27% stake |
+| 4 | McCormick (MKC) | 42.6 | Possible | Quality compounder, not obviously cheap |
+| 5 | General Mills (GIS) | 42.4 | Possible | Large + levered |
+| 6 | Hormel (HRL) | 42.1 | Possible | Cheap-ish but Hormel Foundation owns ~47% |
+| 7 | J.M. Smucker (SJM) | 38.5 | Unlikely | Near 52-week high; stretched after Hostess deal |
+| 8 | **Hershey (HSY)** | **19.6** | **Unlikely** | Expensive **and** ~80% voting-controlled by the Hershey Trust |
+
+**Why this is a good check:**
+
+- **Hershey ranks dead last** — the model correctly identifies it as effectively
+  takeover-proof. In 2016 the Hershey Trust *literally blocked* a $23bn bid from
+  Mondelez. Control + rich valuation = not a target, exactly as scored.
+- **The cheap, cash-generative, widely-held names float to the top** (Conagra,
+  Campbell's) — both are long-running M&A / activist-campaign names in reality.
+- The confirming out-of-sample case is **Kellanova**, not in the trading set
+  because **Mars is acquiring it (~$36bn)**: a cheap, cash-generative, widely-held
+  snack/cereal maker — precisely the profile this model scores highly.
+
+**A data-quality lesson from this run.** Off-the-shelf "insider ownership %"
+feeds reported Hershey at 0.25% and Hormel at 0.53% — they **miss control blocks
+held through trusts and foundations**, the very thing that makes a takeover
+impossible. The CSV therefore uses *effective control stakes* (Hershey Trust
+~80%, Hormel Foundation ~47%, Berkshire's KHC stake ~27%). The model is only as
+good as the control data you feed the ownership factor — always sanity-check that
+field against the actual shareholder register.
+
 ## Caveats
 
 This is a **fundamentals-based screening heuristic**, not investment advice.
