@@ -1,0 +1,27 @@
+Facebook's first-ever acquisition in India wasn't a big consumer app. It was a 13-person team in Bengaluru.
+
+In January 2014, Facebook bought Little Eye Labs for a reported $10 to $15 million.
+
+Little Eye solved a boring, painful problem. In 2013, an Android app was a black box. You couldn't see why one drained the battery, ate data, or lagged.
+
+Plug any Android phone into a laptop and Little Eye showed CPU, memory, battery and data in real time, tied to what the app was doing. Zero code.
+
+Here's why Facebook cared. That year, 874 million of its 1.19 billion users were on mobile. Android ran 80% of the world's phones. Facebook needed lighter, faster apps for the next billion people.
+
+Little Eye wasn't 13 people. It was a capability Facebook couldn't build fast enough.
+
+That's the lesson. Great acquisitions aren't about your size. They're about the problem you own.
+
+Don't build to get bought. Build to own a capability someone bigger will one day need.
+
+💬 Who would acquire your startup, and why?
+
+❤️ Save this for your founding team.
+
+📚 Sources: TechCrunch, YourStory, Business Today
+
+⚠️ Editorial analysis of publicly available information.
+
+.
+.
+#startup #acquisition #startupindia #founders #buildinpublic
