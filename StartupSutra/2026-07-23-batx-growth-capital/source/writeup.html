@@ -1,0 +1,192 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-400.ttf'); font-weight:400; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-600.ttf'); font-weight:600; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+
+  @page { size:A4; margin:0; }
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body { background:#0b0e14; font-family:'Inter','Noto Color Emoji',sans-serif; color:#f4f1ea; font-size:9.8pt; line-height:1.46; }
+
+  .page { width:210mm; min-height:297mm; padding:12mm 16mm 12mm; position:relative; background:#0b0e14; page-break-after:always; overflow:hidden; }
+  .page:last-child { page-break-after:auto; }
+  .page::before {
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(140mm 100mm at 92% -4%, rgba(20,184,166,.14), transparent 65%),
+      radial-gradient(150mm 110mm at -10% 106%, rgba(20,184,166,.08), transparent 60%);
+  }
+  .page > * { position:relative; z-index:1; }
+
+  .phead { display:flex; justify-content:space-between; align-items:center; margin-bottom:7mm; }
+  .brand { display:flex; align-items:center; gap:4mm; }
+  .mark { width:9mm; height:9mm; border-radius:2.6mm; background:linear-gradient(135deg,#f59e0b,#ea580c);
+    display:flex; align-items:center; justify-content:center; }
+  .bname { font-weight:700; font-size:12.5pt; color:#e8e4da; }
+  .bname span { color:#f59e0b; }
+  .ptag { font-weight:700; font-size:8pt; letter-spacing:2px; color:#6b7280; text-transform:uppercase; }
+
+  .pfoot { position:absolute; bottom:7mm; left:16mm; right:16mm; display:flex; justify-content:space-between; z-index:1;
+    font-weight:600; font-size:7.5pt; color:#525a68; letter-spacing:1px; }
+
+  h1 { font-weight:900; font-size:23pt; letter-spacing:-0.5pt; line-height:1.16; }
+  h1 .accent { color:#14b8a6; }
+  h2 { font-weight:900; font-size:12.5pt; letter-spacing:-0.3pt; margin:3.5mm 0 1.8mm; display:flex; align-items:center; gap:2.5mm; }
+  h2 .num { color:#14b8a6; }
+  .lbl { font-weight:700; font-size:7.5pt; letter-spacing:1.5px; text-transform:uppercase; color:#6b7280; margin:0 0 1.5mm; }
+
+  .kicker { display:inline-flex; align-items:center; gap:2.5mm; font-weight:700; font-size:8.5pt; letter-spacing:2.5px;
+    text-transform:uppercase; color:#14b8a6; padding:2mm 4.5mm; border:0.4mm solid rgba(20,184,166,.45);
+    border-radius:99px; background:rgba(20,184,166,.08); margin-bottom:6mm; }
+  .kicker .sq { width:3mm; height:3mm; border-radius:0.9mm; background:linear-gradient(135deg,#14b8a6,#0f766e); }
+
+  .meta { display:flex; flex-wrap:wrap; gap:3mm 7mm; margin:4mm 0 2mm; font-size:9pt; color:#aab2c0; }
+  .meta b { color:#f4f1ea; font-weight:700; }
+
+  .card { background:rgba(255,255,255,.035); border:0.3mm solid rgba(255,255,255,.11); border-radius:3mm; padding:3.2mm 4.2mm; margin-bottom:3mm; }
+  .card.teal { border-left:1.6mm solid #14b8a6; }
+  .cap { color:#dfe3ea; font-size:9.3pt; line-height:1.42; white-space:pre-wrap; }
+  .cap .hl { color:#f4f1ea; font-weight:700; }
+  .tags { color:#14b8a6; font-weight:600; }
+
+  .reelrow { display:flex; gap:3.5mm; }
+  .reelrow > * { flex:1; }
+  .reeltag { display:inline-block; font-weight:800; font-size:7.5pt; letter-spacing:1px; text-transform:uppercase;
+    color:#0b0e14; background:#14b8a6; border-radius:99px; padding:1mm 3mm; margin-bottom:2mm; }
+  .reeltag.alt { background:rgba(20,184,166,.16); color:#5eead4; }
+
+  ol.alt { margin:1mm 0 0 5mm; }
+  ol.alt li { margin-bottom:1.1mm; color:#aab2c0; font-size:8.8pt; line-height:1.36; }
+  ol.alt li b { color:#f4f1ea; }
+
+  table { width:100%; border-collapse:collapse; margin:1mm 0 2mm; font-size:9pt; }
+  th { text-align:left; font-weight:700; font-size:7.5pt; letter-spacing:1.5px; text-transform:uppercase; color:#6b7280;
+    padding:1.6mm 3mm; border-bottom:0.4mm solid rgba(255,255,255,.15); }
+  td { padding:1.8mm 3mm; border-bottom:0.25mm solid rgba(255,255,255,.08); color:#aab2c0; vertical-align:middle; }
+  td b { color:#f4f1ea; }
+  .pill { font-weight:800; color:#5eead4; }
+
+  .tagset { font-size:9pt; line-height:1.7; }
+  .tagset .grp { color:#6b7280; font-weight:700; font-size:7.5pt; letter-spacing:1.5px; text-transform:uppercase; }
+  .tagset .h { color:#14b8a6; font-weight:600; }
+  .note { font-size:8.3pt; color:#8b93a3; margin-top:1mm; }
+</style>
+
+<!-- ============ PAGE 1 : COVER + CAROUSEL CAPTION ============ -->
+<div class="page">
+  <div class="phead">
+    <div class="brand"><div class="mark"><svg viewBox="0 0 200 200" style="width:76%;height:76%;display:block"><path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/><path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/><circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/><circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/><circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/><path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></svg></div><div class="bname">Startup<span>Sutra</span></div></div>
+    <div class="ptag">Write-up · Posting Kit</div>
+  </div>
+
+  <div class="kicker"><span class="sq"></span>Growth Capital #001</div>
+  <h1>BatX Energies — <span class="accent">₹105 Cr Series A.</span><br>The full write-up.</h1>
+
+  <div class="meta">
+    <span><b>Series</b> · Growth Capital (Thu)</span>
+    <span><b>Date</b> · 23 Jul 2026</span>
+    <span><b>Subject</b> · BatX Energies, Gurugram</span>
+    <span><b>Framework</b> · Fund the shovel-maker</span>
+  </div>
+
+  <h2><span class="num">01</span> Carousel caption <span style="font-weight:600;font-size:8.5pt;color:#6b7280;">— posts 08:00 IST</span></h2>
+  <div class="card teal">
+    <div class="cap"><span class="hl">They didn't back another EV startup. They backed the one mining dead batteries.</span>
+
+BatX Energies (Gurugram) just raised ₹105 Cr in a Series A led by IvyCap Ventures.
+
+India's EV and energy-storage boom runs on lithium, cobalt and nickel — and India imports almost all of it, mostly from China.
+
+BatX recovers those exact minerals from dead batteries and factory scrap, turning waste into a domestic supply of strategic inputs. It's already commercial, and it's moving up the chain into refining and cathode materials.
+
+That's the signal investors bought: not "recycling is green," but "we can make the scarce input everyone will need."
+
+The lesson isn't about batteries:
+
+<span class="hl">In a gold rush, capital funds the shovel-maker. Don't crowd the booming market — own the scarce input that feeds it.</span>
+
+💬 What's the "shovel" in your market?
+❤️ Save this for your next fundraise.
+
+📚 Sources: Entrackr · YourStory · Indian Startup News
+⚠️ Editorial analysis of publicly available information. Not investment advice.
+
+<span class="tags">#startup #venturecapital #cleantech #india #founders</span></div>
+  </div>
+
+  <div class="pfoot"><span>@statupsutra</span><span>Growth Capital #001 — Write-up · 1 / 2</span></div>
+</div>
+
+<!-- ============ PAGE 2 : REELS + ALT + HASHTAGS + TIMING ============ -->
+<div class="page">
+  <div class="phead">
+    <div class="brand"><div class="mark"><svg viewBox="0 0 200 200" style="width:76%;height:76%;display:block"><path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/><path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/><circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/><circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/><circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/><path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></svg></div><div class="bname">Startup<span>Sutra</span></div></div>
+    <div class="ptag">Write-up · Posting Kit</div>
+  </div>
+
+  <h2><span class="num">02</span> Reel captions</h2>
+  <div class="reelrow">
+    <div class="card">
+      <span class="reeltag">Reel 1 · Primary · 30s · 09:00</span>
+      <div class="cap">Everyone's chasing India's EV boom. Investors backed the startup recycling dead batteries into the minerals every EV needs.
+
+In a gold rush, capital funds the shovel-maker — own the scarce input, not the crowded output.
+
+Follow @statupsutra — Growth Capital, every Thursday.
+📚 Sources: Entrackr, YourStory. ⚠️ Not investment advice.
+
+<span class="tags">#startup #venturecapital #cleantech #india #founders</span></div>
+    </div>
+    <div class="card">
+      <span class="reeltag alt">Reel 2 · Micro · 16s · 13:00</span>
+      <div class="cap">The EV gold rush has a bottleneck: critical minerals. BatX recycles dead batteries into them — a domestic supply of lithium, cobalt & nickel.
+
+Own the scarce input. 👇
+
+Follow @statupsutra — Growth Capital, every Thursday.
+⚠️ Not investment advice.
+
+<span class="tags">#startup #venturecapital #evindia #criticalminerals #founders</span></div>
+    </div>
+  </div>
+
+  <h2><span class="num">03</span> Alt text <span style="font-weight:600;font-size:8.5pt;color:#6b7280;">— 7 slides</span></h2>
+  <div class="card">
+    <ol class="alt">
+      <li><b>Slide 1</b> — Growth Capital, BatX Energies ₹105 Cr Series A — "They didn't back another EV startup. They backed the one mining dead batteries."</li>
+      <li><b>Slide 2</b> — Snapshot: BatX Energies, Gurugram; ₹105 Cr Series A led by IvyCap Ventures; recycles batteries into critical minerals.</li>
+      <li><b>Slide 3</b> — India's EV boom runs on lithium, cobalt and nickel — and it imports almost all of it, mostly from China.</li>
+      <li><b>Slide 4</b> — Why investors said yes: BatX turns dead batteries into a domestic supply of those minerals; waste processing to strategic input supply.</li>
+      <li><b>Slide 5</b> — Metrics: 20,000 MTA recycling network, 5,000 MTA hydrometallurgy refining, 4 minerals recovered, 20 MWh refurbishing; already commercial.</li>
+      <li><b>Slide 6</b> — Risks most people miss: thin feedstock (young EV fleet), volatile lithium prices, capex and Chinese competition.</li>
+      <li><b>Slide 7</b> — Founder lesson: in a gold rush, capital funds the shovel-maker; own the scarce input. Follow @statupsutra, Growth Capital every Thursday.</li>
+    </ol>
+  </div>
+
+  <h2><span class="num">04</span> Hashtags &amp; timing</h2>
+  <div class="reelrow">
+    <div class="card" style="flex:1.15;">
+      <div class="tagset">
+        <span class="grp">Core (always)</span><br>
+        <span class="h">#startup #venturecapital #cleantech #india #founders</span><br><br>
+        <span class="grp">Extended (max reach)</span><br>
+        <span class="h">#startupindia #evindia #batteryrecycling #criticalminerals #seriesa #growthcapital #entrepreneurship</span>
+      </div>
+      <div class="note">Tag <b style="color:#f4f1ea;">@batxenergies</b> (verify handle) in the first comment or a Story.</div>
+    </div>
+    <div class="card" style="flex:1;">
+      <div class="lbl">Recommended IST schedule</div>
+      <table>
+        <tr><th>Time</th><th>Asset</th></tr>
+        <tr><td><span class="pill">08:00</span></td><td><b>Carousel</b> — slides 1–7</td></tr>
+        <tr><td><span class="pill">13:30</span></td><td><b>Reel 2</b> — micro (16s)</td></tr>
+        <tr><td><span class="pill">20:00</span></td><td><b>Reel 1</b> — primary (30s)</td></tr>
+      </table>
+      <div class="note">Spread across morning / lunch / evening for an India-first professional audience — wider reach than clustering all three before noon. Add a trending in-app audio to both reels.</div>
+    </div>
+  </div>
+
+  <div class="pfoot"><span>@statupsutra</span><span>Growth Capital #001 — Write-up · 2 / 2</span></div>
+</div>

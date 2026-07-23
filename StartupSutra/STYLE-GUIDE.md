@@ -369,6 +369,13 @@ render → mux (H.264 + AAC). Plan music (added in-app, 15–20% under VO).
 (§11) → final approval. Below target on any metric → back to Phase 3.
 Record scores in the episode README, commit, push, post at 8 PM.
 
+**Write-up deliverable (standing rule):** every episode also ships a branded
+**write-up PDF** — full carousel caption, every reel caption, all slide alt text,
+hashtag sets, and the IST posting schedule, laid out on the navy/owl template
+(series-color accent). Markdown READMEs truncate long captions on phones; the
+PDF is the copy-paste-ready reference. File it in the episode folder as
+`<Company>-<Series>-Writeup.pdf` and share the PDF, not just the markdown.
+
 ---
 
 ## 13. Editorial Philosophy — the DNA
