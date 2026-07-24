@@ -378,6 +378,9 @@ alt text, hashtag sets, and the IST posting schedule, laid out on the navy/owl
 template (series-color accent). Markdown READMEs truncate long captions on
 phones; the PDF is the copy-paste-ready reference. File it in the episode folder
 as `<Company>-<Series>-Writeup.pdf` and share the PDF, not just the markdown.
+Every write-up (PDF **and** posting kit) also carries a one-line,
+comma-separated **SEO keyword set** (~20 terms) for captions, alt text,
+cross-posting, and any YouTube/blog version.
 
 **Distribution (standing rule):** when an episode features a real company,
 verify the handle resolves to their real profile, then tag them in two places.

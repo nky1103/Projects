@@ -57,6 +57,10 @@ Follow @statupsutra for Exit Stories, every Friday.
 Core: #startup #acquisition #startupindia #founders #buildinpublic
 Extended: #exit #techindia #bengaluru #facebook #startupstory #entrepreneurship #productmanagement
 
+## SEO keywords (one line, comma-separated)
+For captions, alt text, cross-posting, YouTube titles/descriptions, blog:
+little eye labs, facebook little eye labs acquisition, facebook first india acquisition, indian startup acquired by facebook, bengaluru startup acquisition, android app performance tool, startup acquisition lessons, why facebook acquired little eye labs, acqui-hire india, startup exit story india, mobile app performance analysis, indian tech startup exit, kumar rangarajan, gsf accelerator, capability acquisition, startup exit strategy, india startup ecosystem, facebook android optimization, deep tech startup india, build to be acquired
+
 ## Sources & compliance
 Every claim is publicly sourced (TechCrunch, YourStory, Business Today,
 Crunchbase). Carousel and reels carry an "editorial analysis of publicly
