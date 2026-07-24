@@ -30,17 +30,17 @@ Silent by design; run the trending sound fairly loud.
 **Carousel (08:00):** see `caption.txt` (includes sources + editorial disclaimer).
 
 **Reel 1 (primary, 09:00):**
-Facebook's first-ever India acquisition was a 13-person team in Bengaluru.
-Little Eye Labs made a tool that showed why any Android app drained battery, data and memory. In 2013, 874 million of Facebook's users were on mobile. It needed lighter apps for the next billion, and Little Eye was that capability.
-The lesson: acquirers buy the problem you own, not your size.
+Facebook's first-ever India acquisition was a 13-person Bengaluru startup: Little Eye Labs.
+They built an Android app performance tool that showed why any app drained battery, data and memory. In 2013, 874 million of Facebook's users were on mobile, and it needed lighter apps for the next billion. Little Eye was that capability.
+The startup exit lesson: acquirers buy the problem you own, not your size.
 Follow @statupsutra for Exit Stories, every Friday.
 📚 Sources: TechCrunch, YourStory.
 #startup #acquisition #startupindia #founders #buildinpublic
 
 **Reel 2 (micro, 13:00):**
-Facebook bought a 13-person Bengaluru startup in 2014. Why?
-Little Eye Labs owned one thing Facebook urgently needed: making Android apps fast and light for the next billion users.
-Great exits aren't about size. They're about the capability you own.
+Facebook bought a 13-person Bengaluru startup in 2014: Little Eye Labs. Why?
+It owned the Android app performance capability Facebook urgently needed for the next billion users.
+The startup exit lesson: great exits aren't about size, they're about the capability you own.
 Follow @statupsutra for Exit Stories, every Friday.
 #startup #acquisition #startupindia #founders #exit
 
