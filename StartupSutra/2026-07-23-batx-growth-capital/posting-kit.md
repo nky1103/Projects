@@ -34,7 +34,10 @@ Follow @statupsutra for Growth Capital, every Thursday.
 #startup #venturecapital #evindia #criticalminerals #founders
 
 ## Alt text (carousel)
-1. Growth Capital, BatX Energies ₹105 Cr Series A. "They didn't back another EV startup. They backed the one mining dead batteries."
+Cover (keyword-loaded, for Instagram Edit → alt text):
+Growth Capital carousel on BatX Energies, the Gurugram battery recycling startup that raised a ₹105 Cr Series A led by IvyCap Ventures. It recovers critical minerals (lithium, cobalt, nickel) from dead batteries for India's EV supply chain. A cleantech funding case study and founder lesson: own the scarce input.
+
+1. Growth Capital, BatX Energies ₹105 Cr Series A battery recycling into critical minerals. "They didn't back another EV startup. They backed the one mining dead batteries."
 2. Snapshot: BatX Energies, Gurugram; ₹105 Cr Series A led by IvyCap Ventures; recycles batteries into critical minerals.
 3. India's EV boom runs on lithium, cobalt and nickel, and it imports almost all of it, mostly from China.
 4. Why investors said yes: BatX turns dead batteries into a domestic supply of those minerals; waste processing to strategic input supply.
