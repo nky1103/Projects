@@ -29,8 +29,8 @@
   .kicker .sq { width:20px; height:20px; border-radius:5px; background:linear-gradient(135deg,#22c55e,#15803d); }
   .followcard { margin-top:56px; display:flex; align-items:center; gap:30px; border-left:9px solid #22c55e; border-radius:8px 30px 30px 8px; background:rgba(34,197,94,.10); padding:40px 48px; }
   .fbtile { width:150px; height:150px; border-radius:34px; background:#1877F2; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 34px rgba(24,119,242,.4); }
-  .reelport { width:420px; height:520px; border-radius:40px; overflow:hidden; position:relative; margin:0 auto 4px;
-    border:3px solid rgba(34,197,94,.55); box-shadow:0 34px 90px rgba(0,0,0,.65); }
+  .reelport { width:508px; height:634px; border-radius:44px; overflow:hidden; position:relative; margin:0 auto 4px;
+    border:3px solid rgba(34,197,94,.6); box-shadow:0 34px 90px rgba(0,0,0,.65); }
   .reelport img { width:100%; height:100%; object-fit:cover; object-position:50% 28%; }
   .reelport .rb { position:absolute; left:0; right:0; bottom:0; padding:24px 28px; background:linear-gradient(0deg,rgba(6,9,14,.92),transparent);
     font-weight:800; font-size:30px; color:#22c55e; letter-spacing:1px; }
@@ -70,14 +70,14 @@ const REELS = {
     { id:'k4', t0:13.4, t1:20.4, html:'<div class="kicker"><span class="sq"></span>2001 · Kamani Tubes</div><h1 style="font-size:82px;">Bankrupt. In liquidation. <span class="accent">3,500 workers unpaid.</span></h1>', els:[{tIn:13.5,dIn:0.35},{tIn:13.9,dIn:0.4}] },
     { id:'k5', t0:20.4, t1:26.2, html:'<h1 style="font-size:78px;">She cleared the debt. Restarted it.</h1><h1 style="font-size:92px;margin-top:34px;">Saved <span class="accent">every job.</span></h1>', els:[{tIn:20.5,dIn:0.4},{tIn:22.6,pop:true}] },
     { id:'k6', t0:25.4, t1:29.0, html:'<div class="reelport"><img src="img/ks-reveal-bw.jpg"><span class="rb">Padma Shri · 2013</span></div><h1 style="font-size:66px;margin-top:30px;text-align:center;">Her name is <span class="accent">Kalpana Saroj.</span></h1>', els:[{tIn:25.5,dIn:0.55,y:44},{tIn:26.4,dIn:0.4}] },
-    { id:'k7', t0:29.0, t1:32.0, hold:true, html:'<div class="reelport" style="width:300px;height:370px;margin:0 auto 22px;"><img src="img/ks-reveal-bw.jpg"></div><h1 style="font-size:62px;text-align:center;">The greatest turnaround was her <span class="accent">own life.</span></h1>'+FC, els:[{tIn:29.1,dIn:0.5,y:30},{tIn:29.5,pop:true},{tIn:30.2}] },
+    { id:'k7', t0:29.0, t1:32.0, hold:true, html:'<div class="reelport" style="width:392px;height:486px;margin:0 auto 20px;"><img src="img/ks-reveal-bw.jpg"></div><h1 style="font-size:62px;text-align:center;">The greatest turnaround was her <span class="accent">own life.</span></h1>'+FC, els:[{tIn:29.1,dIn:0.5,y:30},{tIn:29.5,pop:true},{tIn:30.2}] },
   ]},
   micro: { dur: 16.0, hideChrome: 3.0, scenes: [
     { id:'x1', t0:0.0, t1:3.0, html:'<h1 style="font-size:96px;">She was married at <span class="accent">12.</span></h1>', els:[{tIn:0.0,dIn:0.3,y:40}] },
     { id:'x2', t0:3.0, t1:6.2, html:'<h1 style="font-size:82px;">Everyone wrote her off.</h1><h1 class="huge" style="margin-top:34px;">She <span class="accent">didn\'t.</span></h1>', els:[{tIn:3.1,dIn:0.4},{tIn:4.6,pop:true}] },
     { id:'x3', t0:6.2, t1:10.2, html:'<h1 style="font-size:80px;">She revived a bankrupt company and saved <span class="accent">3,500 jobs.</span></h1>', els:[{tIn:6.3,dIn:0.42}] },
     { id:'x4', t0:10.2, t1:13.2, html:'<div class="reelport"><img src="img/ks-reveal-bw.jpg"><span class="rb">Padma Shri · 2013</span></div><h1 style="font-size:64px;margin-top:28px;text-align:center;">Kalpana <span class="accent">Saroj.</span></h1>', els:[{tIn:10.3,dIn:0.55,y:44},{tIn:11.1,dIn:0.4}] },
-    { id:'x5', t0:13.2, t1:16.0, hold:true, html:'<div class="reelport" style="width:280px;height:346px;margin:0 auto 18px;"><img src="img/ks-reveal-bw.jpg"></div><h1 style="font-size:64px;text-align:center;">The greatest turnaround is your <span class="accent">own life.</span></h1>'+FC, els:[{tIn:13.3,dIn:0.5,y:30},{tIn:13.7,pop:true},{tIn:14.2}] },
+    { id:'x5', t0:13.2, t1:16.0, hold:true, html:'<div class="reelport" style="width:380px;height:470px;margin:0 auto 18px;"><img src="img/ks-reveal-bw.jpg"></div><h1 style="font-size:64px;text-align:center;">The greatest turnaround is your <span class="accent">own life.</span></h1>'+FC, els:[{tIn:13.3,dIn:0.5,y:30},{tIn:13.7,pop:true},{tIn:14.2}] },
   ]},
 };
 
