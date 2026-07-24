@@ -1,0 +1,144 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-400.ttf'); font-weight:400; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-600.ttf'); font-weight:600; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  @page { size:A4; margin:0; }
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body { background:#0b0e14; font-family:'Inter','Noto Color Emoji',sans-serif; color:#f4f1ea; font-size:9.8pt; line-height:1.46; }
+  .page { width:210mm; min-height:297mm; padding:12mm 16mm 12mm; position:relative; background:#0b0e14; page-break-after:always; overflow:hidden; }
+  .page:last-child { page-break-after:auto; }
+  .page::before { content:''; position:absolute; inset:0;
+    background:radial-gradient(140mm 100mm at 92% -4%, rgba(34,197,94,.13), transparent 65%),radial-gradient(150mm 110mm at -10% 106%, rgba(34,197,94,.08), transparent 60%); }
+  .page > * { position:relative; z-index:1; }
+  .phead { display:flex; justify-content:space-between; align-items:center; margin-bottom:7mm; }
+  .brand { display:flex; align-items:center; gap:4mm; }
+  .mark { width:9mm; height:9mm; border-radius:2.6mm; background:linear-gradient(135deg,#f59e0b,#ea580c); display:flex; align-items:center; justify-content:center; }
+  .bname { font-weight:700; font-size:12.5pt; color:#e8e4da; } .bname span { color:#f59e0b; }
+  .ptag { font-weight:700; font-size:8pt; letter-spacing:2px; color:#6b7280; text-transform:uppercase; }
+  .pfoot { position:absolute; bottom:7mm; left:16mm; right:16mm; display:flex; justify-content:space-between; z-index:1; font-weight:600; font-size:7.5pt; color:#525a68; letter-spacing:1px; }
+  h1 { font-weight:900; font-size:23pt; letter-spacing:-0.5pt; line-height:1.16; }
+  h1 .accent { color:#22c55e; }
+  h2 { font-weight:900; font-size:12.5pt; letter-spacing:-0.3pt; margin:3mm 0 1.6mm; display:flex; align-items:center; gap:2.5mm; }
+  h2 .num { color:#22c55e; }
+  h2 .when { font-weight:600; font-size:8.5pt; color:#6b7280; }
+  .lbl { font-weight:700; font-size:7.5pt; letter-spacing:1.5px; text-transform:uppercase; color:#6b7280; margin:0 0 1.5mm; }
+  .kicker { display:inline-flex; align-items:center; gap:2.5mm; font-weight:700; font-size:8.5pt; letter-spacing:2.5px; text-transform:uppercase; color:#22c55e; padding:2mm 4.5mm; border:0.4mm solid rgba(34,197,94,.45); border-radius:99px; background:rgba(34,197,94,.08); margin-bottom:6mm; }
+  .kicker .sq { width:3mm; height:3mm; border-radius:0.9mm; background:linear-gradient(135deg,#22c55e,#15803d); }
+  .meta { display:flex; flex-wrap:wrap; gap:3mm 7mm; margin:4mm 0 2mm; font-size:9pt; color:#aab2c0; } .meta b { color:#f4f1ea; font-weight:700; }
+  .card { background:rgba(255,255,255,.035); border:0.3mm solid rgba(255,255,255,.11); border-radius:3mm; padding:3mm 4mm; margin-bottom:2.6mm; }
+  .card.grn { border-left:1.6mm solid #22c55e; }
+  .cap { color:#dfe3ea; font-size:9.3pt; line-height:1.42; white-space:pre-wrap; }
+  .cap .hl { color:#f4f1ea; font-weight:700; }
+  .tags { color:#22c55e; font-weight:600; }
+  .reeltag { display:inline-block; font-weight:800; font-size:7.5pt; letter-spacing:1px; text-transform:uppercase; color:#06210f; background:#22c55e; border-radius:99px; padding:1mm 3mm; margin-bottom:2mm; }
+  ol.alt { margin:1mm 0 0 5mm; } ol.alt li { margin-bottom:1.1mm; color:#aab2c0; font-size:8.7pt; line-height:1.34; } ol.alt li b { color:#f4f1ea; }
+  .reelrow { display:flex; gap:3.5mm; } .reelrow > * { flex:1; }
+  table { width:100%; border-collapse:collapse; margin:1mm 0 2mm; font-size:9pt; }
+  th { text-align:left; font-weight:700; font-size:7.5pt; letter-spacing:1.5px; text-transform:uppercase; color:#6b7280; padding:1.6mm 3mm; border-bottom:0.4mm solid rgba(255,255,255,.15); }
+  td { padding:1.8mm 3mm; border-bottom:0.25mm solid rgba(255,255,255,.08); color:#aab2c0; } td b { color:#f4f1ea; }
+  .pill { font-weight:800; color:#86efac; }
+  .tagset { font-size:9pt; line-height:1.7; } .tagset .grp { color:#6b7280; font-weight:700; font-size:7.5pt; letter-spacing:1.5px; text-transform:uppercase; } .tagset .h { color:#22c55e; font-weight:600; }
+  .note { font-size:8.3pt; color:#8b93a3; margin-top:1mm; }
+  .seo { font-size:8.4pt; line-height:1.5; color:#aab2c0; }
+</style>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="phead"><div class="brand"><div class="mark"><svg viewBox="0 0 200 200" style="width:76%;height:76%;display:block"><path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/><path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/><circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/><circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/><circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/><path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></svg></div><div class="bname">Startup<span>Sutra</span></div></div><div class="ptag">Write-up · Posting Kit</div></div>
+
+  <div class="kicker"><span class="sq"></span>Founder Framework #001 · SS-FF-001</div>
+  <h1>Kalpana Saroj. <span class="accent">The turnaround was her own life.</span></h1>
+  <div class="meta">
+    <span><b>Series</b> · Founder Framework (Sat)</span>
+    <span><b>Date</b> · 25 Jul 2026</span>
+    <span><b>Subject</b> · Kalpana Saroj, Kamani Tubes</span>
+    <span><b>Framework</b> · Pain → Transformation</span>
+  </div>
+
+  <h2><span class="num">01</span> Carousel caption <span class="when">(posts 08:00 IST)</span></h2>
+  <div class="card grn">
+    <div class="cap"><span class="hl">Everyone celebrates billion-dollar founders. Very few talk about the woman who rebuilt a dying company after surviving child marriage, poverty and discrimination.</span>
+
+Kalpana Saroj was married at 12, against her will. She left an abusive home, reached Mumbai, and worked in a garment factory for as little as ₹2 a day.
+
+In 1984, a ₹50,000 loan started a tailoring business, then furniture. She wasn't chasing success. She was rebuilding herself.
+
+Then came the gamble. In 2001, Kamani Tubes was bankrupt. A 40-year-old metals company in liquidation, with 3,500 workers unpaid for nearly three years. The workers asked her to take it over.
+
+She did. She cleared the debt, settled the dues, and restarted production. Today she chairs the KS Group, six companies turning over thousands of crores. In 2013, she received the Padma Shri.
+
+She didn't inherit an empire. She built one through resilience, courage and relentless execution.
+
+<span class="hl">The Founder Framework: Pain → Purpose → Persistence → Execution → Transformation.</span>
+
+Your beginnings don't decide your destination.
+
+💬 Which founder should StartupSutra decode next?
+❤️ Save this for the days you want to quit.
+
+📚 Sources: BBC, The Weekend Leader, Outlook Business, Wikipedia
+⚠️ Editorial analysis of publicly available information.
+
+<span class="tags">#StartupSutra #FounderFramework #KalpanaSaroj #KamaniTubes #entrepreneurship</span></div>
+  </div>
+
+  <h2 style="margin-top:4mm;"><span class="num">SEO</span> Keywords <span class="when">(one line, comma-separated, for captions, alt text, cross-posting, YouTube/blog)</span></h2>
+  <div class="card"><div class="seo">kalpana saroj, kalpana saroj story, kalpana saroj success story, kalpana saroj entrepreneur, kamani tubes, kamani tubes turnaround, founder framework, startupsutra, indian entrepreneur, women entrepreneur india, business turnaround, business transformation story, entrepreneur mindset, leadership lessons, business case study, founder journey, business documentary, indian business stories, dalit entrepreneur, padma shri businesswoman</div></div>
+
+  <div class="pfoot"><span>@statupsutra</span><span>Founder Framework #001 · Write-up · 1 / 2</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="phead"><div class="brand"><div class="mark"><svg viewBox="0 0 200 200" style="width:76%;height:76%;display:block"><path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/><path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/><circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/><circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/><circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/><path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></svg></div><div class="bname">Startup<span>Sutra</span></div></div><div class="ptag">Write-up · Posting Kit</div></div>
+
+  <h2><span class="num">02</span> Reel caption <span class="when">(32s documentary · posts 20:00 IST)</span></h2>
+  <div class="card">
+    <span class="reeltag">Reel 1 · Primary · 32s</span>
+    <div class="cap">She was married at 12. Her future had already been decided for her.
+She refused to let it stay that way. She reached Mumbai, worked for ₹2 a day, and slowly rebuilt her life.
+Then in 2001 she took over Kamani Tubes: bankrupt, in liquidation, 3,500 workers unpaid for years.
+She cleared the debt, restarted it, and saved every job. Today she chairs a group worth thousands of crores.
+Sometimes the greatest business turnaround is your own life.
+Follow @statupsutra for Founder Framework, every Saturday.
+<span class="tags">#StartupSutra #FounderFramework #KalpanaSaroj #KamaniTubes #entrepreneurship</span></div>
+  </div>
+
+  <h2><span class="num">03</span> Alt text <span class="when">7 slides</span></h2>
+  <div class="card">
+    <ol class="alt">
+      <li><b>Slide 1.</b> Founder Framework, Kalpana Saroj. Forced into marriage at 12, she later saved a company everyone had given up on. Chairperson of Kamani Tubes, Padma Shri.</li>
+      <li><b>Slide 2.</b> The beginning: a Dalit girl in a Maharashtra village facing poverty, caste discrimination and child marriage at 12. Most assumed her story was already written.</li>
+      <li><b>Slide 3.</b> Starting again: she reached Mumbai, did garment work for as little as 2 rupees a day, and in 1984 used a 50,000 rupee loan to start tailoring, then furniture.</li>
+      <li><b>Slide 4.</b> The gamble: in 2001 Kamani Tubes, a 40-year-old metals maker, was bankrupt and in liquidation with 3,500 workers unpaid for nearly 3 years. The workers asked her to take over.</li>
+      <li><b>Slide 5.</b> The turnaround: she cleared the debt, settled workers' dues and restarted production. Today the KS Group spans six companies and thousands of crores in turnover.</li>
+      <li><b>Slide 6.</b> The Founder Framework: Pain to Purpose to Persistence to Execution to Transformation.</li>
+      <li><b>Slide 7.</b> Reflection: the world remembers successful founders; StartupSutra remembers what made them successful. Follow @statupsutra, Founder Framework on Saturdays.</li>
+    </ol>
+  </div>
+
+  <h2><span class="num">04</span> Hashtags and timing</h2>
+  <div class="reelrow">
+    <div class="card" style="flex:1.15;">
+      <div class="tagset">
+        <span class="grp">Branded</span><br><span class="h">#StartupSutra #FounderFramework</span><br><br>
+        <span class="grp">Topic</span><br><span class="h">#KalpanaSaroj #KamaniTubes #IndianEntrepreneur #WomenInBusiness #BusinessStory #FounderJourney #BusinessLessons #Leadership #Entrepreneurship #BusinessCaseStudy</span>
+      </div>
+      <div class="note">Optional tag: <b style="color:#f4f1ea;">@kamanitubes</b> if you confirm the official account. Verify any handle first.</div>
+    </div>
+    <div class="card" style="flex:1;">
+      <div class="lbl">Recommended IST schedule</div>
+      <table>
+        <tr><th>Time</th><th>Asset</th></tr>
+        <tr><td><span class="pill">08:00</span></td><td><b>Carousel</b>, slides 1 to 7</td></tr>
+        <tr><td><span class="pill">20:00</span></td><td><b>Reel</b>, 32s documentary</td></tr>
+      </table>
+      <div class="note">Evening slot suits an emotional, save-worthy story. Add a cinematic trending audio that lifts at the turnaround.</div>
+    </div>
+  </div>
+
+  <div class="pfoot"><span>@statupsutra</span><span>Founder Framework #001 · Write-up · 2 / 2</span></div>
+</div>
