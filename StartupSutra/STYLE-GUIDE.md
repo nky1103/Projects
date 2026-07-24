@@ -390,7 +390,11 @@ phones; the PDF is the copy-paste-ready reference. File it in the episode folder
 as `<Company>-<Series>-Writeup.pdf` and share the PDF, not just the markdown.
 Every write-up (PDF **and** posting kit) also carries a one-line,
 comma-separated **SEO keyword set** (~20 terms) for captions, alt text,
-cross-posting, and any YouTube/blog version.
+cross-posting, and any YouTube/blog version. That set is not just a list to
+file: the top keywords must be **woven naturally into the caption**, into a
+**keyword-loaded cover alt-text** string (slide 1, for Instagram Edit → alt
+text), and into the **reel captions** — never stuffed, always readable. Caption
++ cover alt + reel captions carrying keywords is the checklist, not optional.
 
 **Distribution (standing rule):** when an episode features a real company,
 verify the handle resolves to their real profile, then tag them in two places.
