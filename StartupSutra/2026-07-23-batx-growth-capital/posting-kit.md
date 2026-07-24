@@ -46,6 +46,10 @@ Follow @statupsutra for Growth Capital, every Thursday.
 Core: #startup #venturecapital #cleantech #india #founders
 Extended: #startupindia #evindia #batteryrecycling #criticalminerals #seriesa #growthcapital #entrepreneurship
 
+## SEO keywords (one line, comma-separated)
+For captions, alt text, cross-posting, YouTube titles/descriptions, blog:
+batx energies, batx energies funding, battery recycling india, critical minerals india, lithium recycling, ev battery recycling, series a funding india, ivycap ventures, growth capital, startupsutra, cleantech india, ev supply chain, urban mining, battery recycling startup, lithium cobalt nickel, domestic critical minerals, indian cleantech startup, energy storage india, circular economy battery, india ev boom
+
 ## Sources & compliance
 Every claim is publicly sourced (Entrackr, YourStory, Indian Startup News,
 EVreporter). Carousel + reels carry a "not investment advice" disclaimer per
