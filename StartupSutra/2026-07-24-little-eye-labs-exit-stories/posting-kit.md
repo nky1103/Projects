@@ -45,7 +45,7 @@ Follow @statupsutra for Exit Stories, every Friday.
 #startup #acquisition #startupindia #founders #exit
 
 ## Alt text (carousel)
-1. Exit Stories, Little Eye Labs. Facebook bought a 13-person Bengaluru startup in January 2014 for about 10 to 15 million dollars. Its first India deal.
+1. Little Eye Labs, the Bengaluru startup Facebook acquired in January 2014 in its first-ever India acquisition. A StartupSutra Exit Stories carousel cover: Facebook bought a 13-person team that built an Android app performance tool. Startup exit story and acquisition lesson for founders: acquirers buy capability, not size. (Keyword-loaded cover alt text for Instagram Edit → alt text.)
 2. Snapshot: Little Eye Labs, Bengaluru, founded 2012, 13 people and 5 founders, backed by GSF Accelerator and Ventureast, raised about 282K then acquired. Timeline: 2012 founded, April 2013 launch, January 2014 Facebook.
 3. The problem: in 2013 a mobile app was a black box. Nobody could see why it drained battery, ate data, or lagged, especially on cheap Android phones.
 4. What they built: plug any Android phone in over USB and Little Eye showed CPU, memory, battery and data live, correlated to app activity. Zero code.
