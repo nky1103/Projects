@@ -61,7 +61,8 @@
     background:linear-gradient(0deg, rgba(6,9,14,.92), transparent); }
   .portrait .cap .nm { font-weight:900; font-size:44px; color:#f4f1ea; letter-spacing:-.5px; }
   .portrait .cap .rl { margin-top:4px; font-weight:700; font-size:24px; color:#22c55e; letter-spacing:1px; }
-  .slotnote { position:absolute; top:18px; left:50%; transform:translateX(-50%); z-index:4; font-weight:700; font-size:18px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.28); }
+  .portrait.mystery .bust { color:#141a24; }
+  .portrait .qmark { position:absolute; left:50%; top:42%; transform:translate(-50%,-50%); z-index:3; font-weight:900; font-size:172px; color:rgba(34,197,94,.92); text-shadow:0 10px 44px rgba(34,197,94,.45); }
 
   /* scene vectors */
   .sceneart { align-self:center; margin:28px 0 8px; }
@@ -122,9 +123,10 @@
   <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#001 · 01/07</div></div>
   <div class="body">
     <div class="seriesband"><span class="sq"></span><span class="txt">Founder<br>Framework</span></div>
-    <div class="portrait">
+    <div class="portrait mystery">
       <svg class="bust" viewBox="0 0 200 210" preserveAspectRatio="xMidYMax meet"><use href="#bust"/></svg>
-      <div class="cap"><div class="nm">Kalpana Saroj</div><div class="rl">Chairperson, Kamani Tubes · Padma Shri</div></div>
+      <div class="qmark">?</div>
+      <div class="cap"><div class="nm" style="color:#22c55e;">Who is she?</div><div class="rl" style="color:#8b93a3;">Her answer changed 3,500 lives</div></div>
     </div>
     <h1 style="font-size:74px;">She was forced into marriage at <span class="accent">12.</span></h1>
     <h1 style="font-size:74px; margin-top:24px;">Years later, she saved a company everyone had <span class="dim">given up on.</span></h1>
@@ -188,7 +190,8 @@
   <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#001 · 05/07</div></div>
   <div class="body">
     <div class="chapter"><span class="ln"></span>Chapter 04 · The Turnaround</div>
-    <h1 style="font-size:74px;">She didn't just save a company. She saved <span class="accent">3,500 livelihoods.</span></h1>
+    <h1 style="font-size:70px;">Her name is <span class="accent">Kalpana Saroj.</span></h1>
+    <div class="sub" style="margin-top:18px;">She didn't just save a company. She saved <strong style="color:#22c55e;">3,500 livelihoods.</strong></div>
     <div style="display:flex; align-items:flex-end; gap:44px; margin:34px 0 6px;">
       <div class="growth"><i style="height:30%"></i><i style="height:46%"></i><i style="height:62%"></i><i style="height:82%"></i><i style="height:100%"></i></div>
       <svg width="300" height="150"><use href="#factory"/></svg>

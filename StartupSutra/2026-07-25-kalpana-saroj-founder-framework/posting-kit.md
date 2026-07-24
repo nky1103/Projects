@@ -20,7 +20,11 @@ portrait, it drops straight into the slide-1 card and the reel** and I re-render
 | Time | Asset |
 |---|---|
 | 08:00 | Carousel (slides 1 to 7) |
+| 13:30 | `reels/reel-2-micro.mp4` (16s, one insight) |
 | 20:00 | `reels/reel-1-primary.mp4` (32s documentary) |
+
+Two reels at different times catches separate discovery windows (our BZERO/BatX
+testing learning). Micro at lunch, the full documentary in the evening.
 
 ## Music
 Add an emotional / cinematic trending audio in-app (soft piano build, then lift
@@ -37,6 +41,14 @@ She cleared the debt, restarted it, and saved every job. Today she chairs a grou
 Sometimes the greatest business turnaround is your own life.
 Follow @statupsutra for Founder Framework, every Saturday.
 #StartupSutra #FounderFramework #KalpanaSaroj #KamaniTubes #entrepreneurship
+
+**Reel 2 (micro, 16s):**
+She was married at 12. Everyone wrote her off.
+She didn't. She revived a bankrupt company, Kamani Tubes, and saved 3,500 jobs.
+Today she chairs a group worth thousands of crores.
+The greatest business turnaround is your own life.
+Follow @statupsutra for Founder Framework, every Saturday.
+#StartupSutra #FounderFramework #KalpanaSaroj #IndianEntrepreneur #businesscasestudy
 
 ## Alt text (carousel)
 Cover (keyword-loaded, for Instagram Edit → alt text):
