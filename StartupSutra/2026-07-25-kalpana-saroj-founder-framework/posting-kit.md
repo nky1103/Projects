@@ -11,10 +11,12 @@ Kamani Tubes in 2001 and saved 3,500 jobs.
 **Framework:** Pain → Purpose → Persistence → Execution → Transformation.
 
 ## Portrait / images note
-Slide 1 uses a **dignified vector portrait treatment** (silhouette + name plate).
-This session's network policy blocks image downloads, so no real photo or Kamani
-Tubes imagery could be pulled. **If you supply a high-quality Kalpana Saroj
-portrait, it drops straight into the slide-1 card and the reel** and I re-render.
+**Slide 1** stays a mystery silhouette (drives curiosity); the **real portrait
+reveals on slide 5** ("Her name is Kalpana Saroj") and again at the **climax of
+both reels**. Portrait supplied by the user (press / publicly available image),
+cropped and composited into the documentary frames. Add a photo credit in the
+caption (📷 line already included). A higher-res portrait can be swapped in
+anytime via the same slot.
 
 ## Schedule (IST)
 | Time | Asset |
