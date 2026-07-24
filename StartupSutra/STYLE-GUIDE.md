@@ -345,6 +345,16 @@ is how it reads in the feed. Record the scores in the episode README.
 ## 12. The five-phase production process
 
 We are not making Instagram posts. We are **producing editorial episodes.**
+Each incoming spec is an **editorial production brief** (ID `SS-<SERIES>-NNN`),
+not a "post brief": it carries the hypothesis, hook, emotion journey, storyboard,
+reel script, caption, SEO keywords, alt text, and visual production guide. Treat
+every field as a starting layout to populate and improve, not a rule to obey.
+Two standing overrides on any brief: **series color follows our locked system**
+(a brief's stray color note loses), and **positioning stays business-first** —
+decode the decision or the transferable framework; never slide into motivational
+"rags to riches" framing, even for an emotional story. The emotion earns the
+retention; the business lesson earns the follow.
+
 Every episode moves through five phases, in order:
 
 ### Phase 1 — Research
