@@ -1,0 +1,160 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-400.ttf'); font-weight:400; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-600.ttf'); font-weight:600; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  @page { size:A4; margin:0; }
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body { background:#0b0e14; font-family:'Inter','Noto Color Emoji',sans-serif; color:#f4f1ea; font-size:9.8pt; line-height:1.46; }
+  .page { width:210mm; min-height:297mm; padding:12mm 16mm 12mm; position:relative; background:#0b0e14; page-break-after:always; overflow:hidden; }
+  .page:last-child { page-break-after:auto; }
+  .page::before { content:''; position:absolute; inset:0;
+    background:radial-gradient(140mm 100mm at 92% -4%, rgba(245,158,11,.13), transparent 65%),radial-gradient(150mm 110mm at -10% 106%, rgba(234,88,12,.08), transparent 60%); }
+  .page > * { position:relative; z-index:1; }
+  .phead { display:flex; justify-content:space-between; align-items:center; margin-bottom:7mm; }
+  .brand { display:flex; align-items:center; gap:4mm; }
+  .mark { width:9mm; height:9mm; border-radius:2.6mm; background:linear-gradient(135deg,#f59e0b,#ea580c); display:flex; align-items:center; justify-content:center; }
+  .bname { font-weight:700; font-size:12.5pt; color:#e8e4da; } .bname span { color:#f59e0b; }
+  .ptag { font-weight:700; font-size:8pt; letter-spacing:2px; color:#6b7280; text-transform:uppercase; }
+  .pfoot { position:absolute; bottom:7mm; left:16mm; right:16mm; display:flex; justify-content:space-between; z-index:1; font-weight:600; font-size:7.5pt; color:#525a68; letter-spacing:1px; }
+  h1 { font-weight:900; font-size:22pt; letter-spacing:-0.5pt; line-height:1.16; }
+  h1 .accent { color:#f59e0b; }
+  h2 { font-weight:900; font-size:12.5pt; letter-spacing:-0.3pt; margin:3mm 0 1.6mm; display:flex; align-items:center; gap:2.5mm; }
+  h2 .num { color:#f59e0b; }
+  h2 .when { font-weight:600; font-size:8.5pt; color:#6b7280; }
+  .lbl { font-weight:700; font-size:7.5pt; letter-spacing:1.5px; text-transform:uppercase; color:#6b7280; margin:0 0 1.5mm; }
+  .kicker { display:inline-flex; align-items:center; gap:2.5mm; font-weight:700; font-size:8.5pt; letter-spacing:2.5px; text-transform:uppercase; color:#f59e0b; padding:2mm 4.5mm; border:0.4mm solid rgba(245,158,11,.45); border-radius:99px; background:rgba(245,158,11,.08); margin-bottom:6mm; }
+  .kicker .sq { width:3mm; height:3mm; border-radius:0.9mm; background:linear-gradient(135deg,#f59e0b,#ea580c); }
+  .meta { display:flex; flex-wrap:wrap; gap:3mm 7mm; margin:4mm 0 2mm; font-size:9pt; color:#aab2c0; } .meta b { color:#f4f1ea; font-weight:700; }
+  .card { background:rgba(255,255,255,.035); border:0.3mm solid rgba(255,255,255,.11); border-radius:3mm; padding:3mm 4mm; margin-bottom:2.6mm; }
+  .card.amb { border-left:1.6mm solid #f59e0b; }
+  .cap { color:#dfe3ea; font-size:9.2pt; line-height:1.4; white-space:pre-wrap; }
+  .cap .hl { color:#f4f1ea; font-weight:700; }
+  .tags { color:#f59e0b; font-weight:600; }
+  .reeltag { display:inline-block; font-weight:800; font-size:7.5pt; letter-spacing:1px; text-transform:uppercase; color:#0b0e14; background:#f59e0b; border-radius:99px; padding:1mm 3mm; margin-bottom:2mm; }
+  .reelrow { display:flex; gap:3.5mm; } .reelrow > * { flex:1; }
+  .reelrow .cap { font-size:8.7pt; line-height:1.33; }
+  ol.alt { margin:1mm 0 0 5mm; } ol.alt li { margin-bottom:1mm; color:#aab2c0; font-size:8.6pt; line-height:1.32; } ol.alt li b { color:#f4f1ea; }
+  table { width:100%; border-collapse:collapse; margin:1mm 0 2mm; font-size:9pt; }
+  th { text-align:left; font-weight:700; font-size:7.5pt; letter-spacing:1.5px; text-transform:uppercase; color:#6b7280; padding:1.6mm 3mm; border-bottom:0.4mm solid rgba(255,255,255,.15); }
+  td { padding:1.8mm 3mm; border-bottom:0.25mm solid rgba(255,255,255,.08); color:#aab2c0; } td b { color:#f4f1ea; }
+  .pill { font-weight:800; color:#fbbf24; }
+  .tagset { font-size:9pt; line-height:1.7; } .tagset .grp { color:#6b7280; font-weight:700; font-size:7.5pt; letter-spacing:1.5px; text-transform:uppercase; } .tagset .h { color:#f59e0b; font-weight:600; }
+  .note { font-size:8.3pt; color:#8b93a3; margin-top:1mm; }
+  .seo { font-size:8.4pt; line-height:1.5; color:#aab2c0; }
+</style>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="phead"><div class="brand"><div class="mark"><svg viewBox="0 0 200 200" style="width:76%;height:76%;display:block"><path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/><path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/><circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/><circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/><circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/><path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></svg></div><div class="bname">Startup<span>Sutra</span></div></div><div class="ptag">Write-up · Posting Kit</div></div>
+
+  <div class="kicker"><span class="sq"></span>Case Study #002 · Sunday</div>
+  <h1>Attero Recycling. <span class="accent">India's urban gold mine.</span> The full write-up.</h1>
+  <div class="meta">
+    <span><b>Series</b> · Case Study (Sun)</span>
+    <span><b>Date</b> · 26 Jul 2026</span>
+    <span><b>Subject</b> · Attero Recycling</span>
+    <span><b>Framework</b> · Own the technology layer</span>
+  </div>
+
+  <h2><span class="num">01</span> Carousel caption <span class="when">(posts 08:00 IST)</span></h2>
+  <div class="card amb">
+    <div class="cap"><span class="hl">India's next gold mine isn't underground. It's in your drawer.</span>
+
+Every year India throws away over 1.6 million tonnes of electronics. Around 90% is handled by the informal sector, where the gold, copper and lithium inside get burned off or lost. Then India imports the same minerals back.
+
+Attero Recycling looked at that broken industry and saw a business.
+
+Founded in 2008 by brothers Nitin and Rohan Gupta, Attero isn't really a recycler. It's a technology company that mines critical minerals from dead electronics and batteries, recovering gold, copper, lithium, cobalt and nickel at close to 99% purity.
+
+Here's the strategy most people miss.
+
+Anyone can collect scrap. The moat is the extraction. Attero spent 15 years building 46 patented recovery processes, so it owns the one step competitors can't cheaply copy. That is the whole business.
+
+Then the tailwinds arrived. EPR rules now force brands to recycle 60, 70, then 80% of their e-waste. The EV boom needs lithium India doesn't mine. Demand became mandatory.
+
+The result: revenue from ₹440 Cr to over ₹1,000 Cr, cash-flow positive, and IPO-bound.
+
+<span class="hl">The Founder Playbook: Find opportunity in a broken industry → Make the patent your moat, not the plant → Turn regulation into a tailwind → Own the technology layer.</span>
+
+💬 What "waste" in your industry is actually a mispriced asset?
+❤️ Save this for your next strategy deck.
+
+📚 Sources: Inc42, EVreporter, Business Standard, The Ken, Tracxn
+⚠️ Editorial analysis of publicly available information. Not investment advice.
+
+<span class="tags">#startup #casestudy #climatetech #startupindia #founders</span></div>
+  </div>
+
+  <h2 style="margin-top:4mm;"><span class="num">SEO</span> Keywords <span class="when">(one line, comma-separated, for captions, alt text, cross-posting, YouTube/blog)</span></h2>
+  <div class="card"><div class="seo">attero recycling, attero case study, nitin gupta attero, e-waste recycling india, lithium battery recycling india, critical minerals recovery, urban mining india, climatetech india, circular economy business model, ewaste startup, technology moat, epr rules india, battery recycling startup, attero ipo, recovered metals, startupsutra case study, business strategy breakdown, indian startup case study, defensible business moat, recycling business model</div></div>
+
+  <div class="pfoot"><span>@statupsutra</span><span>Case Study #002 · Write-up · 1 / 2</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="phead"><div class="brand"><div class="mark"><svg viewBox="0 0 200 200" style="width:76%;height:76%;display:block"><path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/><path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/><circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/><circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/><circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/><path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></svg></div><div class="bname">Startup<span>Sutra</span></div></div><div class="ptag">Write-up · Posting Kit</div></div>
+
+  <h2><span class="num">02</span> Reel captions</h2>
+  <div class="reelrow">
+    <div class="card">
+      <span class="reeltag">Reel A · Business story · ~24s · 20:00</span>
+      <div class="cap">India's next gold mine isn't underground. It's in your drawer.
+India throws away 1.6 million tonnes of electronics a year, and 90% is lost to informal recycling.
+Attero mines that waste, recovering gold, copper and lithium from dead devices and batteries at 99% purity.
+Waste becomes valuable the moment technology changes the economics.
+Follow @statupsutra for Case Study, every Sunday.
+<span class="tags">#startup #casestudy #climatetech #startupindia #ewaste</span></div>
+    </div>
+    <div class="card">
+      <span class="reeltag">Reel B · Strategy · ~22s · 13:30</span>
+      <div class="cap">Recycling isn't Attero's advantage.
+Anyone can collect scrap. Attero spent 15 years building 46 patented recovery processes that extract critical minerals at 99% purity.
+That patented step is the moat, plus OEM partnerships and EPR rules that make demand mandatory.
+The lesson: own the technology layer, not just the operations.
+Follow @statupsutra for Case Study, every Sunday.
+<span class="tags">#startup #casestudy #strategy #founders #climatetech</span></div>
+    </div>
+  </div>
+
+  <h2><span class="num">03</span> Alt text <span class="when">9 slides</span></h2>
+  <div class="card">
+    <ol class="alt">
+      <li><b>1.</b> Case Study, Attero Recycling. India's next gold mine isn't underground, it's in your drawer. Dead electronics in, gold, copper and lithium out.</li>
+      <li><b>2.</b> The problem: India generates over 1.6 million tonnes of e-waste a year, ~90% handled informally, so critical minerals are lost and then re-imported.</li>
+      <li><b>3.</b> The business model: dead electronics and batteries in, proprietary processing at 99% purity, recovered minerals out, sold to OEMs and battery makers.</li>
+      <li><b>4.</b> The opportunity: India's e-waste market grows from 3.3 to 10 billion dollars by 2034, EPR mandates reach 80% by FY28, and the EV boom needs lithium.</li>
+      <li><b>5.</b> Go-to-market: sell to those the law forces to recycle, via OEM partnerships, enterprise metal supply, a collection network, and battery makers.</li>
+      <li><b>6.</b> The framework: own the technology layer, not operations. Collection and sorting are commoditised; the patented 99% purity recovery step is the moat.</li>
+      <li><b>7.</b> Competitive landscape: Attero (e-waste + batteries, 46 patents, carbon credits) vs Lohum (batteries), Recykal (marketplace), and the informal sector.</li>
+      <li><b>8.</b> Why they won: technology (46 patents), timing (before the EV wave), regulation (EPR demand), execution (₹440 Cr to ₹1,000 Cr+, cash-flow positive).</li>
+      <li><b>9.</b> Founder playbook: find opportunity in a broken industry, make the patent the moat, turn regulation into a tailwind, own the technology layer. Follow @statupsutra.</li>
+    </ol>
+  </div>
+
+  <h2><span class="num">04</span> Hashtags and timing</h2>
+  <div class="reelrow">
+    <div class="card" style="flex:1.15;">
+      <div class="tagset">
+        <span class="grp">Core</span><br><span class="h">#startup #casestudy #climatetech #startupindia #founders</span><br><br>
+        <span class="grp">Extended</span><br><span class="h">#ewaste #recycling #circulareconomy #batteryrecycling #urbanmining #attero #businessstrategy #entrepreneurship #cleantech</span>
+      </div>
+      <div class="note">Tag <b style="color:#f4f1ea;">@attero.recycling</b> / Nitin Gupta if you confirm the official handles.</div>
+    </div>
+    <div class="card" style="flex:1;">
+      <div class="lbl">Recommended IST schedule</div>
+      <table>
+        <tr><th>Time</th><th>Asset</th></tr>
+        <tr><td><span class="pill">08:00</span></td><td><b>Carousel</b>, slides 1 to 9</td></tr>
+        <tr><td><span class="pill">13:30</span></td><td><b>Reel B</b>, strategy (~22s)</td></tr>
+        <tr><td><span class="pill">20:00</span></td><td><b>Reel A</b>, business story (~24s)</td></tr>
+      </table>
+      <div class="note">Cinematic audio; build on the problem, lift on the recovery.</div>
+    </div>
+  </div>
+
+  <div class="pfoot"><span>@statupsutra</span><span>Case Study #002 · Write-up · 2 / 2</span></div>
+</div>
