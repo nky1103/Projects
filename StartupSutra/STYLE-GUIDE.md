@@ -264,6 +264,11 @@ the identity; media brands are built by making every video unmistakably theirs):
 - **0–3s** Challenge a widely held belief. Cold open, no branding; logo ~3.5s.
   Motion at frame one — kill the 2s cliff. ("Every brand is fighting for
   attention.")
+  **Frame-0 rule (hard):** the hook text is **fully readable at t=0** — no
+  fade-up from black. Use a fast scale-punch settle (≈1.16→1.0 over 0.5s) for
+  motion, and **front-load the payoff into the first line** so the surprising
+  claim lands in second one, not second three. An empty/near-empty opening frame
+  is the single biggest skip driver; the first frame must already carry the hook.
 - **3–12s** Build, then **land the lesson** — deliver the actual insight.
   ("It stopped making ads and made its mascot the show. The best marketing
   doesn't interrupt your feed — it becomes part of it.")
