@@ -281,6 +281,30 @@ the identity; media brands are built by making every video unmistakably theirs):
   If using VO later, natural pace — the pauses are the delivery.
 - Motion: settle-in text, scene crossfades, slow push-ins. Never flashy.
 
+### 6B. Distribution & hook standards (v1.3 — from the 7-day root-cause plan)
+
+Metrics said the caps were **distribution and fragmentation**, not the hooks
+alone. Standing changes:
+- **The reversal hook is the default reel opener.** "Everyone thinks it was
+  about X. It was actually about Y." For failures: "Everyone thinks ___ killed
+  ___." It front-loads a pattern-interrupt and pays off with the real lesson.
+  (Attero: "Everyone thinks Attero is a recycling company. It's actually a
+  technology company." Quibi: "Everyone thinks COVID killed Quibi.")
+- **One reel per episode. No split cuts / backup versions.** Fragmenting a day
+  across 2–3 reels splits the signal and confuses the algorithm. Build the best
+  single reel and give it everything. (Extra cuts may sit in the folder as
+  alternates, but only one posts.)
+- **Lead the hook with a concrete number** where one exists (deal size,
+  valuation, funding) — numbers correlated with the strongest posts.
+- **Stories are mandatory, daily.** A **teaser 1–2h before** the post ("Tomorrow:
+  the company everyone got wrong 👀") warms the first-hour audience; a **yes/no
+  or poll follow-up right after** ("Did you know this before today?") generates
+  the cheap interaction data the algorithm learns from. Zero Stories in 30 days
+  was the single biggest unforced error.
+- **Bio CTA/link** so profile visits have somewhere to convert.
+- **Track daily** reach + interactions in Insights; change one variable at a time
+  so you can attribute what moved the number.
+
 ### 6A. Narration Rules (voice performance)
 
 The guide defines writing; this defines **delivery**. They are different.

@@ -19,12 +19,17 @@ and suits the Netflix-style black/red direction — no reconciliation.
 Both reels open with the hook fully readable at t=0 (punch-in, no fade), payoff
 front-loaded — the skip-rate fix now baked into the style guide.
 
-## Schedule (IST)
+## Schedule (IST) — consolidated per the 7-day plan (no split cuts)
 | Time | Asset |
 |---|---|
+| ~18:00 the evening before (or 1–2h pre) | **STORY teaser:** "Tomorrow: how the biggest-funded startup of 2020 died in 6 months 👀" |
 | 08:00 | Carousel (slides 1 to 9) |
-| 13:30 | `reels/reel-2-strategy.mp4` (Reel B, PMF, ~22s) |
-| 20:00 | `reels/reel-1-story.mp4` (Reel A, story, ~24s) |
+| 20:00 | `reels/reel-1-story.mp4` — **the single reel** (reversal hook: "Everyone thinks COVID killed Quibi") |
+| right after the reel | **STORY follow-up (yes/no):** "Did you know this before today?" |
+
+Post **ONE** reel this week, not both — fragmentation is a root cause.
+`reel-2-strategy.mp4` is retained only as an optional alternate. Post a Story
+every day, and add a bio CTA/link so profile visits can convert.
 
 ## Music
 Cinematic, tense build; a beat drop on the shutdown. Silent by design.
@@ -32,10 +37,9 @@ Cinematic, tense build; a beat drop on the shutdown. Silent by design.
 ## Captions
 **Carousel (08:00):** see `caption.txt` (sources + disclaimer).
 
-**Reel A (business story, ~24s):**
-They raised $1.75 billion. Then died in six months.
-Quibi put Hollywood on your phone: big stars, ten-minute episodes. Everyone believed, Katzenberg, Disney, Alibaba.
-But it was paid, mobile-only, un-shareable, and it launched into COVID.
+**Reel A (story, ~24s) — REVERSAL HOOK (this week's single reel):**
+Everyone thinks COVID killed Quibi. It was dead the day it launched.
+$1.75 billion, and it still failed: paid in a free world, mobile-only, un-shareable. No product-market fit.
 Quibi built the future they imagined. TikTok built the future people actually wanted.
 Follow @statupsutra for Startup Failure, every Monday.
 #startup #startupfailure #productmarketfit #founders #quibi

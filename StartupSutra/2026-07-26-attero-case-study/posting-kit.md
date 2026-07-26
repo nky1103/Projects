@@ -21,12 +21,17 @@ chain, competitive table, market bars). Network policy blocks image downloads,
 so no real founder/factory photos were pulled. A Nitin Gupta portrait or
 factory/recovered-metal shots can drop into slides 1/8 if supplied via Drive.
 
-## Schedule (IST)
+## Schedule (IST) — consolidated per the 7-day plan (no split cuts)
 | Time | Asset |
 |---|---|
+| ~18:00 the evening before (or 1–2h pre) | **STORY teaser:** "Tomorrow: the case study of a company everyone got wrong 👀" |
 | 08:00 | Carousel (slides 1 to 9) |
-| 13:30 | `reels/reel-2-strategy.mp4` (Reel B, strategy, ~22s) |
-| 20:00 | `reels/reel-1-story.mp4` (Reel A, business story, ~24s) |
+| 20:00 | `reels/reel-2-strategy.mp4` — **the single reel** (reversal hook) |
+| after the reel | **STORY follow-up:** a yes/no question ("Did you know Attero isn't really a recycler?") |
+
+Post **ONE** reel this week, not both — fragmentation is a root cause.
+`reel-1-story.mp4` is retained only as an optional alternate. Post at least one
+Story every day (teaser / poll / behind-the-scenes) and add a bio CTA/link.
 
 ## Music
 Cinematic / documentary trending audio; build tension on the problem, lift on
@@ -43,10 +48,9 @@ Waste becomes valuable the moment technology changes the economics.
 Follow @statupsutra for Case Study, every Sunday.
 #startup #casestudy #climatetech #startupindia #ewaste
 
-**Reel B (strategy, ~22s):**
-Recycling isn't Attero's advantage.
-Anyone can collect scrap. Attero spent 15 years building 46 patented recovery processes that extract critical minerals at 99% purity.
-That patented step is the moat, plus OEM partnerships and EPR rules that make demand mandatory.
+**Reel B (strategy, ~22s) — REVERSAL HOOK (this week's single reel):**
+Everyone thinks Attero is a recycling company. It's actually a technology company.
+It spent 15 years building 46 patented recovery processes that extract critical minerals at 99% purity, a moat no one can cheaply copy.
 The lesson: own the technology layer, not just the operations.
 Follow @statupsutra for Case Study, every Sunday.
 #startup #casestudy #strategy #founders #climatetech
