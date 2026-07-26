@@ -1,0 +1,163 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-400.ttf'); font-weight:400; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-600.ttf'); font-weight:600; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  @page { size:A4; margin:0; }
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body { background:#0b0e14; font-family:'Inter','Noto Color Emoji',sans-serif; color:#f4f1ea; font-size:9.8pt; line-height:1.46; }
+  .page { width:210mm; min-height:297mm; padding:12mm 16mm 12mm; position:relative; background:#0b0e14; page-break-after:always; overflow:hidden; }
+  .page:last-child { page-break-after:auto; }
+  .page::before { content:''; position:absolute; inset:0;
+    background:radial-gradient(140mm 100mm at 92% -4%, rgba(239,68,68,.13), transparent 65%),radial-gradient(150mm 110mm at -10% 106%, rgba(185,28,28,.08), transparent 60%); }
+  .page > * { position:relative; z-index:1; }
+  .phead { display:flex; justify-content:space-between; align-items:center; margin-bottom:7mm; }
+  .brand { display:flex; align-items:center; gap:4mm; }
+  .mark { width:9mm; height:9mm; border-radius:2.6mm; background:linear-gradient(135deg,#f59e0b,#ea580c); display:flex; align-items:center; justify-content:center; }
+  .bname { font-weight:700; font-size:12.5pt; color:#e8e4da; } .bname span { color:#f59e0b; }
+  .ptag { font-weight:700; font-size:8pt; letter-spacing:2px; color:#6b7280; text-transform:uppercase; }
+  .pfoot { position:absolute; bottom:7mm; left:16mm; right:16mm; display:flex; justify-content:space-between; z-index:1; font-weight:600; font-size:7.5pt; color:#525a68; letter-spacing:1px; }
+  h1 { font-weight:900; font-size:22pt; letter-spacing:-0.5pt; line-height:1.16; }
+  h1 .accent { color:#ef4444; }
+  h2 { font-weight:900; font-size:12.5pt; letter-spacing:-0.3pt; margin:3mm 0 1.6mm; display:flex; align-items:center; gap:2.5mm; }
+  h2 .num { color:#ef4444; }
+  h2 .when { font-weight:600; font-size:8.5pt; color:#6b7280; }
+  .lbl { font-weight:700; font-size:7.5pt; letter-spacing:1.5px; text-transform:uppercase; color:#6b7280; margin:0 0 1.5mm; }
+  .kicker { display:inline-flex; align-items:center; gap:2.5mm; font-weight:700; font-size:8.5pt; letter-spacing:2.5px; text-transform:uppercase; color:#ef4444; padding:2mm 4.5mm; border:0.4mm solid rgba(239,68,68,.45); border-radius:99px; background:rgba(239,68,68,.08); margin-bottom:6mm; }
+  .kicker .sq { width:3mm; height:3mm; border-radius:0.9mm; background:linear-gradient(135deg,#ef4444,#b91c1c); }
+  .meta { display:flex; flex-wrap:wrap; gap:3mm 7mm; margin:4mm 0 2mm; font-size:9pt; color:#aab2c0; } .meta b { color:#f4f1ea; font-weight:700; }
+  .card { background:rgba(255,255,255,.035); border:0.3mm solid rgba(255,255,255,.11); border-radius:3mm; padding:3mm 4mm; margin-bottom:2.6mm; }
+  .card.red { border-left:1.6mm solid #ef4444; }
+  .cap { color:#dfe3ea; font-size:9.1pt; line-height:1.4; white-space:pre-wrap; }
+  .cap .hl { color:#f4f1ea; font-weight:700; }
+  .tags { color:#ef4444; font-weight:600; }
+  .reeltag { display:inline-block; font-weight:800; font-size:7.5pt; letter-spacing:1px; text-transform:uppercase; color:#0b0e14; background:#ef4444; border-radius:99px; padding:1mm 3mm; margin-bottom:2mm; }
+  .reelrow { display:flex; gap:3.5mm; } .reelrow > * { flex:1; }
+  .reelrow .cap { font-size:8.6pt; line-height:1.32; }
+  ol.alt { margin:1mm 0 0 5mm; } ol.alt li { margin-bottom:1mm; color:#aab2c0; font-size:8.5pt; line-height:1.3; } ol.alt li b { color:#f4f1ea; }
+  table { width:100%; border-collapse:collapse; margin:1mm 0 2mm; font-size:9pt; }
+  th { text-align:left; font-weight:700; font-size:7.5pt; letter-spacing:1.5px; text-transform:uppercase; color:#6b7280; padding:1.6mm 3mm; border-bottom:0.4mm solid rgba(255,255,255,.15); }
+  td { padding:1.8mm 3mm; border-bottom:0.25mm solid rgba(255,255,255,.08); color:#aab2c0; } td b { color:#f4f1ea; }
+  .pill { font-weight:800; color:#fca5a5; }
+  .tagset { font-size:9pt; line-height:1.7; } .tagset .grp { color:#6b7280; font-weight:700; font-size:7.5pt; letter-spacing:1.5px; text-transform:uppercase; } .tagset .h { color:#ef4444; font-weight:600; }
+  .note { font-size:8.3pt; color:#8b93a3; margin-top:1mm; }
+  .seo { font-size:8.4pt; line-height:1.5; color:#aab2c0; }
+</style>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="phead"><div class="brand"><div class="mark"><svg viewBox="0 0 200 200" style="width:76%;height:76%;display:block"><path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/><path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/><circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/><circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/><circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/><path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></svg></div><div class="bname">Startup<span>Sutra</span></div></div><div class="ptag">Write-up · Posting Kit</div></div>
+
+  <div class="kicker"><span class="sq"></span>Startup Failure #002 · Monday</div>
+  <h1>Quibi. <span class="accent">$1.75B, dead in 6 months.</span> The full write-up.</h1>
+  <div class="meta">
+    <span><b>Series</b> · Startup Failure (Mon)</span>
+    <span><b>Date</b> · 27 Jul 2026</span>
+    <span><b>Subject</b> · Quibi</span>
+    <span><b>Framework</b> · Assumption vs Reality</span>
+  </div>
+
+  <h2><span class="num">01</span> Carousel caption <span class="when">(posts 08:00 IST)</span></h2>
+  <div class="card red">
+    <div class="cap"><span class="hl">How do you burn $1.75 billion and shut down in six months?</span>
+
+Meet Quibi. Backed by Jeffrey Katzenberg and Meg Whitman, funded by Disney, Sony, Alibaba and Goldman Sachs. On paper, unstoppable.
+
+The pitch sounded perfect. Short-form video was exploding, so Quibi put Hollywood on your phone: big stars, big budgets, episodes under ten minutes, made for your commute.
+
+It launched in April 2020. It was dead by December.
+
+Here's the part most people miss. Quibi wasn't a bad product. It was beautifully built. It was solving the wrong problem.
+
+Every choice was optimised for the product they imagined, not the way people actually watch. It was paid, in a world of free. Mobile-only, so you couldn't cast it to your TV. It had no clips and no sharing, so nothing could go viral. And it launched into COVID, right as the commute it was built for disappeared.
+
+While Quibi bet on Hollywood, TikTok bet on creators. One assumed what people should want. The other watched what they actually did.
+
+The assumption: people want premium Hollywood content, on the go.
+The reality: people wanted free, shareable, creator-led content, at home.
+
+<span class="hl">Quibi built the future they imagined. TikTok built the future people actually wanted.</span>
+
+The Founder Playbook: Product-market fit beats funding → Distribution matters as much as content → Listen to behavior, not boardroom assumptions → Premium doesn't always create value → Simplicity wins.
+
+💬 What are you building for assumptions instead of behavior?
+❤️ Save this for your next product decision.
+
+📚 Sources: CNBC, Wikipedia, The Verge, NBC News
+⚠️ Editorial analysis of publicly available information.
+
+<span class="tags">#startup #startupfailure #productmarketfit #founders #casestudy</span></div>
+  </div>
+
+  <h2 style="margin-top:4mm;"><span class="num">SEO</span> Keywords <span class="when">(one line, comma-separated, for captions, alt text, cross-posting, YouTube/blog)</span></h2>
+  <div class="card"><div class="seo">quibi, quibi failure, why quibi failed, quibi shutdown, jeffrey katzenberg quibi, meg whitman quibi, product market fit, startup failure case study, quibi vs tiktok, streaming startup failure, 1.75 billion startup, quibi business case study, consumer behavior strategy, why startups fail, startupsutra startup failure, mobile only streaming, short form video, product strategy lessons, startup lessons, quibi roku</div></div>
+
+  <div class="pfoot"><span>@statupsutra</span><span>Startup Failure #002 · Write-up · 1 / 2</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="phead"><div class="brand"><div class="mark"><svg viewBox="0 0 200 200" style="width:76%;height:76%;display:block"><path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/><path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/><circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/><circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/><circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/><path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></svg></div><div class="bname">Startup<span>Sutra</span></div></div><div class="ptag">Write-up · Posting Kit</div></div>
+
+  <h2><span class="num">02</span> Reel captions</h2>
+  <div class="reelrow">
+    <div class="card">
+      <span class="reeltag">Reel A · Story · ~24s · 20:00</span>
+      <div class="cap">They raised $1.75 billion. Then died in six months.
+Quibi put Hollywood on your phone: big stars, ten-minute episodes. Everyone believed, Katzenberg, Disney, Alibaba.
+But it was paid, mobile-only, un-shareable, and it launched into COVID.
+Quibi built the future they imagined. TikTok built the future people actually wanted.
+Follow @statupsutra for Startup Failure, every Monday.
+<span class="tags">#startup #startupfailure #productmarketfit #founders #quibi</span></div>
+    </div>
+    <div class="card">
+      <span class="reeltag">Reel B · Strategy · ~22s · 13:30</span>
+      <div class="cap">Quibi didn't fail because it lacked money. It had $1.75 billion.
+It failed because it misread how people watch: paid in a free world, mobile-only, no sharing.
+That's the lesson in one line: product-market fit beats funding, every time.
+Own the behavior, not the assumption.
+Follow @statupsutra for Startup Failure, every Monday.
+<span class="tags">#startup #startupfailure #productmarketfit #strategy #founders</span></div>
+    </div>
+  </div>
+
+  <h2><span class="num">03</span> Alt text <span class="when">9 slides</span></h2>
+  <div class="card">
+    <ol class="alt">
+      <li><b>1.</b> Startup Failure, Quibi. How do you burn $1.75 billion and die in 6 months. Raised 1.75 billion, alive 6 months, sold for under 100 million.</li>
+      <li><b>2.</b> Snapshot: Quibi, founded 2018 in LA by Jeffrey Katzenberg and Meg Whitman, raised $1.75B from Disney, Sony, Alibaba, Goldman; premium short-form video, Apr to Dec 2020.</li>
+      <li><b>3.</b> The opportunity: short-form video was exploding, so Quibi put Hollywood on your phone with big stars and ten-minute episodes. On paper it sounded perfect.</li>
+      <li><b>4.</b> The product: premium episodes under 10 minutes, mobile only, a paid $4.99 to $7.99 subscription, and Turnstyle rotation. Optimised for the product they imagined.</li>
+      <li><b>5.</b> What went wrong: paid in a world of free, mobile-only with no TV, no clips or sharing, launched into COVID, and it ignored the creator economy.</li>
+      <li><b>6.</b> Consumer behavior won: TikTok (free, social, creator-led), YouTube (free, any screen), Netflix (TV, binge) vs Quibi (paid, mobile-only, no sharing).</li>
+      <li><b>7.</b> Assumption vs reality. Assumption: people want premium Hollywood content on the go. Reality: people wanted free, shareable, creator-led content at home.</li>
+      <li><b>8.</b> The fatal mistake: they optimised for production quality, not consumer behavior. Quibi built the future they imagined; TikTok built the future people actually wanted.</li>
+      <li><b>9.</b> Founder playbook: product-market fit beats funding, distribution matters as much as content, listen to behavior not assumptions, premium isn't value, simplicity wins.</li>
+    </ol>
+  </div>
+
+  <h2><span class="num">04</span> Hashtags and timing</h2>
+  <div class="reelrow">
+    <div class="card" style="flex:1.15;">
+      <div class="tagset">
+        <span class="grp">Core</span><br><span class="h">#startup #startupfailure #productmarketfit #founders #casestudy</span><br><br>
+        <span class="grp">Extended</span><br><span class="h">#quibi #startuplessons #productstrategy #consumerbehavior #tiktok #streaming #businesscasestudy #entrepreneurship #startupindia</span>
+      </div>
+      <div class="note">No active company to tag (Quibi is defunct).</div>
+    </div>
+    <div class="card" style="flex:1;">
+      <div class="lbl">Recommended IST schedule</div>
+      <table>
+        <tr><th>Time</th><th>Asset</th></tr>
+        <tr><td><span class="pill">08:00</span></td><td><b>Carousel</b>, slides 1 to 9</td></tr>
+        <tr><td><span class="pill">13:30</span></td><td><b>Reel B</b>, PMF (~22s)</td></tr>
+        <tr><td><span class="pill">20:00</span></td><td><b>Reel A</b>, story (~24s)</td></tr>
+      </table>
+      <div class="note">Cinematic, tense build; a beat drop on the shutdown.</div>
+    </div>
+  </div>
+
+  <div class="pfoot"><span>@statupsutra</span><span>Startup Failure #002 · Write-up · 2 / 2</span></div>
+</div>
