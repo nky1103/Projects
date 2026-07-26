@@ -50,10 +50,15 @@ Follow @statupsutra for Case Study, every Sunday.
 
 **Reel B (strategy, ~22s) — REVERSAL HOOK (this week's single reel):**
 Everyone thinks Attero is a recycling company. It's actually a technology company.
-It spent 15 years building 46 patented recovery processes that extract critical minerals at 99% purity, a moat no one can cheaply copy.
-The lesson: own the technology layer, not just the operations.
-Follow @statupsutra for Case Study, every Sunday.
-#startup #casestudy #strategy #founders #climatetech
+
+Anyone can collect scrap. The moat is the extraction: 46 patented recovery processes that pull gold, copper and lithium out of dead electronics and batteries at 99% purity, built over 15 years. No competitor can cheaply copy it.
+
+Own the technology layer, not just the operations.
+
+💬 What's the technology layer in your business?
+📚 Sources: Inc42, EVreporter. ⚠️ Not investment advice.
+Follow @statupsutra for a Case Study every Sunday.
+#startup #casestudy #climatetech #startupindia #founders
 
 ## Alt text (carousel)
 Cover (keyword-loaded, for Instagram Edit → alt text):

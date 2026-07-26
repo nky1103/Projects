@@ -39,9 +39,14 @@ Cinematic, tense build; a beat drop on the shutdown. Silent by design.
 
 **Reel A (story, ~24s) — REVERSAL HOOK (this week's single reel):**
 Everyone thinks COVID killed Quibi. It was dead the day it launched.
-$1.75 billion, and it still failed: paid in a free world, mobile-only, un-shareable. No product-market fit.
+
+$1.75 billion, backed by Katzenberg, Disney and Alibaba, and it still failed. Why? Paid in a world of free. Mobile-only, so you couldn't cast it to a TV. Un-shareable, so nothing could go viral. No product-market fit.
+
 Quibi built the future they imagined. TikTok built the future people actually wanted.
-Follow @statupsutra for Startup Failure, every Monday.
+
+💬 What are you building for assumptions instead of behavior?
+📚 Sources: CNBC, The Verge. ⚠️ Editorial analysis of publicly available information.
+Follow @statupsutra for a Startup Failure every Monday.
 #startup #startupfailure #productmarketfit #founders #quibi
 
 **Reel B (strategy / PMF, ~22s):**
