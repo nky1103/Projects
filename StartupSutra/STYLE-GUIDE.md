@@ -290,10 +290,19 @@ alone. Standing changes:
   ___." It front-loads a pattern-interrupt and pays off with the real lesson.
   (Attero: "Everyone thinks Attero is a recycling company. It's actually a
   technology company." Quibi: "Everyone thinks COVID killed Quibi.")
-- **One reel per episode. No split cuts / backup versions.** Fragmenting a day
-  across 2–3 reels splits the signal and confuses the algorithm. Build the best
-  single reel and give it everything. (Extra cuts may sit in the folder as
-  alternates, but only one posts.)
+- **Daily unit (LOCKED): 1 carousel + 1 reel + daily Stories. No second reel.**
+  The reel is the reach engine (non-followers); the carousel is conversion +
+  saves (turns profile visits into follows). One of each, every day. A second
+  reel splits an already-tiny signal (≈160 views/reel at week one) instead of
+  concentrating it — the "post 2–3 reels at different times" idea is retired; it
+  only applies at thousands of views, not hundreds. Put the second reel's energy
+  into **Stories** (2–3/day) instead. Extra reel cuts may sit in the folder as
+  alternates, but **only one posts.**
+- **No format changes for 30–60 days.** The account is days old; every format
+  change (podcast, new hook formulas, retention re-cuts) resets what the
+  algorithm is learning. Lock the format and hammer it. Judge results at day 30,
+  seriously at day 60 — never on week-one noise. Optimise engagement-signal
+  density (saves + shares + comments per view), not retention % on ~160 views.
 - **Lead the hook with a concrete number** where one exists (deal size,
   valuation, funding) — numbers correlated with the strongest posts.
 - **Stories are mandatory, daily.** A **teaser 1–2h before** the post ("Tomorrow:

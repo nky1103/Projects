@@ -48,12 +48,34 @@ Keep the brand look: navy background, series-colour accent, owl.
 
 ---
 
+## LOCKED daily cadence (do not change for 30–60 days)
+- **1 carousel (08:00) + 1 reel (evening) + 2–3 Stories.** No second reel.
+- Reel = reach (non-followers). Carousel = conversion + saves. Stories = warm-up
+  + interaction data.
+- **No format experiments** (podcast, new hook formulas, re-cuts) until day 30+.
+  Every change resets the algorithm's learning. Consistency is the strategy.
+
 ## Daily, regardless of pillar
-- Post **at least one Story** (teaser, poll, or behind-the-scenes).
+- Post **2–3 Stories** (teaser → poll → follow-up). Zero Stories was the biggest
+  gap — this is the highest-leverage daily action.
+- **Reply to every comment within the hour**; end each post with a real question.
+- One explicit **follow reason** every post ("one startup teardown a day").
 - Keep a **bio CTA/link** live so profile visits can convert.
-- Track **reach + interactions** in Insights daily. Change **one variable at a
-  time** (consolidation / reversal hook / Story warm-up) so you can attribute
-  what actually moved the number by day 7.
+- Harden the **save + share CTA** ("Save this before your next launch" / "Send
+  to a founder who needs it") — saves + shares are the reach signal.
+
+## Day-30 scorecard (judge here, not on week-one noise)
+The account is days old; week-one numbers are noise. Measure at **day 30**, then
+seriously at **day 60**. Track the *signal-density* metrics, not views:
+| Metric | Day 8 (baseline) | Day 30 target |
+|---|---|---|
+| Followers | 8 | 40–60 |
+| Saves + shares **per reel** | ~0.4 | 3–5 |
+| Comments per post | ~0.3 | 2–4 |
+| Reach (30d) | 2K | 6–10K |
+Growth in **saves + shares per reel** is the leading indicator that reach is
+about to widen. If those climb, the account is working, regardless of follower
+count. Change **one variable at a time**, only after day 30.
 
 ## Reusable teaser formulas (swap the subject)
 - "Tomorrow: the `[company]` everyone got wrong 👀"
