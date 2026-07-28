@@ -1,0 +1,28 @@
+How do you build India's largest stock broker with no funding and no advertising?
+
+Zerodha did exactly that. Nithin and Nikhil Kamath started it in 2010, never raised a rupee of outside capital, never ran a single ad, and still out-earned brokers ten times their age.
+
+Here's the framework they used.
+
+Step one: break the market open on price. Every broker charged a percentage of your trade, so a big trade could cost you over a thousand rupees. Zerodha charged a flat ₹20, and made equity delivery free. The same trade that cost ₹1,000 elsewhere now cost ₹20. The old pricing model simply broke.
+
+Step two: make the product the marketing. Instead of buying attention, Zerodha earned it. It taught a generation to invest with free education through Varsity, and answered questions in the open. Happy users did the selling. A product people can't stop recommending is cheaper than any ad, and it compounds.
+
+Step three: stay profitable, stay free. By FY24 Zerodha did around ₹9,993 crore in revenue and ₹5,496 crore in profit, funded by nobody. No burn, no raise, no one to answer to.
+
+Now the honest part, because this isn't a fairy tale. New SEBI rules on F&O cooled trading, and Groww caught up on new clients. FY25 profit fell about 23%. Even a great model rides the cycle it sits in. But because Zerodha took no money, it can absorb a down year on its own terms.
+
+The framework for founders: price to break the market open, let the product be the ad, and stay profitable so nobody else steers the ship.
+
+You don't always need funding. Sometimes you need the right price, a product worth sharing, and patience.
+
+💬 Would you build without ever raising?
+
+❤️ Save this if you're building for the long game.
+
+📚 Sources: Business Standard, The Clueless Company, company filings
+⚠️ Editorial analysis of publicly available information. Not investment advice.
+
+.
+.
+#startup #founders #bootstrapped #zerodha #startupindia
