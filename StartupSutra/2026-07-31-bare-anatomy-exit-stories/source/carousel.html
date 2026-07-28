@@ -1,0 +1,223 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-400.ttf'); font-weight:400; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-600.ttf'); font-weight:600; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#000; }
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; background:#0b0e14;
+    font-family:'Inter','Noto Color Emoji',sans-serif; color:#f4f1ea; display:flex; flex-direction:column; }
+  .slide::before { content:''; position:absolute; inset:0;
+    background:radial-gradient(720px 560px at 88% -6%, rgba(244,63,94,.18), transparent 65%),
+      radial-gradient(820px 640px at -12% 108%, rgba(244,63,94,.11), transparent 60%),
+      radial-gradient(500px 400px at 50% 55%, rgba(255,255,255,.025), transparent 70%); }
+  .slide::after { content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+    background-size:90px 90px; mask-image:radial-gradient(900px 900px at 50% 40%, #000 30%, transparent 100%);
+    -webkit-mask-image:radial-gradient(900px 900px at 50% 40%, #000 30%, transparent 100%); }
+  .inner { position:relative; z-index:2; display:flex; flex-direction:column; height:100%; padding:72px 84px 64px; }
+  .topbar { display:flex; justify-content:space-between; align-items:center; }
+  .brand { display:flex; align-items:center; gap:18px; }
+  .brand .mark { width:56px; height:56px; border-radius:16px; background:linear-gradient(135deg,#f59e0b,#ea580c);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 8px 28px rgba(245,158,11,.35); }
+  .brand .name { font-weight:700; font-size:30px; letter-spacing:.5px; color:#e8e4da; }
+  .brand .name span { color:#f59e0b; }
+  .counter { font-weight:600; font-size:26px; color:#6b7280; letter-spacing:2px; }
+  .body { flex:1; display:flex; flex-direction:column; justify-content:center; }
+  .seriesband { display:flex; align-items:center; gap:20px; margin-bottom:34px; }
+  .seriesband .sq { width:30px; height:30px; border-radius:8px; background:linear-gradient(135deg,#f43f5e,#be123c); flex-shrink:0; }
+  .seriesband .txt { font-weight:900; font-size:48px; letter-spacing:6px; color:#f43f5e; text-transform:uppercase; line-height:1; }
+  .subjectline { font-weight:700; font-size:26px; letter-spacing:3px; color:#8b93a3; text-transform:uppercase; margin-bottom:40px; }
+  .kicker { display:inline-flex; align-self:flex-start; align-items:center; gap:16px; font-weight:700; font-size:26px;
+    letter-spacing:4px; text-transform:uppercase; color:#f43f5e; margin-bottom:44px; padding:14px 28px;
+    border:1.5px solid rgba(244,63,94,.45); border-radius:999px; background:rgba(244,63,94,.08); }
+  .kicker .sq { width:20px; height:20px; border-radius:5px; background:linear-gradient(135deg,#f43f5e,#be123c); flex-shrink:0; }
+  h1 { font-weight:900; font-size:96px; line-height:1.12; letter-spacing:-1.5px; }
+  h1 .accent { color:#f43f5e; }
+  h1 .dim { color:#8b93a3; }
+  .sub { margin-top:38px; font-weight:600; font-size:40px; line-height:1.4; color:#aab2c0; }
+  .sub strong { color:#f4f1ea; }
+  .quotecard { margin-top:48px; border-left:8px solid #f43f5e; border-radius:8px 28px 28px 8px;
+    background:rgba(244,63,94,.11); padding:44px 48px; font-weight:800; font-size:54px; line-height:1.3; }
+  .quotecard .accent { color:#f43f5e; }
+  .stats { margin-top:44px; display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+  .stat { background:rgba(255,255,255,.04); border:1.5px solid rgba(244,63,94,.28); border-radius:24px; padding:34px 36px; }
+  .stat .num { font-weight:900; font-size:76px; letter-spacing:-2px; color:#f43f5e; line-height:1; }
+  .stat .num small { font-size:38px; font-weight:800; }
+  .stat .lbl { margin-top:14px; font-weight:600; font-size:29px; color:#aab2c0; line-height:1.25; }
+  .rows { margin-top:8px; display:flex; flex-direction:column; gap:18px; }
+  .row { display:flex; justify-content:space-between; align-items:center; gap:24px; border-bottom:1.5px solid rgba(255,255,255,.08); padding-bottom:18px; }
+  .row .k { font-weight:600; font-size:33px; color:#8b93a3; }
+  .row .v { font-weight:800; font-size:36px; color:#f4f1ea; text-align:right; }
+  .row .v.accent { color:#f43f5e; }
+  .bottombar { display:flex; justify-content:space-between; align-items:center; color:#6b7280; font-weight:600; font-size:27px; }
+  .foot { font-weight:700; font-size:26px; color:#525a68; letter-spacing:1px; }
+  .foot b { color:#8b93a3; }
+  .swipe { display:flex; align-items:center; gap:16px; color:#f43f5e; letter-spacing:2px; text-transform:uppercase; font-weight:700; }
+  .swipe .arr { font-size:30px; }
+  .dots { display:flex; gap:12px; }
+  .dots i { width:14px; height:14px; border-radius:50%; background:rgba(255,255,255,.16); }
+  .dots i.on { background:#f43f5e; width:40px; border-radius:999px; }
+
+  /* ---- custom visuals ---- */
+  .lockup { display:flex; align-items:center; gap:30px; margin-top:60px; }
+  .nametile { min-width:210px; height:150px; padding:0 34px; border-radius:34px; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0;
+    background:rgba(255,255,255,.05); border:1.5px solid rgba(255,255,255,.12); }
+  .nametile.small { background:rgba(244,63,94,.09); border-color:rgba(244,63,94,.4); }
+  .nametile .n { font-weight:900; font-size:40px; letter-spacing:-1px; color:#f4f1ea; }
+  .nametile.small .n { color:#f43f5e; }
+  .nametile .s { margin-top:6px; font-weight:600; font-size:22px; color:#8b93a3; }
+  .nametile.big { background:#12151d; border-color:rgba(255,255,255,.18); }
+  .nametile.big .n { font-size:46px; letter-spacing:3px; }
+  .lockup .arrowcol { display:flex; flex-direction:column; align-items:center; gap:8px; color:#8b93a3; }
+  .lockup .arrowcol .lab { font-weight:700; font-size:24px; letter-spacing:3px; text-transform:uppercase; }
+  .lockup .arrowcol .ar { font-size:56px; color:#f43f5e; line-height:1; }
+  .lockup .cap { font-weight:700; font-size:30px; color:#aab2c0; } .lockup .cap b { color:#f4f1ea; }
+
+  .timeline { margin-top:40px; display:flex; align-items:flex-start; justify-content:space-between; position:relative; padding-top:26px; }
+  .timeline::before { content:''; position:absolute; top:33px; left:22px; right:22px; height:3px; background:rgba(244,63,94,.3); }
+  .tstep { display:flex; flex-direction:column; align-items:center; gap:14px; width:33%; position:relative; z-index:1; }
+  .tstep .dot { width:20px; height:20px; border-radius:50%; background:#0b0e14; border:4px solid #f43f5e; }
+  .tstep.big .dot { background:#f43f5e; box-shadow:0 0 0 8px rgba(244,63,94,.18); }
+  .tstep .yr { font-weight:900; font-size:34px; color:#f43f5e; }
+  .tstep .ev { font-weight:600; font-size:26px; color:#aab2c0; text-align:center; line-height:1.25; }
+
+  /* house of brands */
+  .brands { margin-top:48px; display:flex; gap:24px; }
+  .bcard { flex:1; background:rgba(255,255,255,.04); border:1.5px solid rgba(244,63,94,.28); border-radius:26px; padding:38px 28px; text-align:center; }
+  .bcard .bn { font-weight:900; font-size:40px; letter-spacing:-1px; color:#f43f5e; }
+  .bcard .bd { margin-top:14px; font-weight:600; font-size:28px; color:#aab2c0; line-height:1.25; }
+
+  .painrow { margin-top:44px; display:flex; gap:24px; }
+  .pain { flex:1; background:rgba(244,63,94,.07); border:1.5px solid rgba(244,63,94,.28); border-radius:24px; padding:30px 28px; text-align:center; }
+  .pain .ic { font-size:56px; }
+  .pain .t { margin-top:14px; font-weight:800; font-size:34px; color:#f4f1ea; }
+  .pain .d { margin-top:8px; font-weight:600; font-size:25px; color:#8b93a3; line-height:1.2; }
+
+  .followcard { margin-top:52px; display:flex; align-items:center; gap:30px; border-left:8px solid #f43f5e; border-radius:8px 28px 28px 8px;
+    background:rgba(244,63,94,.11); padding:36px 48px; font-weight:800; font-size:46px; }
+</style>
+
+<svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
+  <path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/>
+  <path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/>
+  <circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/>
+  <rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/>
+  <circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/>
+  <circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/>
+  <path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></symbol></svg>
+
+<!-- S1 COVER / HOOK -->
+<div class="slide" id="s1"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#002 · 01/07</div></div>
+  <div class="body">
+    <div class="seriesband"><span class="sq"></span><span class="txt">Exit<br>Stories</span></div>
+    <div class="subjectline">Innovist · The Bare Anatomy exit</div>
+    <h1 style="font-size:76px;">The world's biggest beauty company just bought a <span class="accent">7-year-old Indian brand.</span></h1>
+    <div class="lockup">
+      <div class="nametile small"><div class="n">Innovist</div><div class="s">Bare Anatomy</div></div>
+      <div class="arrowcol"><span class="lab">Majority stake</span><span class="ar">→</span></div>
+      <div class="nametile big"><div class="n">L'ORÉAL</div></div>
+      <div class="cap">Jun 2026<br><b>~$350–450M</b></div>
+    </div>
+  </div>
+  <div class="bottombar"><div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S2 SNAPSHOT + TIMELINE -->
+<div class="slide" id="s2"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#002 · 02/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Snapshot</div>
+    <div class="rows">
+      <div class="row"><span class="k">Company</span><span class="v">Innovist</span></div>
+      <div class="row"><span class="k">Founded</span><span class="v accent">2019 · India</span></div>
+      <div class="row"><span class="k">Founders</span><span class="v">Rohit Chawla, Sifat Khurana,<br>Vimal Bhola</span></div>
+      <div class="row"><span class="k">Brands</span><span class="v">Bare Anatomy, Chemist at<br>Play, Sunscoop</span></div>
+      <div class="row"><span class="k">Backed by</span><span class="v">ICICI Venture, Accel, Amazon,<br>Falguni Nayar's office</span></div>
+    </div>
+    <div class="timeline">
+      <div class="tstep"><span class="dot"></span><span class="yr">2019</span><span class="ev">Founded,<br>digital-first</span></div>
+      <div class="tstep"><span class="dot"></span><span class="yr">2023</span><span class="ev">Series A,<br>₹58 Cr</span></div>
+      <div class="tstep big"><span class="dot"></span><span class="yr">Jun 2026</span><span class="ev">L'Oréal takes<br>majority stake</span></div>
+    </div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S3 THE SETUP / WHY GIANTS STRUGGLE -->
+<div class="slide" id="s3"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#002 · 03/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Setup</div>
+    <h1 style="font-size:66px;">India's beauty buyer changed. The giants <span class="accent">didn't keep up.</span></h1>
+    <div class="painrow">
+      <div class="pain"><div class="ic">📱</div><div class="t">Buys online</div><div class="d">Discovers brands on Instagram, not TV</div></div>
+      <div class="pain"><div class="ic">🧪</div><div class="t">Reads labels</div><div class="d">Wants actives and honest ingredients</div></div>
+      <div class="pain"><div class="ic">⚡</div><div class="t">Trusts native brands</div><div class="d">Prefers new names over legacy ones</div></div>
+    </div>
+    <div class="sub" style="font-size:36px;">A legacy giant can't fake being digital-native. Building that from scratch takes years, and usually fails.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S4 WHAT INNOVIST IS -->
+<div class="slide" id="s4"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#002 · 04/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>What They Built</div>
+    <h1 style="font-size:60px;">Not one brand. A <span class="accent">house of brands</span> plus its own R&amp;D and factory.</h1>
+    <div class="brands">
+      <div class="bcard"><div class="bn">Bare Anatomy</div><div class="bd">Science-led hair &amp; skin care</div></div>
+      <div class="bcard"><div class="bn">Chemist at Play</div><div class="bd">Everyday derma-style skincare</div></div>
+      <div class="bcard"><div class="bn">Sunscoop</div><div class="bd">Lightweight daily sunscreen</div></div>
+    </div>
+    <div class="sub" style="font-size:36px;">Clean, transparent formulations, made in-house, sold direct to a young online audience that already trusts them.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S5 WHY L'OREAL -->
+<div class="slide" id="s5"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#002 · 05/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>Why L'Oréal Bought In</div>
+    <div class="stats">
+      <div class="stat"><div class="num">7<small> yrs</small></div><div class="lbl">From launch to a $350M+ valuation</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">Fast-growing brands in one house</div></div>
+      <div class="stat"><div class="num">100<small>%</small></div><div class="lbl">Digital-first, direct-to-consumer</div></div>
+      <div class="stat"><div class="num">In-house</div><div class="lbl">R&amp;D and manufacturing they control</div></div>
+    </div>
+    <div class="sub" style="font-size:34px;">L'Oréal gets an instant foothold with India's young online shopper, and the team stays on to keep scaling it.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S6 LESSON -->
+<div class="slide" id="s6"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#002 · 06/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>Founder Lesson</div>
+    <h1 style="font-size:66px;">L'Oréal didn't buy <span class="accent">shampoo.</span></h1>
+    <h1 style="font-size:62px; margin-top:26px;">It bought a digital-native brand and audience it <span class="accent">couldn't build fast.</span></h1>
+    <div class="sub">Incumbents buy the thing that's expensive to grow organically: trust with a new generation. Own that, and the giants come to you.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S7 CTA -->
+<div class="slide" id="s7"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#002 · 07/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>Your Move</div>
+    <h1 style="font-size:72px;">What can you build that a giant <span class="accent">can't?</span></h1>
+    <div class="sub">Don't out-spend the incumbent. Out-trust them with the next generation. 💬 Which D2C brand gets bought next? Guess below.</div>
+    <div class="followcard">
+      <div class="mark" style="width:84px;height:84px;border-radius:24px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="62" height="62"><use href="#owl"/></svg></div>
+      <div>Follow <span style="color:#f43f5e;">@statupsutra</span><br><span style="font-weight:600;font-size:34px;color:#aab2c0;">exit stories · every friday</span></div>
+    </div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Next Friday</div></div>
+</div></div>
