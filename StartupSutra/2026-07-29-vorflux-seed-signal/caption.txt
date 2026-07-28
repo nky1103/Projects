@@ -1,0 +1,28 @@
+How does a startup with barely a product raise $15 million?
+
+Vorflux just did. And the answer is the most important lesson in early-stage investing.
+
+Vorflux is building an AI autopilot for software engineering. It turns a ticket into a finished, mergeable pull request: it plans the work, spins up sub-agents, writes the code, runs the tests, and reviews itself.
+
+The product is early. There's no revenue. So why did Y Combinator and Peak XV, plus angels like Parker Conrad and Balaji Srinivasan, write a $15 million seed cheque, the size of a Series A?
+
+Because at seed, there are no metrics to buy. You're not funding a product. You're funding two things.
+
+One: the founder. Prasanna Sankar co-founded Rippling and ran its engineering, building it into a $13 billion company. Investors have watched him build before.
+
+Two: the wave. AI coding agents are the hottest category in software right now. A proven builder, pointed at a rising market, before it gets crowded.
+
+Here's the part most people miss. His last startup, a Web3 venture, shut down. Investors backed him anyway. A proven builder in a hot category outweighs one miss.
+
+That's the seed signal: track record plus timing. When you have no numbers, those are the only two things worth betting on.
+
+💬 What's your unfair signal, the thing an investor would bet on before you have metrics?
+
+❤️ Save this before your next raise.
+
+📚 Sources: Inc42, TechCrunch, FinSMEs, Dealroom
+⚠️ Editorial analysis of publicly available information. Not investment advice.
+
+.
+.
+#startup #venturecapital #seedfunding #founders #startupindia
