@@ -1,0 +1,153 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-400.ttf'); font-weight:400; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-600.ttf'); font-weight:600; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#000; }
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; background:#0b0e14;
+    font-family:'Inter','Noto Color Emoji',sans-serif; color:#f4f1ea; display:flex; flex-direction:column; }
+  .slide::before { content:''; position:absolute; inset:0;
+    background:radial-gradient(720px 560px at 88% -6%, rgba(59,130,246,.17), transparent 65%),
+      radial-gradient(820px 640px at -12% 108%, rgba(29,78,216,.12), transparent 60%),
+      radial-gradient(500px 400px at 50% 55%, rgba(255,255,255,.022), transparent 70%); }
+  .slide::after { content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+    background-size:90px 90px; mask-image:radial-gradient(900px 900px at 50% 40%, #000 30%, transparent 100%);
+    -webkit-mask-image:radial-gradient(900px 900px at 50% 40%, #000 30%, transparent 100%); }
+  .inner { position:relative; z-index:2; display:flex; flex-direction:column; height:100%; padding:72px 84px 64px; }
+  .topbar { display:flex; justify-content:space-between; align-items:center; }
+  .brand { display:flex; align-items:center; gap:18px; }
+  .brand .mark { width:56px; height:56px; border-radius:16px; background:linear-gradient(135deg,#f59e0b,#ea580c);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 8px 28px rgba(245,158,11,.35); }
+  .brand .name { font-weight:700; font-size:30px; letter-spacing:.5px; color:#e8e4da; }
+  .brand .name span { color:#f59e0b; }
+  .counter { font-weight:600; font-size:26px; color:#6b7280; letter-spacing:2px; }
+  .body { flex:1; display:flex; flex-direction:column; justify-content:center; }
+  .seriesband { display:flex; align-items:center; gap:20px; margin-bottom:28px; }
+  .seriesband .sq { width:30px; height:30px; border-radius:8px; background:linear-gradient(135deg,#3b82f6,#1d4ed8); flex-shrink:0; }
+  .seriesband .txt { font-weight:900; font-size:44px; letter-spacing:5px; color:#3b82f6; text-transform:uppercase; line-height:1; }
+  .subjectline { font-weight:700; font-size:25px; letter-spacing:3px; color:#8b93a3; text-transform:uppercase; margin-bottom:40px; }
+  .kicker { display:inline-flex; align-self:flex-start; align-items:center; gap:16px; font-weight:700; font-size:25px;
+    letter-spacing:3.5px; text-transform:uppercase; color:#3b82f6; margin-bottom:34px; padding:13px 26px;
+    border:1.5px solid rgba(59,130,246,.45); border-radius:999px; background:rgba(59,130,246,.08); }
+  .kicker .sq { width:18px; height:18px; border-radius:5px; background:linear-gradient(135deg,#3b82f6,#1d4ed8); flex-shrink:0; }
+  h1 { font-weight:900; font-size:88px; line-height:1.12; letter-spacing:-1.5px; }
+  h1 .accent { color:#3b82f6; }
+  h1 .dim { color:#8b93a3; }
+  .sub { margin-top:32px; font-weight:600; font-size:38px; line-height:1.4; color:#aab2c0; }
+  .sub strong { color:#f4f1ea; }
+  .quotecard { margin-top:36px; border-left:8px solid #3b82f6; border-radius:8px 28px 28px 8px;
+    background:rgba(59,130,246,.11); padding:44px 48px; font-weight:800; font-size:56px; line-height:1.3; }
+  .quotecard .accent { color:#3b82f6; }
+  .stat1 { margin-top:40px; display:flex; align-items:center; gap:36px; background:rgba(255,255,255,.04); border:1.5px solid rgba(59,130,246,.28); border-radius:24px; padding:34px 40px; }
+  .stat1 .num { font-weight:900; font-size:110px; letter-spacing:-3px; color:#3b82f6; line-height:.9; }
+  .stat1 .lbl { font-weight:600; font-size:34px; color:#aab2c0; line-height:1.3; } .stat1 .lbl strong{color:#f4f1ea;}
+  .rows { margin-top:14px; display:flex; flex-direction:column; gap:20px; }
+  .srow { display:flex; align-items:center; gap:26px; background:rgba(255,255,255,.035); border:1.5px solid rgba(59,130,246,.24); border-radius:20px; padding:26px 30px; }
+  .srow .ic { font-size:48px; flex-shrink:0; }
+  .srow .tx { font-weight:800; font-size:38px; color:#f4f1ea; } .srow .tx small { display:block; font-weight:600; font-size:28px; color:#8b93a3; margin-top:2px; }
+  .bottombar { display:flex; justify-content:space-between; align-items:center; color:#6b7280; font-weight:600; font-size:26px; }
+  .foot { font-weight:700; font-size:25px; color:#525a68; letter-spacing:1px; } .foot b { color:#8b93a3; }
+  .swipe { display:flex; align-items:center; gap:14px; color:#3b82f6; letter-spacing:2px; text-transform:uppercase; font-weight:700; }
+  .dots { display:flex; gap:12px; } .dots i { width:14px; height:14px; border-radius:50%; background:rgba(255,255,255,.16); }
+  .dots i.on { background:#3b82f6; width:40px; border-radius:999px; }
+  .followcard { margin-top:44px; display:flex; align-items:center; gap:28px; border-left:8px solid #3b82f6; border-radius:8px 28px 28px 8px;
+    background:rgba(59,130,246,.11); padding:32px 44px; font-weight:800; font-size:44px; }
+</style>
+<svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
+  <path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/>
+  <path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/>
+  <circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/>
+  <rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/>
+  <circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/>
+  <circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/>
+  <path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></symbol></svg>
+
+<!-- S1 -->
+<div class="slide" id="s1"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#002 · 01/07</div></div>
+  <div class="body">
+    <div class="seriesband"><span class="sq"></span><span class="txt">Marketing<br>Breakdown</span></div>
+    <div class="subjectline">Zomato · a food app that became a media brand</div>
+    <h1 style="font-size:82px;">Zomato isn't selling you <span class="dim">food.</span></h1>
+    <h1 style="font-size:82px; margin-top:26px;">It's selling a personality you <span class="accent">follow.</span></h1>
+  </div>
+  <div class="bottombar"><div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe →</div></div>
+</div></div>
+
+<!-- S2 -->
+<div class="slide" id="s2"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#002 · 02/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Observation</div>
+    <h1 style="font-size:76px;">You've <span class="accent">screenshotted</span> a food-app notification.</h1>
+    <div class="sub">You laughed at it. You sent it to a friend. That's not luck. <strong>That's the whole strategy.</strong></div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe →</div></div>
+</div></div>
+
+<!-- S3 -->
+<div class="slide" id="s3"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#002 · 03/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Move</div>
+    <h1 style="font-size:64px;">It turned its most <span class="dim">boring</span> surfaces into <span class="accent">content.</span></h1>
+    <div class="rows">
+      <div class="srow"><div class="ic">🔔</div><div class="tx">Push notifications<small>Jokes you screenshot, not "order on the way"</small></div></div>
+      <div class="srow"><div class="ic">📱</div><div class="tx">App &amp; order copy<small>A voice, not a form</small></div></div>
+      <div class="srow"><div class="ic">🐦</div><div class="tx">Social replies<small>Memes remixed with a food twist</small></div></div>
+    </div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe →</div></div>
+</div></div>
+
+<!-- S4 -->
+<div class="slide" id="s4"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#002 · 04/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>Why It Works</div>
+    <h1 style="font-size:66px;">A notification is a channel you <span class="accent">already own.</span></h1>
+    <div class="sub">Free. Daily. Opt-in. Most brands waste it on "Your order is on the way." Zomato made it a <strong>punchline you share.</strong></div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe →</div></div>
+</div></div>
+
+<!-- S5 -->
+<div class="slide" id="s5"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#002 · 05/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Payoff</div>
+    <h1 style="font-size:70px;">Entertainment that <span class="accent">sells.</span></h1>
+    <div class="stat1"><div class="num">+10%</div><div class="lbl">More app orders driven by the <strong>notifications alone</strong> during peak hours</div></div>
+    <div class="sub" style="font-size:34px;">The joke isn't a distraction from the business. It <strong>is</strong> the business.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe →</div></div>
+</div></div>
+
+<!-- S6 -->
+<div class="slide" id="s6"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#002 · 06/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Principle</div>
+    <div class="quotecard">The best marketing isn't a campaign. It's making <span class="accent">every touchpoint worth sharing.</span></div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe →</div></div>
+</div></div>
+
+<!-- S7 -->
+<div class="slide" id="s7"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#002 · 07/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Framework</div>
+    <h1 style="font-size:70px;">Your product is your biggest <span class="accent">media channel.</span></h1>
+    <div class="sub">Every surface you own is free distribution: notifications, packaging, receipts, replies. Make each one content. 💬 What surface are you wasting?</div>
+    <div class="followcard">
+      <div style="width:80px;height:80px;border-radius:22px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="58" height="58"><use href="#owl"/></svg></div>
+      <div>Follow <span style="color:#3b82f6;">@statupsutra</span><br><span style="font-weight:600;font-size:32px;color:#aab2c0;">marketing breakdown · every tuesday</span></div>
+    </div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Next Tuesday</div></div>
+</div></div>
