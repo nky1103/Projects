@@ -26,20 +26,20 @@ Keep the brand look: navy background, series-colour accent, owl.
 - 💬 **Follow-up:** "Would you have guessed `[BRAND]`? — Yes / No"
 - ➕ Note (from the plan): run the guess-the-brand poll **before** the reel drops.
 
-## Wednesday — Seed Signal 🟣 (BZERO — rebuilt as a reel this week)
+## Wednesday — Seed Signal 🟣 (Vorflux — $15M seed, founder + wave)
 - ⏰ **Teaser:** "Tomorrow: the one signal that made investors say yes 👀"
 - 💬 **Follow-up:** "Could you spot this signal before the raise? — Yes / No"
 - ➕ **Behind-the-scenes Story (same day):** "How I research a funding round" — 2–3 frames of your process. Builds authority, low effort.
 
-## Thursday — Growth Capital 🟩 (funding — lead with the number)
-- ⏰ **Teaser (number):** "Tomorrow: someone just raised ₹`[__]` Cr. Guess what for 👀"
+## Thursday — Growth Capital 🟩 (Ather — ₹1,300 Cr QIP, fund the leader before profit)
+- ⏰ **Teaser (number):** "Tomorrow: someone just raised ₹1,300 Cr while losing money. Guess who 👀"
 - 💬 **Follow-up:** "Would you have backed this round? — Yes / No"
-- ➕ Optional "This or That": "Bigger opportunity: `[A]` or `[B]`?"
+- ➕ "This or That": "Fund growth or fund profit?"
 
-## Friday — Exit Stories 🌹 (your top-performing pillar — give it the most polish)
-- ⏰ **Teaser (comment-bait, number):** "Tomorrow: a startup nobody's heard of got acquired for $`[__]` 👀 Guess the deal size."
-- 💬 **Follow-up (slider):** "Was the deal size higher or lower than you guessed? — Higher / Lower"
-- ➕ CTA to carry into the reel/caption: "Guess the deal size before I reveal it."
+## Friday — Exit Stories 🌹 (Innovist/Bare Anatomy — L'Oréal majority stake)
+- ⏰ **Teaser (comment-bait, number):** "Tomorrow: a 7-year-old Indian brand got acquired for $`[__]` 👀 Guess the deal size."
+- 💬 **Follow-up (slider):** "Higher or lower than you guessed? — Higher / Lower"
+- ➕ CTA to carry into the reel/caption: "Which D2C brand gets bought next?"
 
 ## Saturday — Founder Framework 🟢 (Kalpana — retention-first, outcome-led hook)
 - ⏰ **Teaser:** "Tomorrow: she saved a company everyone had given up on. Guess how 👀"
