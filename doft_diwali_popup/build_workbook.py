@@ -62,7 +62,7 @@ def title_block(ws, title, subtitle, span=8):
 # =========================================================
 ws = wb.active
 ws.title = "1. README & Assumptions"
-title_block(ws, "Doft Candles — Diwali Pop-Up Retail Operations", "Contractor Operations & Costing Workbook  |  Seasons 2026 / 2027 / 2028", span=6)
+title_block(ws, "Doft Candles — Diwali Pop-Up Retail Operations", "ProMarcom Inc.  |  Operations & Costing Workbook  |  Seasons 2026 / 2027 / 2028", span=6)
 ws.sheet_view.showGridLines = False
 
 r = 4
@@ -221,11 +221,11 @@ for col, h in zip("ABCDEF", ["Role", "Headcount", "Gender / Profile", "Key Requi
     style_header(ws.cell(row=r, column="ABCDEF".index(col)+1, value=h))
 
 roles = [
-    ("Sales Executive", 6, "Female, 22–25 yrs", "Fluent conversational English + retail sales experience", "Team Leader", "Contractor payroll"),
-    ("Sales Support Staff", 2, "Any", "Merchandising, stock handling, queue mgmt", "Team Leader", "Contractor payroll"),
-    ("Helper", 1, "Any", "Housekeeping, material handling", "Team Leader", "Contractor payroll"),
-    ("Cashier", 1, "Any", "Experienced with POS/EDC machines", "Team Leader", "Contractor payroll"),
-    ("Driver", 1, "Any", "Valid licence; stock transport & runs", "Team Leader", "Contractor payroll"),
+    ("Sales Executive", 6, "Female, 22–25 yrs", "Fluent conversational English + retail sales experience", "Team Leader", "ProMarcom payroll"),
+    ("Sales Support Staff", 2, "Any", "Merchandising, stock handling, queue mgmt", "Team Leader", "ProMarcom payroll"),
+    ("Helper", 1, "Any", "Housekeeping, material handling", "Team Leader", "ProMarcom payroll"),
+    ("Cashier", 1, "Any", "Experienced with POS/EDC machines", "Team Leader", "ProMarcom payroll"),
+    ("Driver", 1, "Any", "Valid licence; stock transport & runs", "Team Leader", "ProMarcom payroll"),
     ("Team Leader / Manager", 1, "Any", "Daily operations owner", "Contractor Ops Head", "Permanent employee of contractor"),
 ]
 r += 1
