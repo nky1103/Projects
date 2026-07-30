@@ -5,3 +5,6 @@ slide-*.jpg
 assets/pdf_imgs/
 assets/pages/
 assets/*.png
+slide-*.png
+montage*.png
+deck.html
