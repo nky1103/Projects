@@ -87,7 +87,7 @@ kids.push(table([
     ["Backup storage", "About 40 sq ft of secure storage for replenishment, or mall-provided"],
     ["Cities", "Metros and sub-metros (our suggestions are in Section 3)"],
     ["Kiosks per city", "1 to 3, based on mall availability, footfall and your sign-off"],
-    ["Team", "A compact kiosk team on two shifts (see Section 5)"],
+    ["Team", "Full team of 12 per kiosk (see Section 5)"],
     ["Training", "One-day product and sales training by Doft, 10 to 21 days before launch, full attendance"],
     ["You supply", "Stock, kiosk design and kit, furniture, POS/EDC, uniforms (returnable)"],
     ["We handle", "Kiosk build and install, manpower, logistics, licences, daily operations and reporting"],
@@ -167,18 +167,19 @@ kids.push(table([
 ], [2500, 6520]));
 
 // ---------- 5. Staffing ----------
-kids.push(h1("5.  Suggested Team for a Compact Kiosk"));
-kids.push(p("The original brief mentioned 12 people for a 300 sq ft kiosk. An 8x8 ft kiosk (about 64 sq ft) only holds two or three people on the floor at a time, so we suggest a smaller team on two shifts to cover full mall hours through the six weeks. We will also keep a small trained bench so a gap never stops sales. These numbers scale easily by kiosk and city."));
+kids.push(h1("5.  Team Per Kiosk"));
+kids.push(p("We will deploy the full team specified in the brief at every kiosk: twelve people covering sales, support, cash handling, housekeeping and transport, led by a Team Leader who is a permanent ProMarcom employee. Alongside this, we will hold a trained bench of about 15% per city, so any absence is covered the same day at no extra cost to you."));
 kids.push(table([
   new TableRow({ children: [hcell("Role", 3000), hcell("Per kiosk", 1500), hcell("Notes", 4520)] }),
   ...[
-    ["Sales Executives", "4", "2 per shift, 2 shifts. Female, 22-25, fluent English, retail experience"],
-    ["Cashier", "1", "Handles POS/EDC, can help on sales at peak hours"],
-    ["Team Leader / Manager", "1", "A permanent ProMarcom employee who runs the kiosk"],
-    ["Helper / Support", "1", "Housekeeping, stock handling and refill runs"],
-    ["Driver (shared)", "1 per city", "Shared across a city's kiosks for stock movement"],
+    ["Sales Executives", "6", "Female, 22-25, fluent English, retail sales experience"],
+    ["Sales Support Staff", "2", "Merchandising, stock handling and queue management"],
+    ["Helper", "1", "Housekeeping and material handling"],
+    ["Cashier", "1", "Experienced on POS/EDC machines"],
+    ["Driver", "1", "Stock transport and replenishment runs"],
+    ["Team Leader / Manager", "1", "Permanent ProMarcom employee who runs the kiosk"],
   ].map((r, i) => new TableRow({ children: [tcell(r[0], 3000, zebra(i), true), tcell(r[1], 1500, zebra(i)), tcell(r[2], 4520, zebra(i))] })),
-  new TableRow({ children: [tcell("Core team per kiosk", 3000, "EADFCE", true), tcell("6 to 7", 1500, "EADFCE", true), tcell("Plus a trained bench of about 15% per city for quick cover", 4520, "EADFCE")] }),
+  new TableRow({ children: [tcell("Total per kiosk", 3000, "EADFCE", true), tcell("12", 1500, "EADFCE", true), tcell("Plus a trained bench of about 15% per city for quick cover", 4520, "EADFCE")] }),
 ], [3000, 1500, 4520]));
 
 // ---------- 6. Reporting ----------
