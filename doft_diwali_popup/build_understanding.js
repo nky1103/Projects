@@ -182,8 +182,27 @@ kids.push(table([
   new TableRow({ children: [tcell("Total per kiosk", 3000, "EADFCE", true), tcell("12", 1500, "EADFCE", true), tcell("Plus a trained bench of about 15% per city for quick cover", 4520, "EADFCE")] }),
 ], [3000, 1500, 4520]));
 
-// ---------- 6. Reporting ----------
-kids.push(h1("6.  Reporting & Reviews"));
+// ---------- 6. Timeline ----------
+kids.push(h1("6.  Indicative Timeline"));
+kids.push(p("The plan below is shown relative to each city's go-live (T), with a six-week trading window. Metros launch first, and sub-metros follow either later in the same season or the next, so exact calendar dates are fixed per city once malls are confirmed."));
+kids.push(table([
+  new TableRow({ children: [hcell("Phase / Activity", 4600), hcell("Timing", 2600), hcell("Owner", 1820)] }),
+  ...[
+    ["Contract award and kick-off", "T minus 8 weeks", "Doft + ProMarcom"],
+    ["Mall shortlisting and licence applications", "T minus 7 to 4 weeks", "ProMarcom"],
+    ["Recruitment and background checks", "T minus 6 to 2 weeks", "ProMarcom"],
+    ["Kiosk fabrication and fit-out", "T minus 3 to 1 weeks", "ProMarcom"],
+    ["Doft product and sales training (1 day)", "T minus 2 weeks", "Doft"],
+    ["Stock pickup from Ghaziabad and first fill", "T minus 1 week", "ProMarcom"],
+    ["Go-live and daily operations (6 weeks)", "T to T plus 6 weeks", "ProMarcom"],
+    ["Dismantle, fixture and unsold-stock return", "T plus 6 to 7 weeks", "ProMarcom"],
+    ["Final reconciliation and season review", "T plus 7 weeks", "Doft + ProMarcom"],
+  ].map((r, i) => new TableRow({ children: [tcell(r[0], 4600, zebra(i), true), tcell(r[1], 2600, zebra(i)), tcell(r[2], 1820, zebra(i))] })),
+], [4600, 2600, 1820]));
+kids.push(p([run("A live project timeline and per-city Gantt are maintained in the operations workbook and shared with your team.", { italics: true, color: GREY, size: 19 })]));
+
+// ---------- 7. Reporting ----------
+kids.push(h1("7.  Reporting & Reviews"));
 kids.push(p("You will get a standard daily report per kiosk, pulled together by city. It covers:"));
 [
   "Sales: units, gross, discounts, net, bills and average bill value",
@@ -195,7 +214,7 @@ kids.push(p("You will get a standard daily report per kiosk, pulled together by 
 kids.push(p("Beyond the daily report, we will hold a weekly review call per city and a full reconciliation at the end of the season. A live operations workbook covering staffing, budget, timeline and trackers runs alongside the programme."));
 
 // ---------- 7. Commitments ----------
-kids.push(h1("7.  Our Commitments"));
+kids.push(h1("8.  Our Commitments"));
 [
   "Full attendance at your training, and equally trained staff on the floor at all times.",
   "Same-day replacement of any absent or resigned staff, at no extra cost to you.",
@@ -205,7 +224,7 @@ kids.push(h1("7.  Our Commitments"));
 ].forEach(t => kids.push(bullet(t)));
 
 // ---------- 8. What Doft provides / assumptions ----------
-kids.push(h1("8.  What You Provide, and a Few Assumptions"));
+kids.push(h1("9.  What You Provide, and a Few Assumptions"));
 [
   "You supply the stock, the kiosk design and kit, the furniture (unless we agree otherwise), the POS/EDC machines and the uniforms (returnable).",
   "Stock is picked up from your Ghaziabad warehouse. We take care of insurance in transit and safe handling.",
@@ -214,7 +233,7 @@ kids.push(h1("8.  What You Provide, and a Few Assumptions"));
 ].forEach(t => kids.push(bullet(t)));
 
 // ---------- 9. Next steps ----------
-kids.push(h1("9.  Next Steps"));
+kids.push(h1("10.  Next Steps"));
 [
   "You confirm the Phase 1 metro cities, so we can lock premium mall slots early.",
   "We shortlist specific malls with availability, footfall and licence cost.",
