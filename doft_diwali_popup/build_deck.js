@@ -22,8 +22,8 @@ const LINE  = "E3D8C7"; // hairline
 const CREAMT = "F3ECE0"; // text on dark
 const MUTEDD = "C9B4AC";  // muted text on dark
 
-const SERIF = "Cambria";   // elegant serif — titles, numbers, quotes
-const SANS  = "Corbel";    // clean sans — kickers, labels, body (reliable width)
+const SERIF = "Georgia";        // elegant serif — present on iOS, Mac & Windows
+const SANS  = "Trebuchet MS";   // clean sans — present on iOS, Mac & Windows
 
 const A = "assets/final/";
 const W = 13.33, H = 7.5, M = 0.62;
@@ -377,24 +377,25 @@ const nextn = () => ++sn;
   contentTitle(s, "Supply Chain", "Logistics & stock replenishment");
   promTag(s, W - M - 1.62, 0.46);
   const flow = [
-    ["Ghaziabad Warehouse", "Collect stock from Doft's warehouse; insured in transit"],
-    ["Stockroom (~90 sq ft)", "Local buffer beside each kiosk for fast replenishment"],
-    ["Kiosk Shelf", "Daily fill to plan; reorder triggered by minimum levels"],
-    ["Reconcile & Return", "Daily counts; unsold inventory returned with full reconciliation"],
+    ["Ghaziabad Warehouse", "Collect from Doft's warehouse; insured in transit"],
+    ["Stockroom · ~90 sq ft", "Local buffer beside each kiosk for fast refill"],
+    ["Kiosk Shelf", "Daily fill to plan; reorder at minimum levels"],
+    ["Reconcile & Return", "Daily counts; unsold stock returned & reconciled"],
   ];
-  const gapx = 0.5, cy = 2.3, ch = 2.25;
+  const gapx = 0.55, cy = 2.15, ch = 2.75;
   const cw = (W - 2 * M - 3 * gapx) / 4;
   flow.forEach((it, i) => {
     const cx = M + i * (cw + gapx);
     card(s, cx, cy, cw, ch);
-    s.addShape(p.ShapeType.ellipse, { x: cx + cw / 2 - 0.3, y: cy + 0.32, w: 0.6, h: 0.6, fill: { color: ROSE }, line: { type: "none" } });
-    s.addText(String(i + 1), { x: cx + cw / 2 - 0.3, y: cy + 0.32, w: 0.6, h: 0.6, fontFace: SERIF, fontSize: 20, bold: true, color: "FFFFFF", align: "center", valign: "middle", margin: 0 });
-    s.addText(it[0], { x: cx + 0.15, y: cy + 1.08, w: cw - 0.3, h: 0.55, fontFace: SERIF, fontSize: 14, bold: true, color: INK, align: "center", margin: 0, valign: "top" });
-    s.addText(it[1], { x: cx + 0.2, y: cy + 1.58, w: cw - 0.4, h: 0.6, fontFace: SANS, fontSize: 9.5, color: INK, align: "center", margin: 0, valign: "top" });
-    if (i < 3) s.addText("→", { x: cx + cw + 0.02, y: cy + 0.78, w: gapx - 0.04, h: 0.6, fontFace: SANS, fontSize: 24, bold: true, color: GOLD, align: "center", valign: "middle", margin: 0 });
+    s.addShape(p.ShapeType.ellipse, { x: cx + cw / 2 - 0.35, y: cy + 0.4, w: 0.7, h: 0.7, fill: { color: ROSE }, line: { type: "none" } });
+    s.addText(String(i + 1), { x: cx + cw / 2 - 0.35, y: cy + 0.4, w: 0.7, h: 0.7, fontFace: SERIF, fontSize: 22, bold: true, color: "FFFFFF", align: "center", valign: "middle", margin: 0 });
+    s.addText(it[0], { x: cx + 0.12, y: cy + 1.35, w: cw - 0.24, h: 0.7, fontFace: SERIF, fontSize: 13.5, bold: true, color: INK, align: "center", margin: 0, valign: "top" });
+    s.addText(it[1], { x: cx + 0.15, y: cy + 1.95, w: cw - 0.3, h: 0.7, fontFace: SANS, fontSize: 9.5, color: MUTED, align: "center", margin: 0, valign: "top" });
+    if (i < 3) s.addText("→", { x: cx + cw + 0.03, y: cy + 0.55, w: gapx - 0.06, h: 0.7, fontFace: SANS, fontSize: 22, bold: true, color: GOLD, align: "center", valign: "middle", margin: 0 });
   });
+  s.addShape(p.ShapeType.roundRect, { x: M, y: 5.55, w: W - 2 * M, h: 0.82, rectRadius: 0.07, fill: { color: SAND }, line: { type: "none" } });
   s.addText("Timely replenishment protects peak-day sales — no stock-outs when footfall is highest.",
-    { x: M, y: 5.15, w: W - 2 * M, h: 0.5, fontFace: SERIF, italic: true, fontSize: 13, color: TERRA, align: "center", margin: 0 });
+    { x: M + 0.3, y: 5.55, w: W - 2 * M - 0.6, h: 0.82, fontFace: SERIF, italic: true, fontSize: 14, color: TERRA, align: "center", valign: "middle", margin: 0 });
   pageFoot(s, n);
 }
 
@@ -407,22 +408,24 @@ const nextn = () => ++sn;
   promTag(s, W - M - 1.62, 0.46);
   s.addText("Consistent open-to-close execution, with a standard daily report to Doft per kiosk — consolidated by city.",
     { x: M, y: 1.52, w: W - 2 * M, h: 0.4, fontFace: SANS, fontSize: 12, color: MUTED, margin: 0 });
-  const reports = ["Sales", "Footfall", "Conversion", "Inventory", "Replenishment", "Attendance", "Customer Feedback", "Ops Issues"];
-  const cw = (W - 2 * M - 3 * 0.3) / 4, ch = 1.12, gy = 0.28;
+  const reports = ["Sales", "Footfall", "Conversion", "Inventory", "Replenishment", "Attendance", "Customer Feedback", "Operational Issues"];
+  const cw = (W - 2 * M - 3 * 0.3) / 4, ch = 1.2, gy = 0.3;
   reports.forEach((r, i) => {
     const cx = M + (i % 4) * (cw + 0.3);
-    const cy = 2.15 + Math.floor(i / 4) * (ch + gy);
+    const cy = 2.2 + Math.floor(i / 4) * (ch + gy);
     card(s, cx, cy, cw, ch);
-    s.addShape(p.ShapeType.ellipse, { x: cx + 0.24, y: cy + ch / 2 - 0.1, w: 0.2, h: 0.2, fill: { color: GOLD }, line: { type: "none" } });
-    s.addText(r, { x: cx + 0.55, y: cy, w: cw - 0.7, h: ch, fontFace: SERIF, fontSize: 13.5, bold: true, color: INK, valign: "middle", margin: 0 });
+    s.addShape(p.ShapeType.ellipse, { x: cx + 0.26, y: cy + ch / 2 - 0.09, w: 0.18, h: 0.18, fill: { color: GOLD }, line: { type: "none" } });
+    s.addText(r, { x: cx + 0.52, y: cy, w: cw - 0.66, h: ch, fontFace: SERIF, fontSize: 12.5, bold: true, color: INK, valign: "middle", margin: 0 });
   });
-  s.addShape(p.ShapeType.roundRect, { x: M, y: 5.35, w: W - 2 * M, h: 1.05, rectRadius: 0.07, fill: { color: DARK }, line: { type: "none" } });
-  s.addText("GOVERNANCE CADENCE", { x: M + 0.3, y: 5.5, w: 4, h: 0.35, fontFace: SANS, fontSize: 10, bold: true, color: GOLDL, charSpacing: 2, margin: 0 });
+  s.addShape(p.ShapeType.roundRect, { x: M, y: 5.5, w: W - 2 * M, h: 1.02, rectRadius: 0.07, fill: { color: DARK }, line: { type: "none" } });
+  s.addText("GOVERNANCE CADENCE", { x: M + 0.35, y: 5.63, w: 5, h: 0.32, fontFace: SANS, fontSize: 10, bold: true, color: GOLDL, charSpacing: 2, margin: 0 });
   s.addText([
-    { text: "Daily", options: { bold: true, color: GOLDL } }, { text: " written report      ·      ", options: { color: CREAMT } },
-    { text: "Weekly", options: { bold: true, color: GOLDL } }, { text: " city review call      ·      ", options: { color: CREAMT } },
-    { text: "End-of-season", options: { bold: true, color: GOLDL } }, { text: " reconciliation & review", options: { color: CREAMT } },
-  ], { x: M + 0.3, y: 5.85, w: W - 2 * M - 0.6, h: 0.45, fontFace: SANS, fontSize: 13.5, margin: 0, valign: "middle" });
+    { text: "Daily", options: { bold: true, color: GOLDL } }, { text: " written report     ", options: { color: CREAMT } },
+    { text: "·   ", options: { color: GOLD } },
+    { text: "Weekly", options: { bold: true, color: GOLDL } }, { text: " city review call     ", options: { color: CREAMT } },
+    { text: "·   ", options: { color: GOLD } },
+    { text: "End-of-season", options: { bold: true, color: GOLDL } }, { text: " reconciliation", options: { color: CREAMT } },
+  ], { x: M + 0.35, y: 5.98, w: W - 2 * M - 0.7, h: 0.42, fontFace: SANS, fontSize: 12.5, margin: 0, valign: "middle" });
   pageFoot(s, n);
 }
 
@@ -539,16 +542,16 @@ const nextn = () => ++sn;
     ["POS / EDC downtime", "Backup EDC + connectivity failover; trained cashier"],
     ["Kiosk fabrication delay", "Vendor SLA + 3-day buffer before go-live"],
   ];
-  const tx = M, tw = W - 2 * M, rh = 0.82, ty = 1.85, split = 4.7;
-  s.addShape(p.ShapeType.rect, { x: tx, y: ty, w: split, h: 0.5, fill: { color: DARK }, line: { type: "none" } });
-  s.addShape(p.ShapeType.rect, { x: tx + split, y: ty, w: tw - split, h: 0.5, fill: { color: DARK2 }, line: { type: "none" } });
-  s.addText("RISK", { x: tx + 0.25, y: ty, w: split - 0.4, h: 0.5, fontFace: SANS, fontSize: 11, bold: true, color: GOLDL, valign: "middle", charSpacing: 1, margin: 0 });
-  s.addText("MITIGATION", { x: tx + split + 0.25, y: ty, w: tw - split - 0.4, h: 0.5, fontFace: SANS, fontSize: 11, bold: true, color: GOLDL, valign: "middle", charSpacing: 1, margin: 0 });
+  const tx = M, tw = W - 2 * M, rh = 0.9, ty = 1.8, split = 4.5, hh = 0.52;
+  s.addShape(p.ShapeType.rect, { x: tx, y: ty, w: split, h: hh, fill: { color: DARK }, line: { type: "none" } });
+  s.addShape(p.ShapeType.rect, { x: tx + split, y: ty, w: tw - split, h: hh, fill: { color: DARK2 }, line: { type: "none" } });
+  s.addText("RISK", { x: tx + 0.28, y: ty, w: split - 0.4, h: hh, fontFace: SANS, fontSize: 11, bold: true, color: GOLDL, valign: "middle", charSpacing: 2, margin: 0 });
+  s.addText("MITIGATION", { x: tx + split + 0.28, y: ty, w: tw - split - 0.4, h: hh, fontFace: SANS, fontSize: 11, bold: true, color: GOLDL, valign: "middle", charSpacing: 2, margin: 0 });
   risks.forEach((r, i) => {
-    const cy = ty + 0.5 + i * rh;
+    const cy = ty + hh + i * rh;
     s.addShape(p.ShapeType.rect, { x: tx, y: cy, w: tw, h: rh, fill: { color: i % 2 ? CARD : SAND }, line: { color: LINE, width: 0.5 } });
-    s.addText(r[0], { x: tx + 0.25, y: cy, w: split - 0.4, h: rh, fontFace: SERIF, fontSize: 12.5, bold: true, color: INK, valign: "middle", margin: 0 });
-    s.addText(r[1], { x: tx + split + 0.25, y: cy, w: tw - split - 0.5, h: rh, fontFace: SANS, fontSize: 11, color: INK, valign: "middle", margin: 0 });
+    s.addText(r[0], { x: tx + 0.28, y: cy, w: split - 0.45, h: rh, fontFace: SERIF, fontSize: 12.5, bold: true, color: INK, valign: "middle", margin: 0 });
+    s.addText(r[1], { x: tx + split + 0.28, y: cy, w: tw - split - 0.55, h: rh, fontFace: SANS, fontSize: 11.5, color: INK, valign: "middle", margin: 0 });
   });
   pageFoot(s, n);
 }
