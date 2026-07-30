@@ -4,3 +4,4 @@ package-lock.json
 slide-*.jpg
 assets/pdf_imgs/
 assets/pages/
+assets/*.png
