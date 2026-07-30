@@ -29,7 +29,7 @@ function img(path,x,y,w,h,{frame=false,shadow=false}={}){
   return `<div style="position:absolute;left:${px(x)};top:${px(y)};width:${px(w)};height:${px(h)};background-image:url('${A}${path}');background-size:cover;background-position:center;background-repeat:no-repeat;${frame?'outline:2px solid #fff;outline-offset:-2px':''};${shadow?'box-shadow:2px 2px 6px rgba(120,100,80,.4)':''}"></div>`;
 }
 function tag(x,y,w=1.5,onDark=false){const h=w*104/456;
-  return `<img src="${A}promarcom_logo_t.png" style="position:absolute;left:${px(x)};top:${px(y)};width:${px(w)};height:${px(h)};${onDark?'':'filter:drop-shadow(1px 1px 1px rgba(120,100,80,.4))'}">`;
+  return `<img src="${A}promarcom_logo.png" style="position:absolute;left:${px(x)};top:${px(y)};width:${px(w)};height:${px(h)};border-radius:3px">`;
 }
 function doft(x,y,w,h,onDark=false){
   return rrect(x,y,w,h,onDark?'rgba(255,255,255,0.06)':CARD,{line:`1px dashed ${onDark?MUTEDD:ROSE}`,rad:6})

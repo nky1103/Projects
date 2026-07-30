@@ -279,7 +279,7 @@ kids.push(new Paragraph({ spacing: { before: 240 }, children: [run("Prepared by 
 // ---------- header / footer ----------
 let logoPara;
 try {
-  logoPara = new Paragraph({ alignment: AlignmentType.RIGHT, children: [new ImageRun({ data: fs.readFileSync("assets/final/promarcom_logo_t.png"), transformation: { width: 150, height: 34 }, type: "png" })] });
+  logoPara = new Paragraph({ alignment: AlignmentType.RIGHT, children: [new ImageRun({ data: fs.readFileSync("assets/final/promarcom_logo.png"), transformation: { width: 150, height: 34 }, type: "png" })] });
 } catch (e) {
   logoPara = new Paragraph({ alignment: AlignmentType.RIGHT, children: [new TextRun({ text: "ProMarcom", font: HFONT, bold: true, size: 20, color: GOLD })] });
 }

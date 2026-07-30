@@ -37,8 +37,7 @@ function goldDot(slide, x, y, r = 0.11, color = GOLD) {
 // ProMarcom logo, transparent background (no chip). onDark: pass true on mauve slides.
 function promTag(slide, x, y, w = 1.5, onDark = false) {
   const lw = w, lh = lw * (104 / 456);
-  slide.addImage({ path: A + "promarcom_logo_t.png", x, y, w: lw, h: lh,
-    shadow: onDark ? undefined : { type: "outer", color: "8A7A68", blur: 3, offset: 1, angle: 90, opacity: 0.35 } });
+  slide.addImage({ path: A + "promarcom_logo.png", x, y, w: lw, h: lh });
 }
 
 // Doft client-logo placeholder frame (user drops the real logo in)
