@@ -96,8 +96,8 @@ kids.push(table([
 
 // ---------- 3. City footprint ----------
 kids.push(h1("3.  Suggested City Footprint"));
-kids.push(p("We suggest starting in the metros, where premium mall footfall and festive spending are highest, and then adding the stronger sub-metros. Running it in two phases lets you settle the format in the metros first and widen the reach afterwards, either later in the same season or in the following years."));
-kids.push(h2("Phase 1: Metro cities (launch first)"));
+kids.push(p("All locations go live within the same window. The list below sets out the cities we recommend, grouped by metro and sub-metro. The metros carry the highest premium mall footfall and festive spending, and the sub-metros listed have grown into strong premium retail markets."));
+kids.push(h2("Metro cities"));
 kids.push(table([
   new TableRow({ children: [hcell("City", 1700), hcell("Indicative premium malls", 4620), hcell("Why", 2700)] }),
   ...[
@@ -110,7 +110,7 @@ kids.push(table([
     ["Pune", "Phoenix Marketcity, Amanora", "Affluent, high mall engagement"],
   ].map((r, i) => new TableRow({ children: [tcell(r[0], 1700, zebra(i), true), tcell(r[1], 4620, zebra(i)), tcell(r[2], 2700, zebra(i))] })),
 ], [1700, 4620, 2700]));
-kids.push(h2("Phase 2: Sub-metro cities (next wave)"));
+kids.push(h2("Sub-metro cities"));
 kids.push(table([
   new TableRow({ children: [hcell("City", 1700), hcell("Indicative premium malls", 4620), hcell("Why", 2700)] }),
   ...[
@@ -123,7 +123,7 @@ kids.push(table([
     ["Surat", "VR Surat", "High income, gifting-oriented"],
   ].map((r, i) => new TableRow({ children: [tcell(r[0], 1700, zebra(i), true), tcell(r[1], 4620, zebra(i)), tcell(r[2], 2700, zebra(i))] })),
 ], [1700, 4620, 2700]));
-kids.push(p([run("These mall names are only indicative. We will confirm the final list against live availability, footfall, category fit and licence cost. Our advice is to lock the metros first, since premium Diwali slots fill up early.", { italics: true, color: GREY, size: 19 })]));
+kids.push(p([run("These mall names are only indicative. We will confirm the final list against live availability, footfall, category fit and licence cost. We advise confirming the city list early, since premium Diwali slots fill up quickly.", { italics: true, color: GREY, size: 19 })]));
 
 // ---------- 4. Key deliverables ----------
 kids.push(h1("4.  What We Will Deliver"));
@@ -184,9 +184,9 @@ kids.push(table([
 
 // ---------- 6. Timeline ----------
 kids.push(h1("6.  Indicative Timeline"));
-kids.push(p("The plan below is shown relative to each city's go-live (T), with a six-week trading window. Metros launch first, and sub-metros follow either later in the same season or the next, so exact calendar dates are fixed per city once malls are confirmed."));
+kids.push(p("The plan below is shown relative to go-live (T), with a six-week trading window. All locations launch together in the same window, so the same plan applies to every city in parallel. Exact calendar dates are fixed once malls are confirmed."));
 kids.push(table([
-  new TableRow({ children: [hcell("Phase / Activity", 4600), hcell("Timing", 2600), hcell("Owner", 1820)] }),
+  new TableRow({ children: [hcell("Activity", 4600), hcell("Timing", 2600), hcell("Owner", 1820)] }),
   ...[
     ["Contract award and kick-off", "T minus 8 weeks", "Doft + ProMarcom"],
     ["Mall shortlisting and licence applications", "T minus 7 to 4 weeks", "ProMarcom"],
@@ -235,7 +235,7 @@ kids.push(h1("9.  What You Provide, and a Few Assumptions"));
 // ---------- 9. Next steps ----------
 kids.push(h1("10.  Next Steps"));
 [
-  "You confirm the Phase 1 metro cities, so we can lock premium mall slots early.",
+  "You confirm the final city list, so we can lock premium mall slots early.",
   "We shortlist specific malls with availability, footfall and licence cost.",
   "We agree the kiosk count per city, the go-live dates and the training schedule.",
   "We finalise commercials in a separate proposal and sign the agreement.",
