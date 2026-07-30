@@ -22,8 +22,8 @@ const LINE  = "E3D8C7"; // hairline
 const CREAMT = "F3ECE0"; // text on dark
 const MUTEDD = "C9B4AC";  // muted text on dark
 
-const SERIF = "Georgia";        // elegant serif — present on iOS, Mac & Windows
-const SANS  = "Trebuchet MS";   // clean sans — present on iOS, Mac & Windows
+const SERIF = "Georgia";   // elegant serif — present on iOS, Mac & Windows
+const SANS  = "Arial";     // clean, narrow, universal — present on every device
 
 const A = "assets/final/";
 const W = 13.33, H = 7.5, M = 0.62;
@@ -34,14 +34,11 @@ function goldDot(slide, x, y, r = 0.11, color = GOLD) {
   slide.addShape(p.ShapeType.ellipse, { x, y, w: r * 2, h: r * 2, fill: { color }, line: { type: "none" } });
 }
 
-// small ProMarcom logo on a clean white chip (logo art is transparent-bg)
-function promTag(slide, x, y, w = 1.62) {
-  const h = 0.5;
-  slide.addShape(p.ShapeType.roundRect, { x, y, w, h, rectRadius: 0.05,
-    fill: { color: "FFFFFF" }, line: { color: LINE, width: 1 },
-    shadow: { type: "outer", color: "B8A894", blur: 4, offset: 1, angle: 90, opacity: 0.35 } });
-  const lw = w - 0.26, lh = lw * (104 / 456);
-  slide.addImage({ path: A + "promarcom_logo_t.png", x: x + 0.13, y: y + (h - lh) / 2, w: lw, h: lh });
+// ProMarcom logo, transparent background (no chip). onDark: pass true on mauve slides.
+function promTag(slide, x, y, w = 1.5, onDark = false) {
+  const lw = w, lh = lw * (104 / 456);
+  slide.addImage({ path: A + "promarcom_logo_t.png", x, y, w: lw, h: lh,
+    shadow: onDark ? undefined : { type: "outer", color: "8A7A68", blur: 3, offset: 1, angle: 90, opacity: 0.35 } });
 }
 
 // Doft client-logo placeholder frame (user drops the real logo in)
@@ -593,7 +590,7 @@ const nextn = () => ++sn;
 
   s.addShape(p.ShapeType.line, { x: M + 0.02, y: 4.2, w: 7.7, h: 0, line: { color: GOLD, width: 1.5 } });
   s.addText("Prepared by", { x: M, y: 4.4, w: 1.4, h: 0.42, fontFace: SANS, fontSize: 9, italic: true, color: MUTEDD, valign: "middle", margin: 0 });
-  promTag(s, M + 1.1, 4.4, 1.8);
+  promTag(s, M + 1.1, 4.4, 1.8, true);
   doftPlaceholder(s, M + 3.2, 4.32, 2.1, 0.7, true);
 
   const contacts = [
