@@ -22,8 +22,8 @@ const LINE  = "E3D8C7"; // hairline
 const CREAMT = "F3ECE0"; // text on dark
 const MUTEDD = "C9B4AC";  // muted text on dark
 
-const SERIF = "Cambria";        // elegant serif — titles, numbers, quotes
-const SANS  = "Century Gothic";  // geometric sans — kickers, labels, body
+const SERIF = "Cambria";   // elegant serif — titles, numbers, quotes
+const SANS  = "Corbel";    // clean sans — kickers, labels, body (reliable width)
 
 const A = "assets/final/";
 const W = 13.33, H = 7.5, M = 0.62;
@@ -34,12 +34,14 @@ function goldDot(slide, x, y, r = 0.11, color = GOLD) {
   slide.addShape(p.ShapeType.ellipse, { x, y, w: r * 2, h: r * 2, fill: { color }, line: { type: "none" } });
 }
 
-// small ProMarcom logo on a black brand tag (logo art is yellow on transparent)
-function promTag(slide, x, y, w = 1.55) {
-  const h = 0.42;
-  slide.addShape(p.ShapeType.roundRect, { x, y, w, h, rectRadius: 0.05, fill: { color: "1C1518" }, line: { type: "none" } });
-  const lw = w - 0.28, lh = lw * (104 / 456);
-  slide.addImage({ path: A + "promarcom_logo_t.png", x: x + 0.14, y: y + (h - lh) / 2, w: lw, h: lh });
+// small ProMarcom logo on a clean white chip (logo art is transparent-bg)
+function promTag(slide, x, y, w = 1.62) {
+  const h = 0.5;
+  slide.addShape(p.ShapeType.roundRect, { x, y, w, h, rectRadius: 0.05,
+    fill: { color: "FFFFFF" }, line: { color: LINE, width: 1 },
+    shadow: { type: "outer", color: "B8A894", blur: 4, offset: 1, angle: 90, opacity: 0.35 } });
+  const lw = w - 0.26, lh = lw * (104 / 456);
+  slide.addImage({ path: A + "promarcom_logo_t.png", x: x + 0.13, y: y + (h - lh) / 2, w: lw, h: lh });
 }
 
 // Doft client-logo placeholder frame (user drops the real logo in)
@@ -100,29 +102,29 @@ const nextn = () => ++sn;
 // =========================================================
 {
   const s = p.addSlide(); bg(s, CREAM);
-  // right-side candle imagery panel
-  const px = 8.55;
+  // right-side candle imagery panel (clean hard edge)
+  const px = 8.7;
   s.addImage({ path: A + "doft_hero_left.png", x: px, y: 0, w: W - px, h: H, sizing: { type: "cover", w: W - px, h: H } });
-  // soft cream fade into the photo via translucent panel
-  s.addShape(p.ShapeType.rect, { x: px - 0.9, y: 0, w: 1.4, h: H, fill: { color: CREAM, transparency: 40 }, line: { type: "none" } });
+  s.addShape(p.ShapeType.line, { x: px, y: 0, w: 0, h: H, line: { color: "FFFFFF", width: 2 } });
+  const TW = px - M - 0.3; // safe text width, clears the image
 
   doftPlaceholder(s, M, 0.6, 2.5, 0.95);
 
-  s.addText("CONTRACTOR EXECUTION & PARTNERSHIP PROPOSAL", { x: M, y: 2.15, w: 7.6, h: 0.3, fontFace: SANS, fontSize: 11, bold: true, color: GOLD, charSpacing: 2, margin: 0 });
-  s.addText("Diwali Pop-Up", { x: M, y: 2.55, w: 8, h: 0.95, fontFace: SERIF, fontSize: 52, bold: true, color: INK, margin: 0 });
-  s.addText("Retail Operations", { x: M, y: 3.48, w: 8, h: 0.95, fontFace: SERIF, fontSize: 52, bold: true, color: TERRA, margin: 0 });
+  s.addText("CONTRACTOR EXECUTION & PARTNERSHIP PROPOSAL", { x: M, y: 2.15, w: TW, h: 0.3, fontFace: SANS, fontSize: 11, bold: true, color: GOLD, charSpacing: 2, margin: 0 });
+  s.addText("Diwali Pop-Up", { x: M, y: 2.55, w: TW, h: 0.95, fontFace: SERIF, fontSize: 50, bold: true, color: INK, margin: 0 });
+  s.addText("Retail Operations", { x: M, y: 3.5, w: TW, h: 0.95, fontFace: SERIF, fontSize: 50, bold: true, color: TERRA, margin: 0 });
 
-  s.addShape(p.ShapeType.line, { x: M + 0.02, y: 4.62, w: 3.6, h: 0, line: { color: ROSE, width: 1.5 } });
+  s.addShape(p.ShapeType.line, { x: M + 0.02, y: 4.6, w: 3.6, h: 0, line: { color: ROSE, width: 1.5 } });
   s.addText([
     { text: "For  ", options: { color: MUTED } },
     { text: "Doft Candles", options: { color: INK, bold: true } },
     { text: "     ·     Diwali Seasons 2026 · 2027 · 2028", options: { color: MUTED } },
-  ], { x: M, y: 4.78, w: 7.8, h: 0.4, fontFace: SANS, fontSize: 13, margin: 0 });
+  ], { x: M, y: 4.76, w: TW, h: 0.4, fontFace: SANS, fontSize: 13, margin: 0 });
 
-  s.addText("“Experiencing the world through scent.”", { x: M, y: 5.55, w: 7.4, h: 0.4, fontFace: SERIF, italic: true, fontSize: 15, color: ROSE, margin: 0 });
+  s.addText("“Experiencing the world through scent.”", { x: M, y: 5.5, w: TW, h: 0.4, fontFace: SERIF, italic: true, fontSize: 15, color: ROSE, margin: 0 });
 
-  s.addText("Prepared by", { x: M, y: 6.25, w: 1.4, h: 0.42, fontFace: SANS, fontSize: 9, italic: true, color: MUTED, valign: "middle", margin: 0 });
-  promTag(s, M + 1.15, 6.25, 1.7);
+  s.addText("Prepared by", { x: M, y: 6.28, w: 1.4, h: 0.5, fontFace: SANS, fontSize: 9, italic: true, color: MUTED, valign: "middle", margin: 0 });
+  promTag(s, M + 1.15, 6.24, 1.7);
 }
 
 // =========================================================
@@ -131,7 +133,7 @@ const nextn = () => ++sn;
 {
   const s = p.addSlide(); bg(s, CREAM); const n = nextn();
   contentTitle(s, "The Ask", "Understanding your brief");
-  promTag(s, W - M - 1.55, 0.5);
+  promTag(s, W - M - 1.62, 0.46);
   s.addText("Premium seasonal pop-up kiosks in leading malls — staffed and run end-to-end, as a long-term partner for Diwali 2026–28.",
     { x: M, y: 1.52, w: W - 2 * M, h: 0.4, fontFace: SANS, fontSize: 12.5, color: MUTED, margin: 0 });
 
@@ -190,7 +192,7 @@ const nextn = () => ++sn;
 {
   const s = p.addSlide(); bg(s, CREAM); const n = nextn();
   contentTitle(s, "Credentials", "A proven track record");
-  promTag(s, W - M - 1.55, 0.5);
+  promTag(s, W - M - 1.62, 0.46);
   const stats = [
     ["90+", "Cities covered for retail VM & activations"],
     ["3,000", "Man-days on one multi-city retail rollout"],
@@ -224,7 +226,7 @@ const nextn = () => ++sn;
 {
   const s = p.addSlide(); bg(s, CREAM); const n = nextn();
   contentTitle(s, "Relevant Experience", "We have run exactly this before");
-  promTag(s, W - M - 1.55, 0.5);
+  promTag(s, W - M - 1.62, 0.46);
   const cases = [
     ["hp_mall_promo.png", "HP — Mall Promotions", "Mumbai & Bengaluru", "3-month mall promotion: fabrication, manpower, props, merchandising, logistics & reporting."],
     ["burberry_window.png", "Burberry & Louis Vuitton", "Premium Retail VM", "Luxury show-windows, in-shop props & merchandise — the premium standard Doft demands."],
@@ -248,7 +250,7 @@ const nextn = () => ++sn;
 {
   const s = p.addSlide(); bg(s, CREAM); const n = nextn();
   contentTitle(s, "Our Approach", "One accountable partner, end to end");
-  promTag(s, W - M - 1.55, 0.5);
+  promTag(s, W - M - 1.62, 0.46);
   const steps = [
     ["Kiosk Build", "On-site fabrication & install to Doft design"],
     ["Mall & Legal", "Liaison, licences, permits, approvals"],
@@ -286,7 +288,7 @@ const nextn = () => ++sn;
 {
   const s = p.addSlide(); bg(s, CREAM); const n = nextn();
   contentTitle(s, "Staffing", "12 people per kiosk — exactly to brief");
-  promTag(s, W - M - 1.55, 0.5);
+  promTag(s, W - M - 1.62, 0.46);
   const roles = [
     ["6", "Sales Executives", "Female, 22–25, fluent English, retail experience"],
     ["2", "Sales Support", "Merchandising, stock, queue management"],
@@ -320,7 +322,7 @@ const nextn = () => ++sn;
 {
   const s = p.addSlide(); bg(s, CREAM); const n = nextn();
   contentTitle(s, "People", "Recruit  ·  Train  ·  Guarantee");
-  promTag(s, W - M - 1.55, 0.5);
+  promTag(s, W - M - 1.62, 0.46);
   const cols = [
     ["Recruit & Verify", ["City-level sourcing & referrals", "Prioritise proven prior-season staff", "Background verification before deploy", "Onboard to payroll, full compliance"]],
     ["Train to Doft Standard", ["100% attendance at Doft's 1-day training", "Scheduled 10–21 days before go-live", "Completion tracked per candidate", "Replacements trained too — always equal"]],
@@ -348,7 +350,7 @@ const nextn = () => ++sn;
 {
   const s = p.addSlide(); bg(s, CREAM); const n = nextn();
   contentTitle(s, "Setup", "Kiosk, mall coordination & compliance");
-  promTag(s, W - M - 1.55, 0.5);
+  promTag(s, W - M - 1.62, 0.46);
   const rows = [
     ["Kiosk fabrication & install", "On-site fabrication to Doft-approved design; transport, install, maintain, dismantle & return fixtures — with a 3-day buffer before go-live."],
     ["Mall coordination", "Liaison with mall management; electricity, access passes, loading/unloading and operational approvals."],
@@ -373,7 +375,7 @@ const nextn = () => ++sn;
 {
   const s = p.addSlide(); bg(s, CREAM); const n = nextn();
   contentTitle(s, "Supply Chain", "Logistics & stock replenishment");
-  promTag(s, W - M - 1.55, 0.5);
+  promTag(s, W - M - 1.62, 0.46);
   const flow = [
     ["Ghaziabad Warehouse", "Collect stock from Doft's warehouse; insured in transit"],
     ["Stockroom (~90 sq ft)", "Local buffer beside each kiosk for fast replenishment"],
@@ -402,7 +404,7 @@ const nextn = () => ++sn;
 {
   const s = p.addSlide(); bg(s, CREAM); const n = nextn();
   contentTitle(s, "Operations", "Daily operations & reporting");
-  promTag(s, W - M - 1.55, 0.5);
+  promTag(s, W - M - 1.62, 0.46);
   s.addText("Consistent open-to-close execution, with a standard daily report to Doft per kiosk — consolidated by city.",
     { x: M, y: 1.52, w: W - 2 * M, h: 0.4, fontFace: SANS, fontSize: 12, color: MUTED, margin: 0 });
   const reports = ["Sales", "Footfall", "Conversion", "Inventory", "Replenishment", "Attendance", "Customer Feedback", "Ops Issues"];
@@ -430,7 +432,7 @@ const nextn = () => ++sn;
 {
   const s = p.addSlide(); bg(s, CREAM); const n = nextn();
   contentTitle(s, "Plan", "Project timeline");
-  promTag(s, W - M - 1.55, 0.5);
+  promTag(s, W - M - 1.62, 0.46);
   const line_y = 3.45, lw = 1.7;
   const startX = M + lw / 2, endX = W - M - lw / 2;
   s.addShape(p.ShapeType.line, { x: startX, y: line_y, w: endX - startX, h: 0, line: { color: ROSE, width: 2 } });
@@ -490,7 +492,7 @@ const nextn = () => ++sn;
 {
   const s = p.addSlide(); bg(s, CREAM); const n = nextn();
   contentTitle(s, "Commercials", "A transparent, built-up cost model");
-  promTag(s, W - M - 1.55, 0.5);
+  promTag(s, W - M - 1.62, 0.46);
   s.addText("Priced bottom-up per kiosk, then rolled up. Every line is an editable input in the workbook.",
     { x: M, y: 1.5, w: W - 2 * M, h: 0.4, fontFace: SANS, fontSize: 12, color: MUTED, margin: 0 });
   const data = [{
@@ -529,7 +531,7 @@ const nextn = () => ++sn;
 {
   const s = p.addSlide(); bg(s, CREAM); const n = nextn();
   contentTitle(s, "Assurance", "How we protect the season");
-  promTag(s, W - M - 1.55, 0.5);
+  promTag(s, W - M - 1.62, 0.46);
   const risks = [
     ["Staff attrition after training", "15% trained bench; same-day no-cost replacement"],
     ["Mall permission delays", "Licensing kicked off at T-7w; parallel mall shortlist"],
@@ -557,7 +559,7 @@ const nextn = () => ++sn;
 {
   const s = p.addSlide(); bg(s, CREAM); const n = nextn();
   contentTitle(s, "Toolkit", "The operations workbook");
-  promTag(s, W - M - 1.55, 0.5);
+  promTag(s, W - M - 1.62, 0.46);
   s.addText("This deck ships with a live Excel workbook — the operating system for the engagement. Edit the assumptions; everything recalculates.",
     { x: M, y: 1.5, w: W - 2 * M, h: 0.4, fontFace: SANS, fontSize: 12, color: MUTED, margin: 0 });
   const tabs = ["Assumptions", "Project Timeline", "Staffing Plan", "Manpower Cost", "Budget Summary", "Recruitment Tracker",
