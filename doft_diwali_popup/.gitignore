@@ -2,3 +2,5 @@ node_modules/
 package-lock.json
 *.pdf
 slide-*.jpg
+assets/pdf_imgs/
+assets/pages/
