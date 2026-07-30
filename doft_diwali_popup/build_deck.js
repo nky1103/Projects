@@ -167,12 +167,13 @@ const nextn = () => ++sn;
 
   s.addText("Trusted by leading brands", { x: M, y: 3.95, w: 11, h: 0.35, fontFace: BF, fontSize: 13, bold: true, color: MUTED, charSpacing: 1, margin: 0 });
   const clients = ["LG", "Samsung", "Hewlett-Packard", "Bajaj", "Castrol", "Pepsi", "ITC", "Burberry", "Louis Vuitton", "Panasonic", "Pearson", "ICC World Cup"];
-  const chw = 2.0, chh = 0.55, gap = 0.18, perRow = 6;
+  const perRow = 6, gap = 0.2, chh = 0.6;
+  const chw = (W - 2 * M - (perRow - 1) * gap) / perRow;  // fit exactly within margins
   clients.forEach((c, i) => {
     const cx = M + (i % perRow) * (chw + gap);
-    const cy2 = 4.4 + Math.floor(i / perRow) * (chh + gap);
+    const cy2 = 4.45 + Math.floor(i / perRow) * (chh + gap);
     s.addShape(p.ShapeType.roundRect, { x: cx, y: cy2, w: chw, h: chh, rectRadius: 0.06, fill: { color: CARD }, line: { color: LINE, width: 1 } });
-    s.addText(c, { x: cx, y: cy2, w: chw, h: chh, fontFace: HF, fontSize: 12.5, bold: true, color: INK, align: "center", valign: "middle", margin: 0 });
+    s.addText(c, { x: cx + 0.05, y: cy2, w: chw - 0.1, h: chh, fontFace: HF, fontSize: 12, bold: true, color: INK, align: "center", valign: "middle", margin: 0 });
   });
   s.addText("Illustrative selection from ProMarcom credentials, 2022.", { x: M, y: 6.5, w: 10, h: 0.3, fontFace: BF, fontSize: 9, italic: true, color: MUTED, margin: 0 });
   pageNum(s, n);
@@ -338,7 +339,8 @@ const nextn = () => ++sn;
     ["Kiosk Shelf", "Daily fill to plan; reorder triggered by min levels"],
     ["Reconcile & Return", "Daily counts; unsold inventory returned with full reconciliation"],
   ];
-  const cw = 2.75, cy = 2.2, ch = 2.2, gapx = 0.5;
+  const gapx = 0.5, cy = 2.2, ch = 2.2;
+  const cw = (W - 2 * M - 3 * gapx) / 4;  // 4 cards fit exactly within margins
   flow.forEach((it, i) => {
     const cx = M + i * (cw + gapx);
     card(s, cx, cy, cw, ch);
@@ -387,7 +389,10 @@ const nextn = () => ++sn;
   const s = p.addSlide(); bg(s, CREAM); const n = nextn();
   contentTitle(s, "Plan", "Project timeline");
   const line_y = 3.4;
-  s.addShape(p.ShapeType.line, { x: M + 0.2, y: line_y, w: W - 2 * M - 0.4, h: 0, line: { color: GOLD, width: 2 } });
+  const lw = 1.7;                 // label box width
+  const startX = M + lw / 2;      // first dot leaves room for a centred label
+  const endX = W - M - lw / 2;    // last dot ditto
+  s.addShape(p.ShapeType.line, { x: startX, y: line_y, w: endX - startX, h: 0, line: { color: GOLD, width: 2 } });
   const ph = [
     ["T-8w", "Award & kick-off", 1],
     ["T-7w", "Malls & licences", 0],
@@ -398,17 +403,16 @@ const nextn = () => ++sn;
     ["T", "Go-live — ops", 1],
     ["T+6w", "Dismantle & review", 0],
   ];
-  const span = W - 2 * M - 0.4;
   ph.forEach((it, i) => {
-    const cx = M + 0.2 + (span) * (i / (ph.length - 1));
-    goldDot(s, cx - 0.11, line_y - 0.11, 0.11, INK);
+    const cx = startX + (endX - startX) * (i / (ph.length - 1));
     const up = it[2] === 1;
-    const boxY = up ? line_y - 1.55 : line_y + 0.45;
-    const bx = Math.min(Math.max(cx - 0.85, M), W - M - 1.7);
-    s.addText(it[0], { x: bx, y: up ? boxY : boxY, w: 1.7, h: 0.3, fontFace: HF, fontSize: 14, bold: true, color: GOLD, align: "center", margin: 0 });
-    s.addText(it[1], { x: bx, y: up ? boxY + 0.3 : boxY + 0.3, w: 1.7, h: 0.7, fontFace: BF, fontSize: 11.5, color: TEXT, align: "center", margin: 0, valign: "top" });
-    // connector
-    s.addShape(p.ShapeType.line, { x: cx, y: up ? boxY + 1.0 : line_y, w: 0, h: up ? line_y - (boxY + 1.0) : boxY - line_y, line: { color: LINE, width: 1 } });
+    const boxY = up ? line_y - 1.5 : line_y + 0.5;
+    const bx = cx - lw / 2;       // centred exactly on the dot
+    s.addText(it[0], { x: bx, y: boxY, w: lw, h: 0.3, fontFace: HF, fontSize: 14, bold: true, color: GOLD, align: "center", margin: 0 });
+    s.addText(it[1], { x: bx, y: boxY + 0.32, w: lw, h: 0.6, fontFace: BF, fontSize: 11.5, color: TEXT, align: "center", margin: 0, valign: up ? "bottom" : "top" });
+    // connector then dot (dot drawn last, sits on top)
+    s.addShape(p.ShapeType.line, { x: cx, y: up ? boxY + 0.92 : line_y, w: 0, h: up ? line_y - (boxY + 0.92) : boxY - line_y, line: { color: LINE, width: 1 } });
+    goldDot(s, cx - 0.11, line_y - 0.11, 0.11, INK);
   });
   s.addText("Timeline shown relative to go-live (T). Operations run 3–5 weeks per the brief. Full per-region Gantt provided in the operations workbook.",
     { x: M, y: 6.2, w: W - 2 * M, h: 0.4, fontFace: BF, fontSize: 11, italic: true, color: MUTED, align: "center", margin: 0 });
