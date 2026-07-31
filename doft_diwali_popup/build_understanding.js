@@ -76,7 +76,7 @@ kids.push(p("This note sets out how we understand the Diwali pop-up requirement 
 
 // ---------- 2. Understanding ----------
 kids.push(h1("2.  How We Understand the Requirement"));
-kids.push(p("Doft runs premium home-fragrance kiosks in leading malls through the Diwali season. For 2026, and with the plan to carry on in 2027 and 2028, you will run compact 8x8 ft kiosks in busy malls across the metros and sub-metros, trading for six weeks around Diwali, with a few cities continuing through Christmas and New Year. We handle everything on the ground, from the kiosk design and build to hiring, deployment and the day-to-day running. You supply the stock, the furniture and the uniforms. Billing hardware and software is still to be discussed."));
+kids.push(p("Doft runs premium home-fragrance kiosks in leading malls through the Diwali season. For 2026, and with the plan to carry on in 2027 and 2028, you will run compact 8x8 ft kiosks in busy malls across the metros and sub-metros, trading for six weeks around Diwali, with a few cities continuing through Christmas and New Year. We handle everything on the ground, from the kiosk design and build to hiring, deployment and the day-to-day running. You supply the stock and the uniforms; the furniture is part of the kiosk we build. We provide the billing hardware, and the software is still to be discussed."));
 kids.push(h2("Quick summary"));
 kids.push(table([
   new TableRow({ children: [hcell("Item", 3000), hcell("Details", 6020)] }),
@@ -89,8 +89,8 @@ kids.push(table([
     ["Kiosks per city", "1 to 3, based on mall availability, footfall and your sign-off"],
     ["Team", "8 per kiosk, plus a city manager where needed (see Section 5)"],
     ["Training", "One-day product and sales training by Doft, 10 to 21 days before launch, full attendance"],
-    ["Billing hardware & software", "To be discussed and agreed"],
-    ["You supply", "Stock, furniture and uniforms (returnable)"],
+    ["Billing hardware & software", "Billing hardware provided by ProMarcom; software to be discussed"],
+    ["You supply", "Stock and uniforms (returnable); furniture is part of the kiosk"],
     ["We handle", "Kiosk design, build and install, manpower, logistics, licences, daily operations, reporting, cash management and mall space negotiations"],
   ].map((r, i) => new TableRow({ children: [tcell(r[0], 3000, zebra(i), true), tcell(r[1], 6020, zebra(i))] })),
 ], [3000, 6020]));
@@ -177,7 +177,7 @@ kids.push(table([
   ...[
     ["Sales Executives", "5", "Two also handle billing. Female, 22-25, fluent English, retail sales experience"],
     ["Helpers", "2", "Housekeeping, stock handling and refill runs"],
-    ["Supervisor", "1", "Runs the kiosk day to day; a permanent ProMarcom employee"],
+    ["Supervisor", "1", "Runs the kiosk day to day"],
     ["City Manager", "1 per city", "Deployed where a city runs more than two kiosks at the same time"],
   ].map((r, i) => new TableRow({ children: [tcell(r[0], 3000, zebra(i), true), tcell(r[1], 1500, zebra(i)), tcell(r[2], 4520, zebra(i))] })),
   new TableRow({ children: [tcell("Core team per kiosk", 3000, "EADFCE", true), tcell("8", 1500, "EADFCE", true), tcell("Plus a City Manager where needed and a ~15% trained bench per city", 4520, "EADFCE")] }),
@@ -201,7 +201,7 @@ kids.push(table([
     ["Final reconciliation and season review", "T plus 7 weeks", "Doft + ProMarcom"],
   ].map((r, i) => new TableRow({ children: [tcell(r[0], 4600, zebra(i), true), tcell(r[1], 2600, zebra(i)), tcell(r[2], 1820, zebra(i))] })),
 ], [4600, 2600, 1820]));
-kids.push(p([run("A live project timeline and per-city Gantt are maintained in the operations workbook and shared with your team.", { italics: true, color: GREY, size: 19 })]));
+kids.push(p([run("A project timeline and per-city Gantt will be prepared and shared with your team.", { italics: true, color: GREY, size: 19 })]));
 
 // ---------- 7. Reporting ----------
 kids.push(h1("7.  Reporting & Reviews"));
@@ -221,16 +221,14 @@ kids.push(h1("8.  Our Commitments"));
   "Full attendance at your training, and equally trained staff on the floor at all times.",
   "Same-day replacement of any absent or resigned staff, at no extra cost to you.",
   "Uniforms kept washed, ironed and in good shape, and returned in good condition.",
-  "Compliance signed off before every go-live: licences, GST and e-invoicing, PF and ESIC, insurance, fire and electrical, and staff background checks.",
   "The same service quality and brand standards across every city, even when several run at once.",
 ].forEach(t => kids.push(bullet(t)));
 
 // ---------- 8. What Doft provides / assumptions ----------
 kids.push(h1("9.  What You Provide, and a Few Assumptions"));
 [
-  "You supply the stock, the furniture (unless we agree otherwise) and the uniforms (returnable). The kiosk design sits with ProMarcom, and billing hardware and software is to be discussed and agreed separately.",
-  "Stock is picked up from your Ghaziabad warehouse. We take care of insurance in transit and safe handling.",
-  "If we pay any mall licence or space fees, we will bill them as a pass-through unless we agree otherwise. We will confirm this mall by mall.",
+  "You supply the stock and the uniforms (returnable). The furniture is part of the kiosk, and the kiosk design sits with ProMarcom. We provide the billing hardware; the software is to be discussed.",
+  "Stock is picked up from your Ghaziabad warehouse.",
   "We will finalise the cities, malls, kiosk counts and go-live dates with you before each season.",
 ].forEach(t => kids.push(bullet(t)));
 
