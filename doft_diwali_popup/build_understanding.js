@@ -76,21 +76,22 @@ kids.push(p("This note sets out how we understand the Diwali pop-up requirement 
 
 // ---------- 2. Understanding ----------
 kids.push(h1("2.  How We Understand the Requirement"));
-kids.push(p("Doft runs premium home-fragrance kiosks in leading malls through the Diwali season. For 2026, and with the plan to carry on in 2027 and 2028, you will run compact 8x8 ft kiosks in busy malls across the metros and sub-metros, trading for six weeks around Diwali. We handle everything on the ground, from hiring and deployment to the day-to-day running. You supply the stock, the kiosk design, the POS/EDC machines and the uniforms."));
+kids.push(p("Doft runs premium home-fragrance kiosks in leading malls through the Diwali season. For 2026, and with the plan to carry on in 2027 and 2028, you will run compact 8x8 ft kiosks in busy malls across the metros and sub-metros, trading for six weeks around Diwali, with a few cities continuing through Christmas and New Year. We handle everything on the ground, from the kiosk design and build to hiring, deployment and the day-to-day running. You supply the stock, the furniture and the uniforms. Billing hardware and software is still to be discussed."));
 kids.push(h2("Quick summary"));
 kids.push(table([
   new TableRow({ children: [hcell("Item", 3000), hcell("Details", 6020)] }),
   ...[
     ["Term", "Diwali seasons 2026, 2027 and 2028, renewed each year"],
-    ["Operating window", "Six weeks of live trading per city, across the Diwali season"],
-    ["Kiosk size", "8x8 ft (about 64 sq ft), built to your approved design"],
-    ["Backup storage", "About 40 sq ft of secure storage for replenishment, or mall-provided"],
+    ["Operating window", "Six weeks of live trading per city across the Diwali season. A few cities may continue through Christmas and New Year."],
+    ["Kiosk size", "8x8 ft (about 64 sq ft), designed, built and installed by ProMarcom"],
+    ["Backup storage", "About 40 sq ft of secure replenishment storage, held within the kiosk"],
     ["Cities", "Metros and sub-metros (our suggestions are in Section 3)"],
     ["Kiosks per city", "1 to 3, based on mall availability, footfall and your sign-off"],
-    ["Team", "Full team of 12 per kiosk (see Section 5)"],
+    ["Team", "8 per kiosk, plus a city manager where needed (see Section 5)"],
     ["Training", "One-day product and sales training by Doft, 10 to 21 days before launch, full attendance"],
-    ["You supply", "Stock, kiosk design and kit, furniture, POS/EDC, uniforms (returnable)"],
-    ["We handle", "Kiosk build and install, manpower, logistics, licences, daily operations and reporting"],
+    ["Billing hardware & software", "To be discussed and agreed"],
+    ["You supply", "Stock, furniture and uniforms (returnable)"],
+    ["We handle", "Kiosk design, build and install, manpower, logistics, licences, daily operations, reporting, cash management and mall space negotiations"],
   ].map((r, i) => new TableRow({ children: [tcell(r[0], 3000, zebra(i), true), tcell(r[1], 6020, zebra(i))] })),
 ], [3000, 6020]));
 
@@ -101,7 +102,7 @@ kids.push(h2("Metro cities"));
 kids.push(table([
   new TableRow({ children: [hcell("City", 1700), hcell("Indicative premium malls", 4620), hcell("Why", 2700)] }),
   ...[
-    ["Delhi-NCR", "Select Citywalk, DLF Promenade/Emporio, Ambience", "Largest premium and gifting market"],
+    ["Delhi-NCR", "DLF Promenade, DLF Avenue, Ambience Gurgaon", "Largest premium and gifting market"],
     ["Mumbai", "Phoenix Palladium, Jio World Drive, Inorbit", "High spend, strong luxury footfall"],
     ["Bengaluru", "Phoenix Mall of Asia, Orion, UB City", "Young, affluent, big on home décor"],
     ["Hyderabad", "Sarath City Capital, Inorbit", "Fast-growing premium retail"],
@@ -121,6 +122,7 @@ kids.push(table([
     ["Kochi", "Lulu Mall", "Very high footfall, premium mix"],
     ["Indore", "Phoenix Citadel, C21", "Growing premium spend"],
     ["Surat", "VR Surat", "High income, gifting-oriented"],
+    ["Visakhapatnam", "CMR Central, Vizag Central", "Growing coastal premium market"],
   ].map((r, i) => new TableRow({ children: [tcell(r[0], 1700, zebra(i), true), tcell(r[1], 4620, zebra(i)), tcell(r[2], 2700, zebra(i))] })),
 ], [1700, 4620, 2700]));
 kids.push(p([run("These mall names are only indicative. We will confirm the final list against live availability, footfall, category fit and licence cost. We advise confirming the city list early, since premium Diwali slots fill up quickly.", { italics: true, color: GREY, size: 19 })]));
@@ -130,12 +132,13 @@ kids.push(h1("4.  What We Will Deliver"));
 kids.push(p("We will run the workstreams below, each to your brand standards and the mall's compliance rules."));
 kids.push(table([
   new TableRow({ children: [hcell("Workstream", 2500), hcell("What we deliver", 6520)] }),
-  new TableRow({ children: [tcell("1. Kiosk build & install", 2500, "FFFFFF", true), blcell([
-    "Build and install the 8x8 kiosk to your approved design",
+  new TableRow({ children: [tcell("1. Kiosk design, build & install", 2500, "FFFFFF", true), blcell([
+    "Design, build and install the 8x8 kiosk to an agreed look",
     "Transport, setup, upkeep, dismantling and return of fixtures",
     "A 3-day buffer before go-live to cover any build delay",
   ], 6520, "FFFFFF")] }),
-  new TableRow({ children: [tcell("2. Mall coordination & legal", 2500, LGREY, true), blcell([
+  new TableRow({ children: [tcell("2. Mall space, coordination & legal", 2500, LGREY, true), blcell([
+    "Negotiate mall space and commercial terms",
     "Liaison with mall management through the season",
     "All permissions, licences, documents and compliance",
     "Electricity, access passes, loading/unloading and operational approvals",
@@ -154,10 +157,10 @@ kids.push(table([
     "Get full attendance at your one-day product and sales training",
     "Keep trained staff on through the season, and train any replacements",
   ], 6520, "FFFFFF")] }),
-  new TableRow({ children: [tcell("6. Store operations", 2500, LGREY, true), blcell([
+  new TableRow({ children: [tcell("6. Store operations & cash", 2500, LGREY, true), blcell([
     "Daily open and close, sales and customer service",
-    "Cash handling and POS/EDC, plus visual merchandising and cleanliness",
-    "Stock reconciliation, and compliance with mall and Doft standards",
+    "Billing, cash handling, daily deposits and reconciliation",
+    "Visual merchandising, cleanliness, and compliance with mall and Doft standards",
   ], 6520, LGREY)] }),
   new TableRow({ children: [tcell("7. Reporting", 2500, "FFFFFF", true), blcell([
     "Daily numbers on sales, footfall, stock, replenishment and attendance",
@@ -168,23 +171,21 @@ kids.push(table([
 
 // ---------- 5. Staffing ----------
 kids.push(h1("5.  Team Per Kiosk"));
-kids.push(p("We will deploy the full team specified in the brief at every kiosk: twelve people covering sales, support, cash handling, housekeeping and transport, led by a Team Leader who is a permanent ProMarcom employee. Alongside this, we will hold a trained bench of about 15% per city, so any absence is covered the same day at no extra cost to you."));
+kids.push(p("We suggest the team below at each kiosk. Two of the five sales executives also handle billing, so the counter stays covered through the day. A City Manager oversees any city that runs more than two kiosks at the same time. Alongside this, we keep a trained bench of about 15% per city, so any absence is covered the same day at no extra cost to you."));
 kids.push(table([
-  new TableRow({ children: [hcell("Role", 3000), hcell("Per kiosk", 1500), hcell("Notes", 4520)] }),
+  new TableRow({ children: [hcell("Role", 3000), hcell("Count", 1500), hcell("Notes", 4520)] }),
   ...[
-    ["Sales Executives", "6", "Female, 22-25, fluent English, retail sales experience"],
-    ["Sales Support Staff", "2", "Merchandising, stock handling and queue management"],
-    ["Helper", "1", "Housekeeping and material handling"],
-    ["Cashier", "1", "Experienced on POS/EDC machines"],
-    ["Driver", "1", "Stock transport and replenishment runs"],
-    ["Team Leader / Manager", "1", "Permanent ProMarcom employee who runs the kiosk"],
+    ["Sales Executives", "5", "Two also handle billing. Female, 22-25, fluent English, retail sales experience"],
+    ["Helpers", "2", "Housekeeping, stock handling and refill runs"],
+    ["Supervisor", "1", "Runs the kiosk day to day; a permanent ProMarcom employee"],
+    ["City Manager", "1 per city", "Deployed where a city runs more than two kiosks at the same time"],
   ].map((r, i) => new TableRow({ children: [tcell(r[0], 3000, zebra(i), true), tcell(r[1], 1500, zebra(i)), tcell(r[2], 4520, zebra(i))] })),
-  new TableRow({ children: [tcell("Total per kiosk", 3000, "EADFCE", true), tcell("12", 1500, "EADFCE", true), tcell("Plus a trained bench of about 15% per city for quick cover", 4520, "EADFCE")] }),
+  new TableRow({ children: [tcell("Core team per kiosk", 3000, "EADFCE", true), tcell("8", 1500, "EADFCE", true), tcell("Plus a City Manager where needed and a ~15% trained bench per city", 4520, "EADFCE")] }),
 ], [3000, 1500, 4520]));
 
 // ---------- 6. Timeline ----------
 kids.push(h1("6.  Indicative Timeline"));
-kids.push(p("The plan below is shown relative to go-live (T), with a six-week trading window. All locations launch together in the same window, so the same plan applies to every city in parallel. Exact calendar dates are fixed once malls are confirmed."));
+kids.push(p("The plan below is shown relative to go-live (T), with a six-week trading window. All locations launch together in the same window, so the same plan applies to every city in parallel. A few cities may extend beyond the six weeks to cover Christmas and New Year, with dismantling shifted accordingly. Exact calendar dates are fixed once malls are confirmed."));
 kids.push(table([
   new TableRow({ children: [hcell("Activity", 4600), hcell("Timing", 2600), hcell("Owner", 1820)] }),
   ...[
@@ -195,6 +196,7 @@ kids.push(table([
     ["Doft product and sales training (1 day)", "T minus 2 weeks", "Doft"],
     ["Stock pickup from Ghaziabad and first fill", "T minus 1 week", "ProMarcom"],
     ["Go-live and daily operations (6 weeks)", "T to T plus 6 weeks", "ProMarcom"],
+    ["Extended trading in select cities (Christmas and New Year)", "T plus 6 weeks onward", "ProMarcom"],
     ["Dismantle, fixture and unsold-stock return", "T plus 6 to 7 weeks", "ProMarcom"],
     ["Final reconciliation and season review", "T plus 7 weeks", "Doft + ProMarcom"],
   ].map((r, i) => new TableRow({ children: [tcell(r[0], 4600, zebra(i), true), tcell(r[1], 2600, zebra(i)), tcell(r[2], 1820, zebra(i))] })),
@@ -226,7 +228,7 @@ kids.push(h1("8.  Our Commitments"));
 // ---------- 8. What Doft provides / assumptions ----------
 kids.push(h1("9.  What You Provide, and a Few Assumptions"));
 [
-  "You supply the stock, the kiosk design and kit, the furniture (unless we agree otherwise), the POS/EDC machines and the uniforms (returnable).",
+  "You supply the stock, the furniture (unless we agree otherwise) and the uniforms (returnable). The kiosk design sits with ProMarcom, and billing hardware and software is to be discussed and agreed separately.",
   "Stock is picked up from your Ghaziabad warehouse. We take care of insurance in transit and safe handling.",
   "If we pay any mall licence or space fees, we will bill them as a pass-through unless we agree otherwise. We will confirm this mall by mall.",
   "We will finalise the cities, malls, kiosk counts and go-live dates with you before each season.",
