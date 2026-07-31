@@ -1,0 +1,135 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000;overflow:hidden}#c{display:block}</style></head>
+<body><canvas id="c" width="1600" height="1100"></canvas>
+<script src="node_modules/three/build/three.min.js"></script>
+<script>
+const P = new URLSearchParams(location.search);
+const OPT = P.get('opt') || 'B';  // A arches, B grid, C pavilion
+const FT = 0.3048, K = 8*FT; // 2.44m footprint
+const col = {
+  ivory:0xEFE4CE, marble:0xF3EFE7, brass:0xC9A24C, mauve:0x4A343A, mauveD:0x3A2830,
+  glow:0xF3D9A6, glass:0xFBFAF7, cream:0xF6F1E6, sand:0xE7DBC8, rose:0xC39A98
+};
+const R = new THREE.WebGLRenderer({canvas:document.getElementById('c'), antialias:true, preserveDrawingBuffer:true});
+R.setSize(1600,1100,false); R.setPixelRatio(1);
+R.shadowMap.enabled=true; R.shadowMap.type=THREE.PCFSoftShadowMap;
+R.outputColorSpace=THREE.SRGBColorSpace; R.toneMapping=THREE.ACESFilmicToneMapping; R.toneMappingExposure=1.1;
+
+const scene = new THREE.Scene();
+// gradient background
+(function(){const c=document.createElement('canvas');c.width=16;c.height=256;const g=c.getContext('2d').createLinearGradient(0,0,0,256);
+ g.addColorStop(0,'#F8F3EA');g.addColorStop(0.6,'#F1E9DB');g.addColorStop(1,'#E7DBC8');const x=c.getContext('2d');x.fillStyle=g;x.fillRect(0,0,16,256);
+ const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;scene.background=t;})();
+// environment for reflections (PMREM of a gradient scene)
+(function(){const pmrem=new THREE.PMREMGenerator(R);const envScene=new THREE.Scene();
+ const c=document.createElement('canvas');c.width=8;c.height=256;const ctx=c.getContext('2d');const g=ctx.createLinearGradient(0,0,0,256);
+ g.addColorStop(0,'#fffaf0');g.addColorStop(0.5,'#efe6d5');g.addColorStop(1,'#cdbfa8');ctx.fillStyle=g;ctx.fillRect(0,0,8,256);
+ const tex=new THREE.CanvasTexture(c);tex.mapping=THREE.EquirectangularReflectionMapping;
+ scene.environment=pmrem.fromEquirectangular(tex).texture;})();
+
+const cam = new THREE.PerspectiveCamera(40, 1600/1100, 0.1, 100);
+cam.position.set(2.95, 2.15, 3.6); cam.lookAt(0, 1.18, 0);
+
+// lights
+scene.add(new THREE.HemisphereLight(0xfff6e8, 0x9c8f7e, 0.55));
+const key = new THREE.DirectionalLight(0xfff1db, 2.0);
+key.position.set(3.2, 5.2, 3.0); key.castShadow=true;
+key.shadow.mapSize.set(1024,1024); key.shadow.bias=-0.0006;
+const sc=key.shadow.camera; sc.left=-3; sc.right=3; sc.top=3.5; sc.bottom=-1; sc.near=0.5; sc.far=16;
+scene.add(key);
+const fill = new THREE.DirectionalLight(0xffe9cf, 0.5); fill.position.set(-3,2.5,2); scene.add(fill);
+
+// materials
+const M = {
+  ivory:new THREE.MeshStandardMaterial({color:col.ivory,roughness:0.5,metalness:0.0,envMapIntensity:0.7}),
+  marble:new THREE.MeshStandardMaterial({color:col.marble,roughness:0.14,metalness:0.0,envMapIntensity:1.0}),
+  brass:new THREE.MeshStandardMaterial({color:col.brass,roughness:0.3,metalness:1.0,envMapIntensity:1.0}),
+  mauve:new THREE.MeshStandardMaterial({color:col.mauve,roughness:0.55,metalness:0.0,envMapIntensity:0.5}),
+  glow:new THREE.MeshStandardMaterial({color:col.glow,emissive:col.glow,emissiveIntensity:1.35,roughness:1}),
+  glass:new THREE.MeshStandardMaterial({color:col.glass,roughness:0.22,metalness:0.0,transparent:true,opacity:0.9,emissive:0xFFF0D6,emissiveIntensity:0.18,envMapIntensity:1.0}),
+  flame:new THREE.MeshBasicMaterial({color:0xFFC661})
+};
+function box(w,h,d,m,x,y,z,shadow=true){const g=new THREE.BoxGeometry(w,h,d);const me=new THREE.Mesh(g,m);me.position.set(x,y,z);me.castShadow=shadow;me.receiveShadow=true;scene.add(me);return me;}
+
+// ground
+const gp=new THREE.Mesh(new THREE.PlaneGeometry(40,40),new THREE.MeshStandardMaterial({color:0xEDE5D7,roughness:0.9,metalness:0}));
+gp.rotation.x=-Math.PI/2; gp.receiveShadow=true; scene.add(gp);
+const rug=new THREE.Mesh(new THREE.CircleGeometry(2.4,48),new THREE.MeshStandardMaterial({color:0xE3D6C2,roughness:1}));
+rug.rotation.x=-Math.PI/2; rug.position.y=0.002; rug.receiveShadow=true; scene.add(rug);
+
+function textTexture(txt,fg,spacing){const c=document.createElement('canvas');c.width=1024;c.height=256;const x=c.getContext('2d');
+ x.clearRect(0,0,1024,256);x.fillStyle=fg;x.font='700 150px Georgia, serif';x.textAlign='center';x.textBaseline='middle';
+ x.letterSpacing=(spacing||40)+'px';x.fillText(txt,512,140);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=4;return t;}
+
+// ---------------- KIOSK ----------------
+const HALF=K/2;
+// plinth
+box(K, 0.12, K, M.ivory, 0, 0.06, 0);
+// back cabinet
+const cabH=2.05, cabZ=-HALF+0.22;
+box(K, cabH, 0.42, M.ivory, 0, 0.12+cabH/2, cabZ);
+// side returns
+box(0.16, cabH*0.9, K*0.55, M.ivory, -HALF+0.08, 0.12+cabH*0.45, -0.15);
+box(0.16, cabH*0.9, K*0.55, M.ivory,  HALF-0.08, 0.12+cabH*0.45, -0.15);
+// backlit inner panel
+const panW=K-0.5, panH=cabH-0.7, panY=0.12+0.35+panH/2, panZ=cabZ+0.215;
+box(panW, panH, 0.02, M.glow, 0, panY, panZ);
+// interior warm light
+const gl=new THREE.PointLight(0xffd9a0, 6, 6, 2); gl.position.set(0, panY, panZ+0.5); scene.add(gl);
+
+function candle(x,y,z,s){s=s||1;const g=new THREE.CylinderGeometry(0.05*s,0.048*s,0.13*s,20);const m=new THREE.Mesh(g,M.glass);
+ m.position.set(x,y+0.065*s,z);m.castShadow=true;scene.add(m);
+ const band=new THREE.Mesh(new THREE.CylinderGeometry(0.051*s,0.051*s,0.02*s,20),M.brass);band.position.set(x,y+0.05*s,z);scene.add(band);
+ const fl=new THREE.Mesh(new THREE.SphereGeometry(0.012*s,8,8),M.flame);fl.position.set(x,y+0.15*s,z);fl.scale.y=1.8;scene.add(fl);}
+
+const front=panZ+0.02;
+if(OPT==='B'){ // gallery grid 3x3
+  const cols=3, rows=3, gw=panW*0.98, gh=panH*0.98, x0=-gw/2, y0=panY-gh/2;
+  const cw=gw/cols, ch=gh/rows;
+  for(let c=0;c<=cols;c++) box(0.04, gh, 0.30, M.brass, x0+c*cw, panY, cabZ+0.16);
+  for(let r=0;r<=rows;r++) box(gw+0.04, 0.04, 0.30, M.brass, 0, y0+r*ch, cabZ+0.16);
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const cx=x0+(c+0.5)*cw, cy=y0+(r+0.5)*ch;
+    candle(cx-0.09, cy-ch/2+0.02, front-0.02, 0.95); candle(cx+0.09, cy-ch/2+0.02, front-0.02, 0.8);}
+} else if(OPT==='A'){ // arches: 3 bays with rounded tops
+  const bays=3, bw=(panW)/bays;
+  for(let i=0;i<bays;i++){const cx=-panW/2+(i+0.5)*bw;
+    for(let c=0;c<2;c++) box(0.06,panH,0.30,M.brass, cx-bw/2+ (c?bw:0), panY, cabZ+0.16);
+    const arch=new THREE.Mesh(new THREE.TorusGeometry(bw*0.42,0.03,10,24,Math.PI),M.brass);
+    arch.position.set(cx, panY+panH/2-bw*0.42, cabZ+0.17); scene.add(arch);
+    candle(cx, panY-panH/2+0.02, front-0.02, 1.05); candle(cx-0.12, panY-0.15, front-0.02,0.9); candle(cx+0.12, panY-0.15, front-0.02,0.9);
+  }
+} else { // pavilion: floating ledges + canopy
+  for(let i=0;i<4;i++){const ly=panY-panH/2+0.15+i*(panH/4);
+    box(panW*0.96,0.035,0.26,M.brass,0,ly,cabZ+0.15);
+    for(let k=0;k<4;k++) candle(-panW/2+ (k+0.6)*(panW/4.6), ly, front-0.03, 0.85);}
+  // canopy
+  box(K+0.5,0.12,K+0.4,M.mauve,0,cabH+0.4,-0.1);
+  const p1=new THREE.PointLight(0xffdca6,3,4,2);p1.position.set(-0.7,cabH+0.2,0.2);scene.add(p1);
+}
+
+// ---- fascia ----
+const fasH=0.4, fasY=0.12+cabH+fasH/2;
+box(K, fasH, 0.46, M.mauve, 0, fasY, cabZ+0.02);
+const sign=new THREE.Mesh(new THREE.PlaneGeometry(1.4,0.35),new THREE.MeshStandardMaterial({map:textTexture('DOFT','#E6C878',60),emissive:0xE6C878,emissiveMap:textTexture('DOFT','#ffffff',60),emissiveIntensity:0.9,transparent:true}));
+sign.position.set(0,fasY,cabZ+0.26); scene.add(sign);
+
+// ---- counter ----
+const cnW=1.9, cnH=0.9, cnD=0.6, cnZ=HALF-0.55;
+box(cnW, cnH, cnD, M.ivory, 0, 0.12+cnH/2, cnZ);
+// fluted lines (option A) via thin brass strips
+if(OPT==='A'){for(let i=0;i<12;i++){const fx=-cnW/2+0.1+i*((cnW-0.2)/11);box(0.015,cnH*0.8,0.02,M.brass,fx,0.12+cnH*0.45,cnZ+cnD/2);}}
+// marble top
+box(cnW+0.08, 0.06, cnD+0.08, M.marble, 0, 0.12+cnH+0.03, cnZ);
+// brass base trim
+box(cnW+0.02,0.04,cnD+0.02,M.brass,0,0.16,cnZ);
+// counter wordmark
+const cw2=new THREE.Mesh(new THREE.PlaneGeometry(1.0,0.22),new THREE.MeshStandardMaterial({map:textTexture('DOFT','#B8924A',50),transparent:true,roughness:0.6}));
+cw2.position.set(0,0.12+cnH*0.5,cnZ+cnD/2+0.005); scene.add(cw2);
+// billing screen
+box(0.26,0.18,0.02,M.mauve,cnW/2-0.28,0.12+cnH+0.15,cnZ+0.1);
+// hero candles on counter
+candle(-cnW/2+0.28,0.12+cnH+0.06,cnZ-0.05,1.15); candle(-cnW/2+0.5,0.12+cnH+0.06,cnZ,0.95);
+
+// render
+R.render(scene,cam);
+requestAnimationFrame(()=>{R.render(scene,cam);window.__done=true;});
+</script></body></html>
