@@ -37,7 +37,7 @@ const M={
  marble:new THREE.MeshStandardMaterial({color:col.marble,map:marbleTex(),roughness:0.12,metalness:0.0,envMapIntensity:1.15}),
  brass:new THREE.MeshStandardMaterial({color:col.brass,roughness:0.26,metalness:1.0,envMapIntensity:1.25}),
  mauve:new THREE.MeshStandardMaterial({color:col.mauve,roughness:0.5,metalness:0.05,envMapIntensity:0.5}),
- glow:new THREE.MeshStandardMaterial({color:col.glow,emissive:col.glow,emissiveIntensity:1.5,roughness:1}),
+ glow:new THREE.MeshStandardMaterial({color:col.glow,emissive:col.glow,emissiveIntensity:1.15,roughness:1}),
  glass:new THREE.MeshStandardMaterial({color:col.glass,roughness:0.16,metalness:0,transparent:true,opacity:0.9,emissive:0xFFF0D6,emissiveIntensity:0.22,envMapIntensity:1.1}),
  box:new THREE.MeshStandardMaterial({color:col.box,roughness:0.8,metalness:0}),
  flame:new THREE.MeshBasicMaterial({color:0xFFC661}),
@@ -158,6 +158,8 @@ const fe=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,0.24,16),new THREE.
 // ================= CAMERA / VIEW =================
 const AS=2400/1650;let cam;
 if(VIEW==='elev'||VIEW==='elevdim'){const hH=1.6,hW=hH*AS;cam=new THREE.OrthographicCamera(-hW,hW,hH,-hH,0.1,100);cam.position.set(0,1.35,7);cam.lookAt(0,1.35,0);}
+else if(VIEW==='side'){const hH=1.6,hW=hH*AS;cam=new THREE.OrthographicCamera(-hW,hW,hH,-hH,0.1,100);cam.position.set(-7,1.35,0);cam.lookAt(0,1.35,0);}
+else if(VIEW==='plan'){const hH=1.55,hW=hH*AS;cam=new THREE.OrthographicCamera(-hW,hW,hH,-hH,0.1,100);cam.up.set(0,0,-1);cam.position.set(0,12,0);cam.lookAt(0,0,0);}
 else{cam=new THREE.PerspectiveCamera(38,AS,0.1,100);
  const V={hero:[[3.0,2.15,3.8],[0.05,1.12,0]],rev:[[-3.0,2.05,3.7],[-0.1,1.08,0]],storage:[[2.4,1.85,3.95],[-0.15,0.52,0.45]]}[VIEW]||[[3.0,2.15,3.8],[0.05,1.12,0]];
  cam.position.set(...V[0]);cam.lookAt(...V[1]);}
