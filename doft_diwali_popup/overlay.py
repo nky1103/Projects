@@ -54,13 +54,13 @@ def dims():
 def storage():
     im=Image.open("r_B_storage.png").convert("RGB"); d=ImageDraw.Draw(im,"RGBA")
     # caption bar
-    txt1="Lockable stock storage within the counter"
-    txt2="Approx. 40 sq ft total, with back-wall base units"
+    txt1="Staff zone: seating + lockable in-counter storage"
+    txt2="Right wall shown transparent. Front stays solid & branded; approx. 40 sq ft stock storage"
     f1=font(40); f2=font(30,False)
-    d.rectangle([60,1470,1360,1610],fill=MAUVE+(235,))
-    d.text((90,1492),txt1,font=f1,fill=CREAM)
-    d.text((90,1548),txt2,font=f2,fill=(220,200,190))
-    d.text((60,50),"CONCEPT B — THE GALLERY  ·  STORAGE / CUTAWAY",font=font(34),fill=MAUVE)
+    d.rectangle([60,1466,1620,1612],fill=MAUVE+(235,))
+    d.text((90,1488),txt1,font=f1,fill=CREAM)
+    d.text((90,1546),txt2,font=f2,fill=(220,200,190))
+    d.text((60,50),"CONCEPT B — THE GALLERY  ·  INTERIOR & STORAGE",font=font(34),fill=MAUVE)
     im.save("view_B_storage.png"); print("storage overlay ok")
 
 def titleonly(src,dst,title):

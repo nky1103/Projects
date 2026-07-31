@@ -41,7 +41,10 @@ const M={
  glass:new THREE.MeshStandardMaterial({color:col.glass,roughness:0.16,metalness:0,transparent:true,opacity:0.9,emissive:0xFFF0D6,emissiveIntensity:0.22,envMapIntensity:1.1}),
  box:new THREE.MeshStandardMaterial({color:col.box,roughness:0.8,metalness:0}),
  flame:new THREE.MeshBasicMaterial({color:0xFFC661}),
- screen:new THREE.MeshStandardMaterial({color:col.screen,roughness:0.3,metalness:0.2,emissive:0x24506a,emissiveIntensity:0.25})
+ screen:new THREE.MeshStandardMaterial({color:col.screen,roughness:0.3,metalness:0.2,emissive:0x24506a,emissiveIntensity:0.25}),
+ leather:new THREE.MeshStandardMaterial({color:0xB07A6A,roughness:0.55,metalness:0.05,envMapIntensity:0.5}),
+ ghost:new THREE.MeshStandardMaterial({color:0xEFE4CE,transparent:true,opacity:0.22,roughness:0.4,metalness:0,envMapIntensity:0.6,side:THREE.DoubleSide}),
+ dark:new THREE.MeshStandardMaterial({color:0x4A3F44,roughness:0.6,metalness:0.3})
 };
 function box(w,h,d,m,x,y,z,cast=true){const me=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);me.position.set(x,y,z);me.castShadow=cast;me.receiveShadow=true;scene.add(me);return me;}
 function glowSprite(x,y,z,size,op){const c=document.createElement('canvas');c.width=c.height=128;const g=c.getContext('2d').createRadialGradient(64,64,0,64,64,64);
@@ -81,7 +84,7 @@ box(K,0.12,K,M.ivory2,0,0.06,0);                 // plinth
 const cabH=2.05,cabZ=-HALF+0.22;
 box(K,cabH,0.42,M.ivory,0,0.12+cabH/2,cabZ);      // back cabinet
 box(0.16,cabH*0.92,K*0.6,M.ivory,-HALF+0.08,0.12+cabH*0.46,-0.1); // side wall L
-box(0.16,cabH*0.92,K*0.6,M.ivory, HALF-0.08,0.12+cabH*0.46,-0.1); // side wall R
+box(0.16,cabH*0.92,K*0.6,(VIEW==='storage'?M.ghost:M.ivory), HALF-0.08,0.12+cabH*0.46,-0.1); // side wall R (ghosted in interior view)
 const panW=K-0.5,panH=cabH-0.7,panY=0.12+0.35+panH/2,panZ=cabZ+0.215;
 box(panW,panH,0.02,M.glow,0,panY,panZ);           // backlit
 glowSprite(0,panY,panZ+0.35,2.4,0.35);
@@ -107,49 +110,56 @@ const fasH=0.4,fasY=0.12+cabH+fasH/2;box(K,fasH,0.46,M.mauve,0,fasY,cabZ+0.02);
 const sg=new THREE.Mesh(new THREE.PlaneGeometry(1.4,0.35),new THREE.MeshStandardMaterial({map:textTex('DOFT','#E9CD82',60),emissive:0xE9CD82,emissiveMap:textTex('DOFT','#ffffff',60),emissiveIntensity:1.0,transparent:true}));
 sg.position.set(0,fasY,cabZ+0.26);scene.add(sg);glowSprite(0,fasY,cabZ+0.4,1.5,0.18);
 
-// counter + STORAGE
-const cnW=1.9,cnH=0.9,cnD=0.6,cnZ=HALF-0.55, cbFront=cnZ+cnD/2, cbBack=cnZ-cnD/2;
-box(cnW+0.08,0.06,cnD+0.08,M.marble,0,0.12+cnH+0.03,cnZ);   // marble top (always)
-box(cnW+0.02,0.04,cnD+0.02,M.brass,0,0.16,cnZ);             // base trim (always)
-box(0.26,0.18,0.02,M.screen,cnW/2-0.3,0.12+cnH+0.14,cnZ+0.08);
-candle(-cnW/2+0.3,0.12+cnH+0.06,cnZ-0.05,1.15);flowers(-cnW/2+0.55,0.12+cnH+0.06,cnZ);
+// counter (shifted left to leave a staff entry gap on the right) + staff zone + storage
+const cnW=1.5,cnH=0.9,cnD=0.6,cnCx=-0.32,cnZ=HALF-0.55, cbFront=cnZ+cnD/2, cbBack=cnZ-cnD/2;
+const midY=0.12+cnH*0.5;
+box(cnW+0.08,0.06,cnD+0.08,M.marble,cnCx,0.12+cnH+0.03,cnZ);   // marble top
+box(cnW+0.02,0.04,cnD+0.02,M.brass,cnCx,0.16,cnZ);             // base trim
+box(0.26,0.18,0.02,M.screen,cnCx+cnW/2-0.28,0.12+cnH+0.14,cnZ+0.06);   // billing screen
+candle(cnCx-cnW/2+0.28,0.12+cnH+0.06,cnZ-0.05,1.1);flowers(cnCx-cnW/2+0.5,0.12+cnH+0.06,cnZ);
 function lockHandle(x,y,z){box(0.03,0.14,0.03,M.brass,x,y,z);const lk=new THREE.Mesh(new THREE.CylinderGeometry(0.014,0.014,0.02,12),M.brass);lk.rotation.x=Math.PI/2;lk.position.set(x,y-0.16,z);scene.add(lk);}
+// counter body: interior storage (accessed from staff side); front is a ghosted panel in the storage view
+box(cnW,0.03,cnD,M.ivory,cnCx,0.135,cnZ,false);               // base
+box(0.03,cnH,cnD,M.ivory,cnCx-cnW/2,midY,cnZ);                // left wall
+box(0.03,cnH,cnD,M.ivory,cnCx+cnW/2,midY,cnZ);                // right wall
+box(cnW-0.06,0.02,cnD-0.12,M.ivory2,cnCx,midY,cnZ,false);     // mid shelf
+const bx=(x,y,z)=>box(0.24,0.2,0.3,M.box,x,y,z);              // stock boxes (inside)
+bx(cnCx-0.45,0.135+0.12,cnZ);bx(cnCx-0.1,0.135+0.12,cnZ+0.03);bx(cnCx+0.4,0.135+0.12,cnZ);
+bx(cnCx-0.4,midY+0.12,cnZ);bx(cnCx+0.35,midY+0.12,cnZ);
 if(VIEW==='storage'){
-  // ---- open cutaway counter revealing lockable storage ----
-  const t=0.03, midY=0.12+cnH*0.5;
-  box(cnW,t,cnD,M.ivory,0,0.12+t/2,cnZ,false);            // bottom
-  box(t,cnH,cnD,M.ivory,-cnW/2+t/2,0.12+cnH/2,cnZ);       // left wall
-  box(t,cnH,cnD,M.ivory, cnW/2-t/2,0.12+cnH/2,cnZ);       // right wall
-  box(cnW,cnH,t,M.ivory,0,0.12+cnH/2,cbBack+t/2);         // back wall
-  box(t,cnH,cnD,M.ivory2,0,0.12+cnH/2,cnZ);               // centre divider
-  box(cnW-0.1,t,cnD-0.1,M.ivory2,0,midY,cnZ,false);       // mid shelf
-  const bx=(x,y,z)=>box(0.26,0.2,0.34,M.box,x,y,z);       // stock boxes
-  bx(-0.55,0.12+0.12,cnZ); bx(-0.2,0.12+0.12,cnZ+0.04); bx(-0.35,0.12+0.12,cnZ-0.14);
-  bx(0.5,0.12+0.12,cnZ); bx(0.2,0.12+0.12,cnZ-0.05);
-  bx(-0.5,midY+0.12,cnZ); bx(0.5,midY+0.12,cnZ); bx(0.15,midY+0.12,cnZ-0.04);
-  // left door closed (handle + lock), right door open
-  const dw=(cnW-2*t)/2-0.02;
-  box(dw,cnH-0.06,t,M.ivory,-cnW/4,0.12+cnH/2,cbFront-0.01);  // closed door
-  lockHandle(-0.12,0.12+cnH/2,cbFront+0.02);
-  const g=new THREE.Group();g.position.set(cnW/2-t,0.12+cnH/2,cbFront);   // open door, hinged right
-  const dp=new THREE.Mesh(new THREE.BoxGeometry(dw,cnH-0.06,t),M.ivory);dp.position.set(-dw/2,0,0);dp.castShadow=true;g.add(dp);
-  const hh=new THREE.Mesh(new THREE.BoxGeometry(0.03,0.14,0.03),M.brass);hh.position.set(-dw+0.08,0,0.03);g.add(hh);
-  const lk2=new THREE.Mesh(new THREE.CylinderGeometry(0.014,0.014,0.02,12),M.brass);lk2.rotation.x=Math.PI/2;lk2.position.set(-dw+0.08,-0.16,0.03);g.add(lk2);
-  g.rotation.y=-1.15; scene.add(g);
+  box(cnW,cnH,0.015,M.ghost,cnCx,midY,cbFront);             // ghosted front reveals interior stock
+  const cwmS=new THREE.Mesh(new THREE.PlaneGeometry(0.9,0.2),new THREE.MeshStandardMaterial({map:textTex('DOFT','#B8924A',50),transparent:true,opacity:0.45,roughness:0.6}));cwmS.position.set(cnCx,midY,cbFront+0.012);scene.add(cwmS);
+  box(cnW*0.94,cnH-0.06,0.03,M.ivory,cnCx,midY,cbBack+0.015);  // closed staff-side door
+  lockHandle(cnCx,midY,cbBack-0.03);                           // lock on staff-side door
 }else{
-  box(cnW,cnH,cnD,M.ivory,0,0.12+cnH/2,cnZ);              // solid body
-  if(OPT==='A'){for(let i=0;i<12;i++){box(0.015,cnH*0.8,0.02,M.brass,-cnW/2+0.1+i*((cnW-0.2)/11),0.12+cnH*0.45,cbFront);}}
-  const cwm=new THREE.Mesh(new THREE.PlaneGeometry(1.0,0.22),new THREE.MeshStandardMaterial({map:textTex('DOFT','#B8924A',50),transparent:true,roughness:0.6}));
-  cwm.position.set(0,0.12+cnH*0.5,cbFront+0.004);scene.add(cwm);
-  // subtle under-counter door lines (lockable storage) on the front
-  lockHandle(-cnW/2+0.4,0.12+cnH*0.62,cbFront+0.015); lockHandle(cnW/2-0.4,0.12+cnH*0.62,cbFront+0.015);
+  box(cnW,cnH,0.02,M.ivory,cnCx,midY,cbFront);               // solid branded front
+  if(OPT==='A'){for(let i=0;i<10;i++){box(0.015,cnH*0.8,0.02,M.brass,cnCx-cnW/2+0.12+i*((cnW-0.24)/9),0.12+cnH*0.45,cbFront+0.01);}}
+  const cwm=new THREE.Mesh(new THREE.PlaneGeometry(0.9,0.2),new THREE.MeshStandardMaterial({map:textTex('DOFT','#B8924A',50),transparent:true,roughness:0.6}));
+  cwm.position.set(cnCx,midY,cbFront+0.014);scene.add(cwm);
+  lockHandle(cnCx-0.32,0.12+cnH*0.62,cbFront+0.02);lockHandle(cnCx+0.32,0.12+cnH*0.62,cbFront+0.02);
 }
+// ---- staff entry gap on the right (open walk-in) ----
+const gapX=cnCx+cnW/2;
+box(0.66,0.012,cnD+0.4,new THREE.MeshStandardMaterial({color:0xCFC0AB,roughness:1}),gapX+0.35,0.126,cnZ-0.1,false); // entry threshold mat
+box(0.04,cnH+0.02,0.04,M.brass,gapX+0.02,0.12+(cnH+0.02)/2,cbFront-0.02);   // brass post at counter end
+// ---- 2 bar stools (staff seating), placed to read from the front ----
+function stool(x,z){const s=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.16,0.05,24),M.leather);s.position.set(x,0.62,z);s.castShadow=true;scene.add(s);
+ box(0.06,0.58,0.06,M.brass,x,0.31,z);
+ const base=new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.18,0.03,24),M.brass);base.position.set(x,0.02,z);scene.add(base);
+ const ring=new THREE.Mesh(new THREE.TorusGeometry(0.13,0.012,10,24),M.brass);ring.rotation.x=Math.PI/2;ring.position.set(x,0.24,z);scene.add(ring);}
+stool(cnCx-0.05,cnZ-0.5);stool(gapX+0.32,cnZ-0.15);
+// ---- finishing details ----
+const bin=new THREE.Mesh(new THREE.CylinderGeometry(0.11,0.09,0.32,20),M.dark);bin.position.set(gapX-0.1,0.16,cbBack-0.3);bin.castShadow=true;scene.add(bin);   // waste bin
+for(let i=0;i<3;i++) box(0.15,0.19,0.11,new THREE.MeshStandardMaterial({color:i%2?0xEADFCE:0xC39A98,roughness:0.85}),-0.5+i*0.2,0.12+0.1+0.36,cabZ+0.28);  // carry bags on low shelf
+for(let i=-1;i<=1;i++){box(0.05,0.05,0.09,M.brass,i*0.55,fasY-0.26,cabZ+0.33);}   // under-fascia mini spots
+const mat=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.012,0.85),new THREE.MeshStandardMaterial({color:0xD8CBBA,roughness:1}));mat.position.set(cnCx,0.128,cnZ-0.5);mat.receiveShadow=true;scene.add(mat);  // staff floor mat
+const fe=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,0.24,16),new THREE.MeshStandardMaterial({color:0x8E3B32,roughness:0.5,metalness:0.3}));fe.position.set(-HALF+0.18,0.24,-0.55);scene.add(fe);  // fire extinguisher
 
 // ================= CAMERA / VIEW =================
 const AS=2400/1650;let cam;
 if(VIEW==='elev'||VIEW==='elevdim'){const hH=1.6,hW=hH*AS;cam=new THREE.OrthographicCamera(-hW,hW,hH,-hH,0.1,100);cam.position.set(0,1.35,7);cam.lookAt(0,1.35,0);}
 else{cam=new THREE.PerspectiveCamera(38,AS,0.1,100);
- const V={hero:[[2.95,2.15,3.7],[0,1.18,0]],rev:[[-2.95,2.05,3.6],[0,1.12,0]],storage:[[2.3,1.7,3.7],[0.15,0.6,0.55]]}[VIEW]||[[2.95,2.15,3.7],[0,1.18,0]];
+ const V={hero:[[3.0,2.15,3.8],[0.05,1.12,0]],rev:[[-3.0,2.05,3.7],[-0.1,1.08,0]],storage:[[2.4,1.85,3.95],[-0.15,0.52,0.45]]}[VIEW]||[[3.0,2.15,3.8],[0.05,1.12,0]];
  cam.position.set(...V[0]);cam.lookAt(...V[1]);}
 
 R.render(scene,cam);requestAnimationFrame(()=>{R.render(scene,cam);window.__done=true;});
