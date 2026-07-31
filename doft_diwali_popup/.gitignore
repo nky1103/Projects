@@ -19,3 +19,4 @@ wtest.js
 threescene.html
 r_*.png
 view_*.png
+__pycache__/
