@@ -1,0 +1,176 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-400.ttf'); font-weight:400; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-600.ttf'); font-weight:600; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#000; }
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; background:#0b0e14;
+    font-family:'Inter','Noto Color Emoji',sans-serif; color:#f4f1ea; display:flex; flex-direction:column; }
+  .slide::before { content:''; position:absolute; inset:0;
+    background:radial-gradient(720px 560px at 88% -6%, rgba(34,197,94,.17), transparent 65%),
+      radial-gradient(820px 640px at -12% 108%, rgba(21,128,61,.11), transparent 60%),
+      radial-gradient(500px 400px at 50% 55%, rgba(255,255,255,.025), transparent 70%); }
+  .slide::after { content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+    background-size:90px 90px; mask-image:radial-gradient(900px 900px at 50% 40%, #000 30%, transparent 100%);
+    -webkit-mask-image:radial-gradient(900px 900px at 50% 40%, #000 30%, transparent 100%); }
+  .inner { position:relative; z-index:2; display:flex; flex-direction:column; height:100%; padding:72px 84px 64px; }
+  .topbar { display:flex; justify-content:space-between; align-items:center; }
+  .brand { display:flex; align-items:center; gap:18px; }
+  .brand .mark { width:56px; height:56px; border-radius:16px; background:linear-gradient(135deg,#f59e0b,#ea580c);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 8px 28px rgba(245,158,11,.35); }
+  .brand .name { font-weight:700; font-size:30px; letter-spacing:.5px; color:#e8e4da; }
+  .brand .name span { color:#f59e0b; }
+  .counter { font-weight:600; font-size:26px; color:#6b7280; letter-spacing:2px; }
+  .body { flex:1; display:flex; flex-direction:column; justify-content:center; }
+  .seriesband { display:flex; align-items:center; gap:20px; margin-bottom:38px; }
+  .seriesband .sq { width:30px; height:30px; border-radius:8px; background:linear-gradient(135deg,#22c55e,#15803d); flex-shrink:0; }
+  .seriesband .txt { font-weight:900; font-size:46px; letter-spacing:5px; color:#22c55e; text-transform:uppercase; line-height:1; }
+  .subjectline { font-weight:700; font-size:26px; letter-spacing:3px; color:#8b93a3; text-transform:uppercase; margin-bottom:42px; }
+  .kicker { display:inline-flex; align-self:flex-start; align-items:center; gap:16px; font-weight:700; font-size:26px;
+    letter-spacing:4px; text-transform:uppercase; color:#22c55e; margin-bottom:44px; padding:14px 28px;
+    border:1.5px solid rgba(34,197,94,.45); border-radius:999px; background:rgba(34,197,94,.08); }
+  .kicker .sq { width:20px; height:20px; border-radius:5px; background:linear-gradient(135deg,#22c55e,#15803d); flex-shrink:0; }
+  .kicker .step { color:#0b0e14; background:#22c55e; border-radius:8px; padding:2px 12px; font-size:24px; }
+  h1 { font-weight:900; font-size:96px; line-height:1.12; letter-spacing:-1.5px; }
+  h1 .accent { color:#22c55e; }
+  h1 .dim { color:#8b93a3; }
+  .sub { margin-top:40px; font-weight:600; font-size:40px; line-height:1.4; color:#aab2c0; }
+  .sub strong { color:#f4f1ea; }
+  .quotecard { margin-top:52px; border-left:8px solid #22c55e; border-radius:8px 28px 28px 8px;
+    background:rgba(34,197,94,.11); padding:44px 48px; font-weight:800; font-size:50px; line-height:1.3; }
+  .quotecard .accent { color:#22c55e; }
+  .stats { margin-top:52px; display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+  .stat { background:rgba(255,255,255,.04); border:1.5px solid rgba(34,197,94,.28); border-radius:24px; padding:34px 36px; }
+  .stat .num { font-weight:900; font-size:72px; letter-spacing:-2px; color:#22c55e; line-height:1; }
+  .stat .num small { font-size:34px; font-weight:800; }
+  .stat .lbl { margin-top:14px; font-weight:600; font-size:29px; color:#aab2c0; line-height:1.25; }
+  .rows { margin-top:20px; display:flex; flex-direction:column; gap:20px; }
+  .row { display:flex; justify-content:space-between; align-items:center; gap:24px; border-bottom:1.5px solid rgba(255,255,255,.08); padding-bottom:20px; }
+  .row .k { font-weight:600; font-size:34px; color:#8b93a3; }
+  .row .v { font-weight:800; font-size:35px; color:#f4f1ea; text-align:right; }
+  .row .v.accent { color:#22c55e; }
+  .bottombar { display:flex; justify-content:space-between; align-items:center; color:#6b7280; font-weight:600; font-size:27px; }
+  .foot { font-weight:700; font-size:26px; color:#525a68; letter-spacing:1px; }
+  .foot b { color:#8b93a3; }
+  .swipe { display:flex; align-items:center; gap:16px; color:#22c55e; letter-spacing:2px; text-transform:uppercase; font-weight:700; }
+  .swipe .arr { font-size:30px; }
+  .dots { display:flex; gap:12px; }
+  .dots i { width:14px; height:14px; border-radius:50%; background:rgba(255,255,255,.16); }
+  .dots i.on { background:#22c55e; width:40px; border-radius:999px; }
+  /* cross-subsidy visual */
+  .cross { margin-top:48px; display:flex; align-items:stretch; gap:22px; }
+  .cbox { flex:1; background:rgba(255,255,255,.04); border:1.5px solid rgba(34,197,94,.28); border-radius:24px; padding:32px 30px; text-align:center; }
+  .cbox .ci { font-size:52px; } .cbox .ct { margin-top:12px; font-weight:900; font-size:34px; color:#f4f1ea; } .cbox .cd { margin-top:8px; font-weight:600; font-size:26px; color:#8b93a3; line-height:1.2; }
+  .cbox.pay .ct { color:#22c55e; }
+  .carr { display:flex; align-items:center; font-size:52px; color:#22c55e; font-weight:900; }
+</style>
+
+<svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
+  <path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/>
+  <path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/>
+  <circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/>
+  <rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/>
+  <circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/>
+  <circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/>
+  <path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></symbol></svg>
+
+<!-- S1 COVER / HOOK -->
+<div class="slide" id="s1"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 01/07</div></div>
+  <div class="body">
+    <div class="seriesband"><span class="sq"></span><span class="txt">Founder<br>Framework</span></div>
+    <div class="subjectline">Dr. V · Aravind Eye Care</div>
+    <h1 style="font-size:66px;">Arthritis left his hands so twisted he couldn't <span class="dim">hold a pen.</span></h1>
+    <h1 style="font-size:60px; margin-top:28px;">He built the world's largest <span class="accent">eye hospital.</span></h1>
+  </div>
+  <div class="bottombar"><div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S2 SNAPSHOT -->
+<div class="slide" id="s2"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 02/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Snapshot</div>
+    <div class="rows">
+      <div class="row"><span class="k">Founder</span><span class="v">Dr. G. Venkataswamy ("Dr. V")</span></div>
+      <div class="row"><span class="k">Built</span><span class="v">Aravind Eye Care System</span></div>
+      <div class="row"><span class="k">Started</span><span class="v accent">1976 · at age 58</span></div>
+      <div class="row"><span class="k">Began with</span><span class="v">An 11-bed clinic,<br>no money, no plan</span></div>
+      <div class="row"><span class="k">Mission</span><span class="v">End needless blindness</span></div>
+    </div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S3 THE STRUGGLE -->
+<div class="slide" id="s3"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 03/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Struggle</div>
+    <h1 style="font-size:64px;">At 30, rheumatoid arthritis left him <span class="accent">bedridden for a year.</span></h1>
+    <div class="sub">His fingers were so crippled he couldn't hold a pen. Instead of giving up medicine, he taught himself to hold a scalpel again, and became a cataract surgeon.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S4 FRAMEWORK 1: SCALE COMPASSION -->
+<div class="slide" id="s4"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 04/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="step">1</span>Engineer compassion like an operation</div>
+    <h1 style="font-size:56px;">"If McDonald's can sell billions of burgers, why can't we sell millions of <span class="accent">sight-restoring surgeries?"</span></h1>
+    <div class="sub">He turned cataract surgery into a high-volume, high-quality, low-cost assembly line. Surgeons operated on one patient while the next was already prepped. He did over 100 surgeries a day.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S5 FRAMEWORK 2: CROSS-SUBSIDY -->
+<div class="slide" id="s5"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 05/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="step">2</span>Let those who can pay, fund those who can't</div>
+    <h1 style="font-size:56px;">No one is <span class="accent">ever turned away.</span></h1>
+    <div class="cross">
+      <div class="cbox pay"><div class="ci">💳</div><div class="ct">Paying patients</div><div class="cd">Choose to pay a fair price</div></div>
+      <div class="carr">→</div>
+      <div class="cbox"><div class="ci">👁️</div><div class="ct">~60% free</div><div class="cd">Or steeply subsidised care</div></div>
+    </div>
+    <div class="sub" style="font-size:34px;">And it still runs a surplus. No begging for donations, self-reliant by design.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S6 THE IMPACT -->
+<div class="slide" id="s6"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 06/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Impact</div>
+    <div class="stats">
+      <div class="stat"><div class="num">100k<small>+</small></div><div class="lbl">Surgeries by his own crippled hands</div></div>
+      <div class="stat"><div class="num">Millions</div><div class="lbl">Given their sight back over the years</div></div>
+      <div class="stat"><div class="num">#1</div><div class="lbl">World's largest eye-care network</div></div>
+      <div class="stat"><div class="num">~60<small>%</small></div><div class="lbl">Cared for free, yet profitable</div></div>
+    </div>
+    <div class="sub" style="font-size:34px;">A social revolution, run with the discipline of a business.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S7 THE FRAMEWORK + CTA -->
+<div class="slide" id="s7"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 07/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Framework</div>
+    <h1 style="font-size:58px;">A mission scales only when you <span class="accent">engineer it like a business.</span></h1>
+    <div class="sub" style="font-size:36px; margin-top:26px;">Dr. V didn't just care, he made caring efficient enough to reach millions. Purpose and profit weren't enemies, they funded each other. 💬 Can doing good and making money go together? YES or NO.</div>
+    <div class="quotecard" style="margin-top:38px; display:flex; align-items:center; gap:30px; font-size:44px; padding:34px 48px; font-weight:800;">
+      <div class="mark" style="width:84px;height:84px;border-radius:24px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="62" height="62"><use href="#owl"/></svg></div>
+      <div>Follow <span style="color:#22c55e;">@statupsutra</span><br><span style="font-weight:600;font-size:34px;color:#aab2c0;">founder framework · every saturday</span></div>
+    </div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Next Saturday</div></div>
+</div></div>
