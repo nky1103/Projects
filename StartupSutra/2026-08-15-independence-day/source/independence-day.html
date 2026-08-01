@@ -1,0 +1,94 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-400.ttf'); font-weight:400; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-600.ttf'); font-weight:600; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#000; }
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; background:#0b0e14;
+    font-family:'Inter','Noto Color Emoji',sans-serif; color:#f4f1ea; display:flex; flex-direction:column; }
+  .slide::before { content:''; position:absolute; inset:0;
+    background:radial-gradient(760px 560px at 84% -8%, rgba(255,153,51,.20), transparent 62%),
+      radial-gradient(820px 620px at 14% 112%, rgba(19,136,8,.18), transparent 60%),
+      radial-gradient(600px 480px at 50% 46%, rgba(70,102,214,.10), transparent 70%); }
+  .slide::after { content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+    background-size:90px 90px; mask-image:radial-gradient(900px 950px at 50% 45%, #000 30%, transparent 100%);
+    -webkit-mask-image:radial-gradient(900px 950px at 50% 45%, #000 30%, transparent 100%); }
+  .inner { position:relative; z-index:2; display:flex; flex-direction:column; height:100%; padding:78px 84px 70px; }
+  .topbar { display:flex; justify-content:space-between; align-items:center; }
+  .brand { display:flex; align-items:center; gap:18px; }
+  .brand .mark { width:58px; height:58px; border-radius:16px; background:linear-gradient(135deg,#f59e0b,#ea580c);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 8px 28px rgba(245,158,11,.35); }
+  .brand .name { font-weight:700; font-size:31px; letter-spacing:.5px; color:#e8e4da; }
+  .brand .name span { color:#f59e0b; }
+  .datechip { font-weight:700; font-size:24px; letter-spacing:2.5px; color:#8b93a3; text-transform:uppercase; }
+  .body { flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
+  .chakra { margin-bottom:20px; filter:drop-shadow(0 0 26px rgba(90,120,230,.45)); }
+  .kicker { display:inline-flex; align-items:center; gap:16px; font-weight:800; font-size:27px; letter-spacing:5px;
+    text-transform:uppercase; color:#cbd3e1; margin-bottom:34px; padding:14px 30px; border-radius:999px;
+    border:1.5px solid rgba(255,255,255,.16); background:rgba(255,255,255,.04); }
+  .tribar { display:flex; gap:10px; margin-bottom:34px; }
+  .tribar i { width:70px; height:9px; border-radius:99px; }
+  .tribar .s { background:#ff9933; } .tribar .w { background:#f4f1ea; } .tribar .g { background:#1aa524; }
+  h1 { font-weight:900; font-size:132px; line-height:1.0; letter-spacing:-3px; }
+  h1 .free { background:linear-gradient(100deg,#ff9933 0%,#ffd9a6 40%,#e8e4da 60%,#7be08a 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .subline { margin-top:40px; font-weight:600; font-size:41px; line-height:1.42; color:#c3cad6; max-width:840px; }
+  .subline b { color:#f4f1ea; }
+  .footer { display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .wish { font-weight:900; font-size:44px; letter-spacing:-.5px; color:#f4f1ea; }
+  .wish .n { background:linear-gradient(100deg,#ff9933,#e8e4da 55%,#1aa524); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .handle { font-weight:700; font-size:27px; color:#8b93a3; letter-spacing:1px; }
+</style>
+
+<svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
+  <path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/>
+  <path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/>
+  <circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/>
+  <rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/>
+  <circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/>
+  <circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/>
+  <path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></symbol></svg>
+
+<div class="slide" id="s1"><div class="inner">
+  <div class="topbar">
+    <div class="brand"><div class="mark"><svg width="44" height="44"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div>
+    <div class="datechip">15 August 2026</div>
+  </div>
+  <div class="body">
+    <svg id="chakra" class="chakra" width="188" height="188" viewBox="0 0 200 200"></svg>
+    <div class="kicker">80th Independence Day</div>
+    <div class="tribar"><i class="s"></i><i class="w"></i><i class="g"></i></div>
+    <h1><span class="free">Freedom</span><br>to build.</h1>
+    <div class="subline">To every founder building a <b>self-reliant India</b>, one idea at a time, this one's for you.</div>
+  </div>
+  <div class="footer">
+    <div class="wish">Happy <span class="n">Independence Day</span> 🇮🇳</div>
+    <div class="handle">@statupsutra</div>
+  </div>
+</div></div>
+
+<script>
+// Ashoka Chakra: 24 spokes
+(function(){
+  const svg = document.getElementById('chakra');
+  const NS='http://www.w3.org/2000/svg';
+  const cx=100, cy=100, rOuter=92, rInner=20, hub=9;
+  const col='#6f8cf0';
+  function el(t,a){ const e=document.createElementNS(NS,t); for(const k in a) e.setAttribute(k,a[k]); return e; }
+  svg.appendChild(el('circle',{cx,cy,r:rOuter,fill:'none',stroke:col,'stroke-width':5}));
+  svg.appendChild(el('circle',{cx,cy,r:rInner,fill:'none',stroke:col,'stroke-width':4}));
+  svg.appendChild(el('circle',{cx,cy,r:hub,fill:col}));
+  for(let i=0;i<24;i++){
+    const a=(i/24)*2*Math.PI;
+    const x1=cx+Math.cos(a)*rInner, y1=cy+Math.sin(a)*rInner;
+    const x2=cx+Math.cos(a)*rOuter, y2=cy+Math.sin(a)*rOuter;
+    svg.appendChild(el('line',{x1,y1,x2,y2,stroke:col,'stroke-width':2.4,'stroke-linecap':'round'}));
+    // small rim dot at each spoke
+    const dx=cx+Math.cos(a)*(rOuter-6), dy=cy+Math.sin(a)*(rOuter-6);
+    svg.appendChild(el('circle',{cx:dx,cy:dy,r:2.4,fill:col}));
+  }
+})();
+</script>
