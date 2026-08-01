@@ -1,0 +1,171 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-400.ttf'); font-weight:400; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-600.ttf'); font-weight:600; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#000; }
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; background:#0b0e14;
+    font-family:'Inter','Noto Color Emoji',sans-serif; color:#f4f1ea; display:flex; flex-direction:column; }
+  .slide::before { content:''; position:absolute; inset:0;
+    background:radial-gradient(720px 560px at 88% -6%, rgba(59,130,246,.18), transparent 65%),
+      radial-gradient(820px 640px at -12% 108%, rgba(29,78,216,.12), transparent 60%),
+      radial-gradient(500px 400px at 50% 55%, rgba(255,255,255,.025), transparent 70%); }
+  .slide::after { content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+    background-size:90px 90px; mask-image:radial-gradient(900px 900px at 50% 40%, #000 30%, transparent 100%);
+    -webkit-mask-image:radial-gradient(900px 900px at 50% 40%, #000 30%, transparent 100%); }
+  .inner { position:relative; z-index:2; display:flex; flex-direction:column; height:100%; padding:72px 84px 64px; }
+  .topbar { display:flex; justify-content:space-between; align-items:center; }
+  .brand { display:flex; align-items:center; gap:18px; }
+  .brand .mark { width:56px; height:56px; border-radius:16px; background:linear-gradient(135deg,#f59e0b,#ea580c);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 8px 28px rgba(245,158,11,.35); }
+  .brand .name { font-weight:700; font-size:30px; letter-spacing:.5px; color:#e8e4da; }
+  .brand .name span { color:#f59e0b; }
+  .counter { font-weight:600; font-size:26px; color:#6b7280; letter-spacing:2px; }
+  .body { flex:1; display:flex; flex-direction:column; justify-content:center; }
+  .seriesband { display:flex; align-items:center; gap:20px; margin-bottom:38px; }
+  .seriesband .sq { width:30px; height:30px; border-radius:8px; background:linear-gradient(135deg,#3b82f6,#1d4ed8); flex-shrink:0; }
+  .seriesband .txt { font-weight:900; font-size:44px; letter-spacing:4px; color:#3b82f6; text-transform:uppercase; line-height:1; }
+  .subjectline { font-weight:700; font-size:26px; letter-spacing:3px; color:#8b93a3; text-transform:uppercase; margin-bottom:42px; }
+  .kicker { display:inline-flex; align-self:flex-start; align-items:center; gap:16px; font-weight:700; font-size:26px;
+    letter-spacing:4px; text-transform:uppercase; color:#3b82f6; margin-bottom:44px; padding:14px 28px;
+    border:1.5px solid rgba(59,130,246,.45); border-radius:999px; background:rgba(59,130,246,.08); }
+  .kicker .sq { width:20px; height:20px; border-radius:5px; background:linear-gradient(135deg,#3b82f6,#1d4ed8); flex-shrink:0; }
+  h1 { font-weight:900; font-size:96px; line-height:1.12; letter-spacing:-1.5px; }
+  h1 .accent { color:#3b82f6; }
+  h1 .dim { color:#8b93a3; }
+  .sub { margin-top:40px; font-weight:600; font-size:40px; line-height:1.4; color:#aab2c0; }
+  .sub strong { color:#f4f1ea; }
+  .quotecard { margin-top:52px; border-left:8px solid #3b82f6; border-radius:8px 28px 28px 8px;
+    background:rgba(59,130,246,.11); padding:44px 48px; font-weight:800; font-size:52px; line-height:1.3; }
+  .quotecard .accent { color:#3b82f6; }
+  .stats { margin-top:52px; display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+  .stat { background:rgba(255,255,255,.04); border:1.5px solid rgba(59,130,246,.28); border-radius:24px; padding:34px 36px; }
+  .stat .num { font-weight:900; font-size:74px; letter-spacing:-2px; color:#3b82f6; line-height:1; }
+  .stat .num small { font-size:36px; font-weight:800; }
+  .stat .lbl { margin-top:14px; font-weight:600; font-size:29px; color:#aab2c0; line-height:1.25; }
+  .bottombar { display:flex; justify-content:space-between; align-items:center; color:#6b7280; font-weight:600; font-size:27px; }
+  .foot { font-weight:700; font-size:26px; color:#525a68; letter-spacing:1px; }
+  .foot b { color:#8b93a3; }
+  .swipe { display:flex; align-items:center; gap:16px; color:#3b82f6; letter-spacing:2px; text-transform:uppercase; font-weight:700; }
+  .swipe .arr { font-size:30px; }
+  .dots { display:flex; gap:12px; }
+  .dots i { width:14px; height:14px; border-radius:50%; background:rgba(255,255,255,.16); }
+  .dots i.on { background:#3b82f6; width:40px; border-radius:999px; }
+  /* label compare */
+  .labels { margin-top:44px; display:flex; gap:24px; }
+  .lab { flex:1; border-radius:24px; padding:32px 30px; border:1.5px solid rgba(255,255,255,.1); background:rgba(255,255,255,.03); }
+  .lab .lh { font-weight:800; font-size:30px; letter-spacing:1px; text-transform:uppercase; margin-bottom:18px; }
+  .lab.old .lh { color:#8b93a3; } .lab.new .lh { color:#3b82f6; }
+  .lab.new { border-color:rgba(59,130,246,.5); background:rgba(59,130,246,.09); }
+  .lab .li { font-weight:600; font-size:28px; color:#aab2c0; padding:10px 0; border-top:1.5px solid rgba(255,255,255,.07); line-height:1.25; }
+  .lab .li:first-of-type { border-top:none; }
+  .lab .li b { color:#f4f1ea; }
+  .lab .li.hide { color:#6b7280; }
+  .followcard { margin-top:52px; display:flex; align-items:center; gap:30px; border-left:8px solid #3b82f6; border-radius:8px 28px 28px 8px;
+    background:rgba(59,130,246,.11); padding:36px 48px; font-weight:800; font-size:46px; }
+</style>
+
+<svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
+  <path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/>
+  <path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/>
+  <circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/>
+  <rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/>
+  <circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/>
+  <circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/>
+  <path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></symbol></svg>
+
+<!-- S1 COVER / HOOK -->
+<div class="slide" id="s1"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 01/07</div></div>
+  <div class="body">
+    <div class="seriesband"><span class="sq"></span><span class="txt">Marketing<br>Breakdown</span></div>
+    <div class="subjectline">The Whole Truth · The label is the ad</div>
+    <h1 style="font-size:72px;">This brand barely runs ads.</h1>
+    <h1 style="font-size:72px; margin-top:30px;">Its <span class="accent">packaging</span> does the marketing.</h1>
+  </div>
+  <div class="bottombar"><div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S2 THE MOVE -->
+<div class="slide" id="s2"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 02/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Move</div>
+    <h1 style="font-size:60px;">Put <span class="accent">every ingredient</span> on the front. In plain words.</h1>
+    <div class="labels">
+      <div class="lab old"><div class="lh">Most brands</div><div class="li"><b>FRONT:</b> "100% Healthy!"</div><div class="li hide">BACK: additives, hidden sugar, codes</div><div class="li hide">read the fine print</div></div>
+      <div class="lab new"><div class="lh">The Whole Truth</div><div class="li"><b>FRONT:</b> the full ingredient list</div><div class="li">no back-label tricks</div><div class="li">nothing to hide</div></div>
+    </div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S3 WHY IT WORKS -->
+<div class="slide" id="s3"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 03/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>Why It Works</div>
+    <h1 style="font-size:60px;">In a category built on <span class="dim">exaggeration...</span></h1>
+    <h1 style="font-size:64px; margin-top:26px;">telling the truth is the <span class="accent">loudest ad.</span></h1>
+    <div class="sub">"No added sugar" that hides sugar. "Health" snacks full of junk. When everyone spins, the brand that simply doesn't becomes impossible to ignore.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S4 NOT A CAMPAIGN, OPERATIONS -->
+<div class="slide" id="s4"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 04/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Real Trick</div>
+    <h1 style="font-size:58px;">It's not a campaign. It's <span class="accent">how they operate.</span></h1>
+    <div class="sub">The truth is defensible because they make it in-house, with their own R&D, not third-party packers. The founder even goes public to <strong>admit the brand's own mistakes</strong>, like a label change he apologised for. Honesty, on the record.</div>
+    <div class="quotecard" style="font-size:44px;">Anyone can claim transparency. <span class="accent">Few build their company around it.</span></div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S5 THE PAYOFF (DATA) -->
+<div class="slide" id="s5"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 05/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Payoff</div>
+    <div class="stats">
+      <div class="stat"><div class="num">₹220<small> Cr</small></div><div class="lbl">FY25 revenue, roughly 3x in a year</div></div>
+      <div class="stat"><div class="num">230<small>%</small></div><div class="lbl">Year-on-year revenue growth</div></div>
+      <div class="stat"><div class="num">$51<small>M</small></div><div class="lbl">Series D raised in 2026</div></div>
+      <div class="stat"><div class="num">IPO</div><div class="lbl">Now openly IPO-bound</div></div>
+    </div>
+    <div class="sub" style="font-size:34px;">Trust converts. People pay a premium for a label they don't have to decode.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S6 THE PRINCIPLE -->
+<div class="slide" id="s6"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 06/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Principle</div>
+    <h1 style="font-size:60px;">When everyone exaggerates, <span class="accent">honesty is the differentiator.</span></h1>
+    <div class="sub">The Whole Truth isn't selling protein bars. It's selling distrust of every other label on the shelf, and positioning itself as the one you can believe.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S7 FRAMEWORK + CTA -->
+<div class="slide" id="s7"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 07/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Framework</div>
+    <h1 style="font-size:58px;">Tell the truth others <span class="accent">hide.</span> Trust becomes your moat.</h1>
+    <div class="sub" style="font-size:36px; margin-top:28px;">Radical transparency isn't a virtue, it's a marketing strategy that competitors can't copy without changing everything. 💬 Do you actually read food labels? YES or NO.</div>
+    <div class="quotecard" style="margin-top:40px; display:flex; align-items:center; gap:30px; font-size:46px; padding:36px 48px; font-weight:800;">
+      <div class="mark" style="width:84px;height:84px;border-radius:24px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="62" height="62"><use href="#owl"/></svg></div>
+      <div>Follow <span style="color:#3b82f6;">@statupsutra</span><br><span style="font-weight:600;font-size:34px;color:#aab2c0;">marketing breakdown · every tuesday</span></div>
+    </div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Next Tuesday</div></div>
+</div></div>
