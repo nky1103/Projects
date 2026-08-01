@@ -60,12 +60,10 @@
   .dots { display:flex; gap:12px; }
   .dots i { width:14px; height:14px; border-radius:50%; background:rgba(255,255,255,.16); }
   .dots i.on { background:#ef4444; width:40px; border-radius:999px; }
-  /* flow diagram */
-  .flow { margin-top:44px; display:flex; align-items:stretch; gap:20px; }
-  .fbox { flex:1; background:rgba(255,255,255,.04); border:1.5px solid rgba(239,68,68,.3); border-radius:22px; padding:28px 24px; text-align:center; display:flex; flex-direction:column; justify-content:center; }
-  .fbox .fn { font-weight:900; font-size:38px; color:#f4f1ea; } .fbox .fd { font-weight:600; font-size:25px; color:#8b93a3; margin-top:8px; line-height:1.2; }
-  .fbox.bad { border-color:rgba(239,68,68,.65); background:rgba(239,68,68,.12); } .fbox.bad .fn { color:#ef4444; }
-  .farr { display:flex; align-items:center; font-size:44px; color:#ef4444; font-weight:900; }
+  /* rise-fall curve */
+  .curvewrap { margin-top:40px; background:rgba(255,255,255,.03); border:1.5px solid rgba(239,68,68,.25); border-radius:24px; padding:34px 36px 26px; }
+  .curvewrap .cl { display:flex; justify-content:space-between; font-weight:700; font-size:26px; color:#8b93a3; margin-top:16px; }
+  .curvewrap .cl b { color:#f4f1ea; }
 </style>
 
 <svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
@@ -82,9 +80,9 @@
   <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 01/07</div></div>
   <div class="body">
     <div class="seriesband"><span class="sq"></span><span class="txt">Startup<br>Failure</span></div>
-    <div class="subjectline">BluSmart · The Gensol collapse</div>
-    <h1 style="font-size:74px;">Riders loved it. Then it <span class="accent">vanished overnight.</span></h1>
-    <h1 style="font-size:66px; margin-top:30px;">BluSmart didn't die because <span class="dim">EVs don't work.</span></h1>
+    <div class="subjectline">Koo · India's Twitter that vanished</div>
+    <h1 style="font-size:70px;">60 million users. Ministers on board. Then it was <span class="accent">gone.</span></h1>
+    <h1 style="font-size:60px; margin-top:28px;">Koo didn't die because it couldn't <span class="dim">beat Twitter.</span></h1>
   </div>
   <div class="bottombar"><div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
 </div></div>
@@ -95,67 +93,70 @@
   <div class="body">
     <div class="kicker"><span class="sq"></span>The Snapshot</div>
     <div class="rows">
-      <div class="row"><span class="k">Company</span><span class="v">BluSmart</span></div>
-      <div class="row"><span class="k">What</span><span class="v">All-electric ride-hailing<br>(an Uber rival)</span></div>
-      <div class="row"><span class="k">Where</span><span class="v">Delhi NCR, Mumbai,<br>Bengaluru</span></div>
-      <div class="row"><span class="k">Co-founders</span><span class="v">Anmol Jaggi, Puneet Jaggi,<br>Punit K Goyal</span></div>
-      <div class="row"><span class="k">Died</span><span class="v accent">April 2025</span></div>
+      <div class="row"><span class="k">Company</span><span class="v">Koo</span></div>
+      <div class="row"><span class="k">What</span><span class="v">Multilingual Twitter rival<br>(made in India)</span></div>
+      <div class="row"><span class="k">Founders</span><span class="v">Aprameya Radhakrishna,<br>Mayank Bidawatka</span></div>
+      <div class="row"><span class="k">Peak value</span><span class="v accent">~$275 million</span></div>
+      <div class="row"><span class="k">Died</span><span class="v accent">July 2024</span></div>
     </div>
   </div>
   <div class="bottombar"><div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
 </div></div>
 
-<!-- S3 THE PRODUCT WAS GOOD -->
+<!-- S3 THE RISE -->
 <div class="slide" id="s3"><div class="inner">
   <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 03/07</div></div>
   <div class="body">
-    <div class="kicker"><span class="sq"></span>Here's The Twist</div>
-    <h1 style="font-size:74px;">The product was actually <span class="accent">good.</span></h1>
-    <div class="sub">Clean electric cars. No surge pricing. Fixed fares. Drivers on salary, not squeezed. Riders were genuinely loyal, and around <strong>10,000 drivers</strong> depended on it. Demand was never the problem.</div>
+    <div class="kicker"><span class="sq"></span>The Rise</div>
+    <h1 style="font-size:60px;">In 2021, India clashed with Twitter. Koo <span class="accent">exploded overnight.</span></h1>
+    <div class="sub">Ministers, celebrities and lakhs of users jumped to the "made in India" app in a wave of patriotic momentum. Downloads went vertical. It looked unstoppable.</div>
   </div>
   <div class="bottombar"><div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
 </div></div>
 
-<!-- S4 THE FATAL STRUCTURE -->
+<!-- S4 THE FLAW -->
 <div class="slide" id="s4"><div class="inner">
   <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 04/07</div></div>
   <div class="body">
-    <div class="kicker"><span class="sq"></span>The Fatal Structure</div>
-    <h1 style="font-size:58px;">BluSmart didn't <span class="accent">own its cars.</span></h1>
-    <div class="flow">
-      <div class="fbox"><div class="fn">Gensol</div><div class="fd">Listed company, same co-founder</div></div>
-      <div class="farr">→</div>
-      <div class="fbox"><div class="fn">Owns &amp; leases the EVs</div><div class="fd">Buys the cars on loans</div></div>
-      <div class="farr">→</div>
-      <div class="fbox bad"><div class="fn">BluSmart</div><div class="fd">Runs on a fleet it doesn't control</div></div>
+    <div class="kicker"><span class="sq"></span>The Flaw</div>
+    <h1 style="font-size:66px;">It was built on a <span class="accent">moment</span>, not a business.</h1>
+    <div class="curvewrap">
+      <svg viewBox="0 0 900 260" style="width:100%; height:auto; display:block">
+        <polyline points="20,230 180,225 320,120 420,55 500,70 620,150 760,210 880,232" fill="none" stroke="#ef4444" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="420" cy="55" r="11" fill="#ef4444"/>
+        <line x1="20" y1="244" x2="880" y2="244" stroke="rgba(255,255,255,.18)" stroke-width="3"/>
+      </svg>
+      <div class="cl"><span><b>2021</b> the spike</span><span><b>2022-24</b> the fade</span></div>
     </div>
-    <div class="sub" style="font-size:36px;">Its entire fleet was leased from Gensol, a separate listed company run by the same co-founder. One critical dependency, in related-party hands.</div>
+    <div class="sub" style="font-size:34px;">A download spike isn't a business. When the news cycle moved on, so did the users.</div>
   </div>
   <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
 </div></div>
 
-<!-- S5 WHAT ACTUALLY HAPPENED -->
+<!-- S5 THE ECONOMICS -->
 <div class="slide" id="s5"><div class="inner">
   <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 05/07</div></div>
   <div class="body">
-    <div class="kicker"><span class="sq"></span>What Actually Happened</div>
+    <div class="kicker"><span class="sq"></span>The Economics</div>
     <div class="stats">
-      <div class="stat"><div class="num">₹978<small> Cr</small></div><div class="lbl">Loans Gensol took to buy EVs (IREDA, PFC)</div></div>
-      <div class="stat"><div class="num">₹200<small> Cr+</small></div><div class="lbl">Allegedly diverted to promoter-linked entities</div></div>
+      <div class="stat"><div class="num">~$50<small>M</small></div><div class="lbl">Raised, then burned through</div></div>
+      <div class="stat"><div class="num">~$275<small>M</small></div><div class="lbl">Peak valuation, on paper</div></div>
+      <div class="stat"><div class="num">60<small>M+</small></div><div class="lbl">Downloads that never paid</div></div>
+      <div class="stat"><div class="num">₹0</div><div class="lbl">A real revenue model, ever</div></div>
     </div>
-    <div class="sub">Money meant for BluSmart's cars allegedly went elsewhere, even a luxury apartment. SEBI stepped in and <strong>banned the Jaggi brothers</strong> from the markets.</div>
+    <div class="sub" style="font-size:34px;">Social media is brutally expensive: servers and moderation. Koo never cracked how to make money from any of it.</div>
   </div>
   <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
 </div></div>
 
-<!-- S6 THE DOMINO -->
+<!-- S6 THE END -->
 <div class="slide" id="s6"><div class="inner">
   <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 06/07</div></div>
   <div class="body">
-    <div class="kicker"><span class="sq"></span>The Domino</div>
-    <h1 style="font-size:60px;">Gensol froze. So BluSmart <span class="accent">lost its cars.</span></h1>
-    <div class="sub">Financing dried up, the fleet became inaccessible, and BluSmart simply couldn't operate. Services stopped. Around 10,000 drivers were stranded overnight.</div>
-    <div class="quotecard" style="font-size:46px;">The product was fine. The <span class="accent">structure and governance</span> killed it.</div>
+    <div class="kicker"><span class="sq"></span>The End</div>
+    <h1 style="font-size:58px;">Funding froze. Buyers <span class="accent">walked away.</span></h1>
+    <div class="sub">No one wanted the cost and liability of moderating user content. Merger talks collapsed. Salaries went unpaid from April 2024. Koo shut down in July 2024.</div>
+    <div class="quotecard" style="font-size:46px;">The buzz was real. The <span class="accent">business underneath</span> never was.</div>
   </div>
   <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
 </div></div>
@@ -165,8 +166,8 @@
   <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#003 · 07/07</div></div>
   <div class="body">
     <div class="kicker"><span class="sq"></span>The Lesson</div>
-    <h1 style="font-size:60px;">A great product can't survive <span class="accent">bad governance.</span></h1>
-    <div class="sub" style="font-size:36px; margin-top:28px;">Never let a related party control the one thing you depend on. Governance isn't paperwork, it's survival. 💬 Founder or structure, what killed BluSmart? One word.</div>
+    <h1 style="font-size:64px;">A moment is not a <span class="accent">moat.</span></h1>
+    <div class="sub" style="font-size:36px; margin-top:28px;">Growth you don't control, with no path to revenue, is rented, not owned. Build the business, not just the buzz. 💬 Did you ever actually use Koo? YES or NO.</div>
     <div class="quotecard" style="margin-top:40px; display:flex; align-items:center; gap:30px; font-size:46px; padding:36px 48px; font-weight:800;">
       <div class="mark" style="width:84px;height:84px;border-radius:24px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="62" height="62"><use href="#owl"/></svg></div>
       <div>Follow <span style="color:#ef4444;">@statupsutra</span><br><span style="font-weight:600;font-size:34px;color:#aab2c0;">startup failure · every monday</span></div>
