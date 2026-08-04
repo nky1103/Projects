@@ -1,0 +1,178 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:#ccc}
+  #sheet{width:2400px;height:1650px;background:#F3EEE4;position:relative;font-family:Georgia,'Times New Roman',serif}
+  svg{display:block}
+  text{font-family:Georgia,serif}
+  .sans{font-family:'DejaVu Sans',Arial,sans-serif}
+</style></head><body>
+<div id="sheet"><svg id="s" width="2400" height="1650" viewBox="0 0 2400 1650"></svg></div>
+<script>
+const NS="http://www.w3.org/2000/svg";
+const svg=document.getElementById('s');
+const INK="#35302B",GREEN="#1E4D39",GREEND="#143B2C",GOLD="#B08A3C",GOLDL="#C6A24E",
+      CREAM="#FBF8F1",FILL="#F0E9DA",STORE="#E7DEC9",GLASS="#DCEAE4",MAT="#EAF0EC";
+function E(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);else svg.appendChild(e);return e;}
+function txt(x,y,s,o={}){const e=E('text',{x,y,'font-size':o.fs||26,fill:o.fill||INK,'text-anchor':o.anc||'middle',
+  'font-weight':o.w||'normal','letter-spacing':o.ls||0,transform:o.rot?`rotate(${o.rot} ${x} ${y})`:''});
+  e.textContent=s; if(o.cls)e.setAttribute('class',o.cls); return e;}
+
+// ---- scale / frame ----
+const sc=0.505, CX=1150, CY=780;            // px per mm, plan centre
+function PX(x){return CX+x*sc;} function PY(z){return CY+z*sc;}
+function rrect(x,z,w,d,o={}){E('rect',{x:PX(x-w/2),y:PY(z-d/2),width:w*sc,height:d*sc,rx:o.rx||0,
+  fill:o.fill||'none',stroke:o.stroke||INK,'stroke-width':o.sw||2,'stroke-dasharray':o.dash||''});}
+
+// sheet border
+E('rect',{x:40,y:40,width:2320,height:1570,fill:'none',stroke:GOLD,'stroke-width':3});
+E('rect',{x:52,y:52,width:2296,height:1546,fill:'none',stroke:GOLD,'stroke-width':1});
+
+// ---- header ----
+txt(96,118,'DOFT',{anc:'start',fs:52,fill:GREEN,w:'bold',ls:10});
+txt(300,118,'SCENTED MEMORIES',{anc:'start',fs:26,fill:GOLDL,ls:4});
+txt(96,158,'Diwali Pop-Up Kiosk  ·  TOP LAYOUT / PLAN  ·  ProMarcom Concept',{anc:'start',fs:26,fill:INK,cls:'sans'});
+E('line',{x1:96,y1:172,x2:900,y2:172,stroke:GOLD,'stroke-width':2});
+
+// ================= PLAN GEOMETRY (mm) =================
+// footprint / platform
+rrect(0,0,2440,2440,{fill:MAT,stroke:INK,sw:2.5});
+rrect(0,0,2440,2440,{fill:'none',stroke:GOLD,sw:1,dash:'2 6'});
+// brand floor mat
+rrect(0,50,1500,1500,{fill:'#DDE7DF',stroke:'none'});
+
+// helper: hatch a rect (storage)
+function hatch(x,z,w,d,gap=42){
+  const clip='cl'+Math.random().toString(36).slice(2);
+  const cp=E('clipPath',{id:clip});E('rect',{x:PX(x-w/2),y:PY(z-d/2),width:w*sc,height:d*sc},cp);
+  const g=E('g',{'clip-path':`url(#${clip})`});
+  for(let p=-d;p<w+d;p+=gap){E('line',{x1:PX(x-w/2)+p*sc,y1:PY(z-d/2),x2:PX(x-w/2)+(p+d)*sc,y2:PY(z+d/2),
+    stroke:GOLD,'stroke-width':1,opacity:.5},g);}
+}
+// counter runs (double-line cabinetry)
+function run(x,z,w,d,label){
+  rrect(x,z,w,d,{fill:FILL,stroke:INK,sw:2.5});
+  rrect(x,z,w-70,d-70,{fill:'none',stroke:INK,sw:1});
+}
+run(0,970,2440,500);      // front
+run(-970,-100,500,1640);  // left
+run(970,-100,500,1640);   // right
+
+// storage hatching inside left & right runs
+hatch(-970,-100,440,1560);
+hatch(970,-260,440,1220);
+// cash safe in right run (front end)
+rrect(970,430,300,300,{fill:STORE,stroke:INK,sw:2});
+E('line',{x1:PX(820),y1:PY(280),x2:PX(1120),y2:PY(580),stroke:INK,'stroke-width':1.5});
+E('line',{x1:PX(1120),y1:PY(280),x2:PX(820),y2:PY(580),stroke:INK,'stroke-width':1.5});
+txt(PX(970),PY(430)+8,'SAFE',{fs:18,fill:INK,cls:'sans'});
+
+// central totem
+rrect(0,0,800,800,{fill:CREAM,stroke:INK,sw:2.5});
+E('circle',{cx:PX(0),cy:PY(0),r:300*sc,fill:GREEN,stroke:GOLD,'stroke-width':2});
+E('circle',{cx:PX(0),cy:PY(0),r:250*sc,fill:'none',stroke:GOLDL,'stroke-width':1});
+txt(PX(0),PY(0)+8,'DOFT',{fs:26,fill:GOLDL,w:'bold',ls:4});
+
+// glass showcase vitrines (rect + X)  [x,z,w,d]
+function vitr(x,z,w,d){
+  rrect(x,z,w,d,{fill:GLASS,stroke:GOLD,sw:2.5});
+  E('line',{x1:PX(x-w/2),y1:PY(z-d/2),x2:PX(x+w/2),y2:PY(z+d/2),stroke:GOLD,'stroke-width':1.3});
+  E('line',{x1:PX(x+w/2),y1:PY(z-d/2),x2:PX(x-w/2),y2:PY(z+d/2),stroke:GOLD,'stroke-width':1.3});
+}
+vitr(-620,970,500,340); vitr(620,970,500,340);
+vitr(-970,450,340,420); vitr(970,-550,340,420);
+
+// POS on front counter
+rrect(0,850,240,150,{fill:'#2B2824',stroke:INK,sw:1.5});
+txt(PX(0),PY(850)+7,'POS',{fs:16,fill:CREAM,cls:'sans'});
+
+// bar stools (2)
+function stool(x,z){E('circle',{cx:PX(x),cy:PY(z),r:170*sc,fill:'#EFE6D3',stroke:GOLD,'stroke-width':2.5});
+  E('circle',{cx:PX(x),cy:PY(z),r:120*sc,fill:'none',stroke:GOLD,'stroke-width':1,'stroke-dasharray':'3 4'});}
+stool(-300,450); stool(300,450);
+
+// staff entry (rear opening) — dashed opening line + arrow pointing in
+const defs=E('defs');const m=E('marker',{id:'arr',markerWidth:12,markerHeight:12,refX:8,refY:5,orient:'auto'},defs);
+E('path',{d:'M0,0 L10,5 L0,10 z',fill:GREEN},m);
+E('line',{x1:PX(-720),y1:PY(-1140),x2:PX(720),y2:PY(-1140),stroke:GOLD,'stroke-width':1.4,'stroke-dasharray':'8 8'});
+E('line',{x1:PX(0),y1:PY(-1090),x2:PX(0),y2:PY(-940),stroke:GREEN,'stroke-width':3,'marker-end':'url(#arr)'});
+txt(PX(0),PY(-1170),'STAFF ENTRY',{fs:24,fill:GREEN,w:'bold',ls:2,cls:'sans'});
+
+// ================= DIMENSIONS =================
+function dim(x1,y1,x2,y2,label,off,vert){
+  const c=GOLD;
+  if(!vert){const y=y1+off;
+    E('line',{x1,y1:y1,x2:x1,y2:y+ (off>0?10:-10),stroke:c,'stroke-width':1});
+    E('line',{x1:x2,y1:y2,x2:x2,y2:y+(off>0?10:-10),stroke:c,'stroke-width':1});
+    E('line',{x1,y1:y,x2,y2:y,stroke:c,'stroke-width':1.5,'marker-start':'url(#d1)','marker-end':'url(#d1)'});
+    const t=txt((x1+x2)/2,y-10,label,{fs:24,fill:GREEN,w:'bold',cls:'sans'});
+    const bb=t.getBBox&&null; // background
+    E('rect',{x:(x1+x2)/2-150,y:y-34,width:300,height:30,fill:CREAM,opacity:.9},null); svg.appendChild(t);
+  }else{const x=x1+off;
+    E('line',{x1:x1,y1,x2:x+(off>0?10:-10),y2:y1,stroke:c,'stroke-width':1});
+    E('line',{x1:x2,y1:y2,x2:x+(off>0?10:-10),y2:y2,stroke:c,'stroke-width':1});
+    E('line',{x1:x,y1,x2:x,y2:y2,stroke:c,'stroke-width':1.5,'marker-start':'url(#d1)','marker-end':'url(#d1)'});
+    E('rect',{x:x-16,y:(y1+y2)/2-150,width:32,height:300,fill:CREAM,opacity:.9});
+    txt(x,(y1+y2)/2,label,{fs:24,fill:GREEN,w:'bold',cls:'sans',rot:-90});
+  }
+}
+const dm=E('marker',{id:'d1',markerWidth:14,markerHeight:14,refX:7,refY:7,orient:'auto'},defs);
+E('path',{d:'M2,2 L12,12 M12,2 L2,12',stroke:GOLD,'stroke-width':1.6},dm);
+// overall width (top) & depth (right)
+dim(PX(-1220),PY(-1220),PX(1220),PY(-1220),'8′-0″   (2440 mm)',-70,false);
+dim(PX(1220),PY(-1220),PX(1220),PY(1220),'8′-0″   (2440 mm)',120,true);
+// counter depth (front, bottom)
+dim(PX(-1220),PY(1220),PX(-1220),PY(720),'1′-8″',-140,true);
+// totem (small, along top interior)
+dim(PX(-400),PY(-560),PX(400),PY(-560),'800',-46,false);
+
+// ================= LEGEND / TITLE BLOCK =================
+const lx=1980, ly=250;
+E('rect',{x:lx-20,y:ly-46,width:400,height:560,fill:CREAM,stroke:GOLD,'stroke-width':1.5});
+txt(lx,ly-14,'LEGEND',{anc:'start',fs:26,fill:GREEN,w:'bold',ls:3,cls:'sans'});
+E('line',{x1:lx,y1:ly-2,x2:lx+360,y2:ly-2,stroke:GOLD,'stroke-width':1.5});
+const items=[
+  ['counter','Display counter (marble top)'],
+  ['glass','Glass showcase vitrine'],
+  ['store','Lockable stock storage'],
+  ['safe','Cash safe'],
+  ['totem','Central totem (DOFT seal)'],
+  ['stool','Bar stool (staff seating)'],
+  ['pos','POS / billing point'],
+];
+items.forEach((it,i)=>{const yy=ly+40+i*62;
+  if(it[0]==='counter'){E('rect',{x:lx,y:yy-20,width:44,height:30,fill:FILL,stroke:INK,'stroke-width':2});}
+  if(it[0]==='glass'){E('rect',{x:lx,y:yy-20,width:44,height:30,fill:GLASS,stroke:GOLD,'stroke-width':2});
+    E('line',{x1:lx,y1:yy-20,x2:lx+44,y2:yy+10,stroke:GOLD,'stroke-width':1});E('line',{x1:lx+44,y1:yy-20,x2:lx,y2:yy+10,stroke:GOLD,'stroke-width':1});}
+  if(it[0]==='store'){E('rect',{x:lx,y:yy-20,width:44,height:30,fill:STORE,stroke:INK,'stroke-width':1.5});
+    for(let p=-30;p<44;p+=12)E('line',{x1:lx+Math.max(0,p),y1:yy-20+Math.max(0,-p),x2:lx+Math.min(44,p+30),y2:yy+10-Math.max(0,(p+30)-44),stroke:GOLD,'stroke-width':1,opacity:.6});}
+  if(it[0]==='safe'){E('rect',{x:lx,y:yy-20,width:44,height:30,fill:STORE,stroke:INK,'stroke-width':2});
+    E('line',{x1:lx,y1:yy-20,x2:lx+44,y2:yy+10,stroke:INK,'stroke-width':1});E('line',{x1:lx+44,y1:yy-20,x2:lx,y2:yy+10,stroke:INK,'stroke-width':1});}
+  if(it[0]==='totem'){E('circle',{cx:lx+22,cy:yy-5,r:16,fill:GREEN,stroke:GOLD,'stroke-width':2});}
+  if(it[0]==='stool'){E('circle',{cx:lx+22,cy:yy-5,r:16,fill:'#EFE6D3',stroke:GOLD,'stroke-width':2});}
+  if(it[0]==='pos'){E('rect',{x:lx,y:yy-18,width:44,height:26,fill:'#2B2824'});}
+  txt(lx+62,yy+2,it[1],{anc:'start',fs:22,fill:INK,cls:'sans'});
+});
+
+// north arrow (bottom-right of plan area)
+const nx=340,ny=1360;
+E('circle',{cx:nx,cy:ny,r:44,fill:CREAM,stroke:GOLD,'stroke-width':1.5});
+E('path',{d:`M ${nx} ${ny-34} L ${nx-14} ${ny+8} L ${nx} ${ny-2} L ${nx+14} ${ny+8} Z`,fill:GREEN});
+txt(nx,ny+38,'N',{fs:22,fill:INK,w:'bold',cls:'sans'});
+
+// scale bar
+const sbx=470,sby=1440,mm=1000; // 1 m
+E('line',{x1:sbx,y1:sby,x2:sbx+mm*sc,y2:sby,stroke:INK,'stroke-width':3});
+E('line',{x1:sbx,y1:sby-8,x2:sbx,y2:sby+8,stroke:INK,'stroke-width':2});
+E('line',{x1:sbx+mm*sc,y1:sby-8,x2:sbx+mm*sc,y2:sby+8,stroke:INK,'stroke-width':2});
+E('line',{x1:sbx+mm*sc/2,y1:sby-6,x2:sbx+mm*sc/2,y2:sby+6,stroke:INK,'stroke-width':1});
+txt(sbx+mm*sc/2,sby+30,'0                    1 m',{fs:20,fill:INK,cls:'sans'});
+
+// front / customer note
+txt(PX(0),PY(1220)+96,'FRONT  ·  CUSTOMER SIDE  →  MALL AISLE',{fs:26,fill:GREEN,w:'bold',ls:2});
+
+// footer title block
+E('line',{x1:96,y1:1560,x2:2304,y2:1560,stroke:GOLD,'stroke-width':1});
+txt(96,1592,'DOFT × ProMarcom  ·  Kiosk GA — Plan  ·  8′ × 8′ island  ·  NTS (approx.)',{anc:'start',fs:22,fill:INK,cls:'sans'});
+txt(2304,1592,'Concept design — for client approval',{anc:'end',fs:22,fill:INK,cls:'sans'});
+window.__done=true;
+</script></body></html>
