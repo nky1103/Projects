@@ -61,6 +61,32 @@ function sealTex(){return tex(1024,1024,(x,W,H)=>{
   x.lineWidth=W*0.024;x.beginPath();x.moveTo(cx,cy-W*0.24);x.lineTo(cx-W*0.01,cy+W*0.24);x.stroke();
   x.lineWidth=W*0.02;x.beginPath();x.moveTo(cx,cy-W*0.24);x.quadraticCurveTo(cx+W*0.16,cy-W*0.16,cx+W*0.14,cy+W*0.02);x.stroke();
 });}
+// WARM BACKLIT (illuminated) seal — light logo glowing on a warm ivory lightbox
+function sealTexLit(){return tex(1024,1024,(x,W,H)=>{
+  const cx=W/2,cy=H/2;
+  const g=x.createRadialGradient(cx,cy,W*0.04,cx,cy,W*0.56);
+  g.addColorStop(0,'#FEF6E0');g.addColorStop(0.65,'#F8E9C4');g.addColorStop(1,'#EAD3A2');
+  x.fillStyle=g;x.fillRect(0,0,W,H);
+  x.strokeStyle='#B8924A';x.lineWidth=7;x.beginPath();x.arc(cx,cy,W*0.47,0,7);x.stroke();
+  x.lineWidth=3;x.beginPath();x.arc(cx,cy,W*0.40,0,7);x.stroke();
+  roundText(x,cx,cy,W*0.435,'· DOFT · SCENTED · MEMORIES ',W*0.052,'#9A7A32');
+  x.strokeStyle='#6A5836';x.lineCap='round';
+  x.lineWidth=W*0.028;x.beginPath();x.arc(cx-W*0.02,cy+W*0.05,W*0.20,0.15,Math.PI*1.85);x.stroke();
+  x.lineWidth=W*0.024;x.beginPath();x.moveTo(cx,cy-W*0.24);x.lineTo(cx-W*0.01,cy+W*0.24);x.stroke();
+  x.lineWidth=W*0.02;x.beginPath();x.moveTo(cx,cy-W*0.24);x.quadraticCurveTo(cx+W*0.16,cy-W*0.16,cx+W*0.14,cy+W*0.02);x.stroke();
+});}
+function wordmarkTexLit(w,h){return tex(w,h,(x,W,H)=>{
+  const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#FEF6E0');g.addColorStop(1,'#F2E0B8');
+  x.fillStyle=g;x.fillRect(0,0,W,H);
+  x.fillStyle='#9A7A32';x.textAlign='center';x.textBaseline='middle';
+  x.font=`bold ${H*0.44}px Georgia`;
+  const chars='DOFT'.split('');const gap=H*0.10;const widths=chars.map(ch=>x.measureText(ch).width);
+  const total=widths.reduce((a,b)=>a+b,0)+gap*(chars.length-1);let px=W/2-total/2;
+  chars.forEach((ch,i)=>{x.fillText(ch,px+widths[i]/2,H*0.40);px+=widths[i]+gap;});
+  x.font=`${H*0.13}px Georgia`;x.fillStyle='#B8924A';
+  x.fillText('S C E N T E D   M E M O R I E S',W/2,H*0.74);
+  x.strokeStyle='#B8924A';x.lineWidth=2;x.beginPath();x.moveTo(W*0.32,H*0.60);x.lineTo(W*0.68,H*0.60);x.stroke();
+});}
 // subtle deterministic marble for counter tops
 function marbleTex(){return tex(1024,1024,(x,W,H)=>{
   x.fillStyle='#EFE7D5';x.fillRect(0,0,W,H);
@@ -120,10 +146,12 @@ box(2.44,0.02,2.44,mat(0xE9E1D1,.55,.02),0,0.07,0); // premium porcelain floor
 // ---------- central tower ----------
 const TW=0.80, TH=2.30;
 const tb=box(TW,TH,TW,M.white(),0,0.08+TH/2,0);
-const sealMat=mat(0xffffff,.4,.05,{map:sealTex(),emissive:0x22503b,emissiveIntensity:.35});
+const T_SEAL=sealTexLit();
+const sealMat=mat(0x141009,.5,.02,{map:T_SEAL,emissive:0xFFE7BE,emissiveMap:T_SEAL,emissiveIntensity:1.15});
 const seal=new THREE.Mesh(new THREE.PlaneGeometry(0.66,0.66),sealMat);seal.position.set(0,1.30,TW/2+0.006);S.add(seal);
 frameRect(0.70,0.70,0.03,M.gold(),0,1.30,TW/2+0.01);
-const wmMat=mat(0xffffff,.5,.05,{map:wordmarkTex(1024,320),emissive:0x1E4D39,emissiveIntensity:.5});
+const T_WM=wordmarkTexLit(1024,320);
+const wmMat=mat(0x141009,.5,.02,{map:T_WM,emissive:0xFFE7BE,emissiveMap:T_WM,emissiveIntensity:1.05});
 [[0,TW/2+0.006,0],[0,-(TW/2+0.006),Math.PI],[TW/2+0.006,0,-Math.PI/2],[-(TW/2+0.006),0,Math.PI/2]].forEach(([dx,dz,ry])=>{
   const w=new THREE.Mesh(new THREE.PlaneGeometry(0.72,0.22),wmMat);w.position.set(dx,1.98,dz);w.rotation.y=ry;S.add(w);
 });
