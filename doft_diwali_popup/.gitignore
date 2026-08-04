@@ -23,3 +23,7 @@ __pycache__/
 Kiosk_*.png
 drawings.html
 shotdraw.js
+
+# junk / scratch
+brief_assets/__MACOSX/
+threescene_conceptB_backup.html
