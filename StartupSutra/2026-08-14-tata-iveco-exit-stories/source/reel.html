@@ -1,0 +1,92 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#000; overflow:hidden; }
+  #stage { width:1080px; height:1920px; position:relative; overflow:hidden; background:#0b0e14; font-family:'Inter','Noto Color Emoji',sans-serif; color:#f4f1ea; }
+  #stage::before { content:''; position:absolute; inset:0; z-index:0;
+    background:radial-gradient(760px 600px at 88% -4%, rgba(244,63,94,.18), transparent 65%),radial-gradient(900px 700px at -12% 106%, rgba(190,18,60,.11), transparent 60%); }
+  #stage::after { content:''; position:absolute; inset:0; z-index:0;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+    background-size:90px 90px; mask-image:radial-gradient(1000px 1300px at 50% 45%, #000 30%, transparent 100%); -webkit-mask-image:radial-gradient(1000px 1300px at 50% 45%, #000 30%, transparent 100%); }
+  .chrome { position:absolute; left:0; right:0; z-index:5; display:flex; align-items:center; padding:0 84px; }
+  #hdr { top:84px; justify-content:space-between; }
+  .brand { display:flex; align-items:center; gap:18px; }
+  .brand .mark { width:60px; height:60px; border-radius:17px; background:linear-gradient(135deg,#f59e0b,#ea580c); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 28px rgba(244,63,94,.35); }
+  .brand .name { font-weight:700; font-size:32px; color:#e8e4da; } .brand .name span { color:#f59e0b; }
+  .tag { font-weight:700; font-size:24px; letter-spacing:3px; color:#6b7280; text-transform:uppercase; }
+  #ftr { bottom:84px; justify-content:center; font-weight:700; font-size:26px; color:#525a68; letter-spacing:1px; }
+  .scene { position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; justify-content:center; padding:0 96px; opacity:0; }
+  .el { opacity:0; will-change:transform,opacity; }
+  h1 { font-weight:900; letter-spacing:-2px; line-height:1.16; font-size:100px; }
+  .accent { color:#f43f5e; } .dim { color:#8b93a3; }
+  .followcard { margin-top:56px; display:flex; align-items:center; gap:30px; border-left:9px solid #f43f5e; border-radius:8px 30px 30px 8px; background:rgba(244,63,94,.10); padding:40px 48px; }
+</style>
+<svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
+  <path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/>
+  <path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/>
+  <circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/>
+  <rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/>
+  <circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/>
+  <circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/>
+  <path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></symbol></svg>
+
+<div id="stage">
+  <div class="chrome" id="hdr"><div class="brand"><div class="mark"><svg width="46" height="46"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="tag">Exit Stories #004</div></div>
+  <div class="chrome" id="ftr">@statupsutra</div>
+  <div id="scenes"></div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const clamp = (v,a,b) => Math.min(b, Math.max(a,v));
+const p = (t,t0,d) => clamp((t-t0)/d, 0, 1);
+const easeOut = x => 1 - Math.pow(1-x, 3);
+const easeOutBack = x => { const c = 1.7; return 1 + (c+1)*Math.pow(x-1,3) + c*Math.pow(x-1,2); };
+const FC = '<div class="followcard el" style="margin-top:48px;"><div style="width:84px;height:84px;border-radius:24px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="62" height="62"><use href="#owl"/></svg></div><div style="font-weight:800;font-size:48px;">Follow <span class="accent">@statupsutra</span><br><span style="font-weight:600;font-size:32px;color:#aab2c0;">exit stories · fridays</span></div></div>';
+
+const REELS = {
+  main: { dur: 22.0, hideChrome: 3.4, scenes: [
+    { id:'e1', t0:0.0, t1:3.8, hook:true, html:'<h1 style="font-size:58px;">Everyone thinks Indian companies are the ones that get <span class="accent">bought.</span></h1>', els:[{tIn:0.0,hk:true}] },
+    { id:'e2', t0:3.8, t1:8.2, html:'<h1 style="font-size:56px;">Tata just wrote a <span class="accent">3.8 billion euro cheque</span> to buy a European giant.</h1>', els:[{tIn:3.9,pop:true,dIn:0.34}] },
+    { id:'e3', t0:8.2, t1:12.4, html:'<h1 style="font-size:56px;">For years, going global meant a foreign firm <span class="accent">buying an Indian one.</span></h1>', els:[{tIn:8.3,dIn:0.42}] },
+    { id:'e4', t0:12.4, t1:16.0, html:'<h1 style="font-size:58px;">Now the direction of the cheque has <span class="accent">flipped.</span></h1>', els:[{tIn:12.5,pop:true}] },
+    { id:'e5', t0:16.0, t1:18.9, html:'<h1 style="font-size:52px;">Tata gets 80 years of Europe. Iveco\'s owners get a <span class="accent">clean exit.</span></h1>', els:[{tIn:16.1,pop:true}] },
+    { id:'e6', t0:18.9, t1:22.0, hold:true, html:'<h1 style="font-size:54px;">Stop getting bought. <span class="accent">Start buying.</span> That is independence.</h1>'+FC, els:[{tIn:19.0,pop:true},{tIn:19.9}] },
+  ]},
+};
+
+let CUR = null;
+window.buildReel = function(name){
+  CUR = REELS[name];
+  const c = $('scenes'); c.innerHTML='';
+  CUR.scenes.forEach(s => {
+    const d=document.createElement('div'); d.className='scene'; d.id=s.id; d.innerHTML=s.html; c.appendChild(d);
+    s._els = s.els.map((e,i)=>{ const node=d.children[i]; if(node)node.classList.add('el'); return {node,...e}; });
+  });
+};
+function anim(o,t){ const {node,tIn,tOut=999,dIn=0.5,y=70,pop=false,hk=false}=o; if(!node)return;
+  if(hk){
+    const s=easeOut(p(t,tIn,0.5));
+    node.style.opacity=1;
+    node.style.transform=`scale(${(1.16-0.16*s).toFixed(3)})`;
+    return;
+  }
+  const ip=p(t,tIn,dIn); const i=easeOutBack(ip); const ot=1-p(t,tOut,0.4);
+  node.style.opacity=(easeOut(ip)*ot).toFixed(3);
+  node.style.transform=`translateY(${((1-i)*y).toFixed(1)}px) scale(${(pop?(0.7+0.3*i):1).toFixed(3)})`; }
+window.seek = function(t){
+  const ch=easeOut(p(t,CUR.hideChrome,0.5)); $('hdr').style.opacity=ch; $('ftr').style.opacity=ch;
+  CUR.scenes.forEach(s=>{ const d=$(s.id); const vis=(t>=s.t0-0.1 && t<=s.t1+0.6);
+    if(!vis){ d.style.opacity=0; return; }
+    const fi=s.hook?1:p(t,s.t0,0.2); const fo=s.hold?1:1-p(t,s.t1-0.2,0.25);
+    d.style.opacity=(fi*fo).toFixed(3);
+    const zoom=s.hook?(1.03+0.03*p(t,s.t0,s.t1-s.t0)):(1.0+0.05*p(t,s.t0,s.t1-s.t0));
+    d.style.transform=`scale(${zoom.toFixed(4)})`;
+    s._els.forEach(e=>anim(e,t));
+  });
+};
+buildReel('main'); seek(0);
+</script>

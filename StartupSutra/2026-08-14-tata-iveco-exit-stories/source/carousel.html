@@ -1,0 +1,207 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-400.ttf'); font-weight:400; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-600.ttf'); font-weight:600; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#000; }
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; background:#0b0e14;
+    font-family:'Inter','Noto Color Emoji',sans-serif; color:#f4f1ea; display:flex; flex-direction:column; }
+  .slide::before { content:''; position:absolute; inset:0;
+    background:radial-gradient(720px 560px at 88% -6%, rgba(244,63,94,.18), transparent 65%),
+      radial-gradient(820px 640px at -12% 108%, rgba(244,63,94,.11), transparent 60%),
+      radial-gradient(500px 400px at 50% 55%, rgba(255,255,255,.025), transparent 70%); }
+  .slide::after { content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+    background-size:90px 90px; mask-image:radial-gradient(900px 900px at 50% 40%, #000 30%, transparent 100%);
+    -webkit-mask-image:radial-gradient(900px 900px at 50% 40%, #000 30%, transparent 100%); }
+  .inner { position:relative; z-index:2; display:flex; flex-direction:column; height:100%; padding:72px 84px 64px; }
+  .topbar { display:flex; justify-content:space-between; align-items:center; }
+  .brand { display:flex; align-items:center; gap:18px; }
+  .brand .mark { width:56px; height:56px; border-radius:16px; background:linear-gradient(135deg,#f59e0b,#ea580c);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 8px 28px rgba(245,158,11,.35); }
+  .brand .name { font-weight:700; font-size:30px; letter-spacing:.5px; color:#e8e4da; }
+  .brand .name span { color:#f59e0b; }
+  .counter { font-weight:600; font-size:26px; color:#6b7280; letter-spacing:2px; }
+  .body { flex:1; display:flex; flex-direction:column; justify-content:center; }
+  .seriesband { display:flex; align-items:center; gap:20px; margin-bottom:34px; }
+  .seriesband .sq { width:30px; height:30px; border-radius:8px; background:linear-gradient(135deg,#f43f5e,#be123c); flex-shrink:0; }
+  .seriesband .txt { font-weight:900; font-size:48px; letter-spacing:6px; color:#f43f5e; text-transform:uppercase; line-height:1; }
+  .subjectline { font-weight:700; font-size:26px; letter-spacing:3px; color:#8b93a3; text-transform:uppercase; margin-bottom:40px; }
+  .kicker { display:inline-flex; align-self:flex-start; align-items:center; gap:16px; font-weight:700; font-size:26px;
+    letter-spacing:4px; text-transform:uppercase; color:#f43f5e; margin-bottom:44px; padding:14px 28px;
+    border:1.5px solid rgba(244,63,94,.45); border-radius:999px; background:rgba(244,63,94,.08); }
+  .kicker .sq { width:20px; height:20px; border-radius:5px; background:linear-gradient(135deg,#f43f5e,#be123c); flex-shrink:0; }
+  h1 { font-weight:900; font-size:96px; line-height:1.12; letter-spacing:-1.5px; }
+  h1 .accent { color:#f43f5e; }
+  h1 .dim { color:#8b93a3; }
+  .sub { margin-top:38px; font-weight:600; font-size:40px; line-height:1.4; color:#aab2c0; }
+  .sub strong { color:#f4f1ea; }
+  .quotecard { margin-top:48px; border-left:8px solid #f43f5e; border-radius:8px 28px 28px 8px;
+    background:rgba(244,63,94,.11); padding:44px 48px; font-weight:800; font-size:52px; line-height:1.3; }
+  .quotecard .accent { color:#f43f5e; }
+  .stats { margin-top:44px; display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+  .stat { background:rgba(255,255,255,.04); border:1.5px solid rgba(244,63,94,.28); border-radius:24px; padding:34px 36px; }
+  .stat .num { font-weight:900; font-size:72px; letter-spacing:-2px; color:#f43f5e; line-height:1; }
+  .stat .num small { font-size:36px; font-weight:800; }
+  .stat .lbl { margin-top:14px; font-weight:600; font-size:29px; color:#aab2c0; line-height:1.25; }
+  .rows { margin-top:8px; display:flex; flex-direction:column; gap:18px; }
+  .row { display:flex; justify-content:space-between; align-items:center; gap:24px; border-bottom:1.5px solid rgba(255,255,255,.08); padding-bottom:18px; }
+  .row .k { font-weight:600; font-size:33px; color:#8b93a3; }
+  .row .v { font-weight:800; font-size:35px; color:#f4f1ea; text-align:right; }
+  .row .v.accent { color:#f43f5e; }
+  .bottombar { display:flex; justify-content:space-between; align-items:center; color:#6b7280; font-weight:600; font-size:27px; }
+  .foot { font-weight:700; font-size:26px; color:#525a68; letter-spacing:1px; }
+  .foot b { color:#8b93a3; }
+  .swipe { display:flex; align-items:center; gap:16px; color:#f43f5e; letter-spacing:2px; text-transform:uppercase; font-weight:700; }
+  .swipe .arr { font-size:30px; }
+  .dots { display:flex; gap:12px; }
+  .dots i { width:14px; height:14px; border-radius:50%; background:rgba(255,255,255,.16); }
+  .dots i.on { background:#f43f5e; width:40px; border-radius:999px; }
+  /* lockup */
+  .lockup { display:flex; align-items:center; gap:30px; margin-top:56px; }
+  .nametile { min-width:230px; height:150px; padding:0 34px; border-radius:34px; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0;
+    background:rgba(255,255,255,.05); border:1.5px solid rgba(255,255,255,.12); }
+  .nametile.small { background:rgba(244,63,94,.09); border-color:rgba(244,63,94,.4); }
+  .nametile .n { font-weight:900; font-size:42px; letter-spacing:-1px; color:#f4f1ea; }
+  .nametile.small .n { color:#f43f5e; }
+  .nametile .s { margin-top:6px; font-weight:600; font-size:22px; color:#8b93a3; }
+  .nametile.big { background:#12151d; border-color:rgba(255,255,255,.18); }
+  .lockup .arrowcol { display:flex; flex-direction:column; align-items:center; gap:8px; color:#8b93a3; }
+  .lockup .arrowcol .lab { font-weight:700; font-size:24px; letter-spacing:3px; text-transform:uppercase; }
+  .lockup .arrowcol .ar { font-size:56px; color:#f43f5e; line-height:1; }
+  .lockup .cap { font-weight:700; font-size:30px; color:#aab2c0; } .lockup .cap b { color:#f4f1ea; }
+  .timeline { margin-top:40px; display:flex; align-items:flex-start; justify-content:space-between; position:relative; padding-top:26px; }
+  .timeline::before { content:''; position:absolute; top:33px; left:22px; right:22px; height:3px; background:rgba(244,63,94,.3); }
+  .tstep { display:flex; flex-direction:column; align-items:center; gap:14px; width:33%; position:relative; z-index:1; }
+  .tstep .dot { width:20px; height:20px; border-radius:50%; background:#0b0e14; border:4px solid #f43f5e; }
+  .tstep.big .dot { background:#f43f5e; box-shadow:0 0 0 8px rgba(244,63,94,.18); }
+  .tstep .yr { font-weight:900; font-size:34px; color:#f43f5e; }
+  .tstep .ev { font-weight:600; font-size:26px; color:#aab2c0; text-align:center; line-height:1.25; }
+  /* two-half combine */
+  .combine { margin-top:48px; display:flex; align-items:stretch; gap:22px; }
+  .half { flex:1; background:rgba(255,255,255,.04); border:1.5px solid rgba(244,63,94,.28); border-radius:24px; padding:32px 30px; }
+  .half .ht { font-weight:900; font-size:38px; color:#f43f5e; } .half .hd { margin-top:12px; font-weight:600; font-size:29px; color:#aab2c0; line-height:1.25; }
+  .plus { display:flex; align-items:center; font-size:56px; font-weight:900; color:#f43f5e; }
+  .followcard { margin-top:52px; display:flex; align-items:center; gap:30px; border-left:8px solid #f43f5e; border-radius:8px 28px 28px 8px;
+    background:rgba(244,63,94,.11); padding:36px 48px; font-weight:800; font-size:46px; }
+</style>
+
+<svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
+  <path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/>
+  <path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/>
+  <circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/>
+  <rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/>
+  <circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/>
+  <circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/>
+  <path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></symbol></svg>
+
+<!-- S1 COVER / HOOK -->
+<div class="slide" id="s1"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#004 · 01/07</div></div>
+  <div class="body">
+    <div class="seriesband"><span class="sq"></span><span class="txt">Exit<br>Stories</span></div>
+    <div class="subjectline">Tata Motors × Iveco · The reverse takeover</div>
+    <h1 style="font-size:60px;">India Inc used to be the one that got <span class="dim">bought.</span></h1>
+    <h1 style="font-size:58px; margin-top:24px;">Tata just wrote a <span class="accent">3.8 billion euro cheque</span> to buy Europe.</h1>
+    <div class="lockup">
+      <div class="nametile small"><div class="n">Tata Motors</div><div class="s">India</div></div>
+      <div class="arrowcol"><span class="lab">Acquires</span><span class="ar">→</span></div>
+      <div class="nametile big"><div class="n">Iveco</div><div class="s" style="color:#8b93a3">Italy · trucks</div></div>
+      <div class="cap">Jul 2025<br><b>~ €3.8 billion, all cash</b></div>
+    </div>
+  </div>
+  <div class="bottombar"><div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S2 SNAPSHOT -->
+<div class="slide" id="s2"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#004 · 02/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Snapshot</div>
+    <div class="rows">
+      <div class="row"><span class="k">Buyer</span><span class="v">Tata Motors (India)</span></div>
+      <div class="row"><span class="k">Target</span><span class="v">Iveco Group (Italy)</span></div>
+      <div class="row"><span class="k">Deal size</span><span class="v accent">~ €3.8 billion, all cash</span></div>
+      <div class="row"><span class="k">Offer</span><span class="v">€14.1 per share</span></div>
+      <div class="row"><span class="k">Combined scale</span><span class="v">~540k trucks a year</span></div>
+    </div>
+    <div class="timeline">
+      <div class="tstep"><span class="dot"></span><span class="yr">2008</span><span class="ev">Tata buys<br>Jaguar Land Rover</span></div>
+      <div class="tstep"><span class="dot"></span><span class="yr">Jul 2025</span><span class="ev">Iveco deal<br>announced</span></div>
+      <div class="tstep big"><span class="dot"></span><span class="yr">2026</span><span class="ev">Expected to<br>close</span></div>
+    </div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S3 THE SHIFT -->
+<div class="slide" id="s3"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#004 · 03/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Shift</div>
+    <h1 style="font-size:62px;">The direction of the cheque <span class="accent">flipped.</span></h1>
+    <div class="sub">For decades, a global deal meant a foreign giant buying an Indian company. Now Indian firms are the ones acquiring abroad, near a record year of outbound deals. Tata buying an 80-year-old European truckmaker is that shift, in one headline.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S4 WHAT €3.8B BUYS -->
+<div class="slide" id="s4"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#004 · 04/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>What €3.8B Buys</div>
+    <h1 style="font-size:56px;">Not just trucks. A ready-made <span class="accent">foothold in Europe.</span></h1>
+    <div class="stats">
+      <div class="stat"><div class="num">~€22B</div><div class="lbl">Combined truck revenue, across 3 continents</div></div>
+      <div class="stat"><div class="num">80<small> yrs</small></div><div class="lbl">Of European brand, dealers and factories</div></div>
+    </div>
+    <div class="sub" style="font-size:34px;">Distribution, engineering and trust in markets it would take Tata a decade to build from scratch.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S5 WHY IT FITS -->
+<div class="slide" id="s5"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#004 · 05/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>Why It Fits</div>
+    <h1 style="font-size:56px;">Two halves that barely <span class="accent">overlap.</span></h1>
+    <div class="combine">
+      <div class="half"><div class="ht">Tata</div><div class="hd">Strong in India and the Americas, value trucks</div></div>
+      <div class="plus">+</div>
+      <div class="half"><div class="ht">Iveco</div><div class="hd">Strong in Europe, premium trucks and tech</div></div>
+    </div>
+    <div class="sub" style="font-size:34px;">Almost no map overlap means fewer plants to shut, more markets to add. The defence arm is carved out and sold separately.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S6 THE EXIT LOGIC -->
+<div class="slide" id="s6"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#004 · 06/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Exit Logic</div>
+    <h1 style="font-size:58px;">Both sides get the half they were <span class="accent">missing.</span></h1>
+    <div class="sub">Iveco's owners get a clean, full-price cash exit and a new home for the business. Tata gets instant global scale it could not buy off a spec sheet. Buying reach beats spending ten years earning it.</div>
+    <div class="quotecard" style="font-size:46px;">The strongest exit is the one that makes the buyer <span class="accent">bigger than before.</span></div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S7 LESSON + CTA -->
+<div class="slide" id="s7"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#004 · 07/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Takeaway</div>
+    <h1 style="font-size:58px;">Real independence is when you stop getting bought and start <span class="accent">buying.</span></h1>
+    <div class="sub" style="font-size:36px; margin-top:28px;">The exit game has two seats. India Inc is learning to sit on the buyer's side. 💬 Tag a founder who should be thinking global, not just local.</div>
+    <div class="followcard">
+      <div class="mark" style="width:84px;height:84px;border-radius:24px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="62" height="62"><use href="#owl"/></svg></div>
+      <div>Follow <span style="color:#f43f5e;">@statupsutra</span><br><span style="font-weight:600;font-size:34px;color:#aab2c0;">exit stories · every friday</span></div>
+    </div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Next Friday</div></div>
+</div></div>
