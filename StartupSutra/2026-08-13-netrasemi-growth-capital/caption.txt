@@ -1,0 +1,20 @@
+Everyone thinks India can't make its own chips. ₹107 crore just backed a startup proving them wrong.
+
+Netrasemi, a Kerala startup, raised a ₹107 crore Series A led by Zoho and Unicorn India Ventures to build edge-AI chips, with its own IP, designed in India.
+
+Why does this matter? India writes world-class software, but imports almost every chip that runs its phones, cars, cameras and defence. Depending on other countries for all of it is a national weak spot.
+
+Here's why serious money backed it. Netrasemi owns its own chip IP, the hardest thing to copy. Its A2000 chip powers smart cameras and edge devices, and the government is co-backing it under the chip-design scheme. Real silicon IP takes years, and that's the moat.
+
+Growth capital here isn't funding an app. It's funding the years and the fabs it takes to make chips at home, riding a national semiconductor mission and an edge-AI boom.
+
+The lesson: growth capital is starting to back India's hardest frontier, the chip itself. Self-reliance is the thesis.
+
+💬 Tag a founder building India's hardware future.
+
+📚 Sources: Inc42, EE Times, Tracxn
+👉 Follow @statupsutra for a startup teardown every day.
+
+.
+.
+#startup #growthcapital #semiconductor #madeinindia #startupindia
