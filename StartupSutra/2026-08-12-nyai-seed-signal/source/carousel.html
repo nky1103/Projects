@@ -1,0 +1,158 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-400.ttf'); font-weight:400; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-600.ttf'); font-weight:600; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#000; }
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; background:#0b0e14;
+    font-family:'Inter','Noto Color Emoji',sans-serif; color:#f4f1ea; display:flex; flex-direction:column; }
+  .slide::before { content:''; position:absolute; inset:0;
+    background:radial-gradient(720px 560px at 88% -6%, rgba(139,92,246,.18), transparent 65%),
+      radial-gradient(820px 640px at -12% 108%, rgba(109,40,217,.12), transparent 60%),
+      radial-gradient(500px 400px at 50% 55%, rgba(255,255,255,.025), transparent 70%); }
+  .slide::after { content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+    background-size:90px 90px; mask-image:radial-gradient(900px 900px at 50% 40%, #000 30%, transparent 100%);
+    -webkit-mask-image:radial-gradient(900px 900px at 50% 40%, #000 30%, transparent 100%); }
+  .inner { position:relative; z-index:2; display:flex; flex-direction:column; height:100%; padding:72px 84px 64px; }
+  .topbar { display:flex; justify-content:space-between; align-items:center; }
+  .brand { display:flex; align-items:center; gap:18px; }
+  .brand .mark { width:56px; height:56px; border-radius:16px; background:linear-gradient(135deg,#f59e0b,#ea580c);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 8px 28px rgba(245,158,11,.35); }
+  .brand .name { font-weight:700; font-size:30px; letter-spacing:.5px; color:#e8e4da; }
+  .brand .name span { color:#f59e0b; }
+  .counter { font-weight:600; font-size:26px; color:#6b7280; letter-spacing:2px; }
+  .body { flex:1; display:flex; flex-direction:column; justify-content:center; }
+  .seriesband { display:flex; align-items:center; gap:20px; margin-bottom:38px; }
+  .seriesband .sq { width:30px; height:30px; border-radius:8px; background:linear-gradient(135deg,#8b5cf6,#6d28d9); flex-shrink:0; }
+  .seriesband .txt { font-weight:900; font-size:47px; letter-spacing:5px; color:#8b5cf6; text-transform:uppercase; line-height:1; }
+  .subjectline { font-weight:700; font-size:26px; letter-spacing:3px; color:#8b93a3; text-transform:uppercase; margin-bottom:42px; }
+  .kicker { display:inline-flex; align-self:flex-start; align-items:center; gap:16px; font-weight:700; font-size:26px;
+    letter-spacing:4px; text-transform:uppercase; color:#8b5cf6; margin-bottom:44px; padding:14px 28px;
+    border:1.5px solid rgba(139,92,246,.45); border-radius:999px; background:rgba(139,92,246,.08); }
+  .kicker .sq { width:20px; height:20px; border-radius:5px; background:linear-gradient(135deg,#8b5cf6,#6d28d9); flex-shrink:0; }
+  h1 { font-weight:900; font-size:96px; line-height:1.12; letter-spacing:-1.5px; }
+  h1 .accent { color:#8b5cf6; }
+  h1 .dim { color:#8b93a3; }
+  .sub { margin-top:40px; font-weight:600; font-size:40px; line-height:1.4; color:#aab2c0; }
+  .sub strong { color:#f4f1ea; }
+  .quotecard { margin-top:52px; border-left:8px solid #8b5cf6; border-radius:8px 28px 28px 8px;
+    background:rgba(139,92,246,.11); padding:44px 48px; font-weight:800; font-size:50px; line-height:1.3; }
+  .quotecard .accent { color:#8b5cf6; }
+  .rows { margin-top:20px; display:flex; flex-direction:column; gap:20px; }
+  .row { display:flex; justify-content:space-between; align-items:center; gap:24px; border-bottom:1.5px solid rgba(255,255,255,.08); padding-bottom:20px; }
+  .row .k { font-weight:600; font-size:34px; color:#8b93a3; }
+  .row .v { font-weight:800; font-size:35px; color:#f4f1ea; text-align:right; }
+  .row .v.accent { color:#8b5cf6; }
+  .bottombar { display:flex; justify-content:space-between; align-items:center; color:#6b7280; font-weight:600; font-size:27px; }
+  .foot { font-weight:700; font-size:26px; color:#525a68; letter-spacing:1px; }
+  .foot b { color:#8b93a3; }
+  .swipe { display:flex; align-items:center; gap:16px; color:#8b5cf6; letter-spacing:2px; text-transform:uppercase; font-weight:700; }
+  .swipe .arr { font-size:30px; }
+  .dots { display:flex; gap:12px; }
+  .dots i { width:14px; height:14px; border-radius:50%; background:rgba(255,255,255,.16); }
+  .dots i.on { background:#8b5cf6; width:40px; border-radius:999px; }
+  .chips { margin-top:40px; display:flex; flex-wrap:wrap; gap:18px; }
+  .chip { font-weight:800; font-size:32px; color:#c4b5fd; background:rgba(139,92,246,.1); border:1.5px solid rgba(139,92,246,.35); border-radius:16px; padding:16px 26px; }
+</style>
+
+<svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
+  <path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/>
+  <path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/>
+  <circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/>
+  <rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/>
+  <circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/>
+  <circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/>
+  <path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></symbol></svg>
+
+<!-- S1 -->
+<div class="slide" id="s1"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#004 · 01/07</div></div>
+  <div class="body">
+    <div class="seriesband"><span class="sq"></span><span class="txt">Seed<br>Signal</span></div>
+    <div class="subjectline">NYAI · $1.5M for the boring part</div>
+    <h1 style="font-size:62px;">Everyone thinks legal AI means <span class="dim">robot lawyers.</span></h1>
+    <h1 style="font-size:58px; margin-top:28px;">Investors just bet on the <span class="accent">boring part instead.</span></h1>
+  </div>
+  <div class="bottombar"><div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S2 -->
+<div class="slide" id="s2"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#004 · 02/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Snapshot</div>
+    <div class="rows">
+      <div class="row"><span class="k">Company</span><span class="v">NYAI</span></div>
+      <div class="row"><span class="k">Based</span><span class="v">Pune, India</span></div>
+      <div class="row"><span class="k">Founders</span><span class="v">Chinmay Bhosale &amp;<br>Vikrant Labde</span></div>
+      <div class="row"><span class="k">Seed</span><span class="v accent">$1.5M · family offices</span></div>
+      <div class="row"><span class="k">Does</span><span class="v">AI legal research &amp;<br>compliance for India</span></div>
+    </div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S3 -->
+<div class="slide" id="s3"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#004 · 03/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Anomaly</div>
+    <h1 style="font-size:68px;">A brand-new company, no revenue, already <span class="accent">funded.</span></h1>
+    <div class="sub">Founded in 2025, backed by seasoned family offices before it has scaled. So what's the signal they saw?</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S4 -->
+<div class="slide" id="s4"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#004 · 04/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>Signal 1 · The Pain</div>
+    <h1 style="font-size:58px;">India's legal work is huge, slow and <span class="accent">buried in paper.</span></h1>
+    <div class="sub">Every company, law firm and listed business drowns in statutes, contracts and filings. Costly, painful, and locked behind expensive experts.</div>
+    <div class="chips"><span class="chip">Legal research</span><span class="chip">Contracts</span><span class="chip">Compliance</span><span class="chip">Filings</span></div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S5 -->
+<div class="slide" id="s5"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#004 · 05/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>Signal 2 · The Wave</div>
+    <h1 style="font-size:56px;">AI can finally <span class="accent">read and reason</span> over dense legal text.</h1>
+    <div class="sub">Citation-based research, contract review, drafting, tuned to Indian law. Point a rising technology at a document-heavy market and you have a wedge.</div>
+    <div class="quotecard" style="font-size:44px;">Right tech. Right pain. <span class="accent">Right time.</span></div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S6 -->
+<div class="slide" id="s6"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#004 · 06/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Part People Miss</div>
+    <h1 style="font-size:58px;">The bet isn't the courtroom. It's the <span class="accent">grunt work.</span></h1>
+    <div class="sub">At seed there are no metrics, so investors buy the founders, the wave and the size of the pain. NYAI chose the unglamorous compliance layer, the work everyone hates and everyone needs.</div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Swipe <span class="arr">→</span></div></div>
+</div></div>
+
+<!-- S7 -->
+<div class="slide" id="s7"><div class="inner">
+  <div class="topbar"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="counter">#004 · 07/07</div></div>
+  <div class="body">
+    <div class="kicker"><span class="sq"></span>The Seed Signal</div>
+    <h1 style="font-size:56px;">The best seed bet is often the most <span class="accent">boring wedge</span> into a massive, painful market.</h1>
+    <div class="sub" style="font-size:36px; margin-top:26px;">Not the flashy demo, the workflow nobody wants to do by hand. 💬 Tag a founder solving a boring but huge problem.</div>
+    <div class="quotecard" style="margin-top:38px; display:flex; align-items:center; gap:30px; font-size:46px; padding:34px 48px; font-weight:800;">
+      <div class="mark" style="width:84px;height:84px;border-radius:24px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="62" height="62"><use href="#owl"/></svg></div>
+      <div>Follow <span style="color:#8b5cf6;">@statupsutra</span><br><span style="font-weight:600;font-size:34px;color:#aab2c0;">seed signal · every wednesday</span></div>
+    </div>
+  </div>
+  <div class="bottombar"><div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div><div class="foot"><b>@statupsutra</b></div><div class="swipe">Next Wednesday</div></div>
+</div></div>
