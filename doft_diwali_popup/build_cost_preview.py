@@ -29,6 +29,16 @@ loc=[("Delhi NCR","Select City Walk","Mac Atrium",840000),("Noida","DLF Mall of 
  ("Hyderabad","Sarath City Capital","Main Atrium",532000),("Kochi","Lulu Intl Mall","Main Atrium",840000)]
 loc_total=sum(v for *_,v in loc)
 
+cinema=[("Mumbai (Lower Parel)","PVR Phoenix (Worli)","7 / 1,275","8×8"),("Mumbai (BKC)","PVR Maison BKC","6 / 882","6×6"),
+ ("Ahmedabad","PVR Palladium","9 / 1,283","8×8"),("Delhi (Saket)","PVR Select Citywalk","6 / 1,056","8×8"),
+ ("Noida","PVR DT · Mall of India","7 / 1,712","8×8"),("Gurgaon","PVR Ambience Mall","11 / 1,122","8×8"),
+ ("Chandigarh","PVR Nexus Elante","8 / 1,599","6×6"),("Lucknow","PVR Superplex · Lulu","11 / 1,841","8×8"),
+ ("Kolkata","INOX City Centre","4 / 1,144","8×8"),("Kolkata","INOX City Centre II","4 / 1,190","8×8"),
+ ("Hyderabad","PVR Icon · Hitech City","5 / 936","8×8"),("Bengaluru","PVR Phoenix Market City","9 / 1,401","6×6"),
+ ("Chennai","INOX Luxe · Phoenix","11 / 2,688","6×6"),("Cochin","PVR Lulu Mall","9 / 1,926","8×8")]
+CIN_RATE=300000
+cin_total=CIN_RATE*len(cinema); cin_gst=cin_total*0.18; cin_incl=cin_total+cin_gst
+
 other=[("Logistics","Pickup, first fill, replenishment, return",25000),("Warehouse","Seasonal storage",15000),
  ("Insurance - Fire","Mall fire insurance",10000),("Insurance - Transport","Stock in transit",12000),
  ("Extended Trading","Select cities (Xmas & NY)",20000),("Dismantle & Stock Return","Post-season",10000),
@@ -39,6 +49,7 @@ other_prog=other_pk*NK
 
 sub=setup_prog+manp_prog+other_prog+loc_total
 mgmt=sub*0.10; sub2=sub+mgmt; gst=sub2*0.18; grand=sub2+gst; perk=grand/NK
+mux_grand=(setup_prog+manp_prog+other_prog+cin_total)*1.10*1.18
 
 cities=[("Delhi","Select Citywalk","North"),("Noida","DLF Mall of India","North"),("Gurgaon","Ambience Mall","North"),
  ("Chandigarh","Elante Mall","North"),("Lucknow","Lulu Mall","North"),("Mumbai (BKC)","Jio World Mall","West"),
@@ -66,8 +77,10 @@ sumrows=[
  [("Management fee (10%)","l"),("","r"),(inr(mgmt),"r"),("% of sub-total","n")],
  [("Sub-total incl. fee","lb"),("","r"),(inr(sub2),"rb"),("","n")],
  [("GST (18%)","l"),("","r"),(inr(gst),"r"),("on sub-total incl. fee","n")],
- [("GRAND TOTAL (incl. GST)","lt"),("","rt"),(inr(grand),"rt"),("","nt")],
+ [("GRAND TOTAL · atrium option (incl. GST)","lt"),("","rt"),(inr(grand),"rt"),("","nt")],
  [("Per-kiosk average (incl. GST)","lg"),("","rg"),(inr(perk),"rg"),("","ng")],
+ [("Alternative: Multiplex activation (14 PVR/INOX, 6 wk)","l"),("","r"),(inr(cin_total),"r"),("ex-GST; replaces atrium (D)","n")],
+ [("GRAND TOTAL · multiplex option (incl. GST)","lt"),("","rt"),(inr(mux_grand),"rt"),("A+B+C + multiplex, then fee & GST","nt")],
 ]
 sumhead=head([("Cost Head","l"),("Per kiosk","r"),("Programme (14)","r"),("Notes","n")])
 S_sum=sheet("Summary","Programme cost roll-up · 14 malls · 8×8 ft · figures from your ops sheet + mall rate card",
@@ -97,8 +110,16 @@ S_mp=sheet("Manpower Cost","Per-kiosk team + city-level roles",
 # LOCATION
 lrows=[[(str(i+1),"c"),(c,"l"),(m,"l"),(a,"n"),(inr(v),"r"),("","r")] for i,(c,m,a,v) in enumerate(loc)]
 lrows.append([("","c"),("Total mall space (3-day, ex-GST)","lb"),("","l"),("","n"),(inr(loc_total),"rb"),("","r")])
-S_loc=sheet("Location Charges","Mall activation rate card · 3-day (Fri–Sun), ex-GST · 6-wk licence TBD",
+S_loc=sheet("Location Charges","Mall activation rate card · 3-day (Fri-Sun), ex-GST · 6-wk licence TBD",
   head([("#","c"),("City","l"),("Mall","l"),("Location","n"),("3-day rate","r"),("6-wk licence","r")]), tbl(lrows))
+
+# CINEMA
+krows=[[(str(i+1),"c"),(c,"l"),(m,"l"),(sc,"n"),(sz,"c"),(inr(CIN_RATE),"r")] for i,(c,m,sc,sz) in enumerate(cinema)]
+krows.append([("","c"),("Total, 14 multiplexes (ex-GST)","lb"),("","l"),("","n"),("","c"),(inr(cin_total),"rb")])
+krows.append([("","c"),("GST @ 18%","l"),("","l"),("","n"),("","c"),(inr(cin_gst),"r")])
+krows.append([("","c"),("Total incl. GST","lg"),("","l"),("","n"),("","c"),(inr(cin_incl),"rg")])
+S_cin=sheet("Cinema Activation","8×8 ft foyer activation in PVR / INOX at the same malls · 6-week cost/site · GST extra · managed by ProMarcom",
+  head([("#","c"),("City","l"),("Multiplex / Cinema","l"),("Screens / Seats","n"),("Space","c"),("Cost / 6 wk","r")]), tbl(krows))
 
 # OTHER
 orows=[[(n,"l"),(s,"n"),(inr(v) if v is not None else "<i>blank (TBD)</i>","r")] for n,s,v in other]
@@ -129,10 +150,10 @@ td.lt,td.rt,td.nt{{background:#2B2621;color:#C6A24E;font-weight:700;font-size:11
 i{{color:#b08a3c}}
 </style></head><body>
 <div class='top'><b>DOFT <span>×</span> ProMarcom</b><div class='s'>Diwali Pop-Up Kiosk · Detailed Cost Workbook · preview (values recalculate live in Excel)</div></div>
-{S_sum}{S_set}{S_mp}{S_loc}{S_oth}{S_cit}
+{S_sum}{S_set}{S_mp}{S_loc}{S_cin}{S_oth}{S_cit}
 <div style='font-size:8.6pt;color:#857B6C;margin-top:6px;line-height:1.5'>
 Basis: figures from the execution-agency ops sheet (build + manpower + logistics + insurance) and the mall activation rate card.
-Location/mall space is a 3-day (Fri–Sun) rate card, ex-GST; 6-week festive licence, CAM, electricity & deposits to be negotiated (blank).
+Location/mall space is a 3-day (Fri-Sun) rate card, ex-GST; 6-week festive licence, CAM, electricity & deposits to be negotiated (blank).
 Management fee modelled at 10% of sub-total. All rates indicative; confirm against vendor, mall & statutory quotes.</div>
 </body></html>"""
 open("cost_preview.html","w").write(html)

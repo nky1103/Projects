@@ -225,7 +225,121 @@ designSlide(6,"right",IMG.interior,"Interior view","Design · Layout",
   s.addNotes("14 malls pan-India per revised client list. Same window; select extend to Xmas/NY.");
 }
 
-// ============ 11 · SCOPE / TURNKEY ============
+// ============ 11 · MULTIPLEX RATIONALE ============
+{
+  const s=p.addSlide(); s.background={color:WHITE};
+  kicker(s,"Extending Reach  ·  Channel 2",0.6,0.6);
+  s.addText("Adding multiplex activation",{x:0.55,y:0.95,w:11,h:0.7,fontSize:30,color:CHAR,fontFace:HEAD,bold:true});
+  s.addText([{text:"Premium atrium space on a six-week rental is limited and highly contested. To secure reach across every target city we propose a parallel Doft activation inside the ",options:{}},
+    {text:"PVR / INOX multiplexes located in the same malls",options:{bold:true,color:GOLDD}},
+    {text:", a captive, premium, high-dwell audience already in a leisure and gifting mindset.",options:{}}],
+    {x:0.55,y:1.75,w:12.2,h:1.4,fontSize:16,color:TXT,fontFace:BODY,lineSpacingMultiple:1.25,valign:"top"});
+  const mstats=[["14","Multiplexes","PVR & INOX"],["107","Screens","across the network"],["~20,000","Seats / show","combined capacity"],["8×8 ft","Foyer stall","6-week window"]];
+  const bw=2.95, bh=2.4, gx=0.55, gy=3.7, gap=0.33;
+  mstats.forEach((st,i)=>{
+    const x=gx+i*(bw+gap);
+    s.addShape(p.ShapeType.rect,{x,y:gy,w:bw,h:bh,fill:{color:IVORY},line:{color:LINE,width:1}});
+    s.addText(st[0],{x,y:gy+0.35,w:bw,h:0.9,align:"center",fontSize:38,color:GOLDD,fontFace:HEAD,bold:true});
+    s.addText(st[1],{x,y:gy+1.35,w:bw,h:0.4,align:"center",fontSize:15,color:CHAR,fontFace:HEAD,bold:true});
+    s.addText(st[2],{x,y:gy+1.78,w:bw,h:0.4,align:"center",fontSize:11.5,color:MUTE,fontFace:BODY});
+  });
+  footer(s,11);
+  s.addNotes("Rationale: atrium space limited; propose PVR/INOX multiplex foyer activation in the same malls. 14 multiplexes, 107 screens, ~20,000 seats/show.");
+}
+
+// ============ 12 · MULTIPLEX CONCEPT ============
+{
+  const s=p.addSlide(); s.background={color:WHITE};
+  kicker(s,"Multiplex Activation",0.6,0.6);
+  s.addText("Brand presence in the cinema foyer",{x:0.55,y:0.95,w:12,h:0.7,fontSize:30,color:CHAR,fontFace:HEAD,bold:true});
+  s.addText("An 8x8 ft Doft activation stall in the foyer, seen by every patron entering, waiting and exiting: high dwell time, a festive gifting mindset, live sampling and direct sales.",
+    {x:0.55,y:1.7,w:12.2,h:0.7,fontSize:14.5,color:TXT,fontFace:BODY,lineSpacingMultiple:1.1});
+  const cim=["ref_imgs/cinema_s6.jpg","ref_imgs/cinema_s2.jpg","ref_imgs/cinema_s4.jpg"];
+  const bw=3.95, gx=0.55, gy=2.55, gap=0.3, bh=3.5;
+  cim.forEach((im,i)=>{
+    const x=gx+i*(bw+gap);
+    s.addShape(p.ShapeType.rect,{x,y:gy,w:bw,h:bh,fill:{color:"E7E2D8"},line:{color:LINE,width:1}});
+    s.addImage({path:im,x:x+0.08,y:gy+0.08,w:bw-0.16,h:bh-0.16,sizing:{type:"cover",w:bw-0.16,h:bh-0.16}});
+  });
+  s.addText("Reference foyer activations  ·  PVR / INOX network",{x:0.55,y:gy+bh+0.12,w:12,h:0.35,fontSize:11.5,color:MUTE,fontFace:BODY,italic:true});
+  footer(s,12);
+  s.addNotes("Multiplex concept: 8x8 foyer activation stall, high dwell, sampling and direct sales. Reference activation photos.");
+}
+
+// ============ 13 · MULTIPLEX NETWORK ============
+{
+  const s=p.addSlide(); s.background={color:WHITE};
+  kicker(s,"The Network",0.6,0.45);
+  s.addText("14 premium multiplexes, pan-India",{x:0.55,y:0.8,w:12,h:0.6,fontSize:28,color:CHAR,fontFace:HEAD,bold:true});
+  const net=[
+    ["Mumbai · Lower Parel","PVR Phoenix (Worli)","7","1,275","8×8"],
+    ["Mumbai · BKC","PVR Maison BKC","6","882","6×6"],
+    ["Ahmedabad","PVR Palladium","9","1,283","8×8"],
+    ["Delhi · Saket","PVR Select Citywalk","6","1,056","8×8"],
+    ["Noida","PVR DT · Mall of India","7","1,712","8×8"],
+    ["Gurgaon","PVR Ambience Mall","11","1,122","8×8"],
+    ["Chandigarh","PVR Nexus Elante","8","1,599","6×6"],
+    ["Lucknow","PVR Superplex · Lulu","11","1,841","8×8"],
+    ["Kolkata","INOX City Centre","4","1,144","8×8"],
+    ["Kolkata","INOX City Centre II","4","1,190","8×8"],
+    ["Hyderabad","PVR Icon · Hitech City","5","936","8×8"],
+    ["Bengaluru","PVR Phoenix Market City","9","1,401","6×6"],
+    ["Chennai","INOX Luxe · Phoenix","11","2,688","6×6"],
+    ["Kochi","PVR Lulu Mall","9","1,926","8×8"],
+  ];
+  const hdr=["City","Multiplex / Cinema","Screens","Seats / show","Space"];
+  const rows=[hdr.map(t=>({text:t,options:{bold:true,color:"FFFFFF",fill:{color:CHAR},fontFace:BODY,align:"left",valign:"middle"}}))];
+  net.forEach((rw,i)=>{
+    rows.push(rw.map((t,ci)=>({text:t,options:{color:ci===0?CHAR:TXT,bold:ci===0,fill:{color:i%2?"F7F3EA":"FFFFFF"},
+      fontFace:ci===1?HEAD:BODY,align:ci>=2?"center":"left",valign:"middle",fontSize:11}})));
+  });
+  s.addTable(rows,{x:0.55,y:1.55,w:12.2,colW:[3.0,3.9,1.7,1.9,1.7],border:{type:"solid",color:"E6DECB",pt:0.5},
+    rowH:0.34,fontSize:11,valign:"middle"});
+  s.addText([{text:"Totals:  ",options:{bold:true,color:GOLDD}},
+    {text:"14 multiplexes  ·  107 screens  ·  ~20,000 seats per show  (PVR + INOX)",options:{color:TXT}}],
+    {x:0.55,y:6.75,w:12,h:0.3,fontSize:12,fontFace:BODY});
+  footer(s,13);
+  s.addNotes("Network: 14 PVR/INOX multiplexes in the same malls; 107 screens; ~20,000 seats/show.");
+}
+
+// ============ 14 · MULTIPLEX COMMERCIALS ============
+{
+  const s=p.addSlide(); s.background={color:SOFT};
+  s.addShape(p.ShapeType.rect,{x:0,y:0,w:6.6,h:H,fill:{color:WHITE}});
+  kicker(s,"Multiplex Commercials",0.6,0.6);
+  s.addText("Activation cost",{x:0.55,y:0.95,w:5.5,h:0.7,fontSize:30,color:CHAR,fontFace:HEAD,bold:true});
+  const cost=[["Per multiplex (6 weeks)","₹3,00,000"],["× 14 multiplexes","₹42,00,000"],["GST @ 18%","₹7,56,000"]];
+  let yy=2.0;
+  cost.forEach(c=>{
+    s.addText(c[0],{x:0.55,y:yy,w:3.7,h:0.5,fontSize:14.5,color:TXT,fontFace:BODY,valign:"middle"});
+    s.addText(c[1],{x:4.15,y:yy,w:1.95,h:0.5,fontSize:15,color:CHAR,fontFace:HEAD,bold:true,align:"right",valign:"middle"});
+    s.addShape(p.ShapeType.line,{x:0.55,y:yy+0.56,w:5.55,h:0,line:{color:LINE,width:0.75}});
+    yy+=0.68;
+  });
+  s.addShape(p.ShapeType.rect,{x:0.55,y:yy+0.1,w:5.55,h:0.85,fill:{color:CHAR}});
+  s.addText("Total (incl. GST)",{x:0.75,y:yy+0.1,w:2.6,h:0.85,fontSize:15,color:"FFFFFF",fontFace:HEAD,bold:true,valign:"middle"});
+  s.addText("₹49,56,000",{x:3.35,y:yy+0.1,w:2.6,h:0.85,fontSize:22,color:GOLD,fontFace:HEAD,bold:true,align:"right",valign:"middle"});
+  s.addText("For all 14 multiplexes, 6-week window.  Kiosk build, manpower & logistics as per the operations costing.",
+    {x:0.55,y:yy+1.15,w:5.6,h:0.8,fontSize:11.5,color:MUTE,fontFace:BODY,lineSpacingMultiple:1.1,valign:"top"});
+  // terms panel
+  s.addShape(p.ShapeType.rect,{x:6.6,y:0,w:0.04,h:H,fill:{color:GOLD}});
+  s.addText("TERMS",{x:7.0,y:0.75,w:5,h:0.35,fontSize:13,color:GOLDD,fontFace:BODY,bold:true,charSpacing:3});
+  const terms=["100% advance, in favour of ProMarcom","18% GST extra on the above rates",
+    "Availability to be confirmed before booking","Site once booked cannot be postponed or cancelled",
+    "Billing from date of booking / availability","Rates subject to change without prior notice"];
+  yy=1.35;
+  terms.forEach(t=>{
+    s.addShape(p.ShapeType.ellipse,{x:7.0,y:yy+0.06,w:0.15,h:0.15,fill:{color:GOLD}});
+    s.addText(t,{x:7.3,y:yy-0.05,w:5.4,h:0.5,fontSize:13.5,color:TXT,fontFace:BODY,valign:"top",lineSpacingMultiple:1.0});
+    yy+=0.62;
+  });
+  s.addText("Cinema-space commercials per the multiplex rate card; managed end-to-end by ProMarcom.",
+    {x:7.0,y:yy+0.2,w:5.7,h:0.7,fontSize:11,color:MUTE,fontFace:BODY,italic:true,lineSpacingMultiple:1.1,valign:"top"});
+  footer(s,14);
+  s.addNotes("Multiplex commercials: Rs 3,00,000 per site (6 weeks), x14 = Rs 42,00,000, +18% GST = Rs 49,56,000. Terms in favour of ProMarcom.");
+}
+
+// ============ 15 · SCOPE / TURNKEY ============
 {
   const s=p.addSlide(); s.background={color:SOFT};
   kicker(s,"Turnkey Scope",0.6,0.6);
@@ -243,7 +357,7 @@ designSlide(6,"right",IMG.interior,"Interior view","Design · Layout",
     s.addText(sc[0],{x:x+1.0, y:y+0.28, w:bw-1.15, h:0.4, fontSize:16, color:CHAR, fontFace:HEAD, bold:true});
     s.addText(sc[1],{x:x+1.0, y:y+0.72, w:bw-1.15, h:0.75, fontSize:12, color:MUTE, fontFace:BODY, lineSpacingMultiple:1.0, valign:"top"});
   });
-  footer(s,11);
+  footer(s,15);
   s.addNotes("Turnkey scope: build, transport/install, manpower, logistics, licences, daily operations & reporting.");
 }
 

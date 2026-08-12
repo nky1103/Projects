@@ -41,6 +41,7 @@ cities=wb.create_sheet("Cities List")
 setup=wb.create_sheet("Setup Cost")
 manpower=wb.create_sheet("Manpower Cost")
 location=wb.create_sheet("Location Charges")
+cinema=wb.create_sheet("Cinema Activation")
 other=wb.create_sheet("Other Elements")
 
 NK="Summary!$C$4"
@@ -201,6 +202,67 @@ for line in ["Notes:","- Rates are 3-day (Fri-Sun) activation rates, ex-GST, per
     ws.merge_cells(f"A{r}:I{r}"); ws[f"A{r}"]=line; st(ws[f"A{r}"],F(9,line=='Notes:',"6B6455"),None,"left",border=False); r+=1
 ws.freeze_panes="A5"
 
+# ============================================================= CINEMA ACTIVATION
+ws=cinema
+title_block(ws,"Cinema / Multiplex Activation  -  Alternative Location","8x8 ft foyer activation in the PVR / INOX multiplexes at the same malls. 6-week cost per site; GST 18% extra. Managed by ProMarcom.",8)
+heads=["#","City","Multiplex / Cinema","Network","Screens","Seats / show","Space","Cost - 6 weeks (Rs)"]
+for i,h in enumerate(heads):
+    st(ws.cell(4,i+1,h),F(9,True,"FFFFFF"),HEADF,"center" if i in(0,4,5,6,7) else "left",wrap=True)
+for i,w in enumerate([4,16,26,10,8,11,8,18]): ws.column_dimensions[get_column_letter(i+1)].width=w
+ws.row_dimensions[4].height=28
+cin=[
+ ("Mumbai (Lower Parel)","PVR Phoenix (Worli)","PVR",7,1275,"8x8",300000),
+ ("Mumbai (BKC)","PVR Maison BKC","PVR",6,882,"6x6",300000),
+ ("Ahmedabad","PVR Palladium","PVR",9,1283,"8x8",300000),
+ ("Delhi (Saket)","PVR Select Citywalk","PVR",6,1056,"8x8",300000),
+ ("Noida","PVR DT - Mall of India","PVR",7,1712,"8x8",300000),
+ ("Gurgaon","PVR Ambience Mall","PVR",11,1122,"8x8",300000),
+ ("Chandigarh","PVR Nexus Elante","PVR",8,1599,"6x6",300000),
+ ("Lucknow","PVR Superplex - Lulu","PVR",11,1841,"8x8",300000),
+ ("Kolkata","INOX City Centre","PVR INOX",4,1144,"8x8",300000),
+ ("Kolkata","INOX City Centre II","PVR INOX",4,1190,"8x8",300000),
+ ("Hyderabad","PVR Icon - Hitech City","PVR",5,936,"8x8",300000),
+ ("Bengaluru","PVR Phoenix Market City","PVR",9,1401,"6x6",300000),
+ ("Chennai","INOX Luxe - Phoenix","PVR INOX",11,2688,"6x6",300000),
+ ("Cochin","PVR Lulu Mall","PVR",9,1926,"8x8",300000),
+]
+r=5; first=r
+for i,(city,mn,net,scr,seat,sz,cost) in enumerate(cin,1):
+    st(ws.cell(r,1,i),F(9),None,"center")
+    st(ws.cell(r,2,city),F(10,True))
+    st(ws.cell(r,3,mn),F(9))
+    st(ws.cell(r,4,net),F(9),None,"center")
+    st(ws.cell(r,5,scr),F(9),None,"center")
+    st(ws.cell(r,6,seat),F(9),None,"center","#,##0")
+    st(ws.cell(r,7,sz),F(9),None,"center")
+    st(ws.cell(r,8,cost),F(10),INPUTF,"right",INR)
+    r+=1
+last=r-1
+st(ws.cell(r,3,"Total - 14 multiplexes (ex-GST)"),F(11,True,"FFFFFF"),TOTF)
+for cc in (1,2,4,7): st(ws.cell(r,cc),F(10,True,"FFFFFF"),TOTF)
+st(ws.cell(r,5,f"=SUM(E{first}:E{last})"),F(10,True,"FFFFFF"),TOTF,"center")
+st(ws.cell(r,6,f"=SUM(F{first}:F{last})"),F(10,True,"FFFFFF"),TOTF,"center","#,##0")
+cin_total=f"H{r}"
+st(ws.cell(r,8,f"=SUM(H{first}:H{last})"),F(11,True,"FFFFFF"),TOTF,"right",INR)
+r+=1
+st(ws.cell(r,3,"GST @ 18%"),F(10,True),SUBF)
+for cc in (1,2,4,5,6,7): st(ws.cell(r,cc),F(10),SUBF)
+cin_gst=f"H{r}"
+st(ws.cell(r,8,f"={cin_total}*Summary!$C$8"),F(10),SUBF,"right",INR)
+r+=1
+st(ws.cell(r,3,"Total incl. GST"),F(11,True),GOLDF)
+for cc in (1,2,4,5,6,7): st(ws.cell(r,cc),F(10,True),GOLDF)
+cin_incl=f"H{r}"
+st(ws.cell(r,8,f"={cin_total}+{cin_gst}"),F(11,True,GOLDD),GOLDF,"right",INR)
+r+=2
+for line in ["Terms (per the multiplex rate card, managed by ProMarcom):",
+             "- 100% advance, in favour of ProMarcom.  18% Govt. service tax extra on the above rates.",
+             "- Availability to be confirmed before booking; site once booked cannot be postponed or cancelled.",
+             "- Billing from date of booking / availability; rates subject to change without prior notice.",
+             "- Alternative to the mall-atrium location (see Location Charges); proposed as atrium space on long-term rental is limited."]:
+    ws.merge_cells(f"A{r}:H{r}"); ws[f"A{r}"]=line; st(ws[f"A{r}"],F(9,line.startswith("Terms"),"6B6455"),None,"left",border=False); r+=1
+ws.freeze_panes="A5"
+
 # ============================================================= OTHER ELEMENTS
 ws=other
 title_block(ws,"Other Elements","Logistics, insurance, operations and pass-through items (per kiosk / season). Hardware & software left blank pending confirmation.",6)
@@ -353,6 +415,18 @@ st(ws.cell(r,2,None),F(10),GOLDF); st(ws.cell(r,3,None),F(10),GOLDF)
 st(ws.cell(r,4,f"=D{r-2}/$C$4"),F(10,True,GOLDD),GOLDF,"right",INR)
 ws.merge_cells(f"E{r}:F{r}"); st(ws.cell(r,5,None),None,GOLDF)
 r+=2
+# alternative location channel: multiplex
+st(ws.cell(r,1,"Alternative location channel  -  Multiplex activation"),F(10,True,"FFFFFF"),HEADF)
+for cc in (2,3,4,5,6): st(ws.cell(r,cc),F(10,True,"FFFFFF"),HEADF)
+ws.merge_cells(f"E{r}:F{r}"); r+=1
+st(ws.cell(r,1,"D2. Multiplex activation (14 PVR/INOX, 6 wk)"),F(10,True))
+st(ws.cell(r,2,"Cinema Activation"),F(9,color="6B6455"),None,"center")
+st(ws.cell(r,4,f"='Cinema Activation'!{cin_total}"),F(10),None,"right",INR)
+ws.merge_cells(f"E{r}:F{r}"); st(ws.cell(r,5,"Alternative to atrium (D); ex-GST"),F(9,color="6B6455"),None,"left",wrap=True); r+=1
+st(ws.cell(r,1,"GRAND TOTAL  -  multiplex option (incl. fee & GST)"),F(11,True,"FFFFFF"),TOTF)
+st(ws.cell(r,2,None),F(10,True,"FFFFFF"),TOTF); st(ws.cell(r,3,None),F(10,True,"FFFFFF"),TOTF)
+st(ws.cell(r,4,f"=(D11+D12+D13+'Cinema Activation'!{cin_total})*(1+$C$7)*(1+$C$8)"),F(11,True,GOLD),TOTF,"right",INR)
+ws.merge_cells(f"E{r}:F{r}"); st(ws.cell(r,5,"A + B + C + multiplex, then fee & GST"),F(9,color="D8CDB6"),TOTF,"left",wrap=True); r+=2
 notes=["Basis & notes:",
  "- Figures sourced from the execution-agency ops sheet (build + manpower + logistics + insurance) and the mall activation rate card.",
  "- Location / mall space (D) is a 3-day (Fri-Sun) rate card, ex-GST; the 6-week festive licence, CAM, electricity and deposits are to be negotiated per mall (blank).",
