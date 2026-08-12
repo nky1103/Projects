@@ -27,3 +27,8 @@ shotdraw.js
 # junk / scratch
 brief_assets/__MACOSX/
 threescene_conceptB_backup.html
+
+# QA / preview scratch
+qa_*.png
+cost_preview.html
+cost_preview.png
