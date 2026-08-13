@@ -1,0 +1,158 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-600.ttf'); font-weight:600; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#000; overflow:hidden; }
+  #stage { width:1080px; height:1920px; position:relative; overflow:hidden; background:#090c12; font-family:'Inter','Noto Color Emoji',sans-serif; color:#f4f1ea; }
+  #stage::before { content:''; position:absolute; inset:0; z-index:0;
+    background:radial-gradient(820px 640px at 50% 22%, rgba(20,184,166,.20), transparent 62%),
+      radial-gradient(760px 700px at 90% 108%, rgba(15,118,110,.13), transparent 60%),
+      radial-gradient(680px 600px at 4% 2%, rgba(20,184,166,.08), transparent 60%); }
+  #stage::after { content:''; position:absolute; inset:0; z-index:0;
+    background-image:linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size:96px 96px; mask-image:radial-gradient(1000px 1400px at 50% 45%, #000 25%, transparent 100%); -webkit-mask-image:radial-gradient(1000px 1400px at 50% 45%, #000 25%, transparent 100%); }
+
+  .chrome { position:absolute; left:0; right:0; z-index:6; display:flex; align-items:center; padding:0 84px; }
+  #hdr { top:84px; justify-content:space-between; }
+  .brand { display:flex; align-items:center; gap:18px; }
+  .brand .mark { width:64px; height:64px; border-radius:18px; background:linear-gradient(135deg,#f59e0b,#ea580c); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 30px rgba(0,0,0,.5); }
+  .brand .name { font-weight:700; font-size:34px; color:#e8e4da; } .brand .name span { color:#f59e0b; }
+  .tag { font-weight:800; font-size:22px; letter-spacing:2px; color:#14b8a6; text-transform:uppercase; }
+  #ftr { bottom:96px; justify-content:center; gap:20px; }
+  .handle { font-weight:800; font-size:34px; color:#f4f1ea; }
+  .followpill { font-weight:700; font-size:24px; color:#0b0e14; background:#14b8a6; border-radius:99px; padding:12px 26px; }
+
+  /* studio mic + equalizer */
+  #studio { position:absolute; z-index:3; left:0; right:0; top:340px; display:flex; flex-direction:column; align-items:center; gap:34px; }
+  .mic { filter:drop-shadow(0 10px 30px rgba(20,184,166,.35)); }
+  .eq { display:flex; align-items:flex-end; gap:11px; height:96px; }
+  .eq b { width:12px; border-radius:99px; background:linear-gradient(180deg,#2dd4bf,#0f766e); display:block; height:20px; transform-origin:bottom; }
+
+  /* center content */
+  #center { position:absolute; z-index:4; left:0; right:0; top:0; bottom:0; display:flex; align-items:center; justify-content:center; padding:0 96px; }
+  .hook { position:absolute; top:720px; left:96px; right:96px; text-align:center; opacity:0; will-change:transform,opacity; }
+  .hook h1 { font-weight:900; font-size:70px; line-height:1.16; letter-spacing:-1.5px; text-wrap:balance; }
+  .hook h1 .ac { color:#14b8a6; }
+
+  .card { position:absolute; width:884px; opacity:0; will-change:transform,opacity;
+    background:rgba(9,12,18,.82); border:2px solid rgba(20,184,166,.55); border-left:10px solid #14b8a6;
+    border-radius:12px 34px 34px 12px; padding:52px 60px; box-shadow:0 30px 80px rgba(0,0,0,.55); }
+  .card .eyebrow { display:inline-flex; align-items:center; gap:14px; font-weight:800; font-size:24px; letter-spacing:4px; text-transform:uppercase; color:#14b8a6; margin-bottom:26px; }
+  .card .eyebrow .sq { width:18px; height:18px; border-radius:5px; background:linear-gradient(135deg,#14b8a6,#0f766e); }
+  .card .big { font-weight:900; letter-spacing:-1.5px; line-height:1.1; color:#f4f1ea; }
+  .card .num { color:#14b8a6; }
+  .card .sub { margin-top:20px; font-weight:600; font-size:36px; color:#aab2c0; line-height:1.3; }
+
+  /* subtitles */
+  #subs { position:absolute; z-index:6; left:90px; right:90px; bottom:278px; display:flex; justify-content:center; }
+  .sub-line { display:inline-block; opacity:0; text-align:center; font-weight:800; font-size:44px; line-height:1.3;
+    color:#f4f1ea; background:rgba(9,12,18,.66); border-radius:18px; padding:16px 30px;
+    max-width:900px; will-change:opacity; text-shadow:0 2px 10px rgba(0,0,0,.65); }
+  .sub-line .hl { color:#2dd4bf; }
+</style>
+<svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
+  <path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/>
+  <path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/>
+  <circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/>
+  <rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/>
+  <circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/>
+  <circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/>
+  <path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></symbol></svg>
+
+<div id="stage">
+  <div class="chrome" id="hdr"><div class="brand"><div class="mark"><svg width="48" height="48"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="tag">Growth Capital · #004</div></div>
+
+  <div id="studio">
+    <svg class="mic" width="150" height="150" viewBox="0 0 100 100">
+      <rect x="38" y="14" width="24" height="46" rx="12" fill="#0f1620" stroke="#2dd4bf" stroke-width="2.4"/>
+      <line x1="43" y1="24" x2="57" y2="24" stroke="#14b8a6" stroke-width="2"/>
+      <line x1="43" y1="32" x2="57" y2="32" stroke="#14b8a6" stroke-width="2"/>
+      <line x1="43" y1="40" x2="57" y2="40" stroke="#14b8a6" stroke-width="2"/>
+      <path d="M30 52 a20 20 0 0 0 40 0" fill="none" stroke="#2dd4bf" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="50" y1="72" x2="50" y2="84" stroke="#2dd4bf" stroke-width="2.4"/>
+      <line x1="36" y1="84" x2="64" y2="84" stroke="#2dd4bf" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+    <div class="eq" id="eq"></div>
+  </div>
+
+  <div id="center">
+    <div class="hook" id="hook"><h1>Everyone says India can't make its own <span class="ac">chips.</span></h1></div>
+
+    <div class="card" id="c1"><div class="eyebrow"><span class="sq"></span>The Round</div><div class="big" style="font-size:130px;"><span class="num">₹107 Cr</span></div><div class="sub">Series A, led by <b style="color:#f4f1ea;">Zoho</b></div></div>
+    <div class="card" id="c2"><div class="eyebrow"><span class="sq"></span>What They Build</div><div class="big" style="font-size:88px;">Edge-AI <span class="num">chips</span></div><div class="sub">Made in India, with its own IP</div></div>
+    <div class="card" id="c3"><div class="eyebrow"><span class="sq"></span>The Gap</div><div class="big" style="font-size:76px;">India imports <span class="num">nearly every chip</span> it runs on.</div></div>
+    <div class="card" id="c4"><div class="eyebrow"><span class="sq"></span>The Thesis</div><div class="big" style="font-size:82px;">Fund the <span class="num">chip</span>, not the app.</div></div>
+  </div>
+
+  <div id="subs"><div class="sub-line" id="subline"></div></div>
+  <div class="chrome" id="ftr"><div class="handle">@statupsutra</div><div class="followpill">Follow +</div></div>
+</div>
+
+<script>
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+const p=(t,t0,d)=>clamp((t-t0)/d,0,1);
+const easeOut=x=>1-Math.pow(1-x,3);
+const $=id=>document.getElementById(id);
+
+const CARDS=[
+  {id:'c1', s:6.5,  e:12.5},
+  {id:'c2', s:12.6, e:16.4},
+  {id:'c3', s:16.5, e:22.0},
+  {id:'c4', s:22.1, e:28.7},
+];
+const HOOK={s:0.2, e:6.35};
+const SUBS=[
+  {s:0.45,e:3.48, html:"Everyone says India can't make its own <span class='hl'>chips.</span>"},
+  {s:3.77,e:6.25, html:"One startup just <span class='hl'>proved them wrong.</span>"},
+  {s:6.53,e:12.54, html:"Netrasemi (Kerala) raised <span class='hl'>₹107 crore</span>, led by Zoho,"},
+  {s:12.82,e:16.27, html:"to design <span class='hl'>edge-AI chips</span> in India, with its own IP."},
+  {s:16.55,e:21.96, html:"India writes world-class software, but <span class='hl'>imports almost every chip</span> it runs on."},
+  {s:22.24,e:26.14, html:"This money funds the hardest frontier: <span class='hl'>the silicon itself.</span>"},
+  {s:26.41,e:28.9, html:"<span class='hl'>Self-reliance</span> is the real thesis."},
+];
+const TOTAL=29.18;
+
+// build equalizer bars + subtitle nodes
+const eq=$('eq'); for(let i=0;i<9;i++){ eq.appendChild(document.createElement('b')); }
+const eqbars=[...eq.children];
+const subline=$('subline'); let lastIdx=-2;
+
+function activeVoice(t){ return SUBS.some(s=>t>=s.s-0.05 && t<=s.e); }
+
+window.seek=function(t){
+  // equalizer: lively only while "speaking"
+  const speaking=activeVoice(t)?1:0.18;
+  eqbars.forEach((b,i)=>{
+    const w=1.6+i*0.5, ph=i*0.9;
+    const amp=(0.5+0.5*Math.sin(t*w*3.2+ph))*(0.4+0.6*Math.abs(Math.sin(t*2.1+i)));
+    const h=18+amp*78*speaking;
+    b.style.height=h.toFixed(1)+'px';
+    b.style.opacity=(0.55+0.45*speaking).toFixed(2);
+  });
+  // hook
+  const hk=$('hook');
+  const hi=easeOut(p(t,HOOK.s,0.5)); const ho=1-p(t,HOOK.e-0.4,0.4);
+  hk.style.opacity=(hi*ho).toFixed(3);
+  hk.style.transform=`translateY(${((1-hi)*40).toFixed(1)}px)`;
+  // studio group fades slightly back once cards start
+  const st=$('studio'); st.style.opacity=(1-0.35*p(t,6.2,0.6)).toFixed(3);
+  // cards
+  CARDS.forEach(c=>{ const el=$(c.id);
+    const fi=easeOut(p(t,c.s,0.38)); const fo=1-p(t,c.e-0.35,0.35);
+    const vis=(t>=c.s-0.1 && t<=c.e+0.1);
+    el.style.opacity=vis?(fi*fo).toFixed(3):0;
+    el.style.transform=`translateY(${((1-fi)*46).toFixed(1)}px) scale(${(0.965+0.035*fi).toFixed(3)})`;
+  });
+  // subtitles (single anchored node, one line at a time)
+  let cur=-1;
+  for(let i=0;i<SUBS.length;i++){ const s=SUBS[i]; if(t>=s.s-0.15 && t<=s.e+0.25){ cur=i; break; } }
+  if(cur!==lastIdx){ if(cur>=0) subline.innerHTML=SUBS[cur].html; lastIdx=cur; }
+  if(cur<0){ subline.style.opacity=0; }
+  else { const s=SUBS[cur]; const fi=p(t,s.s-0.08,0.2); const fo=1-p(t,s.e,0.22);
+    subline.style.opacity=clamp(fi*fo,0,1).toFixed(3); }
+};
+seek(0);
+</script>
