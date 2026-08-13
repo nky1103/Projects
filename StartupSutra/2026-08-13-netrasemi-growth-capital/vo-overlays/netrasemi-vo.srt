@@ -1,0 +1,27 @@
+1
+00:00:00,000 --> 00:00:03,600
+Everyone says India can't make its own chips.
+
+2
+00:00:03,600 --> 00:00:06,200
+One startup just proved them wrong.
+
+3
+00:00:06,200 --> 00:00:11,800
+Netrasemi, in Kerala, raised ₹107 crore, led by Zoho,
+
+4
+00:00:11,800 --> 00:00:15,800
+to design edge-AI chips in India, with its own IP.
+
+5
+00:00:15,800 --> 00:00:20,400
+India writes world-class software, but imports almost every chip it runs on.
+
+6
+00:00:20,400 --> 00:00:23,300
+This money funds the hardest frontier, the silicon itself.
+
+7
+00:00:23,300 --> 00:00:25,500
+Self-reliance is the real thesis.
