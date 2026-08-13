@@ -91,20 +91,21 @@
   <div class="chrome" id="ftr"><div class="handle">@statupsutra</div><div class="followpill">Follow +</div></div>
 </div>
 
+<script src="studio_timeline.js"></script>
 <script>
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
 const p=(t,t0,d)=>clamp((t-t0)/d,0,1);
 const easeOut=x=>1-Math.pow(1-x,3);
 const $=id=>document.getElementById(id);
 
-const CARDS=[
+const CARDS=window.CARDS||[
   {id:'c1', s:6.5,  e:12.5},
   {id:'c2', s:12.6, e:16.4},
   {id:'c3', s:16.5, e:22.0},
   {id:'c4', s:22.1, e:28.7},
 ];
-const HOOK={s:0.2, e:6.35};
-const SUBS=[
+const HOOK=window.HOOK||{s:0.2, e:6.35};
+const SUBS=window.SUBS||[
   {s:0.45,e:3.48, html:"Everyone says India can't make its own <span class='hl'>chips.</span>"},
   {s:3.77,e:6.25, html:"One startup just <span class='hl'>proved them wrong.</span>"},
   {s:6.53,e:12.54, html:"Netrasemi (Kerala) raised <span class='hl'>₹107 crore</span>, led by Zoho,"},
@@ -113,7 +114,7 @@ const SUBS=[
   {s:22.24,e:26.14, html:"This money funds the hardest frontier: <span class='hl'>the silicon itself.</span>"},
   {s:26.41,e:28.9, html:"<span class='hl'>Self-reliance</span> is the real thesis."},
 ];
-const TOTAL=29.18;
+const TOTAL=window.TOTAL||29.18;
 
 // build equalizer bars + subtitle nodes
 const eq=$('eq'); for(let i=0;i<9;i++){ eq.appendChild(document.createElement('b')); }

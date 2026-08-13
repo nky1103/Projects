@@ -1,20 +1,29 @@
-# Netrasemi voiceover reel — finished video
+# Netrasemi voiceover reel — finished video (natural neural voice)
 
-`netrasemi-vo-reel.mp4` — 29s, 1080x1920, narrated studio/data-slide reel, built
-entirely in-pipeline (no Gemini / no paid tools). Dark teal Growth Capital studio,
-animated mic + equalizer, data cards synced to the narration, burned-in subtitles,
-soft music bed.
+`netrasemi-vo-reel.mp4` — 27.6s, 1080x1920. Narrated studio/data-slide reel built
+100% in our own pipeline: no Gemini, no ElevenLabs, no paid credits, no web tools.
 
-## Honest note on the voice
-The narration is a FREE offline synthetic voice (espeak-ng, formant synth). It is
-robotic, a scratch/placeholder, not a natural neural voice. Everything else,
-visuals, timing, subtitles, music, is final and on-brand.
+## The voice
+Natural neural TTS via **Kokoro** (82M, open-source, MIT), running offline on CPU
+in the build container. Voice: `af_heart`. This is a real human-sounding voice,
+not the earlier robotic espeak scratch.
 
-## Swapping in a real voice (1-minute re-mux, still free)
-1. Record the script on a phone (or a free ElevenLabs / Gemini trial). Script is
-   in `overlay-README.md`.
-2. Drop the new voice track over `studio-source.html` output, or send the audio
-   file and it gets muxed in place of the espeak track. The visual timings are in
-   `studio-source.html` (CARDS / SUBS arrays) if the new VO changes the pacing.
+## How it's made (fully reproducible + free)
+1. Model weights (one-time, ~350MB) pulled from the Kokoro GitHub release
+   (github.com/thewh1teagle/kokoro-onnx, model-files-v1.0). HuggingFace is blocked
+   by the egress proxy; GitHub releases are not, so we fetch from there.
+2. `kokoro_build.py` synthesizes each narration line, measures real durations, and
+   writes `studio_timeline.js` (subtitle + data-card timings) + `vo_kokoro.wav`.
+3. `studio-source.html` renders the animated studio (mic, equalizer, data cards,
+   burned-in subtitles) frame-by-frame on that timeline via Playwright.
+4. ffmpeg encodes + mixes the voice with a soft music bed.
 
-Source: `studio-source.html` (animation), `overlay-README.md` (script + timings).
+## Changing the voice
+Edit `VOICE` in `kokoro_build.py`. Options include af_heart, af_bella, af_sarah,
+am_michael, am_adam, bf_emma, bf_isabella, bm_george (US/UK male & female).
+Kokoro has no native Indian-English voice; af_heart / bf_emma read cleanest.
+Adjust `SPEED` (0.95 = calm documentary pace).
+
+## Templating for every episode
+The pipeline is subject-agnostic: swap the 7 lines + card text + pillar color and
+it produces a VO reel for any episode, free and unattended.
