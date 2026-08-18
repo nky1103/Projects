@@ -302,44 +302,60 @@ designSlide(6,"right",IMG.interior,"Interior view","Design · Layout",
   s.addNotes("Network: 14 PVR/INOX multiplexes in the same malls; 107 screens; ~20,000 seats/show.");
 }
 
-// ============ 14 · MULTIPLEX COMMERCIALS ============
-{
-  const s=p.addSlide(); s.background={color:SOFT};
-  s.addShape(p.ShapeType.rect,{x:0,y:0,w:6.6,h:H,fill:{color:WHITE}});
-  kicker(s,"Multiplex Commercials",0.6,0.6);
-  s.addText("Activation cost",{x:0.55,y:0.95,w:5.5,h:0.7,fontSize:30,color:CHAR,fontFace:HEAD,bold:true});
-  const cost=[["Per multiplex (6 weeks)","₹3,00,000"],["× 14 multiplexes","₹42,00,000"],["GST @ 18%","₹7,56,000"]];
-  let yy=2.0;
-  cost.forEach(c=>{
-    s.addText(c[0],{x:0.55,y:yy,w:3.7,h:0.5,fontSize:14.5,color:TXT,fontFace:BODY,valign:"middle"});
-    s.addText(c[1],{x:4.15,y:yy,w:1.95,h:0.5,fontSize:15,color:CHAR,fontFace:HEAD,bold:true,align:"right",valign:"middle"});
-    s.addShape(p.ShapeType.line,{x:0.55,y:yy+0.56,w:5.55,h:0,line:{color:LINE,width:0.75}});
-    yy+=0.68;
+// ============ 14-16 · ACTIVATION COST (client-facing, quoted only) ============
+function rupee(n){n=Math.round(n);let s=String(Math.abs(n));let l3=s.slice(-3);let rest=s.slice(0,-3);
+  if(rest)l3=","+l3; rest=rest.replace(/\B(?=(\d\d)+(?!\d))/g,","); return "₹"+rest+l3;}
+function costSlide(n, sub, rows, note){
+  const s=p.addSlide(); s.background={color:WHITE};
+  kicker(s,"14-City  ·  42-Day Activation Program",0.6,0.6);
+  s.addText(sub,{x:0.55,y:0.95,w:11,h:0.7,fontSize:30,color:CHAR,fontFace:HEAD,bold:true});
+  let y=2.0; const lx=1.1, rx=8.2, rw=4.0;
+  rows.forEach(r=>{
+    const label=r[0],amt=r[1],ty=r[2]||'norm';
+    if(ty==='total'){
+      s.addShape(p.ShapeType.rect,{x:lx,y:y+0.05,w:11.1,h:0.76,fill:{color:CHAR}});
+      s.addText(label,{x:lx+0.25,y:y+0.05,w:7,h:0.76,fontSize:16,color:WHITE,fontFace:HEAD,bold:true,valign:"middle"});
+      s.addText(amt,{x:lx+7.3,y:y+0.05,w:3.55,h:0.76,fontSize:23,color:GOLD,fontFace:HEAD,bold:true,align:"right",valign:"middle"});
+      y+=0.92;
+    }else{
+      const b=(ty==='sub');
+      s.addText(label,{x:lx,y:y,w:7,h:0.46,fontSize:b?15:14.5,color:b?CHAR:TXT,fontFace:b?HEAD:BODY,bold:b,valign:"middle"});
+      s.addText(amt,{x:rx,y:y,w:rw,h:0.46,fontSize:b?16:15,color:b?CHAR:TXT,fontFace:HEAD,bold:b,align:"right",valign:"middle"});
+      s.addShape(p.ShapeType.line,{x:lx,y:y+0.48,w:11.1,h:0,line:{color:LINE,width:0.75}});
+      y+=0.56;
+    }
   });
-  s.addShape(p.ShapeType.rect,{x:0.55,y:yy+0.1,w:5.55,h:0.85,fill:{color:CHAR}});
-  s.addText("Total (incl. GST)",{x:0.75,y:yy+0.1,w:2.6,h:0.85,fontSize:15,color:"FFFFFF",fontFace:HEAD,bold:true,valign:"middle"});
-  s.addText("₹49,56,000",{x:3.35,y:yy+0.1,w:2.6,h:0.85,fontSize:22,color:GOLD,fontFace:HEAD,bold:true,align:"right",valign:"middle"});
-  s.addText("For all 14 multiplexes, 6-week window.  Kiosk build, manpower & logistics as per the operations costing.",
-    {x:0.55,y:yy+1.15,w:5.6,h:0.8,fontSize:11.5,color:MUTE,fontFace:BODY,lineSpacingMultiple:1.1,valign:"top"});
-  // terms panel
-  s.addShape(p.ShapeType.rect,{x:6.6,y:0,w:0.04,h:H,fill:{color:GOLD}});
-  s.addText("TERMS",{x:7.0,y:0.75,w:5,h:0.35,fontSize:13,color:GOLDD,fontFace:BODY,bold:true,charSpacing:3});
-  const terms=["100% advance, in favour of ProMarcom","18% GST extra on the above rates",
-    "Availability to be confirmed before booking","Site once booked cannot be postponed or cancelled",
-    "Billing from date of booking / availability","Rates subject to change without prior notice"];
-  yy=1.35;
-  terms.forEach(t=>{
-    s.addShape(p.ShapeType.ellipse,{x:7.0,y:yy+0.06,w:0.15,h:0.15,fill:{color:GOLD}});
-    s.addText(t,{x:7.3,y:yy-0.05,w:5.4,h:0.5,fontSize:13.5,color:TXT,fontFace:BODY,valign:"top",lineSpacingMultiple:1.0});
-    yy+=0.62;
-  });
-  s.addText("Cinema-space commercials per the multiplex rate card; managed end-to-end by ProMarcom.",
-    {x:7.0,y:yy+0.2,w:5.7,h:0.7,fontSize:11,color:MUTE,fontFace:BODY,italic:true,lineSpacingMultiple:1.1,valign:"top"});
-  footer(s,14);
-  s.addNotes("Multiplex commercials: Rs 3,00,000 per site (6 weeks), x14 = Rs 42,00,000, +18% GST = Rs 49,56,000. Terms in favour of ProMarcom.");
+  if(note)s.addText(note,{x:lx,y:y+0.16,w:11.1,h:0.55,fontSize:11.5,color:MUTE,fontFace:BODY,italic:true,lineSpacingMultiple:1.1,valign:"top"});
+  footer(s,n);
+  s.addNotes(sub+" : client-facing quoted figures only.");
 }
+costSlide(14,"Activation Cost",[
+  ["Kiosk setup & build  (14 kiosks)", rupee(7757600)],
+  ["Manpower  (sales, billing, supervision, city managers)", rupee(17038000)],
+  ["Other elements  (logistics, insurance, hardware, operations)", rupee(6552000)],
+  ["Sub-total  (ex-GST)", rupee(31347600),'sub'],
+  ["Agency fee  (10%)", rupee(3134760)],
+  ["GST  (18%)", rupee(6206825)],
+  ["Total  (incl. GST)", rupee(40689185),'total'],
+],"Turnkey operations for all 14 cities across the 42-day program. Add a media option (Multiplex or Atrium) for the all-in cost.");
 
-// ============ 15 · SCOPE / TURNKEY ============
+costSlide(15,"Multiplex Option",[
+  ["Cinema-foyer media  ·  14 PVR / INOX sites × ₹3,00,000 (6 wk)", rupee(4200000)],
+  ["GST  (18%)", rupee(756000)],
+  ["Media sub-total  (incl. GST)", rupee(4956000),'sub'],
+  ["Operations  (incl. GST, from Activation Cost)", rupee(40689185)],
+  ["Programme total, Multiplex  (incl. GST)", rupee(45645185),'total'],
+],"PVR / INOX foyer activation, managed by ProMarcom. 100% advance; availability to be confirmed; rates subject to change.");
+
+costSlide(16,"Atrium Option",[
+  ["Mall-atrium media  ·  14 malls, per rate card (ex-GST)", rupee(14511750)],
+  ["GST  (18%)", rupee(2612115)],
+  ["Media sub-total  (incl. GST)", rupee(17123865),'sub'],
+  ["Operations  (incl. GST, from Activation Cost)", rupee(40689185)],
+  ["Programme total, Atrium  (incl. GST)", rupee(57813050),'total'],
+],"Mall-atrium activation at the 14 preferred malls. Several locations subject to availability; rates indicative, per the rate card.");
+
+// ============ 17 · SCOPE / TURNKEY ============
 {
   const s=p.addSlide(); s.background={color:SOFT};
   kicker(s,"Turnkey Scope",0.6,0.6);
@@ -357,7 +373,7 @@ designSlide(6,"right",IMG.interior,"Interior view","Design · Layout",
     s.addText(sc[0],{x:x+1.0, y:y+0.28, w:bw-1.15, h:0.4, fontSize:16, color:CHAR, fontFace:HEAD, bold:true});
     s.addText(sc[1],{x:x+1.0, y:y+0.72, w:bw-1.15, h:0.75, fontSize:12, color:MUTE, fontFace:BODY, lineSpacingMultiple:1.0, valign:"top"});
   });
-  footer(s,15);
+  footer(s,17);
   s.addNotes("Turnkey scope: build, transport/install, manpower, logistics, licences, daily operations & reporting.");
 }
 

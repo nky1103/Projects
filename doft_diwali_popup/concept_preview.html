@@ -135,22 +135,10 @@ img.contain{object-fit:contain}img.cover{object-fit:cover}
   <div class="pg">13</div>
 </div>
 
-<!-- 14 MULTIPLEX COMMERCIALS -->
-<div class="s" style="background:#EFEAE0">
-  <div style="position:absolute;left:0;top:0;width:6.6in;height:100%;background:#fff"></div>
-  <div class="k" style="position:absolute;left:.6in;top:.6in">MULTIPLEX COMMERCIALS</div>
-  <div class="h" style="position:absolute;left:.55in;top:.95in;font-size:30pt">Activation cost</div>
-  <div id="costlines"></div>
-  <div style="position:absolute;left:.55in;top:4.15in;width:5.55in;height:.85in;background:#2B2621;display:flex;align-items:center;justify-content:space-between;padding:0 .2in">
-    <span class="h" style="color:#fff;font-size:15pt">Total (incl. GST)</span><span class="h gold" style="font-size:22pt">₹49,56,000</span></div>
-  <div class="sans" style="position:absolute;left:.55in;top:5.2in;width:5.6in;font-size:11.5pt;color:#857B6C;line-height:1.1">For all 14 multiplexes, 6-week window. Kiosk build, manpower &amp; logistics as per the operations costing.</div>
-  <div style="position:absolute;left:6.6in;top:0;width:.04in;height:100%;background:#C6A24E"></div>
-  <div class="sans" style="position:absolute;left:7.0in;top:.75in;font-size:13pt;font-weight:700;letter-spacing:.12em;color:#A9813A">TERMS</div>
-  <div id="terms"></div>
-  <div class="sans" style="position:absolute;left:7.0in;top:5.6in;width:5.7in;font-size:11pt;color:#857B6C;font-style:italic;line-height:1.15">Cinema-space commercials per the multiplex rate card; managed end-to-end by ProMarcom.</div>
-  <div class="foot"><b class="gold" style="font-family:Georgia">DOFT</b> · SCENTED MEMORIES · Diwali Pop-Up Kiosk Concept</div>
-  <div class="pg">14</div>
-</div>
+<!-- 14-16 ACTIVATION COST (client-facing, quoted) -->
+<div class="s" id="cost14"></div>
+<div class="s" id="cost15"></div>
+<div class="s" id="cost16"></div>
 
 <!-- 11 SCOPE -->
 <div class="s" style="background:#EFEAE0">
@@ -158,7 +146,7 @@ img.contain{object-fit:contain}img.cover{object-fit:cover}
   <div class="h" style="position:absolute;left:.55in;top:.95in;font-size:30pt">ProMarcom runs the whole programme</div>
   <div id="scope"></div>
   <div class="foot"><b class="gold" style="font-family:Georgia">DOFT</b> · SCENTED MEMORIES · Diwali Pop-Up Kiosk Concept</div>
-  <div class="pg">15</div>
+  <div class="pg">17</div>
 </div>
 
 <!-- 12 CLOSING -->
@@ -254,15 +242,47 @@ const net=[["Mumbai · Lower Parel","PVR Phoenix (Worli)","7","1,275","8×8"],["
 const nh=["City","Multiplex / Cinema","Screens","Seats / show","Space"];
 document.getElementById('nettab').innerHTML="<tr>"+nh.map((t,i)=>`<th style="background:#2B2621;color:#fff;text-align:${i>=2?'center':'left'};padding:5px 9px;font-size:10pt;border:1px solid #E6DECB">${t}</th>`).join('')+"</tr>"+
  net.map((r,i)=>"<tr>"+r.map((c,ci)=>`<td style="background:${i%2?'#F7F3EA':'#fff'};color:${ci===0?'#2B2621':'#2A2621'};font-weight:${ci===0?'700':'400'};font-family:${ci===1?'Georgia,serif':'inherit'};text-align:${ci>=2?'center':'left'};padding:4px 9px;border:1px solid #E6DECB">${c}</td>`).join('')+"</tr>").join('');
-const cost=[["Per multiplex (6 weeks)","₹3,00,000"],["× 14 multiplexes","₹42,00,000"],["GST @ 18%","₹7,56,000"]];
-$('costlines').innerHTML=cost.map((c,i)=>{const y=2.0+i*0.68;
- return `<div style="position:absolute;left:.55in;top:${y}in;width:5.55in;border-bottom:1px solid #E6DECB;padding-bottom:.1in">
-  <span class="sans" style="font-size:14.5pt;color:#2A2621">${c[0]}</span>
-  <span class="h" style="position:absolute;right:0;top:0;font-size:15pt">${c[1]}</span></div>`;}).join('');
-const terms=["100% advance, in favour of ProMarcom","18% GST extra on the above rates","Availability to be confirmed before booking","Site once booked cannot be postponed or cancelled","Billing from date of booking / availability","Rates subject to change without prior notice"];
-$('terms').innerHTML=terms.map((t,i)=>{const y=1.35+i*0.62;
- return `<div style="position:absolute;left:7.0in;top:${y}in;width:5.7in">
-  <div style="position:absolute;left:0;top:.07in;width:.15in;height:.15in;border-radius:50%;background:#C6A24E"></div>
-  <div class="sans" style="position:absolute;left:.3in;font-size:13.5pt;color:#2A2621">${t}</div></div>`;}).join('');
+function costSlide(elid,pg,sub,rows,note){
+  let y=2.0; const lx=1.1, rw=11.1; let h='';
+  h+=`<div class="k" style="position:absolute;left:.6in;top:.6in">14-CITY · 42-DAY ACTIVATION PROGRAM</div>`;
+  h+=`<div class="h" style="position:absolute;left:.55in;top:.95in;font-size:30pt">${sub}</div>`;
+  rows.forEach(r=>{const[label,amt,ty]=r;
+    if(ty==='total'){
+      h+=`<div style="position:absolute;left:${lx}in;top:${y+0.05}in;width:${rw}in;height:.76in;background:#2B2621;display:flex;align-items:center;justify-content:space-between;padding:0 .25in">
+        <span class="h" style="color:#fff;font-size:16pt">${label}</span><span class="h gold" style="font-size:23pt">${amt}</span></div>`;
+      y+=0.92;
+    }else{const b=(ty==='sub');
+      h+=`<div style="position:absolute;left:${lx}in;top:${y}in;width:${rw}in;border-bottom:1px solid #E6DECB;height:.48in">
+        <span class="${b?'h':'sans'}" style="font-size:${b?15:14.5}pt;color:${b?'#2B2621':'#2A2621'};${b?'font-weight:700':''}">${label}</span>
+        <span class="h" style="position:absolute;right:0;top:0;font-size:${b?16:15}pt;${b?'':'font-weight:400'}">${amt}</span></div>`;
+      y+=0.56;
+    }});
+  if(note)h+=`<div class="sans" style="position:absolute;left:${lx}in;top:${y+0.16}in;width:${rw}in;font-size:11.5pt;color:#857B6C;font-style:italic;line-height:1.1">${note}</div>`;
+  h+=`<div class="foot"><b class="gold" style="font-family:Georgia">DOFT</b> · SCENTED MEMORIES · Diwali Pop-Up Kiosk Concept</div><div class="pg">${pg}</div>`;
+  document.getElementById(elid).innerHTML=h;
+}
+costSlide('cost14',14,'Activation Cost',[
+  ['Kiosk setup &amp; build (14 kiosks)','₹77,57,600'],
+  ['Manpower (sales, billing, supervision, city managers)','₹1,70,38,000'],
+  ['Other elements (logistics, insurance, hardware, operations)','₹65,52,000'],
+  ['Sub-total (ex-GST)','₹3,13,47,600','sub'],
+  ['Agency fee (10%)','₹31,34,760'],
+  ['GST (18%)','₹62,06,825'],
+  ['Total (incl. GST)','₹4,06,89,185','total'],
+],'Turnkey operations for all 14 cities across the 42-day program. Add a media option (Multiplex or Atrium) for the all-in cost.');
+costSlide('cost15',15,'Multiplex Option',[
+  ['Cinema-foyer media · 14 PVR / INOX sites × ₹3,00,000 (6 wk)','₹42,00,000'],
+  ['GST (18%)','₹7,56,000'],
+  ['Media sub-total (incl. GST)','₹49,56,000','sub'],
+  ['Operations (incl. GST, from Activation Cost)','₹4,06,89,185'],
+  ['Programme total, Multiplex (incl. GST)','₹4,56,45,185','total'],
+],'PVR / INOX foyer activation, managed by ProMarcom. 100% advance; availability to be confirmed; rates subject to change.');
+costSlide('cost16',16,'Atrium Option',[
+  ['Mall-atrium media · 14 malls, per rate card (ex-GST)','₹1,45,11,750'],
+  ['GST (18%)','₹26,12,115'],
+  ['Media sub-total (incl. GST)','₹1,71,23,865','sub'],
+  ['Operations (incl. GST, from Activation Cost)','₹4,06,89,185'],
+  ['Programme total, Atrium (incl. GST)','₹5,78,13,050','total'],
+],'Mall-atrium activation at the 14 preferred malls. Several locations subject to availability; rates indicative, per the rate card.');
 window.__done=true;
 </script></body></html>
