@@ -1,0 +1,137 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-500.ttf'); font-weight:500; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-600.ttf'); font-weight:600; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { background:#05070b; overflow:hidden; }
+  :root { --acc:#f59e0b; --deep:#b45309; --glow:245,158,11; }
+  #stage { width:1080px; height:1920px; position:relative; overflow:hidden;
+    background:#080b11; font-family:'Inter',sans-serif; color:#f4f1ea; }
+  #stage::before { content:''; position:absolute; inset:0; z-index:0;
+    background:
+      radial-gradient(780px 620px at 86% -6%, rgba(var(--glow),.20), transparent 62%),
+      radial-gradient(900px 720px at -14% 108%, rgba(var(--glow),.10), transparent 60%); }
+  #stage::after { content:''; position:absolute; inset:0; z-index:0;
+    background-image:linear-gradient(rgba(255,255,255,.026) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.026) 1px, transparent 1px);
+    background-size:92px 92px;
+    -webkit-mask-image:radial-gradient(1050px 1350px at 50% 46%, #000 28%, transparent 100%);
+    mask-image:radial-gradient(1050px 1350px at 50% 46%, #000 28%, transparent 100%); }
+
+  .chrome { position:absolute; left:0; right:0; z-index:6; display:flex; align-items:center; padding:0 84px; }
+  #hdr { top:88px; justify-content:space-between; }
+  .brand { display:flex; align-items:center; gap:20px; }
+  .brand .mark { width:64px; height:64px; border-radius:18px;
+    background:linear-gradient(135deg, var(--acc), var(--deep));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 30px rgba(var(--glow),.38); font-weight:900; font-size:34px; color:#0a0a0a; }
+  .brand .name { font-weight:800; font-size:34px; color:#ece7dd; letter-spacing:-.5px; }
+  .brand .name span { color:var(--acc); }
+  .tag { font-weight:700; font-size:23px; letter-spacing:3px; color:#7b8494; text-transform:uppercase; }
+  #ftr { bottom:92px; justify-content:center; font-weight:700; font-size:26px; color:#525a68; letter-spacing:1.5px; }
+
+  .scene { position:absolute; inset:0; z-index:3; display:flex; flex-direction:column;
+    justify-content:center; padding:0 104px; opacity:0; }
+  h1 { font-weight:900; letter-spacing:-2.4px; line-height:1.14; font-size:88px; text-wrap:balance; }
+  h1.sm { font-size:74px; } h1.xs { font-size:64px; }
+  .accent { color:var(--acc); }
+  .dim { color:#8b93a3; }
+  .kicker { font-weight:700; font-size:30px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--acc); margin-bottom:30px; opacity:.9; }
+
+  /* outro card */
+  .outro { position:absolute; inset:0; z-index:4; display:flex; flex-direction:column;
+    justify-content:center; padding:0 104px; opacity:0; }
+  .send { display:flex; align-items:center; gap:26px; border-left:9px solid var(--acc);
+    border-radius:8px 26px 26px 8px; background:rgba(var(--glow),.10);
+    padding:40px 46px; margin-bottom:44px; }
+  .send .ic { font-size:52px; }
+  .send .tx { font-weight:800; font-size:44px; line-height:1.2; }
+  .follow { display:flex; align-items:center; gap:28px; }
+  .follow .mark { width:92px; height:92px; border-radius:26px;
+    background:linear-gradient(135deg, var(--acc), var(--deep));
+    display:flex; align-items:center; justify-content:center;
+    font-weight:900; font-size:48px; color:#0a0a0a; flex-shrink:0;
+    box-shadow:0 12px 34px rgba(var(--glow),.4); }
+  .follow .ftx { font-weight:800; font-size:50px; }
+  .follow .ftx .sub { display:block; font-weight:600; font-size:32px; color:#aab2c0; margin-top:6px; }
+
+  .el { opacity:0; will-change:transform,opacity; }
+</style>
+
+<div id="stage">
+  <div class="chrome" id="hdr">
+    <div class="brand"><div class="mark">S</div><div class="name">Startup<span>Sutra</span></div></div>
+    <div class="tag" id="tag">Case Study</div>
+  </div>
+  <div class="chrome" id="ftr">@statupsutra</div>
+  <div id="scenes"></div>
+  <div class="outro" id="outro"></div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const clamp = (v,a,b) => Math.min(b, Math.max(a,v));
+const p = (t,t0,d) => clamp((t-t0)/d, 0, 1);
+const easeOut = x => 1 - Math.pow(1-x, 3);
+const easeOutBack = x => { const c=1.5; return 1 + (c+1)*Math.pow(x-1,3) + c*Math.pow(x-1,2); };
+
+const C = window.CONFIG;
+document.documentElement.style.setProperty('--acc', C.acc);
+document.documentElement.style.setProperty('--deep', C.deep);
+document.documentElement.style.setProperty('--glow', C.glow);
+$('tag').textContent = C.label;
+
+// build scenes
+const sc = $('scenes');
+C.scenes.forEach((s,i)=>{
+  const d=document.createElement('div'); d.className='scene'; d.id='s'+i;
+  d.innerHTML = (s.kicker?`<div class="kicker el">${s.kicker}</div>`:'') +
+    `<h1 class="${s.size||''} el">${s.html}</h1>`;
+  sc.appendChild(d);
+});
+// outro
+$('outro').innerHTML =
+  `<div class="send el"><div class="ic">📤</div><div class="tx">${C.cta}</div></div>`+
+  `<div class="follow el"><div class="mark">S</div><div class="ftx">Follow @statupsutra<span class="sub">one Indian startup lesson, every day</span></div></div>`;
+
+function animEls(container, t, tIn, stagger){
+  const els=[...container.querySelectorAll('.el')];
+  els.forEach((n,i)=>{
+    const ip=p(t, tIn + i*stagger, 0.5);
+    const e=easeOutBack(ip);
+    n.style.opacity=easeOut(ip).toFixed(3);
+    n.style.transform=`translateY(${((1-e)*46).toFixed(1)}px)`;
+  });
+}
+
+window.seek = function(t){
+  const O=C.outro;
+  // header/footer fade out slightly before outro
+  const ch = 1 - easeOut(p(t, O.t0-0.4, 0.4));
+  $('hdr').style.opacity=ch; $('ftr').style.opacity=ch;
+
+  C.scenes.forEach((s,i)=>{
+    const d=$('s'+i);
+    const vis = t>=s.t0-0.15 && t<=s.t1+0.5;
+    if(!vis){ d.style.opacity=0; return; }
+    const fi=p(t, s.t0, 0.28);
+    const fo=1-p(t, s.t1-0.25, 0.35);
+    d.style.opacity=(fi*fo).toFixed(3);
+    const zoom=1.0+0.04*p(t, s.t0, s.t1-s.t0);
+    d.style.transform=`scale(${zoom.toFixed(4)})`;
+    animEls(d, t, s.t0+0.05, 0.10);
+  });
+
+  // outro
+  const od=$('outro');
+  const ovis = t>=O.t0-0.15;
+  od.style.opacity = ovis ? p(t, O.t0, 0.4).toFixed(3) : 0;
+  if(ovis) animEls(od, t, O.t0+0.1, 0.22);
+};
+window.DUR = C.dur;
+seek(0);
+</script>
