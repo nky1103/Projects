@@ -25,9 +25,9 @@
   #hdr { top:88px; justify-content:space-between; }
   .brand { display:flex; align-items:center; gap:20px; }
   .brand .mark { width:64px; height:64px; border-radius:18px;
-    background:linear-gradient(135deg, var(--acc), var(--deep));
+    background:linear-gradient(135deg,#f59e0b,#ea580c);
     display:flex; align-items:center; justify-content:center;
-    box-shadow:0 10px 30px rgba(var(--glow),.38); font-weight:900; font-size:34px; color:#0a0a0a; }
+    box-shadow:0 10px 30px rgba(245,158,11,.38); }
   .brand .name { font-weight:800; font-size:34px; color:#ece7dd; letter-spacing:-.5px; }
   .brand .name span { color:var(--acc); }
   .tag { font-weight:700; font-size:23px; letter-spacing:3px; color:#7b8494; text-transform:uppercase; }
@@ -52,19 +52,27 @@
   .send .tx { font-weight:800; font-size:44px; line-height:1.2; }
   .follow { display:flex; align-items:center; gap:28px; }
   .follow .mark { width:92px; height:92px; border-radius:26px;
-    background:linear-gradient(135deg, var(--acc), var(--deep));
+    background:linear-gradient(135deg,#f59e0b,#ea580c);
     display:flex; align-items:center; justify-content:center;
-    font-weight:900; font-size:48px; color:#0a0a0a; flex-shrink:0;
-    box-shadow:0 12px 34px rgba(var(--glow),.4); }
+    flex-shrink:0; box-shadow:0 12px 34px rgba(245,158,11,.4); }
   .follow .ftx { font-weight:800; font-size:50px; }
   .follow .ftx .sub { display:block; font-weight:600; font-size:32px; color:#aab2c0; margin-top:6px; }
 
   .el { opacity:0; will-change:transform,opacity; }
 </style>
 
+<svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
+  <path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/>
+  <path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/>
+  <circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/>
+  <rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/>
+  <circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/>
+  <circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/>
+  <path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></symbol></svg>
+
 <div id="stage">
   <div class="chrome" id="hdr">
-    <div class="brand"><div class="mark">S</div><div class="name">Startup<span>Sutra</span></div></div>
+    <div class="brand"><div class="mark"><svg width="46" height="46"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div>
     <div class="tag" id="tag">Case Study</div>
   </div>
   <div class="chrome" id="ftr">@statupsutra</div>
@@ -96,7 +104,7 @@ C.scenes.forEach((s,i)=>{
 // outro
 $('outro').innerHTML =
   `<div class="send el"><div class="ic">📤</div><div class="tx">${C.cta}</div></div>`+
-  `<div class="follow el"><div class="mark">S</div><div class="ftx">Follow @statupsutra<span class="sub">one Indian startup lesson, every day</span></div></div>`;
+  `<div class="follow el"><div class="mark"><svg width="66" height="66"><use href="#owl"/></svg></div><div class="ftx">Follow @statupsutra<span class="sub">one Indian startup lesson, every day</span></div></div>`;
 
 function animEls(container, t, tIn, stagger){
   const els=[...container.querySelectorAll('.el')];
