@@ -1,0 +1,120 @@
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/inter-500.ttf'); font-weight:500; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-600.ttf'); font-weight:600; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-700.ttf'); font-weight:700; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-800.ttf'); font-weight:800; }
+  @font-face { font-family:'Inter'; src:url('fonts/inter-900.ttf'); font-weight:900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { background:#05070b; overflow:hidden; }
+  :root { --acc:#f59e0b; --deep:#b45309; --glow:245,158,11; }
+  #stage { width:1080px; height:1920px; position:relative; overflow:hidden;
+    background:#080b11; font-family:'Inter',sans-serif; color:#f4f1ea; }
+  #stage::before { content:''; position:absolute; inset:0; z-index:0;
+    background:radial-gradient(780px 620px at 86% -6%, rgba(var(--glow),.20), transparent 62%),
+      radial-gradient(900px 720px at -14% 108%, rgba(var(--glow),.10), transparent 60%); }
+  #stage::after { content:''; position:absolute; inset:0; z-index:0;
+    background-image:linear-gradient(rgba(255,255,255,.026) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.026) 1px, transparent 1px);
+    background-size:92px 92px;
+    -webkit-mask-image:radial-gradient(1050px 1350px at 50% 46%, #000 28%, transparent 100%);
+    mask-image:radial-gradient(1050px 1350px at 50% 46%, #000 28%, transparent 100%); }
+  .chrome { position:absolute; left:0; right:0; z-index:6; display:flex; align-items:center; padding:0 84px; }
+  #hdr { top:96px; justify-content:space-between; }
+  .brand { display:flex; align-items:center; gap:20px; }
+  .brand .mark { width:64px; height:64px; border-radius:18px; background:linear-gradient(135deg,#f59e0b,#ea580c);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 10px 30px rgba(245,158,11,.38); }
+  .brand .name { font-weight:800; font-size:34px; color:#ece7dd; letter-spacing:-.5px; }
+  .brand .name span { color:var(--acc); }
+  .tag { font-weight:700; font-size:23px; letter-spacing:3px; color:#7b8494; text-transform:uppercase; }
+  #ftr { bottom:100px; justify-content:center; font-weight:700; font-size:26px; color:#525a68; letter-spacing:1.5px; }
+
+  .scene { position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; justify-content:center; padding:0 100px; opacity:0; }
+  h1 { font-weight:900; letter-spacing:-2.4px; line-height:1.13; font-size:90px; text-wrap:balance; }
+  h1.sm { font-size:74px; } h1.xs { font-size:62px; }
+  .accent { color:var(--acc); } .dim { color:#8b93a3; }
+  .kick { font-weight:700; font-size:30px; letter-spacing:3px; text-transform:uppercase; color:var(--acc); margin-bottom:28px; }
+  .bignum { font-weight:900; letter-spacing:-3px; font-size:230px; line-height:.92;
+    background:linear-gradient(135deg,#fff,var(--acc)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .bignum.sm { font-size:170px; }
+  .subnum { font-weight:700; font-size:44px; color:#c7ccd6; margin-top:24px; }
+
+  .chart { display:flex; flex-direction:column; gap:30px; margin-top:20px; }
+  .bar { display:flex; align-items:center; gap:24px; }
+  .bar .lbl { width:150px; font-weight:800; font-size:38px; color:#d7dbe3; text-align:right; }
+  .bar .track { flex:1; height:78px; background:rgba(255,255,255,.05); border-radius:14px; overflow:hidden; }
+  .bar .fill { height:100%; border-radius:14px; width:0;
+    background:linear-gradient(90deg,var(--deep),var(--acc)); display:flex; align-items:center; justify-content:flex-end;
+    padding-right:24px; font-weight:800; font-size:34px; color:#08110a; white-space:nowrap; }
+  .bar.muted .fill { background:linear-gradient(90deg,#3a4150,#59626f); color:#e8ecf2; }
+
+  .outro { position:absolute; inset:0; z-index:4; display:flex; flex-direction:column; justify-content:center; padding:0 100px; opacity:0; }
+  .follow { display:flex; align-items:center; gap:28px; margin-top:40px; }
+  .follow .mark { width:100px; height:100px; border-radius:28px; background:linear-gradient(135deg,#f59e0b,#ea580c);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 12px 34px rgba(245,158,11,.4); }
+  .follow .ftx { font-weight:800; font-size:52px; } .follow .ftx .sub { display:block; font-weight:600; font-size:32px; color:#aab2c0; margin-top:8px; }
+  .el { opacity:0; will-change:transform,opacity; }
+</style>
+<svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
+  <path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/>
+  <path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/>
+  <circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/>
+  <rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/>
+  <circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/>
+  <circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/>
+  <path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></symbol></svg>
+
+<div id="stage">
+  <div class="chrome" id="hdr"><div class="brand"><div class="mark"><svg width="46" height="46"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="tag" id="tag"></div></div>
+  <div class="chrome" id="ftr">@statupsutra</div>
+  <div id="scenes"></div>
+  <div class="outro" id="outro"></div>
+</div>
+
+<script>
+const C = window.CONFIG;
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+const p=(t,t0,d)=>clamp((t-t0)/d,0,1);
+const easeOut=x=>1-Math.pow(1-x,3);
+const easeOutBack=x=>{const c=1.5;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2);};
+document.documentElement.style.setProperty('--acc',C.acc);
+document.documentElement.style.setProperty('--deep',C.deep);
+document.documentElement.style.setProperty('--glow',C.glow);
+document.getElementById('tag').textContent=C.label;
+
+const sc=document.getElementById('scenes');
+C.scenes.forEach((s,i)=>{
+  const d=document.createElement('div'); d.className='scene'; d.id='s'+i;
+  let h='';
+  if(s.type==='text'){ if(s.kick)h+=`<div class="kick el">${s.kick}</div>`; h+=`<h1 class="${s.size||''} el">${s.html}</h1>`; }
+  else if(s.type==='bignum'){ if(s.kick)h+=`<div class="kick el">${s.kick}</div>`; h+=`<div class="bignum ${s.size||''} el">${s.num}</div>`; if(s.subnum)h+=`<div class="subnum el">${s.subnum}</div>`; }
+  else if(s.type==='bars'){ if(s.kick)h+=`<div class="kick el">${s.kick}</div>`; if(s.title)h+=`<h1 class="sm el" style="margin-bottom:44px">${s.title}</h1>`;
+    const max=Math.max(...s.data.map(x=>x.v));
+    h+=`<div class="chart">`+s.data.map((x,j)=>`<div class="bar ${x.muted?'muted':''}"><div class="lbl el">${x.lbl}</div><div class="track"><div class="fill" data-w="${Math.max(10,Math.round(x.v/max*100))}" data-i="${j}">${x.disp||x.v}</div></div></div>`).join('')+`</div>`; }
+  d.innerHTML=h; sc.appendChild(d);
+});
+document.getElementById('outro').innerHTML=
+  `<div class="kick el">${C.outro.kick||'Coming daily'}</div>`+
+  `<h1 class="sm el">${C.outro.title}</h1>`+
+  `<div class="follow el"><div class="mark"><svg width="66" height="66"><use href="#owl"/></svg></div><div class="ftx">Follow @statupsutra<span class="sub">${C.outro.sub||'Dubai real estate, decoded with data'}</span></div></div>`;
+
+function animEls(cont,t,tIn,stag){ const els=[...cont.querySelectorAll('.el')];
+  els.forEach((n,i)=>{ const ip=p(t,tIn+i*stag,0.5); n.style.opacity=easeOut(ip).toFixed(3);
+    n.style.transform=`translateY(${((1-easeOutBack(ip))*44).toFixed(1)}px)`; }); }
+
+window.seek=function(t){
+  const O=C.outro;
+  const ch=1-easeOut(p(t,O.t0-0.4,0.4)); document.getElementById('hdr').style.opacity=ch; document.getElementById('ftr').style.opacity=ch;
+  C.scenes.forEach((s,i)=>{ const d=document.getElementById('s'+i);
+    const vis=t>=s.t0-0.15 && t<=s.t1+0.5; if(!vis){ d.style.opacity=0; return; }
+    const fi=p(t,s.t0,0.28), fo=1-p(t,s.t1-0.25,0.35); d.style.opacity=(fi*fo).toFixed(3);
+    animEls(d,t,s.t0+0.05,0.09);
+    if(s.type==='bars'){ // grow bars
+      d.querySelectorAll('.fill').forEach(f=>{ const w=+f.dataset.w, idx=+f.dataset.i;
+        const g=easeOut(p(t, s.t0+0.4+idx*0.18, 0.7)); f.style.width=(w*g).toFixed(1)+'%'; }); }
+  });
+  const od=document.getElementById('outro'); const ov=t>=O.t0-0.15;
+  od.style.opacity=ov?p(t,O.t0,0.4).toFixed(3):0; if(ov) animEls(od,t,O.t0+0.1,0.18);
+};
+window.DUR=C.dur; seek(0);
+</script>
