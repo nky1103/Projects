@@ -1,0 +1,71 @@
+<meta charset="utf-8">
+<style>
+  @font-face{font-family:'Inter';src:url('fonts/inter-700.ttf');font-weight:700;}
+  @font-face{font-family:'Inter';src:url('fonts/inter-800.ttf');font-weight:800;}
+  @font-face{font-family:'Inter';src:url('fonts/inter-900.ttf');font-weight:900;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:#0b0d14;}
+  #s{width:1080px;height:1920px;position:relative;overflow:hidden;font-family:'Inter',sans-serif;
+    background:linear-gradient(180deg,#0d1a28 0%,#173347 26%,#3a5560 46%,#8a6a4a 62%,#b9803f 72%,#7c5230 84%,#241a16 98%);}
+  .sun{position:absolute;left:50%;top:60%;width:600px;height:600px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,232,180,.85),rgba(255,200,120,.4) 34%,transparent 62%);filter:blur(8px);}
+  #city{position:absolute;left:0;right:0;bottom:0;height:56%;z-index:2;}
+  .water{position:absolute;left:0;right:0;bottom:0;height:11%;z-index:3;background:linear-gradient(180deg,rgba(120,90,60,.4),rgba(20,18,24,.92));}
+  .scrim{position:absolute;inset:0;z-index:4;background:linear-gradient(180deg,rgba(8,12,20,.74) 0%,rgba(8,12,20,.52) 30%,rgba(8,12,20,.4) 52%,rgba(8,12,20,.58) 74%,rgba(8,11,18,.84) 100%);}
+  .vig{position:absolute;inset:0;z-index:4;box-shadow:inset 0 0 420px 120px rgba(6,10,18,.72);}
+  .top{position:absolute;top:120px;left:0;right:0;z-index:6;display:flex;align-items:center;justify-content:space-between;padding:0 84px;}
+  .brand{display:flex;align-items:center;gap:18px;}
+  .mark{width:60px;height:60px;border-radius:17px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(234,88,12,.4);}
+  .name{font-weight:800;font-size:32px;color:#fff;} .name span{color:#ffd08a;}
+  .tag{font-weight:800;font-size:22px;letter-spacing:3px;color:var(--acc2);text-transform:uppercase;}
+  .hero{position:absolute;left:80px;right:80px;top:540px;z-index:6;}
+  .pre{font-weight:900;font-size:66px;line-height:1.05;color:#fff;text-shadow:0 4px 24px rgba(0,0,0,.65);}
+  .strike{position:relative;color:#ff6b6b;white-space:nowrap;}
+  .strike::after{content:'';position:absolute;left:-4px;right:-4px;top:52%;height:8px;background:#ff5b5b;transform:rotate(-4deg);border-radius:4px;box-shadow:0 0 18px rgba(255,80,80,.6);}
+  .big{font-weight:900;letter-spacing:-4px;font-size:250px;line-height:.9;margin-top:22px;
+    background:linear-gradient(135deg,#fff,var(--big2));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 10px 44px rgba(0,0,0,.55));}
+  .big.sm{font-size:190px;}
+  .post{font-weight:800;font-size:52px;color:#ffe9cf;margin-top:14px;text-shadow:0 3px 18px rgba(0,0,0,.65);}
+  .badge{position:absolute;left:80px;bottom:150px;z-index:6;display:inline-flex;align-items:center;gap:14px;
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px);
+    padding:16px 28px;border-radius:100px;font-weight:800;font-size:30px;color:#fff;}
+  .badge .dot{width:16px;height:16px;border-radius:50%;background:#ff4d4d;box-shadow:0 0 14px #ff4d4d;}
+</style>
+<svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
+  <path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/>
+  <path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/>
+  <circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/>
+  <rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/>
+  <circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/>
+  <circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/>
+  <path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></symbol></svg>
+<div id="s">
+  <div class="sun"></div>
+  <svg id="city" viewBox="0 0 1080 1000" preserveAspectRatio="xMidYMax meet"></svg>
+  <div class="water"></div><div class="scrim"></div><div class="vig"></div>
+  <div class="top"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="tag" id="tag"></div></div>
+  <div class="hero"><div class="pre" id="pre"></div><div class="big" id="big"></div><div class="post" id="post"></div></div>
+  <div class="badge"><span class="dot"></span> <span id="badge">Watch · the data</span></div>
+</div>
+<script>
+const C=window.CONFIG;
+document.documentElement.style.setProperty('--acc2',C.acc2||'#ffd08a');
+document.documentElement.style.setProperty('--big2',C.big2||'#ffcf87');
+document.getElementById('tag').textContent=C.tag;
+document.getElementById('pre').innerHTML=C.pre;
+document.getElementById('big').innerHTML=C.big; if(C.bigSm)document.getElementById('big').classList.add('sm');
+document.getElementById('post').textContent=C.post;
+document.getElementById('badge').textContent=C.badge||'Watch · the data';
+const NS='http://www.w3.org/2000/svg',svg=document.getElementById('city'),dark='#0a0f1a';
+function rect(x,y,w,h,f){const r=document.createElementNS(NS,'rect');r.setAttribute('x',x);r.setAttribute('y',y);r.setAttribute('width',w);r.setAttribute('height',h);r.setAttribute('rx',2);r.setAttribute('fill',f);svg.appendChild(r);}
+function win(x0,x1,y0,y1,d){for(let wy=y0+10;wy<y1-6;wy+=15)for(let wx=x0+7;wx<x1-6;wx+=12)if(Math.random()<d){const w=document.createElementNS(NS,'rect');w.setAttribute('x',wx);w.setAttribute('y',wy);w.setAttribute('width',4);w.setAttribute('height',6);w.setAttribute('fill',Math.random()<0.75?'rgba(255,205,140,'+(0.5+Math.random()*0.4)+')':'rgba(190,215,255,.5)');svg.appendChild(w);}}
+function poly(p,f){const g=document.createElementNS(NS,'polygon');g.setAttribute('points',p.map(a=>a.join(',')).join(' '));g.setAttribute('fill',f);svg.appendChild(g);}
+function skyline(){const side=[[120,150,300],[210,120,430],[300,150,360],[380,120,500],[740,150,420],[820,120,540],[910,150,360],[990,120,470],[1050,140,300]];
+  side.forEach(t=>{const x=t[0]-t[1]/2;rect(x,1000-t[2],t[1],t[2],dark);win(x,x+t[1],1000-t[2],1000,0.3);});
+  const cx=540;const L=[[cx-70,1000],[cx-70,700],[cx-52,700],[cx-52,520],[cx-38,520],[cx-38,360],[cx-27,360],[cx-27,230],[cx-18,230],[cx-11,120],[cx-4,120]];
+  const R=L.map(a=>[2*cx-a[0],a[1]]).reverse();poly([...L,[cx-4,120],[cx,20],[cx+4,120],...R],dark);
+  win(cx-66,cx+66,700,1000,0.32);win(cx-50,cx+50,520,700,0.3);win(cx-36,cx+36,360,520,0.28);}
+function marina(){const xs=[90,170,250,330,410,670,760,850,940,1020],hs=[520,640,470,700,560,600,760,500,680,540];
+  xs.forEach((x,i)=>{const w=64;rect(x-w/2,1000-hs[i],w,hs[i],dark);win(x-w/2,x+w/2,1000-hs[i],1000,0.32);});
+  const cx=540,H=820,seg=20;for(let i=0;i<seg;i++){const y=1000-(H/seg)*i,ny=1000-(H/seg)*(i+1),off=Math.sin(i/seg*Math.PI*1.4)*46,w=70-i*1.2;poly([[cx-w/2+off,y],[cx+w/2+off,y],[cx+w/2+off*0.92,ny],[cx-w/2+off*0.92,ny]],dark);}}
+(C.scene==='marina'?marina:skyline)();
+</script>
