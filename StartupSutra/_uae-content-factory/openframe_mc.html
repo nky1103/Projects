@@ -1,0 +1,67 @@
+<meta charset="utf-8">
+<style>
+  @font-face{font-family:'Inter';src:url('fonts/inter-700.ttf');font-weight:700;}
+  @font-face{font-family:'Inter';src:url('fonts/inter-800.ttf');font-weight:800;}
+  @font-face{font-family:'Inter';src:url('fonts/inter-900.ttf');font-weight:900;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:#05070f;overflow:hidden;}
+  #stage{width:1080px;height:1920px;position:relative;overflow:hidden;font-family:'Inter',sans-serif;background:#05070f;}
+  #bg{position:absolute;inset:-6%;will-change:transform;}
+  .sky{position:absolute;inset:0;background:linear-gradient(180deg,#05080f 0%,#0a1120 34%,#122036 54%,#1c2c44 70%,#26364f 82%,#0a0f18 100%);}
+  .sun{position:absolute;left:50%;top:38%;width:640px;height:640px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(150,180,220,.5),rgba(90,120,170,.22) 40%,transparent 64%);filter:blur(8px);}
+  #city{position:absolute;left:0;right:0;bottom:0;height:62%;}
+  .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,10,18,.62) 0%,rgba(6,10,18,.25) 30%,rgba(6,10,18,.35) 62%,rgba(5,8,15,.75) 100%);}
+  .vig{position:absolute;inset:0;box-shadow:inset 0 0 400px 120px rgba(4,7,14,.7);}
+  #figure{position:absolute;left:0;right:0;bottom:0;height:56%;z-index:5;}
+  .top{position:absolute;top:96px;left:0;right:0;z-index:8;display:flex;align-items:center;justify-content:space-between;padding:0 84px;}
+  .brand{display:flex;align-items:center;gap:20px;}
+  .mark{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(234,88,12,.4);}
+  .name{font-weight:800;font-size:34px;color:#fff;letter-spacing:-.5px;} .name span{color:#ff9a86;}
+  .tag{font-weight:800;font-size:22px;letter-spacing:3px;color:#ff9a86;text-transform:uppercase;}
+  .line{position:absolute;left:96px;right:96px;top:430px;z-index:7;}
+  .line h1{font-weight:900;font-size:82px;line-height:1.12;color:#fff;letter-spacing:-2px;text-shadow:0 6px 34px rgba(0,0,0,.7);text-wrap:balance;}
+  .line .accent{color:#ff7a63;}
+  #ftr{position:absolute;bottom:100px;left:0;right:0;z-index:8;text-align:center;font-weight:700;font-size:26px;color:#9fb0c6;letter-spacing:1.5px;}
+</style>
+<svg width="0" height="0" style="position:absolute"><symbol id="owl" viewBox="0 0 200 200">
+  <path d="M60 60 L74 32 L88 58 Z" fill="#0b0e14"/><path d="M140 60 L126 32 L112 58 Z" fill="#0b0e14"/>
+  <path d="M100 38 C 150 38 164 80 164 118 C 164 160 138 180 100 180 C 62 180 36 160 36 118 C 36 80 50 38 100 38 Z" fill="#0b0e14"/>
+  <circle cx="75" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/><circle cx="125" cy="98" r="31" fill="#0b0e14" stroke="#fef3c7" stroke-width="8"/>
+  <rect x="97.5" y="94" width="5" height="8" rx="2.5" fill="#fef3c7"/>
+  <circle cx="75" cy="98" r="12.5" fill="#fbbf24"/><circle cx="75" cy="98" r="5.5" fill="#0b0e14"/>
+  <circle cx="125" cy="98" r="12.5" fill="#fbbf24"/><circle cx="125" cy="98" r="5.5" fill="#0b0e14"/>
+  <path d="M100 115 L90 128 L110 128 Z" fill="#f59e0b"/></symbol></svg>
+<div id="stage">
+  <div id="bg">
+    <div class="sky"></div><div class="sun"></div>
+    <svg id="city" viewBox="0 0 1080 1000" preserveAspectRatio="xMidYMax meet"></svg>
+    <div class="scrim"></div><div class="vig"></div>
+  </div>
+  <svg id="figure" viewBox="0 0 1080 1000" preserveAspectRatio="xMidYMax meet">
+    <!-- lone suited figure, back to camera, looking over the city -->
+    <g fill="#04060c">
+      <ellipse cx="540" cy="300" rx="96" ry="112"/>
+      <path d="M300 1000 L326 560 C 350 430 440 372 540 372 C 640 372 730 430 754 560 L780 1000 Z"/>
+    </g>
+    <!-- collar / suit rim light -->
+    <path d="M326 560 C 350 430 440 372 540 372 C 640 372 730 430 754 560" fill="none" stroke="rgba(120,160,210,.32)" stroke-width="4"/>
+    <path d="M540 372 L540 560" stroke="rgba(120,160,210,.18)" stroke-width="3"/>
+    <ellipse cx="540" cy="300" rx="96" ry="112" fill="none" stroke="rgba(120,160,210,.22)" stroke-width="3"/>
+  </svg>
+  <div class="top"><div class="brand"><div class="mark"><svg width="46" height="46"><use href="#owl"/></svg></div><div class="name">Startup<span>Sutra</span></div></div><div class="tag">UAE · Risk Radar</div></div>
+  <div class="line"><h1>Every crash has a night<br>where one person <span class="accent">sees it first.</span></h1></div>
+  <div id="ftr">@statupsutra</div>
+</div>
+<script>
+const NS='http://www.w3.org/2000/svg',svg=document.getElementById('city'),dark='#070b14';
+function rect(x,y,w,h,f){const r=document.createElementNS(NS,'rect');r.setAttribute('x',x);r.setAttribute('y',y);r.setAttribute('width',w);r.setAttribute('height',h);r.setAttribute('rx',2);r.setAttribute('fill',f);svg.appendChild(r);}
+function win(x0,x1,y0,y1,d){for(let wy=y0+10;wy<y1-6;wy+=15)for(let wx=x0+7;wx<x1-6;wx+=12)if(Math.random()<d){const w=document.createElementNS(NS,'rect');w.setAttribute('x',wx);w.setAttribute('y',wy);w.setAttribute('width',4);w.setAttribute('height',6);w.setAttribute('fill',Math.random()<0.7?'rgba(255,205,140,'+(0.4+Math.random()*0.45)+')':'rgba(150,185,235,.55)');svg.appendChild(w);}}
+function poly(p,f){const g=document.createElementNS(NS,'polygon');g.setAttribute('points',p.map(a=>a.join(',')).join(' '));g.setAttribute('fill',f);svg.appendChild(g);}
+const side=[[110,150,300],[200,120,430],[290,150,360],[370,120,540],[760,150,420],[840,120,540],[930,150,360],[1010,120,470]];
+side.forEach(t=>{const x=t[0]-t[1]/2;rect(x,1000-t[2],t[1],t[2],dark);win(x,x+t[1],1000-t[2],1000,0.3);});
+const cx=540;const L=[[cx-70,1000],[cx-70,700],[cx-52,700],[cx-52,520],[cx-38,520],[cx-38,360],[cx-27,360],[cx-27,230],[cx-18,230],[cx-11,120],[cx-4,120]];
+const R=L.map(a=>[2*cx-a[0],a[1]]).reverse();poly([...L,[cx-4,120],[cx,20],[cx+4,120],...R],dark);
+win(cx-66,cx+66,700,1000,0.3);win(cx-50,cx+50,520,700,0.28);
+window.seek=function(t){const s=1.05+0.06*(t/2.8);document.getElementById('bg').style.transform=`scale(${s.toFixed(4)})`;};
+seek(0);
+</script>
