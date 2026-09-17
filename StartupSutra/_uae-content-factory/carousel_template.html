@@ -31,6 +31,8 @@
   .brand .name { font-weight:800; font-size:30px; color:#ece7dd; letter-spacing:-.5px; }
   .brand .name span { color:var(--acc); }
   .pill { font-weight:700; font-size:20px; letter-spacing:2.5px; color:#7b8494; text-transform:uppercase; }
+  .hmeta { display:flex; flex-direction:column; align-items:flex-end; gap:10px; }
+  .counter { font-family:ui-monospace,SFMono-Regular,monospace; font-weight:700; font-size:24px; letter-spacing:2px; color:var(--acc); opacity:.9; }
 
   .kick { font-weight:700; font-size:26px; letter-spacing:3px; text-transform:uppercase; color:var(--acc); }
   h1 { font-weight:900; letter-spacing:-2px; line-height:1.08; font-size:96px; }
@@ -91,10 +93,11 @@ document.documentElement.style.setProperty('--acc', C.acc);
 document.documentElement.style.setProperty('--deep', C.deep);
 document.documentElement.style.setProperty('--glow', C.glow);
 
-function header(showPill){
+function header(showPill, idx){
   return `<div class="top"><div class="brand"><div class="mark"><svg width="42" height="42"><use href="#owl"/></svg></div>`+
     `<div class="name">Startup<span>Sutra</span></div></div>`+
-    (showPill?`<div class="pill">${C.label}</div>`:``)+`</div>`;
+    `<div class="hmeta">`+(showPill?`<div class="pill">${C.label}</div>`:``)+
+    (idx?`<div class="counter">${idx}</div>`:``)+`</div></div>`;
 }
 function foot(src, swipe){
   return `<div class="foot"><div class="src">${src?('Source: '+src):'@statupsutra'}</div>`+
@@ -112,7 +115,7 @@ function bars(data){
 window.renderSlide = function(i){
   const s = C.slides[i];
   const pad = document.getElementById('pad');
-  let inner = header(s.type!=='cover');
+  let inner = header(s.type!=='cover', String(i+1).padStart(2,'0')+' / '+String(C.slides.length).padStart(2,'0'));
   if (s.type==='cover'){
     inner += `<div style="margin-top:64px"></div>`;
     if(s.kick) inner += `<div class="kick">${s.kick}</div>`;
