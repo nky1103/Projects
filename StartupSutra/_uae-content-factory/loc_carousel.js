@@ -1,5 +1,5 @@
 module.exports = { acc:'#f59e0b',deep:'#b45309',glow:'245,158,11',label:'Market Pulse',slides:[
-  {type:'cover',kick:'Market Pulse',size:'sm',title:"120,000 new homes.<br><span class='accent'>Here's exactly where.</span>",sub:"The 2026 supply wave, mapped community by community."},
+  {type:'cover',kick:'Market Pulse',size:'sm',title:"131,000 new homes.<br><span class='accent'>Here's exactly where.</span>",sub:"The 2026 supply wave, mapped community by community."},
   {type:'bars',kick:'By community',title:'New homes in the pipeline',data:[
     {lbl:'JVC',v:27100,disp:'27,100'},{lbl:'Bus. Bay',v:19470,disp:'19,470',muted:true},
     {lbl:'Azizi V.',v:17100,disp:'17,100',muted:true},{lbl:'DAMAC L.',v:10730,disp:'10,730',muted:true},
