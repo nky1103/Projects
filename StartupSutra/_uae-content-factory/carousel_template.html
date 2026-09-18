@@ -59,10 +59,11 @@
   .chart { margin-top:30px; display:flex; flex-direction:column; gap:26px; }
   .bar { display:flex; align-items:center; gap:22px; }
   .bar .lbl { width:262px; font-weight:800; font-size:34px; color:#d7dbe3; text-align:right; }
-  .bar .track { flex:1; height:64px; background:rgba(255,255,255,.05); border-radius:12px; overflow:hidden; }
-  .bar .fill { height:100%; border-radius:12px;
+  .bar .track { flex:1; height:64px; background:rgba(255,255,255,.05); border-radius:12px; overflow:hidden; display:flex; align-items:center; }
+  .bar .fill { height:100%; border-radius:12px; flex:0 0 auto;
     background:linear-gradient(90deg, var(--deep), var(--acc)); display:flex; align-items:center;
-    justify-content:flex-end; padding-right:22px; font-weight:800; font-size:30px; color:#08110a; }
+    justify-content:flex-end; padding-right:22px; font-weight:800; font-size:30px; color:#08110a; white-space:nowrap; }
+  .bar .valout { padding-left:22px; font-weight:800; font-size:30px; color:#e8ecf2; white-space:nowrap; }
   .bar.muted .fill { background:linear-gradient(90deg,#3a4150,#59626f); color:#e8ecf2; }
 
   .lesson { border-left:9px solid var(--acc); border-radius:8px 26px 26px 8px;
@@ -107,8 +108,10 @@ function bars(data){
   const max = Math.max(...data.map(d=>d.v));
   return `<div class="chart">`+data.map(d=>{
     const w = Math.max(12, Math.round(d.v/max*100));
+    const val = d.disp||d.v; const inside = w >= 26;
     return `<div class="bar ${d.muted?'muted':''}"><div class="lbl">${d.lbl}</div>`+
-      `<div class="track"><div class="fill" style="width:${w}%">${d.disp||d.v}</div></div></div>`;
+      `<div class="track"><div class="fill" style="width:${w}%">${inside?val:''}</div>`+
+      (inside?'':`<div class="valout">${val}</div>`)+`</div></div>`;
   }).join('')+`</div>`;
 }
 
