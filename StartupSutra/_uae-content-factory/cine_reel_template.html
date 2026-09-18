@@ -161,7 +161,7 @@ window.seek=function(t){
   let bgO=1; if(C.reveal){ bgO=0.06+0.94*easeOut(p(t,C.reveal.at,C.reveal.dur||1.4)); }
   document.getElementById('bg').style.opacity=bgO.toFixed(3);
   const O=C.outro;
-  const chOut=1-easeOut(p(t,O.t0-0.4,0.4));const chIn=C.reveal?easeOut(p(t,Math.max(0,C.reveal.at-1.4),1.0)):1;const ch=Math.min(chOut,chIn);document.getElementById('hdr').style.opacity=ch;document.getElementById('ftr').style.opacity=ch;
+  const chOut=1-easeOut(p(t,O.t0-0.4,0.4));const chIn=C.reveal?easeOut(p(t,Math.max(0,C.reveal.at-1.4),1.0)):1;const ch=Math.min(chOut,chIn);document.getElementById('hdr').style.opacity=ch;document.getElementById('ftr').style.opacity=chIn;
   // focus scrim active during text/bignum scenes
   let focus=0;
   C.scenes.forEach((s,i)=>{const d=document.getElementById('sx'+i);
