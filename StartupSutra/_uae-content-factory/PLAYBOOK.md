@@ -26,3 +26,7 @@ avg watch time · 3-sec view rate · completion rate · SHARES/sends (🚨) · s
 
 ## Data rule
 Every number sourced (SOURCES.md per post). No em dashes. Owl logo stays.
+
+## Reel refinement (2026-09-18)
+- For any contrast/comparison reel, use an animated BAR-RACE beat mid-reel (e.g. Intl City 1,370 sq ft vs Palm 260 sq ft) — a visual, not another text card. This is what makes it feel like a reel.
+- Reel CTA can be a COMMENT prompt ("Where would you put AED 1M? Comment the zone") to drive comments; put Save + Send in the caption.
