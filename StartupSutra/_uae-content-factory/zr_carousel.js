@@ -3,10 +3,10 @@ module.exports = { acc:'#3b82f6',deep:'#1d4ed8',glow:'59,130,246',label:'Zone Wa
   {type:'bars',kick:'Price per sq ft (AED)',title:'What each zone costs',data:[
     {lbl:'Palm',v:3800,disp:'3,800'},{lbl:'Downtown',v:3000,disp:'3,000',muted:true},
     {lbl:'Business Bay',v:2550,disp:'2,550',muted:true},{lbl:'Marina',v:2200,disp:'2,200',muted:true},
-    {lbl:'JVC',v:1400,disp:'1,400',muted:true},{lbl:'Intl City',v:730,disp:'730',muted:true}],
+    {lbl:'JVC',v:1500,disp:'1,500',muted:true},{lbl:'Intl City',v:730,disp:'730',muted:true}],
     src:'Bayut; Engel & Völkers (2025–26 avg.)',swipe:true},
   {type:'bars',kick:'What AED 1M buys (sq ft)',title:'Where AED 1M buys the most space',data:[
-    {lbl:'Intl City',v:1370,disp:'1,370 ft²'},{lbl:'JVC',v:714,disp:'714 ft²',muted:true},
+    {lbl:'Intl City',v:1370,disp:'1,370 ft²'},{lbl:'JVC',v:667,disp:'667 ft²',muted:true},
     {lbl:'Marina',v:455,disp:'455 ft²',muted:true},{lbl:'Business Bay',v:392,disp:'392 ft²',muted:true},
     {lbl:'Downtown',v:333,disp:'333 ft²',muted:true},{lbl:'Palm',v:263,disp:'263 ft²',muted:true}],
     src:'Derived from area rates above',swipe:true},
