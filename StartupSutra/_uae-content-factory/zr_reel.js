@@ -1,11 +1,13 @@
 module.exports = {
-  acc:'#3b82f6', acc2:'#93c5fd', deep:'#1d4ed8', glow:'59,130,246', label:'UAE · Zone Watch', dur:20.0,
+  acc:'#3b82f6', acc2:'#93c5fd', deep:'#1d4ed8', glow:'59,130,246', label:'UAE · Zone Watch', dur:19.5,
   scene:{kind:'skyline'}, palette:{},
+  reveal:{ at:5.0, dur:1.4 },
   scenes:[
-    {type:'text',t0:0.0,t1:3.8,size:'sm',kick:'UAE · Zone Watch',html:"In Dubai, the same square foot costs AED 730..."},
-    {type:'text',t0:3.8,t1:7.6,size:'sm',html:"...or AED 3,800. A <span class='accent'>5x gap</span> across one city."},
-    {type:'bignum',t0:7.6,t1:12.6,size:'sm',kick:'What AED 1M buys',num:'1,370 ft²',subnum:'in International City. On the Palm, just 260.'},
-    {type:'text',t0:12.6,t1:16.4,size:'sm',html:"Price the zone before you fall for the <span class='accent'>view.</span>"},
+    {type:'bignum',t0:0.0,t1:2.6,size:'sm',kick:'AED 1,000,000 buys',num:'1,370 ft²',subnum:'in International City.'},
+    {type:'bignum',t0:2.6,t1:5.4,size:'sm',kick:'The same AED 1,000,000 buys',num:'260 ft²',subnum:'on Palm Jumeirah.'},
+    {type:'text',t0:5.4,t1:9.0,size:'sm',html:"Same city. Same money. A <span class='accent'>5x gap.</span>"},
+    {type:'text',t0:9.0,t1:13.0,size:'sm',html:"Dubai isn't one market. It's <span class='accent'>dozens of micro-markets.</span>"},
+    {type:'text',t0:13.0,t1:16.4,size:'sm',html:"Know the zone before you buy the <span class='accent'>view.</span>"},
   ],
-  outro:{t0:16.4,kick:'Every zone, ranked',title:"What each postcode<br>really costs."}
+  outro:{t0:16.4,kick:'',title:"Save this before your<br>next Dubai search.",sub:'Full zone breakdown → @statupsutra'}
 };

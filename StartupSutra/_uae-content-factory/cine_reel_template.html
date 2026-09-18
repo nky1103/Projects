@@ -146,9 +146,9 @@ C.scenes.forEach((s,i)=>{
   d.innerHTML=h; sc.appendChild(d);
 });
 document.getElementById('outro').innerHTML=
-  `<div class="kick el">${C.outro.kick||'The full breakdown'}</div>`+
+  `<div class="kick el">${C.outro.kick||''}</div>`+
   `<div class="cta el">${C.outro.title}</div>`+
-  `<div class="swipe el"><span class="box">Swipe the carousel →</span></div>`;
+  (C.outro.sub?`<div class="swipe el"><span class="box">${C.outro.sub}</span></div>`:``);
 
 function animEls(cont,t,tIn,stag){const els=[...cont.querySelectorAll('.el')];
   els.forEach((n,i)=>{const ip=p(t,tIn+i*stag,0.5);n.style.opacity=easeOut(ip).toFixed(3);n.style.transform=`translateY(${((1-easeOutBack(ip))*44).toFixed(1)}px)`;});}
@@ -157,8 +157,11 @@ window.seek=function(t){
   // Ken Burns camera
   const prog=t/C.dur;const sc0=1.06,sc1=1.16;const scale=sc0+(sc1-sc0)*easeInOut(prog);
   document.getElementById('bg').style.transform=`scale(${scale.toFixed(4)}) translateY(${(-18*prog).toFixed(1)}px)`;
+  // hook-first reveal: keep the skyline dark during the opening data, then reveal Dubai
+  let bgO=1; if(C.reveal){ bgO=0.06+0.94*easeOut(p(t,C.reveal.at,C.reveal.dur||1.4)); }
+  document.getElementById('bg').style.opacity=bgO.toFixed(3);
   const O=C.outro;
-  const ch=1-easeOut(p(t,O.t0-0.4,0.4));document.getElementById('hdr').style.opacity=ch;document.getElementById('ftr').style.opacity=ch;
+  const chOut=1-easeOut(p(t,O.t0-0.4,0.4));const chIn=C.reveal?easeOut(p(t,Math.max(0,C.reveal.at-1.4),1.0)):1;const ch=Math.min(chOut,chIn);document.getElementById('hdr').style.opacity=ch;document.getElementById('ftr').style.opacity=ch;
   // focus scrim active during text/bignum scenes
   let focus=0;
   C.scenes.forEach((s,i)=>{const d=document.getElementById('sx'+i);
